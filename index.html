@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clamme</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #06100d;
+    --sidebar: #081713;
+    --panel: #0b1d17;
+    --panel-2: #0f251d;
+    --border: #19392e;
+    --border-soft: #102a21;
+    --emerald: #0e8f65;
+    --emerald-light: #18b982;
+    --text: #e9f3ef;
+    --muted: #8ca59b;
+    --danger: #c96c6c;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Alegreya", serif;
+    overflow: hidden;
+}
+
+/* ---------- APP ---------- */
+
+.app {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+}
+
+.brand {
+    padding: 0 12px 28px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.brand span {
+    color: var(--emerald-light);
+}
+
+.new-button {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--panel-2);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+.new-button:hover {
+    border-color: var(--emerald);
+    background: #123027;
+}
+
+.nav {
+    margin-top: 25px;
+}
+
+.nav button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    padding: 12px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 17px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.nav button:hover,
+.nav button.active {
+    color: var(--text);
+    background: #0e261e;
+}
+
+.nav-icon {
+    width: 24px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.status {
+    border-top: 1px solid var(--border-soft);
+    padding: 17px 12px 4px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- MAIN ---------- */
+
+.main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- TOPBAR ---------- */
+
+.topbar {
+    height: 72px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    background: rgba(6,16,13,.94);
+}
+
+.page-title {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.icon-button:hover {
+    border-color: var(--border);
+    background: var(--panel);
+    color: var(--text);
+}
+
+/* ---------- WORKSPACE ---------- */
+
+.workspace {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 32px;
+}
+
+/* ---------- HOME ---------- */
+
+.home {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.home-header {
+    margin-bottom: 30px;
+}
+
+.home-header h1 {
+    font-size: 38px;
+    margin: 0 0 6px;
+    font-weight: 600;
+}
+
+.home-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.create-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.create-card {
+    min-height: 145px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 22px;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+.create-card:hover {
+    border-color: var(--emerald);
+    transform: translateY(-2px);
+}
+
+.create-card .card-icon {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--emerald-light);
+    margin-bottom: 20px;
+}
+
+.create-card h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+}
+
+.create-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* ---------- EMPTY STATE ---------- */
+
+.empty {
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--muted);
+}
+
+.empty h2 {
+    color: var(--text);
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+/* ---------- EDITOR ---------- */
+
+.editor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-tools {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 10px;
+    min-height: 48px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 18px;
+}
+
+.tool {
+    height: 34px;
+    min-width: 34px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tool:hover,
+.tool.selected {
+    background: #123027;
+    color: var(--text);
+}
+
+.editor-area {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+/* ---------- DOC ---------- */
+
+.document {
+    width: min(850px, 100%);
+    min-height: 100%;
+    margin: auto;
+    background: #f5f8f6;
+    color: #16201c;
+    border-radius: 4px;
+    padding: 70px;
+    outline: none;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+.document:empty::before {
+    content: "Start writing";
+    color: #9ca9a4;
+}
+
+/* ---------- SHEETS ---------- */
+
+.sheet-wrap {
+    overflow: auto;
+    border: 1px solid var(--border);
+    background: #081510;
+}
+
+.sheet {
+    border-collapse: collapse;
+    min-width: 900px;
+    font-family: "Alegreya", serif;
+}
+
+.sheet th,
+.sheet td {
+    border: 1px solid #18372c;
+    min-width: 120px;
+    height: 38px;
+    padding: 7px 10px;
+}
+
+.sheet th {
+    background: #0d2119;
+    color: var(--muted);
+    font-weight: 500;
+    text-align: center;
+}
+
+.sheet td {
+    background: #081510;
+    outline: none;
+}
+
+.sheet td:focus {
+    box-shadow: inset 0 0 0 1px var(--emerald-light);
+}
+
+/* ---------- SLIDES ---------- */
+
+.slide-workspace {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.slide {
+    width: min(900px, 100%);
+    aspect-ratio: 16 / 9;
+    background: #071a14;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 65px;
+    outline: none;
+}
+
+.slide:empty::before {
+    content: "Click here to create";
+    color: #698077;
+}
+
+.slide h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+/* ---------- TOAST ---------- */
+
+.toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    background: #10271f;
+    border: 1px solid var(--border);
+    padding: 11px 16px;
+    border-radius: 9px;
+    color: var(--text);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: .2s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 800px) {
+    .app {
+        grid-template-columns: 72px 1fr;
+    }
+
+    .sidebar {
+        padding: 18px 10px;
+    }
+
+    .brand {
+        text-align: center;
+        padding: 0 0 24px;
+        font-size: 22px;
+    }
+
+    .brand span,
+    .new-button,
+    .nav-label,
+    .status {
+        display: none;
+    }
+
+    .nav button {
+        justify-content: center;
+    }
+
+    .workspace {
+        padding: 18px;
+    }
+
+    .create-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .document {
+        padding: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">Clamme<span>.</span></div>
+
+        <button class="new-button" onclick="createDocument()">
+            + New
+        </button>
+
+        <nav class="nav">
+            <button class="active" onclick="showHome(this)">
+                <span class="nav-icon">⌂</span>
+                <span class="nav-label">Home</span>
+            </button>
+
+            <button onclick="createDocument(); setActive(this)">
+                <span class="nav-icon">D</span>
+                <span class="nav-label">Docs</span>
+            </button>
+
+            <button onclick="createSlides(); setActive(this)">
+                <span class="nav-icon">S</span>
+                <span class="nav-label">Slides</span>
+            </button>
+
+            <button onclick="createSheets(); setActive(this)">
+                <span class="nav-icon">▦</span>
+                <span class="nav-label">Sheets</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="status">
+                Local workspace
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="page-title" id="pageTitle">Home</div>
+            <div class="spacer"></div>
+
+            <button class="icon-button" onclick="toggleFullscreen()" title="Fullscreen">
+                ⛶
+            </button>
+
+            <button class="icon-button" onclick="showToast('Clamme is ready.')">
+                ⋯
+            </button>
+        </header>
+
+        <section class="workspace" id="workspace"></section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const workspace = document.getElementById("workspace");
+const pageTitle = document.getElementById("pageTitle");
+
+function setActive(button) {
+    document.querySelectorAll(".nav button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+function homeMarkup() {
+    return `
+        <div class="home">
+
+            <div class="home-header">
+                <h1>Clamme</h1>
+                <p>A focused workspace for writing, presenting and calculating.</p>
+            </div>
+
+            <div class="create-grid">
+
+                <div class="create-card" onclick="createDocument()">
+                    <div class="card-icon">D</div>
+                    <h3>Document</h3>
+                    <p>Write and format a document.</p>
+                </div>
+
+                <div class="create-card" onclick="createSlides()">
+                    <div class="card-icon">S</div>
+                    <h3>Presentation</h3>
+                    <p>Create a clean visual presentation.</p>
+                </div>
+
+                <div class="create-card" onclick="createSheets()">
+                    <div class="card-icon">▦</div>
+                    <h3>Spreadsheet</h3>
+                    <p>Organize information in a grid.</p>
+                </div>
+
+            </div>
+
+            <div class="empty">
+                <div>
+                    <h2>Your workspace is empty</h2>
+                    <div>Create something new to begin.</div>
+                </div>
+            </div>
+
+        </div>
+    `;
+}
+
+function showHome(button) {
+    setActive(button);
+    pageTitle.textContent = "Home";
+    workspace.innerHTML = homeMarkup();
+}
+
+function createDocument() {
+    pageTitle.textContent = "Untitled Document";
+
+    workspace.innerHTML = `
+        <div class="editor">
+
+            <div class="editor-tools">
+
+                <button class="tool" onclick="format('bold')"><b>B</b></button>
+                <button class="tool" onclick="format('italic')"><i>I</i></button>
+                <button class="tool" onclick="format('underline')"><u>U</u></button>
+
+                <button class="tool" onclick="format('justifyLeft')">Left</button>
+                <button class="tool" onclick="format('justifyCenter')">Center</button>
+                <button class="tool" onclick="format('justifyRight')">Right</button>
+
+                <button class="tool" onclick="insertLine()">Line</button>
+
+            </div>
+
+            <div class="editor-area">
+                <div
+                    class="document"
+                    contenteditable="true"
+                    spellcheck="true"
+                    id="documentEditor"
+                ></div>
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById("documentEditor").focus();
+}
+
+function format(command) {
+    document.execCommand(command, false, null);
+}
+
+function insertLine() {
+    document.execCommand("insertHorizontalRule");
+}
+
+function createSlides() {
+    pageTitle.textContent = "Untitled Presentation";
+
+    workspace.innerHTML = `
+        <div class="editor">
+
+            <div class="editor-tools">
+
+                <button class="tool" onclick="formatSlide('bold')"><b>B</b></button>
+                <button class="tool" onclick="formatSlide('italic')"><i>I</i></button>
+                <button class="tool" onclick="formatSlide('justifyCenter')">Center</button>
+                <button class="tool" onclick="formatSlide('justifyLeft')">Left</button>
+
+            </div>
+
+            <div class="editor-area slide-workspace">
+
+                <div
+                    class="slide"
+                    contenteditable="true"
+                    spellcheck="true"
+                    id="slideEditor"
+                ></div>
+
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById("slideEditor").focus();
+}
+
+function formatSlide(command) {
+    document.execCommand(command, false, null);
+}
+
+function createSheets() {
+    pageTitle.textContent = "Untitled Spreadsheet";
+
+    let rows = "";
+
+    for (let r = 1; r <= 30; r++) {
+        rows += "<tr>";
+
+        for (let c = 0; c < 10; c++) {
+            rows += `<td contenteditable="true"></td>`;
+        }
+
+        rows += "</tr>";
+    }
+
+    workspace.innerHTML = `
+        <div class="editor">
+
+            <div class="editor-tools">
+
+                <button class="tool" onclick="clearSelectedCells()">
+                    Clear
+                </button>
+
+                <button class="tool" onclick="showToast('Spreadsheet saved locally.')">
+                    Save
+                </button>
+
+            </div>
+
+            <div class="editor-area">
+                <div class="sheet-wrap">
+
+                    <table class="sheet">
+
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>C</th>
+                                <th>D</th>
+                                <th>E</th>
+                                <th>F</th>
+                                <th>G</th>
+                                <th>H</th>
+                                <th>I</th>
+                                <th>J</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            ${rows}
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    `;
+}
+
+function clearSelectedCells() {
+    document.querySelectorAll(".sheet td:focus")
+        .forEach(cell => cell.textContent = "");
+
+    showToast("Cell cleared.");
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1800);
+}
+
+showHome(document.querySelector(".nav button"));
+</script>
+
+</body>
+</html>
