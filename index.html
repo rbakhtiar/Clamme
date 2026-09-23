@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Clamme</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,456 +11,901 @@
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #06100d;
-    --sidebar: #081713;
-    --panel: #0b1d17;
-    --panel-2: #0f251d;
-    --border: #19392e;
-    --border-soft: #102a21;
-    --emerald: #0e8f65;
-    --emerald-light: #18b982;
-    --text: #e9f3ef;
-    --muted: #8ca59b;
-    --danger: #c96c6c;
-    --radius: 12px;
+/* =========================================================
+   CLAMME — SUPER MINIMAL
+========================================================= */
+
+:root{
+  --black:#050806;
+  --surface:#080d0a;
+  --surface2:#0b120e;
+  --line:#17251d;
+  --line2:#20362a;
+  --emerald:#79cfa2;
+  --text:#f1f6f2;
+  --muted:#7f9187;
+  --paper:#fafcf9;
+  --ink:#172019;
 }
 
-* {
-    box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
 html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+body{
+  width:100%;
+  height:100%;
+  margin:0;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Alegreya", serif;
-    overflow: hidden;
+body{
+  font-family:"Alegreya",serif;
+  background:var(--black);
+  color:var(--text);
+  overflow:hidden;
 }
 
-/* ---------- APP ---------- */
-
-.app {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    height: 100vh;
+button,
+input,
+textarea,
+select{
+  font-family:"Alegreya",serif;
 }
 
-/* ---------- SIDEBAR ---------- */
-
-.sidebar {
-    background: var(--sidebar);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    padding: 24px 16px;
+button{
+  cursor:pointer;
 }
 
-.brand {
-    padding: 0 12px 28px;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+  width:100%;
+  height:100vh;
+  display:flex;
 }
 
-.brand span {
-    color: var(--emerald-light);
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+  width:220px;
+  height:100%;
+  padding:24px 14px;
+  background:var(--surface);
+  border-right:1px solid var(--line);
+
+  display:flex;
+  flex-direction:column;
 }
 
-.new-button {
-    width: 100%;
-    height: 48px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--panel-2);
-    color: var(--text);
-    font-family: inherit;
-    font-size: 17px;
-    cursor: pointer;
-    transition: .18s ease;
+.logo{
+  padding:0 12px 30px;
+
+  font-size:28px;
+  font-weight:600;
+  letter-spacing:-.5px;
 }
 
-.new-button:hover {
-    border-color: var(--emerald);
-    background: #123027;
+.logo span{
+  color:var(--emerald);
 }
 
-.nav {
-    margin-top: 25px;
+.new{
+  width:100%;
+  height:40px;
+
+  background:transparent;
+  border:1px solid var(--line2);
+  color:var(--text);
+
+  border-radius:5px;
+  font-size:17px;
+
+  transition:.15s;
 }
 
-.nav button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    padding: 12px;
-    border-radius: 9px;
-    font-family: inherit;
-    font-size: 17px;
-    text-align: left;
-    cursor: pointer;
+.new:hover{
+  background:var(--surface2);
+  border-color:var(--emerald);
 }
 
-.nav button:hover,
-.nav button.active {
-    color: var(--text);
-    background: #0e261e;
+.navigation{
+  margin-top:24px;
+
+  display:flex;
+  flex-direction:column;
+  gap:2px;
 }
 
-.nav-icon {
-    width: 24px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+.navigation button{
+  width:100%;
+  padding:9px 12px;
+
+  border:0;
+  background:transparent;
+
+  color:var(--muted);
+  text-align:left;
+
+  font-size:17px;
+  border-radius:4px;
 }
 
-.sidebar-bottom {
-    margin-top: auto;
+.navigation button:hover,
+.navigation button.active{
+  color:var(--text);
+  background:#0d1711;
 }
 
-.status {
-    border-top: 1px solid var(--border-soft);
-    padding: 17px 12px 4px;
-    color: var(--muted);
-    font-size: 14px;
+.sidebar-bottom{
+  margin-top:auto;
+  padding:12px;
+
+  color:#617268;
+  font-size:14px;
 }
 
-/* ---------- MAIN ---------- */
+/* =========================================================
+   MAIN
+========================================================= */
 
-.main {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
+.main{
+  flex:1;
+  min-width:0;
+
+  display:flex;
+  flex-direction:column;
 }
 
-/* ---------- TOPBAR ---------- */
+.topbar{
+  height:58px;
 
-.topbar {
-    height: 72px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 16px;
-    background: rgba(6,16,13,.94);
+  padding:0 20px;
+
+  display:flex;
+  align-items:center;
+
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
 }
 
-.page-title {
-    font-size: 23px;
-    font-weight: 600;
+.title{
+  font-size:19px;
+  font-weight:500;
 }
 
-.spacer {
-    flex: 1;
+.top-actions{
+  margin-left:auto;
+
+  display:flex;
+  gap:5px;
 }
 
-.icon-button {
-    width: 40px;
-    height: 40px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--muted);
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: 17px;
+.top-button{
+  border:0;
+  background:transparent;
+
+  color:var(--muted);
+
+  padding:6px 9px;
+  font-size:15px;
 }
 
-.icon-button:hover {
-    border-color: var(--border);
-    background: var(--panel);
-    color: var(--text);
+.top-button:hover{
+  color:var(--text);
 }
 
-/* ---------- WORKSPACE ---------- */
+/* =========================================================
+   WORKSPACE
+========================================================= */
 
-.workspace {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
-    padding: 32px;
+.workspace{
+  flex:1;
+  min-height:0;
+
+  overflow:auto;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(70,150,105,.035),
+      transparent 30%
+    ),
+    var(--black);
 }
 
-/* ---------- HOME ---------- */
+/* =========================================================
+   HOME
+========================================================= */
 
-.home {
-    max-width: 1100px;
-    margin: auto;
+.home{
+  width:min(950px,100%);
+  margin:auto;
+  padding:70px 40px;
 }
 
-.home-header {
-    margin-bottom: 30px;
+.hero{
+  margin-bottom:65px;
 }
 
-.home-header h1 {
-    font-size: 38px;
-    margin: 0 0 6px;
-    font-weight: 600;
+.hero h1{
+  margin:0;
+
+  font-size:48px;
+  font-weight:500;
+  letter-spacing:-1.5px;
 }
 
-.home-header p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 18px;
+.hero p{
+  margin:7px 0 0;
+
+  color:var(--muted);
+  font-size:19px;
 }
 
-.create-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+.create{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 
-.create-card {
-    min-height: 145px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 22px;
-    cursor: pointer;
-    transition: .18s ease;
+.create button{
+  min-height:150px;
+
+  padding:24px;
+
+  background:transparent;
+  border:0;
+
+  color:var(--text);
+
+  text-align:left;
+
+  transition:.15s;
 }
 
-.create-card:hover {
-    border-color: var(--emerald);
-    transform: translateY(-2px);
+.create button+button{
+  border-left:1px solid var(--line);
 }
 
-.create-card .card-icon {
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-    color: var(--emerald-light);
-    margin-bottom: 20px;
+.create button:hover{
+  background:#09100c;
 }
 
-.create-card h3 {
-    margin: 0 0 4px;
-    font-size: 22px;
+.create-title{
+  font-size:25px;
+  margin-bottom:5px;
 }
 
-.create-card p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 15px;
+.create-description{
+  color:var(--muted);
+  font-size:16px;
 }
 
-/* ---------- EMPTY STATE ---------- */
+.workspace-title{
+  margin-top:55px;
+  margin-bottom:15px;
 
-.empty {
-    min-height: 360px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--muted);
+  font-size:22px;
 }
 
-.empty h2 {
-    color: var(--text);
-    font-size: 25px;
-    margin-bottom: 5px;
+/* =========================================================
+   FILE LIST
+========================================================= */
+
+.file-list{
+  border-top:1px solid var(--line);
 }
 
-/* ---------- EDITOR ---------- */
+.file{
+  display:grid;
+  grid-template-columns:1fr 150px 110px;
 
-.editor {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  align-items:center;
+
+  padding:13px 8px;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:17px;
 }
 
-.editor-tools {
-    border: 1px solid var(--border);
-    background: var(--panel);
-    border-radius: 10px;
-    min-height: 48px;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 18px;
+.file-name{
+  cursor:pointer;
 }
 
-.tool {
-    height: 34px;
-    min-width: 34px;
-    padding: 0 9px;
-    border: 0;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--muted);
-    font-family: inherit;
-    font-size: 16px;
-    cursor: pointer;
+.file-name:hover{
+  color:var(--emerald);
 }
 
-.tool:hover,
-.tool.selected {
-    background: #123027;
-    color: var(--text);
+.file-type{
+  color:var(--muted);
 }
 
-.editor-area {
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
+.file-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:3px;
 }
 
-/* ---------- DOC ---------- */
+.file-actions button{
+  border:0;
+  background:transparent;
 
-.document {
-    width: min(850px, 100%);
-    min-height: 100%;
-    margin: auto;
-    background: #f5f8f6;
-    color: #16201c;
-    border-radius: 4px;
-    padding: 70px;
-    outline: none;
-    font-size: 19px;
-    line-height: 1.7;
+  color:var(--muted);
+
+  font-size:14px;
 }
 
-.document:empty::before {
-    content: "Start writing";
-    color: #9ca9a4;
+.file-actions button:hover{
+  color:var(--text);
 }
 
-/* ---------- SHEETS ---------- */
+/* =========================================================
+   EMPTY
+========================================================= */
 
-.sheet-wrap {
-    overflow: auto;
-    border: 1px solid var(--border);
-    background: #081510;
+.empty{
+  min-height:300px;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  color:var(--muted);
 }
 
-.sheet {
-    border-collapse: collapse;
-    min-width: 900px;
-    font-family: "Alegreya", serif;
+.empty h2{
+  margin:0 0 4px;
+
+  color:var(--text);
+
+  font-size:26px;
+  font-weight:500;
 }
 
-.sheet th,
-.sheet td {
-    border: 1px solid #18372c;
-    min-width: 120px;
-    height: 38px;
-    padding: 7px 10px;
+/* =========================================================
+   EDITOR
+========================================================= */
+
+.editor{
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
 }
 
-.sheet th {
-    background: #0d2119;
-    color: var(--muted);
-    font-weight: 500;
-    text-align: center;
+.toolbar{
+  min-height:48px;
+
+  display:flex;
+  align-items:center;
+
+  padding:6px 10px;
+
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+
+  gap:2px;
+
+  overflow-x:auto;
 }
 
-.sheet td {
-    background: #081510;
-    outline: none;
+.tool{
+  min-width:32px;
+  height:30px;
+
+  padding:0 8px;
+
+  border:0;
+  background:transparent;
+
+  color:var(--muted);
+
+  font-size:15px;
 }
 
-.sheet td:focus {
-    box-shadow: inset 0 0 0 1px var(--emerald-light);
+.tool:hover{
+  color:var(--text);
+  background:#0d1711;
 }
 
-/* ---------- SLIDES ---------- */
+.tool-select{
+  height:30px;
 
-.slide-workspace {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  border:0;
+  border-left:1px solid var(--line);
+
+  background:transparent;
+
+  color:var(--muted);
+
+  padding:0 10px;
 }
 
-.slide {
-    width: min(900px, 100%);
-    aspect-ratio: 16 / 9;
-    background: #071a14;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 65px;
-    outline: none;
+.editor-space{
+  flex:1;
+  overflow:auto;
+  padding:45px;
 }
 
-.slide:empty::before {
-    content: "Click here to create";
-    color: #698077;
+/* =========================================================
+   DOCUMENT
+========================================================= */
+
+.document{
+  width:794px;
+  min-height:1123px;
+
+  margin:auto;
+
+  padding:75px 80px;
+
+  background:var(--paper);
+  color:var(--ink);
+
+  outline:none;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
 }
 
-.slide h1 {
-    font-size: 48px;
-    margin: 0;
+.document p{
+  font-size:18px;
+  line-height:1.7;
 }
 
-/* ---------- TOAST ---------- */
-
-.toast {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    background: #10271f;
-    border: 1px solid var(--border);
-    padding: 11px 16px;
-    border-radius: 9px;
-    color: var(--text);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(8px);
-    transition: .2s ease;
+.document h1{
+  font-size:38px;
 }
 
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
+.document h2{
+  font-size:28px;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* =========================================================
+   SLIDES
+========================================================= */
 
-@media (max-width: 800px) {
-    .app {
-        grid-template-columns: 72px 1fr;
-    }
+.slides{
+  height:100%;
 
-    .sidebar {
-        padding: 18px 10px;
-    }
+  display:flex;
+}
 
-    .brand {
-        text-align: center;
-        padding: 0 0 24px;
-        font-size: 22px;
-    }
+.slide-panel{
+  width:160px;
 
-    .brand span,
-    .new-button,
-    .nav-label,
-    .status {
-        display: none;
-    }
+  padding:12px;
 
-    .nav button {
-        justify-content: center;
-    }
+  border-right:1px solid var(--line);
 
-    .workspace {
-        padding: 18px;
-    }
+  overflow:auto;
+}
 
-    .create-grid {
-        grid-template-columns: 1fr;
-    }
+.slide-actions{
+  display:flex;
+  gap:2px;
+  margin-bottom:12px;
+}
 
-    .document {
-        padding: 35px;
-    }
+.slide-actions button{
+  flex:1;
+
+  border:0;
+  background:transparent;
+
+  color:var(--muted);
+
+  padding:6px;
+
+  font-size:14px;
+}
+
+.slide-actions button:hover{
+  color:var(--text);
+  background:#0d1711;
+}
+
+.thumbnail{
+  width:100%;
+  aspect-ratio:16/9;
+
+  margin-bottom:10px;
+
+  padding:7px;
+
+  background:var(--paper);
+  color:var(--ink);
+
+  border:1px solid transparent;
+
+  overflow:hidden;
+
+  text-align:left;
+
+  font-size:10px;
+}
+
+.thumbnail.active{
+  border-color:var(--emerald);
+}
+
+.slide-area{
+  flex:1;
+
+  overflow:auto;
+
+  padding:40px;
+
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.slide{
+  width:min(1000px,85vw);
+  aspect-ratio:16/9;
+
+  padding:70px;
+
+  background:var(--paper);
+  color:var(--ink);
+
+  outline:none;
+
+  font-size:30px;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   SHEETS
+========================================================= */
+
+.sheet{
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.formula{
+  height:40px;
+
+  display:flex;
+
+  border-bottom:1px solid var(--line);
+}
+
+.cell-name{
+  width:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:var(--emerald);
+
+  border-right:1px solid var(--line);
+}
+
+.formula input{
+  flex:1;
+
+  border:0;
+  outline:none;
+
+  background:transparent;
+
+  color:var(--text);
+
+  padding:0 10px;
+}
+
+.table-wrap{
+  flex:1;
+  overflow:auto;
+}
+
+table{
+  border-collapse:collapse;
+
+  min-width:1000px;
+}
+
+th,
+td{
+  width:100px;
+  min-width:100px;
+
+  height:30px;
+
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+
+  padding:3px 7px;
+}
+
+th{
+  position:sticky;
+  top:0;
+
+  background:#0a110d;
+
+  color:var(--muted);
+
+  font-weight:500;
+
+  text-align:center;
+}
+
+.row-number{
+  width:45px;
+  min-width:45px;
+
+  position:sticky;
+  left:0;
+
+  background:#0a110d;
+}
+
+td{
+  background:#060b08;
+
+  outline:none;
+
+  color:var(--text);
+}
+
+td:focus{
+  box-shadow:inset 0 0 0 1px var(--emerald);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(0,0,0,.72);
+
+  z-index:50;
+}
+
+.overlay.show{
+  display:flex;
+}
+
+.modal{
+  width:min(430px,90vw);
+
+  padding:25px;
+
+  background:#09110d;
+
+  border:1px solid var(--line2);
+}
+
+.modal h2{
+  margin:0 0 18px;
+
+  font-size:24px;
+  font-weight:500;
+}
+
+.modal input{
+  width:100%;
+  height:40px;
+
+  padding:0 10px;
+
+  border:1px solid var(--line2);
+  outline:none;
+
+  background:#050a07;
+  color:var(--text);
+}
+
+.modal-actions{
+  margin-top:18px;
+
+  display:flex;
+  justify-content:flex-end;
+  gap:6px;
+}
+
+.modal-actions button{
+  border:0;
+  background:transparent;
+
+  color:var(--muted);
+
+  padding:7px 12px;
+}
+
+.modal-actions button:hover{
+  color:var(--text);
+}
+
+.modal-actions .primary{
+  color:var(--emerald);
+}
+
+/* =========================================================
+   COMMAND PALETTE
+========================================================= */
+
+.command{
+  width:min(600px,90vw);
+}
+
+.command input{
+  font-size:18px;
+}
+
+.commands{
+  margin-top:8px;
+
+  max-height:300px;
+
+  overflow:auto;
+}
+
+.command-item{
+  padding:9px;
+
+  color:var(--muted);
+
+  cursor:pointer;
+}
+
+.command-item:hover{
+  background:#0d1711;
+  color:var(--text);
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:20px;
+
+  transform:translate(-50%,15px);
+
+  padding:7px 12px;
+
+  border:1px solid var(--line2);
+
+  background:#09110d;
+
+  color:var(--muted);
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.2s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:750px){
+
+  .sidebar{
+    width:62px;
+    padding:18px 7px;
+  }
+
+  .logo{
+    padding:0 0 25px;
+    text-align:center;
+    font-size:0;
+  }
+
+  .logo span{
+    font-size:26px;
+  }
+
+  .new{
+    font-size:0;
+  }
+
+  .new::after{
+    content:"+";
+    font-size:23px;
+  }
+
+  .navigation button{
+    font-size:0;
+    text-align:center;
+  }
+
+  .navigation button::first-letter{
+    font-size:19px;
+  }
+
+  .sidebar-bottom{
+    display:none;
+  }
+
+  .home{
+    padding:45px 20px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .create{
+    grid-template-columns:1fr;
+  }
+
+  .create button{
+    min-height:110px;
+  }
+
+  .create button+button{
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+
+  .editor-space{
+    padding:20px;
+  }
+
+  .document{
+    width:100%;
+    min-height:900px;
+    padding:45px 30px;
+  }
+
+  .slide-panel{
+    width:110px;
+  }
+
+  .slide-area{
+    padding:15px;
+  }
+
+  .slide{
+    width:95vw;
+    padding:30px;
+  }
+
+  .file{
+    grid-template-columns:1fr 80px;
+  }
+
+  .file-type{
+    display:none;
+  }
 }
 </style>
 </head>
@@ -468,296 +914,1382 @@ body {
 
 <div class="app">
 
-    <aside class="sidebar">
-        <div class="brand">Clamme<span>.</span></div>
+  <aside class="sidebar">
 
-        <button class="new-button" onclick="createDocument()">
-            + New
+    <div class="logo">
+      clamme<span>.</span>
+    </div>
+
+    <button class="new" onclick="newFile()">New</button>
+
+    <nav class="navigation">
+      <button id="homeNav" class="active" onclick="home()">Home</button>
+      <button id="docsNav" onclick="files("doc")">Docs</button>
+      <button id="slidesNav" onclick="files("slide")">Slides</button>
+      <button id="sheetsNav" onclick="files("sheet")">Sheets</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      Saved locally
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div id="title" class="title">
+        Home
+      </div>
+
+      <div class="top-actions">
+        <button class="top-button" onclick="commandPalette()">
+          Ctrl K
         </button>
+      </div>
 
-        <nav class="nav">
-            <button class="active" onclick="showHome(this)">
-                <span class="nav-icon">⌂</span>
-                <span class="nav-label">Home</span>
-            </button>
+    </header>
 
-            <button onclick="createDocument(); setActive(this)">
-                <span class="nav-icon">D</span>
-                <span class="nav-label">Docs</span>
-            </button>
+    <section id="workspace" class="workspace"></section>
 
-            <button onclick="createSlides(); setActive(this)">
-                <span class="nav-icon">S</span>
-                <span class="nav-label">Slides</span>
-            </button>
-
-            <button onclick="createSheets(); setActive(this)">
-                <span class="nav-icon">▦</span>
-                <span class="nav-label">Sheets</span>
-            </button>
-        </nav>
-
-        <div class="sidebar-bottom">
-            <div class="status">
-                Local workspace
-            </div>
-        </div>
-    </aside>
-
-    <main class="main">
-
-        <header class="topbar">
-            <div class="page-title" id="pageTitle">Home</div>
-            <div class="spacer"></div>
-
-            <button class="icon-button" onclick="toggleFullscreen()" title="Fullscreen">
-                ⛶
-            </button>
-
-            <button class="icon-button" onclick="showToast('Clamme is ready.')">
-                ⋯
-            </button>
-        </header>
-
-        <section class="workspace" id="workspace"></section>
-
-    </main>
+  </main>
 
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- NEW FILE -->
+
+<div id="modal" class="overlay">
+
+  <div class="modal">
+
+    <h2 id="modalTitle">
+      New file
+    </h2>
+
+    <input
+      id="fileName"
+      placeholder="Name"
+      autocomplete="off"
+    >
+
+    <div class="modal-actions">
+
+      <button onclick="closeModal()">
+        Cancel
+      </button>
+
+      <button class="primary" onclick="createConfirmed()">
+        Create
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- COMMAND -->
+
+<div id="commandOverlay" class="overlay">
+
+  <div class="modal command">
+
+    <input
+      id="commandInput"
+      placeholder="Command..."
+      oninput="searchCommands()"
+    >
+
+    <div id="commands" class="commands"></div>
+
+  </div>
+
+</div>
+
+<div id="toast" class="toast"></div>
 
 <script>
-const workspace = document.getElementById("workspace");
-const pageTitle = document.getElementById("pageTitle");
+/* =========================================================
+   DATABASE
+========================================================= */
 
-function setActive(button) {
-    document.querySelectorAll(".nav button")
-        .forEach(btn => btn.classList.remove("active"));
+const KEY="clamme_super_minimal_v1";
 
-    button.classList.add("active");
+let database=
+  JSON.parse(localStorage.getItem(KEY))
+  || {files:[]};
+
+let current=null;
+
+let modalType="doc";
+let modalAction="create";
+let renameID=null;
+
+let activeSlide=0;
+
+let ROWS=30;
+let COLS=10;
+
+let selectedCell=null;
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function save(){
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(database)
+  );
 }
 
-function homeMarkup() {
-    return `
-        <div class="home">
+function notify(text){
 
-            <div class="home-header">
-                <h1>Clamme</h1>
-                <p>A focused workspace for writing, presenting and calculating.</p>
-            </div>
+  const t=document.getElementById("toast");
 
-            <div class="create-grid">
+  t.textContent=text;
+  t.classList.add("show");
 
-                <div class="create-card" onclick="createDocument()">
-                    <div class="card-icon">D</div>
-                    <h3>Document</h3>
-                    <p>Write and format a document.</p>
-                </div>
+  clearTimeout(window.toastTimeout);
 
-                <div class="create-card" onclick="createSlides()">
-                    <div class="card-icon">S</div>
-                    <h3>Presentation</h3>
-                    <p>Create a clean visual presentation.</p>
-                </div>
+  window.toastTimeout=
+    setTimeout(
+      ()=>t.classList.remove("show"),
+      1300
+    );
+}
 
-                <div class="create-card" onclick="createSheets()">
-                    <div class="card-icon">▦</div>
-                    <h3>Spreadsheet</h3>
-                    <p>Organize information in a grid.</p>
-                </div>
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-            </div>
+function activeNav(id){
 
+  document
+    .querySelectorAll(".navigation button")
+    .forEach(b=>b.classList.remove("active"));
+
+  document
+    .getElementById(id)
+    ?.classList.add("active");
+}
+
+function home(){
+
+  current=null;
+
+  activeNav("homeNav");
+
+  document.getElementById("title").textContent="Home";
+
+  workspace.innerHTML=`
+
+    <div class="home">
+
+      <div class="hero">
+
+        <h1>Clamme.</h1>
+
+        <p>
+          Documents, presentations and spreadsheets.
+        </p>
+
+      </div>
+
+      <div class="create">
+
+        <button onclick="createFile('doc')">
+
+          <div class="create-title">
+            Document
+          </div>
+
+          <div class="create-description">
+            Write.
+          </div>
+
+        </button>
+
+        <button onclick="createFile('slide')">
+
+          <div class="create-title">
+            Presentation
+          </div>
+
+          <div class="create-description">
+            Present.
+          </div>
+
+        </button>
+
+        <button onclick="createFile('sheet')">
+
+          <div class="create-title">
+            Spreadsheet
+          </div>
+
+          <div class="create-description">
+            Calculate.
+          </div>
+
+        </button>
+
+      </div>
+
+      <div class="workspace-title">
+        Workspace
+      </div>
+
+      ${
+        database.files.length
+        ? `
+          <div class="file-list">
+            ${
+              database.files
+                .slice()
+                .reverse()
+                .map(fileHTML)
+                .join("")
+            }
+          </div>
+        `
+        : `
+          <div class="empty">
+            <h2>Nothing here.</h2>
+            <div>Create something new.</div>
+          </div>
+        `
+      }
+
+    </div>
+
+  `;
+}
+
+/* =========================================================
+   FILES
+========================================================= */
+
+function typeLabel(type){
+
+  if(type==="doc")return"Document";
+  if(type==="slide")return"Presentation";
+  return"Spreadsheet";
+}
+
+function fileHTML(file){
+
+  return`
+
+    <div class="file">
+
+      <div
+        class="file-name"
+        onclick="openFile('${file.id}')"
+      >
+        ${safe(file.name)}
+      </div>
+
+      <div class="file-type">
+        ${typeLabel(file.type)}
+      </div>
+
+      <div class="file-actions">
+
+        <button onclick="rename('${file.id}')">
+          Rename
+        </button>
+
+        <button onclick="removeFile('${file.id}')">
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+function files(type){
+
+  current=null;
+
+  activeNav(
+    type==="doc"
+      ?"docsNav"
+      :type==="slide"
+        ?"slidesNav"
+        :"sheetsNav"
+  );
+
+  const name=typeLabel(type);
+
+  document.getElementById("title").textContent=name;
+
+  const list=
+    database.files.filter(f=>f.type===type);
+
+  workspace.innerHTML=`
+
+    <div class="home">
+
+      <div class="workspace-title"
+           style="margin-top:0;font-size:32px">
+        ${name}s
+      </div>
+
+      <div class="file-list">
+
+        ${
+          list.length
+          ?list.map(fileHTML).join("")
+          :`
             <div class="empty">
-                <div>
-                    <h2>Your workspace is empty</h2>
-                    <div>Create something new to begin.</div>
-                </div>
+              <h2>Nothing here.</h2>
+              <div>Create your first ${name.toLowerCase()}.</div>
             </div>
-
-        </div>
-    `;
-}
-
-function showHome(button) {
-    setActive(button);
-    pageTitle.textContent = "Home";
-    workspace.innerHTML = homeMarkup();
-}
-
-function createDocument() {
-    pageTitle.textContent = "Untitled Document";
-
-    workspace.innerHTML = `
-        <div class="editor">
-
-            <div class="editor-tools">
-
-                <button class="tool" onclick="format('bold')"><b>B</b></button>
-                <button class="tool" onclick="format('italic')"><i>I</i></button>
-                <button class="tool" onclick="format('underline')"><u>U</u></button>
-
-                <button class="tool" onclick="format('justifyLeft')">Left</button>
-                <button class="tool" onclick="format('justifyCenter')">Center</button>
-                <button class="tool" onclick="format('justifyRight')">Right</button>
-
-                <button class="tool" onclick="insertLine()">Line</button>
-
-            </div>
-
-            <div class="editor-area">
-                <div
-                    class="document"
-                    contenteditable="true"
-                    spellcheck="true"
-                    id="documentEditor"
-                ></div>
-            </div>
-
-        </div>
-    `;
-
-    document.getElementById("documentEditor").focus();
-}
-
-function format(command) {
-    document.execCommand(command, false, null);
-}
-
-function insertLine() {
-    document.execCommand("insertHorizontalRule");
-}
-
-function createSlides() {
-    pageTitle.textContent = "Untitled Presentation";
-
-    workspace.innerHTML = `
-        <div class="editor">
-
-            <div class="editor-tools">
-
-                <button class="tool" onclick="formatSlide('bold')"><b>B</b></button>
-                <button class="tool" onclick="formatSlide('italic')"><i>I</i></button>
-                <button class="tool" onclick="formatSlide('justifyCenter')">Center</button>
-                <button class="tool" onclick="formatSlide('justifyLeft')">Left</button>
-
-            </div>
-
-            <div class="editor-area slide-workspace">
-
-                <div
-                    class="slide"
-                    contenteditable="true"
-                    spellcheck="true"
-                    id="slideEditor"
-                ></div>
-
-            </div>
-
-        </div>
-    `;
-
-    document.getElementById("slideEditor").focus();
-}
-
-function formatSlide(command) {
-    document.execCommand(command, false, null);
-}
-
-function createSheets() {
-    pageTitle.textContent = "Untitled Spreadsheet";
-
-    let rows = "";
-
-    for (let r = 1; r <= 30; r++) {
-        rows += "<tr>";
-
-        for (let c = 0; c < 10; c++) {
-            rows += `<td contenteditable="true"></td>`;
+          `
         }
 
-        rows += "</tr>";
+      </div>
+
+    </div>
+
+  `;
+}
+
+/* =========================================================
+   CREATE
+========================================================= */
+
+function newFile(){
+
+  createFile("doc");
+
+}
+
+function createFile(type){
+
+  modalType=type;
+  modalAction="create";
+
+  const defaults={
+    doc:"Untitled document",
+    slide:"Untitled presentation",
+    sheet:"Untitled spreadsheet"
+  };
+
+  document.getElementById("modalTitle")
+    .textContent=
+    "New "+typeLabel(type).toLowerCase();
+
+  document.getElementById("fileName")
+    .value=defaults[type];
+
+  document.getElementById("modal")
+    .classList.add("show");
+
+  setTimeout(
+    ()=>document.getElementById("fileName").select(),
+    30
+  );
+}
+
+function createConfirmed(){
+
+  const name=
+    document.getElementById("fileName")
+      .value.trim()
+    ||"Untitled";
+
+  if(modalAction==="rename"){
+
+    const f=
+      database.files.find(
+        x=>x.id===renameID
+      );
+
+    if(f){
+      f.name=name;
+      f.updated=Date.now();
     }
 
-    workspace.innerHTML = `
-        <div class="editor">
+    save();
+    closeModal();
 
-            <div class="editor-tools">
+    if(current)openFile(current.id);
+    else home();
 
-                <button class="tool" onclick="clearSelectedCells()">
-                    Clear
-                </button>
+    return;
+  }
 
-                <button class="tool" onclick="showToast('Spreadsheet saved locally.')">
-                    Save
-                </button>
+  const file={
+    id:crypto.randomUUID(),
+    name,
+    type:modalType,
+    created:Date.now(),
+    updated:Date.now()
+  };
 
-            </div>
+  if(modalType==="doc"){
+    file.content="";
+  }
 
-            <div class="editor-area">
-                <div class="sheet-wrap">
+  if(modalType==="slide"){
+    file.slides=[
+      {
+        id:crypto.randomUUID(),
+        content:""
+      }
+    ];
+  }
 
-                    <table class="sheet">
+  if(modalType==="sheet"){
+    file.cells={};
+  }
 
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>A</th>
-                                <th>B</th>
-                                <th>C</th>
-                                <th>D</th>
-                                <th>E</th>
-                                <th>F</th>
-                                <th>G</th>
-                                <th>H</th>
-                                <th>I</th>
-                                <th>J</th>
-                            </tr>
-                        </thead>
+  database.files.push(file);
 
-                        <tbody>
-                            ${rows}
-                        </tbody>
+  save();
 
-                    </table>
+  closeModal();
 
-                </div>
-            </div>
+  openFile(file.id);
+}
 
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.remove("show");
+
+}
+
+/* =========================================================
+   FILE ACTIONS
+========================================================= */
+
+function rename(id){
+
+  renameID=id;
+  modalAction="rename";
+
+  const file=
+    database.files.find(f=>f.id===id);
+
+  document.getElementById("modalTitle")
+    .textContent="Rename";
+
+  document.getElementById("fileName")
+    .value=file.name;
+
+  document.getElementById("modal")
+    .classList.add("show");
+
+  setTimeout(
+    ()=>document.getElementById("fileName").select(),
+    30
+  );
+}
+
+function removeFile(id){
+
+  const file=
+    database.files.find(f=>f.id===id);
+
+  if(!confirm("Delete "+file.name+"?"))
+    return;
+
+  database.files=
+    database.files.filter(
+      f=>f.id!==id
+    );
+
+  save();
+
+  if(file.type==="doc")files("doc");
+  else if(file.type==="slide")files("slide");
+  else files("sheet");
+}
+
+/* =========================================================
+   OPEN
+========================================================= */
+
+function openFile(id){
+
+  current=
+    database.files.find(
+      f=>f.id===id
+    );
+
+  if(!current)return;
+
+  document.getElementById("title")
+    .textContent=current.name;
+
+  if(current.type==="doc")
+    renderDocument();
+
+  if(current.type==="slide")
+    renderSlides();
+
+  if(current.type==="sheet")
+    renderSheet();
+
+}
+
+/* =========================================================
+   DOCUMENT
+========================================================= */
+
+function renderDocument(){
+
+  workspace.innerHTML=`
+
+    <div class="editor">
+
+      <div class="toolbar">
+
+        <button class="tool"
+                onclick="format('bold')">
+          B
+        </button>
+
+        <button class="tool"
+                onclick="format('italic')">
+          I
+        </button>
+
+        <button class="tool"
+                onclick="format('underline')">
+          U
+        </button>
+
+        <select
+          class="tool-select"
+          onchange="format('formatBlock',this.value)"
+        >
+
+          <option value="p">
+            Text
+          </option>
+
+          <option value="h1">
+            Heading
+          </option>
+
+          <option value="h2">
+            Subheading
+          </option>
+
+        </select>
+
+        <button class="tool"
+                onclick="format('justifyLeft')">
+          Left
+        </button>
+
+        <button class="tool"
+                onclick="format('justifyCenter')">
+          Center
+        </button>
+
+        <button class="tool"
+                onclick="format('justifyRight')">
+          Right
+        </button>
+
+        <div style="flex:1"></div>
+
+        <button class="tool"
+                onclick="fullscreen()">
+          Fullscreen
+        </button>
+
+      </div>
+
+      <div class="editor-space">
+
+        <article
+          id="document"
+          class="document"
+          contenteditable="true"
+          spellcheck="true"
+          oninput="saveDocument()"
+        >${current.content}</article>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+function format(command,value=null){
+
+  document.execCommand(
+    command,
+    false,
+    value
+  );
+
+  document
+    .getElementById("document")
+    ?.focus();
+
+  saveDocument();
+}
+
+function saveDocument(){
+
+  const editor=
+    document.getElementById("document");
+
+  if(!editor||!current)return;
+
+  current.content=editor.innerHTML;
+  current.updated=Date.now();
+
+  save();
+}
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+function renderSlides(){
+
+  activeSlide=0;
+
+  workspace.innerHTML=`
+
+    <div class="editor">
+
+      <div class="toolbar">
+
+        <button class="tool"
+                onclick="addSlide()">
+          + Slide
+        </button>
+
+        <button class="tool"
+                onclick="duplicateSlide()">
+          Duplicate
+        </button>
+
+        <button class="tool"
+                onclick="deleteSlide()">
+          Delete
+        </button>
+
+        <div style="flex:1"></div>
+
+        <button class="tool"
+                onclick="present()">
+          Present
+        </button>
+
+      </div>
+
+      <div class="slides">
+
+        <aside class="slide-panel">
+
+          <div class="slide-actions">
+
+            <button onclick="addSlide()">
+              +
+            </button>
+
+            <button onclick="duplicateSlide()">
+              Copy
+            </button>
+
+          </div>
+
+          <div id="thumbnails"></div>
+
+        </aside>
+
+        <main class="slide-area">
+
+          <div
+            id="slideEditor"
+            class="slide"
+            contenteditable="true"
+            oninput="saveSlide()"
+          ></div>
+
+        </main>
+
+      </div>
+
+    </div>
+
+  `;
+
+  renderThumbnails();
+  loadSlide();
+}
+
+function renderThumbnails(){
+
+  document.getElementById("thumbnails")
+    .innerHTML=
+    current.slides.map(
+      (slide,index)=>`
+
+        <button
+          class="thumbnail ${
+            index===activeSlide
+              ?"active"
+              :""
+          }"
+          onclick="selectSlide(${index})"
+        >
+          ${slide.content}
+        </button>
+
+      `
+    ).join("");
+}
+
+function loadSlide(){
+
+  document.getElementById("slideEditor")
+    .innerHTML=
+    current.slides[activeSlide]
+      .content||"";
+}
+
+function saveSlide(){
+
+  const editor=
+    document.getElementById("slideEditor");
+
+  if(!editor)return;
+
+  current.slides[activeSlide]
+    .content=editor.innerHTML;
+
+  current.updated=Date.now();
+
+  save();
+
+  renderThumbnails();
+}
+
+function selectSlide(index){
+
+  saveSlide();
+
+  activeSlide=index;
+
+  renderThumbnails();
+
+  loadSlide();
+}
+
+function addSlide(){
+
+  saveSlide();
+
+  current.slides.push({
+    id:crypto.randomUUID(),
+    content:""
+  });
+
+  activeSlide=
+    current.slides.length-1;
+
+  save();
+
+  renderThumbnails();
+  loadSlide();
+}
+
+function duplicateSlide(){
+
+  saveSlide();
+
+  const copy=
+    JSON.parse(
+      JSON.stringify(
+        current.slides[activeSlide]
+      )
+    );
+
+  copy.id=crypto.randomUUID();
+
+  current.slides.splice(
+    activeSlide+1,
+    0,
+    copy
+  );
+
+  activeSlide++;
+
+  save();
+
+  renderThumbnails();
+  loadSlide();
+}
+
+function deleteSlide(){
+
+  if(current.slides.length===1){
+
+    notify("One slide required");
+
+    return;
+  }
+
+  current.slides.splice(
+    activeSlide,
+    1
+  );
+
+  activeSlide=
+    Math.max(
+      0,
+      activeSlide-1
+    );
+
+  save();
+
+  renderThumbnails();
+  loadSlide();
+}
+
+function present(){
+
+  const content=
+    current.slides[activeSlide]
+      .content;
+
+  const win=
+    window.open(
+      "",
+      "_blank"
+    );
+
+  win.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>${safe(current.name)}</title>
+
+      <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      >
+
+      <style>
+
+        *{
+          box-sizing:border-box;
+        }
+
+        body{
+          margin:0;
+          height:100vh;
+
+          display:flex;
+          align-items:center;
+          justify-content:center;
+
+          background:#000;
+        }
+
+        .slide{
+          width:90vw;
+          aspect-ratio:16/9;
+
+          padding:7vw;
+
+          background:#fafcf9;
+          color:#172019;
+
+          font-family:Alegreya,serif;
+
+          font-size:3vw;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <div class="slide">
+        ${content}
+      </div>
+
+    </body>
+
+    </html>
+
+  `);
+
+}
+
+/* =========================================================
+   SHEETS
+========================================================= */
+
+function columnName(index){
+
+  let result="";
+
+  while(index>=0){
+
+    result=
+      String.fromCharCode(
+        index%26+65
+      )+result;
+
+    index=
+      Math.floor(index/26)-1;
+  }
+
+  return result;
+}
+
+function renderSheet(){
+
+  workspace.innerHTML=`
+
+    <div class="sheet">
+
+      <div class="toolbar">
+
+        <button class="tool"
+                onclick="addRow()">
+          + Row
+        </button>
+
+        <button class="tool"
+                onclick="addColumn()">
+          + Column
+        </button>
+
+      </div>
+
+      <div class="formula">
+
+        <div
+          id="cellName"
+          class="cell-name"
+        >
+          A1
         </div>
+
+        <input
+          id="formulaInput"
+          placeholder="Value or formula"
+          onkeydown="formulaEnter(event)"
+        >
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th class="row-number"></th>
+
+              ${
+                Array.from(
+                  {length:COLS},
+                  (_,i)=>
+                    `<th>${columnName(i)}</th>`
+                ).join("")
+              }
+
+            </tr>
+
+          </thead>
+
+          <tbody id="sheetBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+  buildSheet();
+}
+
+function buildSheet(){
+
+  const body=
+    document.getElementById(
+      "sheetBody"
+    );
+
+  body.innerHTML="";
+
+  for(let r=1;r<=ROWS;r++){
+
+    let row=`
+
+      <tr>
+
+        <th class="row-number">
+          ${r}
+        </th>
+
     `;
-}
 
-function clearSelectedCells() {
-    document.querySelectorAll(".sheet td:focus")
-        .forEach(cell => cell.textContent = "");
+    for(let c=0;c<COLS;c++){
 
-    showToast("Cell cleared.");
-}
+      const ref=
+        columnName(c)+r;
 
-function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        document.exitFullscreen();
+      const value=
+        current.cells[ref]??"";
+
+      row+=`
+
+        <td
+          contenteditable="true"
+          data-cell="${ref}"
+          onfocus="selectCell('${ref}')"
+          oninput="changeCell('${ref}',this.innerText)"
+        >
+          ${safe(String(value))}
+        </td>
+
+      `;
     }
+
+    row+="</tr>";
+
+    body.innerHTML+=row;
+  }
 }
 
-function showToast(message) {
-    const toast = document.getElementById("toast");
+function selectCell(ref){
 
-    toast.textContent = message;
-    toast.classList.add("show");
+  selectedCell=ref;
 
-    clearTimeout(window.toastTimer);
+  document.getElementById(
+    "cellName"
+  ).textContent=ref;
 
-    window.toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 1800);
+  document.getElementById(
+    "formulaInput"
+  ).value=
+    current.cells[ref]??"";
 }
 
-showHome(document.querySelector(".nav button"));
+function changeCell(ref,value){
+
+  current.cells[ref]=value;
+
+  current.updated=Date.now();
+
+  save();
+}
+
+function formulaEnter(event){
+
+  if(event.key!=="Enter")
+    return;
+
+  if(!selectedCell)
+    return;
+
+  current.cells[selectedCell]=
+    document.getElementById(
+      "formulaInput"
+    ).value;
+
+  save();
+
+  buildSheet();
+
+  const cell=
+    document.querySelector(
+      `[data-cell="${selectedCell}"]`
+    );
+
+  cell?.focus();
+}
+
+function addRow(){
+
+  ROWS++;
+
+  buildSheet();
+}
+
+function addColumn(){
+
+  COLS++;
+
+  buildSheet();
+}
+
+/* =========================================================
+   COMMAND PALETTE
+========================================================= */
+
+const commandData=[
+
+  ["New Document",
+    ()=>createFile("doc")],
+
+  ["New Presentation",
+    ()=>createFile("slide")],
+
+  ["New Spreadsheet",
+    ()=>createFile("sheet")],
+
+  ["Home",
+    home],
+
+  ["Docs",
+    ()=>files("doc")],
+
+  ["Slides",
+    ()=>files("slide")],
+
+  ["Sheets",
+    ()=>files("sheet")]
+
+];
+
+function commandPalette(){
+
+  document
+    .getElementById(
+      "commandOverlay"
+    )
+    .classList.add("show");
+
+  document.getElementById(
+    "commandInput"
+  ).value="";
+
+  renderCommands();
+
+  setTimeout(
+    ()=>document.getElementById(
+      "commandInput"
+    ).focus(),
+    20
+  );
+}
+
+function renderCommands(filter=""){
+
+  document.getElementById(
+    "commands"
+  ).innerHTML=
+
+    commandData
+      .filter(
+        x=>
+          x[0]
+            .toLowerCase()
+            .includes(
+              filter.toLowerCase()
+            )
+      )
+      .map(
+        (x,i)=>
+          `<div
+            class="command-item"
+            onclick="runCommand(${i})"
+          >
+            ${x[0]}
+          </div>`
+      )
+      .join("");
+}
+
+function searchCommands(){
+
+  renderCommands(
+    document.getElementById(
+      "commandInput"
+    ).value
+  );
+}
+
+function runCommand(index){
+
+  const filter=
+    document.getElementById(
+      "commandInput"
+    ).value
+      .toLowerCase();
+
+  const visible=
+    commandData.filter(
+      x=>
+        x[0]
+          .toLowerCase()
+          .includes(filter)
+    );
+
+  document
+    .getElementById(
+      "commandOverlay"
+    )
+    .classList.remove("show");
+
+  visible[index]?.[1]();
+}
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      (event.ctrlKey||event.metaKey)
+      &&
+      event.key.toLowerCase()==="k"
+    ){
+
+      event.preventDefault();
+
+      commandPalette();
+
+    }
+
+    if(
+      (event.ctrlKey||event.metaKey)
+      &&
+      event.key.toLowerCase()==="s"
+    ){
+
+      event.preventDefault();
+
+      save();
+
+      notify("Saved");
+
+    }
+
+    if(event.key==="Escape"){
+
+      document
+        .getElementById("modal")
+        .classList.remove("show");
+
+      document
+        .getElementById("commandOverlay")
+        .classList.remove("show");
+
+    }
+
+  }
+);
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+function fullscreen(){
+
+  if(!document.fullscreenElement){
+
+    document.documentElement
+      .requestFullscreen?.();
+
+  }else{
+
+    document
+      .exitFullscreen?.();
+
+  }
+}
+
+/* =========================================================
+   SECURITY / TEXT
+========================================================= */
+
+function safe(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+/* =========================================================
+   MODAL CLICKS
+========================================================= */
+
+document
+  .getElementById("modal")
+  .addEventListener(
+    "click",
+    event=>{
+
+      if(
+        event.target===
+        document.getElementById("modal")
+      ){
+        closeModal();
+      }
+
+    }
+  );
+
+document
+  .getElementById("commandOverlay")
+  .addEventListener(
+    "click",
+    event=>{
+
+      if(
+        event.target===
+        document.getElementById(
+          "commandOverlay"
+        )
+      ){
+
+        document
+          .getElementById(
+            "commandOverlay"
+          )
+          .classList.remove("show");
+
+      }
+
+    }
+  );
+
+/* =========================================================
+   START
+========================================================= */
+
+home();
+
 </script>
 
 </body>
