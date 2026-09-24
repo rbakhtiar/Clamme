@@ -1,33 +1,10 @@
 {
-  "id": "/Clamme/",
   "name": "Clamme",
   "short_name": "Clamme",
-  "description": "A premium workspace for documents, presentations and spreadsheets.",
-  "lang": "en",
-  "dir": "ltr",
-
+  "id": "/Clamme/",
   "start_url": "/Clamme/",
   "scope": "/Clamme/",
-
   "display": "standalone",
-
   "background_color": "#07100c",
-  "theme_color": "#0b261b",
-
-  "orientation": "any",
-
-  "icons": [
-    {
-      "src": "/Clamme/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/Clamme/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  "theme_color": "#0b261b"
 }
