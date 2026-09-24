@@ -2,305 +2,374 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Clamme.</title>
 
 <link rel="manifest" href="/Clamme/manifest.json">
 <meta name="theme-color" content="#0b261b">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #07100c;
-  --sidebar: #09150f;
-  --surface: #0d1d15;
-  --surface-hover: #10281c;
-  --emerald: #164d35;
-  --emerald-light: #247650;
-  --text: #f2f5f3;
-  --muted: #91a49a;
-  --border: rgba(150,210,175,.15);
+:root{
+  --bg:#07100c;
+  --sidebar:#09150f;
+  --surface:#0c1b13;
+  --surface2:#10251a;
+  --emerald:#175238;
+  --emerald2:#236b49;
+  --text:#f1f5f2;
+  --muted:#91a49a;
+  --border:rgba(150,210,175,.15);
 }
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-html,
-body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
 }
 
-body {
-  font-family: "Alegreya", serif;
-  background: var(--bg);
-  color: var(--text);
+body{
+  font-family:"Alegreya",serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-button,
-input,
-textarea {
-  font: inherit;
+button{
+  font-family:inherit;
+  color:inherit;
+  cursor:pointer;
 }
 
-button {
-  cursor: pointer;
-  color: inherit;
+.app{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  height:100vh;
 }
 
-.app {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  height: 100vh;
+.sidebar{
+  background:var(--sidebar);
+  border-right:1px solid var(--border);
+  padding:24px 15px;
+  display:flex;
+  flex-direction:column;
 }
 
-.sidebar {
-  background: var(--sidebar);
-  border-right: 1px solid var(--border);
-  padding: 24px 15px;
-  display: flex;
-  flex-direction: column;
+.brand{
+  font-size:29px;
+  margin:0 10px 30px;
+  letter-spacing:-.6px;
 }
 
-.brand {
-  font-size: 29px;
-  margin: 0 10px 30px;
-  letter-spacing: -.6px;
+.new{
+  width:100%;
+  border:1px solid rgba(100,200,145,.38);
+  background:var(--emerald);
+  border-radius:8px;
+  padding:12px 14px;
+  text-align:left;
+  font-weight:600;
+  transition:.18s;
 }
 
-.new {
-  border: 1px solid rgba(100,200,145,.35);
-  background: var(--emerald);
-  border-radius: 8px;
-  padding: 12px 14px;
-  text-align: left;
-  font-weight: 600;
-  transition: .18s;
+.new:hover{
+  background:var(--emerald2);
 }
 
-.new:hover {
-  background: var(--emerald-light);
-  border-color: rgba(130,220,165,.5);
+.nav{
+  margin-top:25px;
+  display:grid;
+  gap:3px;
 }
 
-.nav {
-  margin-top: 25px;
-  display: grid;
-  gap: 3px;
-}
-
-.nav button {
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  padding: 10px;
-  text-align: left;
-  border-radius: 7px;
+.nav button{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:10px;
+  text-align:left;
+  border-radius:7px;
 }
 
 .nav button:hover,
-.nav button.active {
-  background: rgba(30,100,68,.25);
-  color: var(--text);
+.nav button.active{
+  background:rgba(30,100,68,.25);
+  color:var(--text);
 }
 
-.footer {
-  margin-top: auto;
-  color: #60746a;
-  padding: 10px;
+.footer{
+  margin-top:auto;
+  color:#60746a;
+  padding:10px;
 }
 
-.main {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
+.main{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
 }
 
-.topbar {
-  height: 66px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 25px;
+.topbar{
+  height:66px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
 }
 
-.title {
-  font-size: 22px;
+.title{
+  font-size:22px;
 }
 
-.status {
-  color: var(--muted);
-  font-size: 14px;
+.status{
+  color:var(--muted);
+  font-size:14px;
 }
 
-.workspace {
-  flex: 1;
-  overflow: auto;
-  padding: 35px;
+.workspace{
+  flex:1;
+  overflow:auto;
+  padding:35px;
 }
 
-.home {
-  max-width: 1050px;
-  margin: auto;
+.home{
+  max-width:1050px;
+  margin:auto;
 }
 
-.hero {
-  padding: 40px 0;
+.hero{
+  padding:40px 0;
 }
 
-.hero h1 {
-  font-size: clamp(45px, 7vw, 75px);
-  line-height: .9;
-  font-weight: 500;
-  letter-spacing: -2px;
-  margin: 0 0 16px;
+.hero h1{
+  font-size:clamp(45px,7vw,75px);
+  line-height:.9;
+  font-weight:500;
+  letter-spacing:-2px;
+  margin:0 0 16px;
 }
 
-.hero p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 20px;
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:20px;
 }
 
-.create-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 12px;
+.create-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
 
-.create {
-  min-height: 135px;
-  padding: 20px;
-  text-align: left;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  background: var(--surface);
-  transition: .18s;
+.create{
+  min-height:135px;
+  padding:20px;
+  text-align:left;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--surface);
+  transition:.18s;
 }
 
-.create:hover {
-  background: var(--surface-hover);
-  border-color: rgba(150,210,175,.25);
+.create:hover{
+  background:var(--surface2);
+  border-color:rgba(150,210,175,.25);
 }
 
-.create strong {
-  display: block;
-  font-size: 21px;
-  margin-bottom: 7px;
+.create strong{
+  display:block;
+  font-size:21px;
+  margin-bottom:7px;
 }
 
-.create span {
-  color: var(--muted);
+.create span{
+  color:var(--muted);
 }
 
-.editor {
-  max-width: 900px;
-  margin: auto;
+.editor{
+  max-width:900px;
+  margin:auto;
 }
 
-.document {
-  min-height: 760px;
-  background: #f7f8f6;
-  color: #182019;
-  padding: 65px;
-  outline: none;
-  border-radius: 3px;
-  font-size: 18px;
-  line-height: 1.65;
-  box-shadow: 0 15px 45px rgba(0,0,0,.25);
+.document{
+  min-height:760px;
+  background:#f7f8f6;
+  color:#182019;
+  padding:65px;
+  outline:none;
+  border-radius:3px;
+  font-size:18px;
+  line-height:1.65;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.slide {
-  aspect-ratio: 16 / 9;
-  background: #f7f8f6;
-  color: #182019;
-  padding: 7%;
-  outline: none;
-  border-radius: 3px;
-  font-size: 28px;
-  box-shadow: 0 15px 45px rgba(0,0,0,.25);
+.slide{
+  aspect-ratio:16/9;
+  background:#f7f8f6;
+  color:#182019;
+  padding:7%;
+  outline:none;
+  border-radius:3px;
+  font-size:28px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.sheet-wrap {
-  overflow: auto;
-  border: 1px solid var(--border);
+.sheet-wrap{
+  overflow:auto;
+  border:1px solid var(--border);
 }
 
-.sheet {
-  border-collapse: collapse;
-  min-width: 850px;
-  width: 100%;
+.sheet{
+  border-collapse:collapse;
+  min-width:850px;
+  width:100%;
 }
 
 .sheet th,
-.sheet td {
-  border: 1px solid var(--border);
-  min-width: 110px;
-  height: 42px;
-  padding: 8px;
+.sheet td{
+  border:1px solid var(--border);
+  min-width:110px;
+  height:42px;
+  padding:8px;
 }
 
-.sheet th {
-  background: #0d1d15;
-  color: var(--muted);
-  font-weight: 500;
+.sheet th{
+  background:#0d1d15;
+  color:var(--muted);
+  font-weight:500;
 }
 
-.sheet td {
-  outline: none;
+.sheet td{
+  outline:none;
 }
 
-.sheet td:focus {
-  background: #0c2117;
-  box-shadow: inset 0 0 0 1px var(--emerald-light);
+.sheet td:focus{
+  background:#0c2117;
+  box-shadow:inset 0 0 0 1px var(--emerald2);
 }
 
-.install {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  display: none;
-  border: 1px solid rgba(110,210,155,.4);
-  background: var(--emerald);
-  padding: 11px 17px;
-  border-radius: 8px;
-  font-weight: 600;
-  z-index: 20;
+/* INSTALL BUTTON */
+
+.install-button{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+
+  border:1px solid rgba(130,220,165,.45);
+  background:#164d35;
+
+  padding:13px 20px;
+
+  border-radius:8px;
+
+  font-size:16px;
+  font-weight:600;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+  transition:
+    background .18s,
+    border-color .18s,
+    transform .18s;
+
+  z-index:1000;
 }
 
-.install.show {
-  display: block;
+.install-button:hover{
+  background:#216a48;
+  border-color:rgba(150,230,180,.65);
+  transform:translateY(-1px);
 }
 
-@media(max-width:760px) {
-  .app {
-    grid-template-columns: 1fr;
+.install-button:active{
+  transform:translateY(0);
+}
+
+/* INSTALL MESSAGE */
+
+.install-message{
+  position:fixed;
+  right:24px;
+  bottom:82px;
+
+  width:300px;
+
+  padding:16px;
+
+  background:#0c1b13;
+  border:1px solid var(--border);
+  border-radius:9px;
+
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+  display:none;
+
+  z-index:999;
+}
+
+.install-message.show{
+  display:block;
+}
+
+.install-message strong{
+  display:block;
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.install-message p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+.close-message{
+  margin-top:12px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:0;
+}
+
+@media(max-width:760px){
+
+  .app{
+    grid-template-columns:1fr;
   }
 
-  .sidebar {
-    display: none;
+  .sidebar{
+    display:none;
   }
 
-  .workspace {
-    padding: 18px;
+  .workspace{
+    padding:18px;
   }
 
-  .create-grid {
-    grid-template-columns: 1fr;
+  .create-grid{
+    grid-template-columns:1fr;
   }
 
-  .document {
-    padding: 35px 24px;
+  .document{
+    padding:35px 24px;
+  }
+
+  .install-button{
+    right:15px;
+    bottom:15px;
+  }
+
+  .install-message{
+    right:15px;
+    bottom:72px;
+    width:calc(100% - 30px);
   }
 }
 </style>
@@ -310,43 +379,70 @@ button {
 
 <div class="app">
 
-<aside class="sidebar">
+  <aside class="sidebar">
 
-  <div class="brand">Clamme.</div>
+    <div class="brand">Clamme.</div>
 
-  <button class="new" id="newButton">
-    + <span id="newLabel">New document</span>
-  </button>
+    <button class="new" id="newButton">
+      + <span id="newLabel">New document</span>
+    </button>
 
-  <nav class="nav">
-    <button data-page="home" class="active">Home</button>
-    <button data-page="docs">Docs</button>
-    <button data-page="slides">Slides</button>
-    <button data-page="sheets">Sheets</button>
-  </nav>
+    <nav class="nav">
+      <button data-page="home" class="active">Home</button>
+      <button data-page="docs">Docs</button>
+      <button data-page="slides">Slides</button>
+      <button data-page="sheets">Sheets</button>
+    </nav>
 
-  <div class="footer">
-    Smart Premium Workspace
-  </div>
+    <div class="footer">
+      Smart Premium Workspace
+    </div>
 
-</aside>
+  </aside>
 
-<main class="main">
+  <main class="main">
 
-<header class="topbar">
-  <div class="title" id="pageTitle">Home</div>
-  <div class="status" id="status">Ready</div>
-</header>
+    <header class="topbar">
+      <div class="title" id="pageTitle">Home</div>
+      <div class="status" id="status">Ready</div>
+    </header>
 
-<section class="workspace" id="workspace"></section>
+    <section class="workspace" id="workspace"></section>
 
-</main>
+  </main>
 
 </div>
 
-<button class="install" id="installButton">
-  Install Clamme
+
+<!-- ALWAYS-VISIBLE INSTALL BUTTON -->
+
+<button
+  class="install-button"
+  id="installButton"
+>
+  Install on desktop
 </button>
+
+
+<div
+  class="install-message"
+  id="installMessage"
+>
+  <strong>Install Clamme</strong>
+
+  <p id="installMessageText">
+    Chrome hasn't made the automatic install prompt available yet.
+    Use Chrome's menu and choose the install option for Clamme.
+  </p>
+
+  <button
+    class="close-message"
+    id="closeMessage"
+  >
+    Close
+  </button>
+</div>
+
 
 <script>
 
@@ -355,63 +451,112 @@ const BASE = "/Clamme/";
 let currentPage = "home";
 let deferredPrompt = null;
 
-const workspace = document.getElementById("workspace");
-const pageTitle = document.getElementById("pageTitle");
-const newLabel = document.getElementById("newLabel");
-const status = document.getElementById("status");
-const installButton = document.getElementById("installButton");
+const workspace =
+  document.getElementById("workspace");
+
+const pageTitle =
+  document.getElementById("pageTitle");
+
+const newLabel =
+  document.getElementById("newLabel");
+
+const status =
+  document.getElementById("status");
+
+const installButton =
+  document.getElementById("installButton");
+
+const installMessage =
+  document.getElementById("installMessage");
+
+const installMessageText =
+  document.getElementById("installMessageText");
+
+const closeMessage =
+  document.getElementById("closeMessage");
+
+
+/* -----------------------------
+   NEW BUTTON
+----------------------------- */
 
 const newNames = {
-  home: "New document",
-  docs: "New document",
-  slides: "New presentation",
-  sheets: "New spreadsheet"
+  home:"New document",
+  docs:"New document",
+  slides:"New presentation",
+  sheets:"New spreadsheet"
 };
 
-function setPage(page) {
+function setPage(page){
 
   currentPage = page;
 
-  document.querySelectorAll(".nav button").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.page === page
-    );
-  });
+  document
+    .querySelectorAll(".nav button")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.page === page
+      );
+
+    });
 
   pageTitle.textContent =
-    page.charAt(0).toUpperCase() + page.slice(1);
+    page.charAt(0).toUpperCase() +
+    page.slice(1);
 
-  newLabel.textContent = newNames[page];
+  newLabel.textContent =
+    newNames[page];
 
   render();
 }
 
-function render() {
 
-  if (currentPage === "home") {
+/* -----------------------------
+   RENDER
+----------------------------- */
+
+function render(){
+
+  if(currentPage === "home"){
 
     workspace.innerHTML = `
+
       <div class="home">
 
         <div class="hero">
+
           <h1>Clamme.</h1>
-          <p>Documents. Presentations. Spreadsheets.</p>
+
+          <p>
+            Documents. Presentations. Spreadsheets.
+          </p>
+
         </div>
 
         <div class="create-grid">
 
-          <button class="create" data-create="docs">
+          <button
+            class="create"
+            data-create="docs"
+          >
             <strong>Document</strong>
             <span>Create a new document</span>
           </button>
 
-          <button class="create" data-create="slides">
+          <button
+            class="create"
+            data-create="slides"
+          >
             <strong>Presentation</strong>
             <span>Create a new presentation</span>
           </button>
 
-          <button class="create" data-create="sheets">
+          <button
+            class="create"
+            data-create="sheets"
+          >
             <strong>Spreadsheet</strong>
             <span>Create a new spreadsheet</span>
           </button>
@@ -419,161 +564,235 @@ function render() {
         </div>
 
       </div>
+
     `;
+
   }
 
-  if (currentPage === "docs") {
+
+  if(currentPage === "docs"){
 
     workspace.innerHTML = `
+
       <div class="editor">
+
         <div
           class="document"
           id="documentEditor"
           contenteditable="true"
           spellcheck="true"
         ></div>
+
       </div>
+
     `;
 
     const editor =
-      document.getElementById("documentEditor");
-
-    editor.innerHTML =
-      localStorage.getItem("clamme-document") || "";
-
-    editor.addEventListener("input", () => {
-
-      localStorage.setItem(
-        "clamme-document",
-        editor.innerHTML
+      document.getElementById(
+        "documentEditor"
       );
 
-      status.textContent = "Saved";
-    });
+    editor.innerHTML =
+      localStorage.getItem(
+        "clamme-document"
+      ) || "";
+
+    editor.addEventListener(
+      "input",
+      () => {
+
+        localStorage.setItem(
+          "clamme-document",
+          editor.innerHTML
+        );
+
+        status.textContent = "Saved";
+
+      }
+    );
+
   }
 
-  if (currentPage === "slides") {
+
+  if(currentPage === "slides"){
 
     workspace.innerHTML = `
+
       <div class="editor">
+
         <div
           class="slide"
           id="slideEditor"
           contenteditable="true"
           spellcheck="true"
         ></div>
+
       </div>
+
     `;
 
     const editor =
-      document.getElementById("slideEditor");
-
-    editor.innerHTML =
-      localStorage.getItem("clamme-slide") || "";
-
-    editor.addEventListener("input", () => {
-
-      localStorage.setItem(
-        "clamme-slide",
-        editor.innerHTML
+      document.getElementById(
+        "slideEditor"
       );
 
-      status.textContent = "Saved";
-    });
+    editor.innerHTML =
+      localStorage.getItem(
+        "clamme-slide"
+      ) || "";
+
+    editor.addEventListener(
+      "input",
+      () => {
+
+        localStorage.setItem(
+          "clamme-slide",
+          editor.innerHTML
+        );
+
+        status.textContent = "Saved";
+
+      }
+    );
+
   }
 
-  if (currentPage === "sheets") {
+
+  if(currentPage === "sheets"){
     renderSheet();
   }
+
 }
 
-function renderSheet() {
+
+/* -----------------------------
+   SHEETS
+----------------------------- */
+
+function renderSheet(){
 
   let html = `
+
     <div class="sheet-wrap">
+
       <table class="sheet">
 
         <thead>
+
           <tr>
+
             <th></th>
+
   `;
 
-  for(let c = 1; c <= 10; c++) {
-    html += `<th>${columnName(c)}</th>`;
+  for(let c = 1; c <= 10; c++){
+
+    html +=
+      `<th>${columnName(c)}</th>`;
+
   }
 
   html += `
+
           </tr>
+
         </thead>
 
         <tbody>
+
   `;
 
-  for(let r = 1; r <= 20; r++) {
+  for(let r = 1; r <= 20; r++){
 
-    html += `<tr><th>${r}</th>`;
+    html +=
+      `<tr><th>${r}</th>`;
 
-    for(let c = 1; c <= 10; c++) {
+    for(let c = 1; c <= 10; c++){
 
       const key =
-        "clamme-" + columnName(c) + r;
+        "clamme-" +
+        columnName(c) +
+        r;
 
       html += `
+
         <td
           contenteditable="true"
           data-cell="${key}"
-        >${escapeHTML(localStorage.getItem(key) || "")}</td>
+        >${escapeHTML(
+          localStorage.getItem(key) || ""
+        )}</td>
+
       `;
+
     }
 
     html += `</tr>`;
+
   }
 
   html += `
+
         </tbody>
+
       </table>
+
     </div>
+
   `;
 
   workspace.innerHTML = html;
 
-  workspace.querySelectorAll("[data-cell]")
+  workspace
+    .querySelectorAll("[data-cell]")
     .forEach(cell => {
 
-      cell.addEventListener("input", () => {
+      cell.addEventListener(
+        "input",
+        () => {
 
-        localStorage.setItem(
-          cell.dataset.cell,
-          cell.innerText
-        );
+          localStorage.setItem(
+            cell.dataset.cell,
+            cell.innerText
+          );
 
-        status.textContent = "Saved";
-      });
+          status.textContent =
+            "Saved";
+
+        }
+      );
 
     });
+
 }
 
-function columnName(number) {
+
+function columnName(number){
 
   let result = "";
 
-  while(number > 0) {
+  while(number > 0){
 
-    let remainder =
+    const remainder =
       (number - 1) % 26;
 
     result =
-      String.fromCharCode(65 + remainder) +
-      result;
+      String.fromCharCode(
+        65 + remainder
+      ) + result;
 
     number =
-      Math.floor((number - 1) / 26);
+      Math.floor(
+        (number - 1) / 26
+      );
+
   }
 
   return result;
 }
 
-function escapeHTML(value) {
+
+function escapeHTML(value){
 
   return value
     .replaceAll("&","&amp;")
@@ -581,67 +800,122 @@ function escapeHTML(value) {
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
+
 }
 
-function newCurrentItem() {
 
-  if(currentPage === "home") {
+/* -----------------------------
+   NEW CURRENT FILE
+----------------------------- */
+
+function newCurrentItem(){
+
+  if(currentPage === "home"){
+
     setPage("docs");
     return;
+
   }
 
-  if(currentPage === "docs") {
-    localStorage.removeItem("clamme-document");
+  if(currentPage === "docs"){
+
+    localStorage.removeItem(
+      "clamme-document"
+    );
+
     setPage("docs");
     return;
+
   }
 
-  if(currentPage === "slides") {
-    localStorage.removeItem("clamme-slide");
+  if(currentPage === "slides"){
+
+    localStorage.removeItem(
+      "clamme-slide"
+    );
+
     setPage("slides");
     return;
+
   }
 
-  if(currentPage === "sheets") {
+  if(currentPage === "sheets"){
 
-    for(let r = 1; r <= 20; r++) {
+    for(let r = 1; r <= 20; r++){
 
-      for(let c = 1; c <= 10; c++) {
+      for(let c = 1; c <= 10; c++){
 
         localStorage.removeItem(
-          "clamme-" + columnName(c) + r
+          "clamme-" +
+          columnName(c) +
+          r
         );
 
       }
+
     }
 
     setPage("sheets");
+
   }
+
 }
 
-document.querySelectorAll(".nav button")
-.forEach(button => {
 
-  button.addEventListener("click", () => {
-    setPage(button.dataset.page);
+document
+  .querySelectorAll(".nav button")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        setPage(
+          button.dataset.page
+        );
+
+      }
+    );
+
   });
 
-});
 
-document.getElementById("newButton")
-.addEventListener("click", newCurrentItem);
+document
+  .getElementById("newButton")
+  .addEventListener(
+    "click",
+    newCurrentItem
+  );
 
-workspace.addEventListener("click", event => {
 
-  const button =
-    event.target.closest("[data-create]");
+workspace.addEventListener(
+  "click",
+  event => {
 
-  if(!button) return;
+    const button =
+      event.target.closest(
+        "[data-create]"
+      );
 
-  setPage(button.dataset.create);
-});
+    if(!button) return;
 
-/* PWA INSTALL */
+    setPage(
+      button.dataset.create
+    );
+
+  }
+);
+
+
+/* =================================
+   PWA INSTALL
+================================= */
+
+
+/*
+   Chrome fires this when Clamme
+   meets its installability rules.
+*/
 
 window.addEventListener(
   "beforeinstallprompt",
@@ -651,52 +925,122 @@ window.addEventListener(
 
     deferredPrompt = event;
 
-    installButton.classList.add("show");
+    installButton.textContent =
+      "Install on desktop";
+
+    status.textContent =
+      "Ready to install";
+
   }
 );
+
+
+/*
+   USER CLICKS:
+   Install on desktop
+*/
 
 installButton.addEventListener(
   "click",
   async () => {
 
-    if(!deferredPrompt) return;
+    /*
+       If Chrome supplied the
+       real PWA installation prompt,
+       use it.
+    */
 
-    deferredPrompt.prompt();
+    if(deferredPrompt){
 
-    const result =
-      await deferredPrompt.userChoice;
+      deferredPrompt.prompt();
 
-    if(result.outcome === "accepted") {
-      status.textContent =
-        "Clamme installed";
+      const result =
+        await deferredPrompt.userChoice;
+
+      if(result.outcome === "accepted"){
+
+        status.textContent =
+          "Clamme installed";
+
+      }else{
+
+        status.textContent =
+          "Installation cancelled";
+
+      }
+
+      deferredPrompt = null;
+
+      return;
     }
 
-    deferredPrompt = null;
 
-    installButton.classList.remove("show");
+    /*
+       Chrome hasn't supplied
+       beforeinstallprompt.
+
+       We cannot force Chrome's
+       native installer from JS.
+    */
+
+    installMessageText.innerHTML =
+
+      "Chrome hasn't provided the automatic install prompt yet. " +
+      "Open Chrome's <b>⋮</b> menu and look for " +
+      "<b>Install Clamme</b> or " +
+      "<b>Save and share → Install page as app</b>.";
+
+    installMessage.classList.add(
+      "show"
+    );
+
   }
 );
+
+
+closeMessage.addEventListener(
+  "click",
+  () => {
+
+    installMessage.classList.remove(
+      "show"
+    );
+
+  }
+);
+
+
+/*
+   When installation succeeds.
+*/
 
 window.addEventListener(
   "appinstalled",
   () => {
 
-    installButton.classList.remove("show");
+    deferredPrompt = null;
+
+    installButton.textContent =
+      "Clamme installed";
 
     status.textContent =
       "Clamme installed";
+
   }
 );
 
-/* SERVICE WORKER */
 
-if("serviceWorker" in navigator) {
+/* =================================
+   SERVICE WORKER
+================================= */
+
+if("serviceWorker" in navigator){
 
   window.addEventListener(
     "load",
     async () => {
 
-      try {
+      try{
 
         const registration =
           await navigator.serviceWorker.register(
@@ -707,21 +1051,26 @@ if("serviceWorker" in navigator) {
           );
 
         console.log(
-          "Clamme SW:",
+          "Clamme Service Worker:",
           registration.scope
         );
 
-      } catch(error) {
+      }catch(error){
 
         console.error(
-          "Clamme service worker error:",
+          "Clamme Service Worker error:",
           error
         );
+
       }
 
     }
   );
+
 }
+
+
+/* START */
 
 render();
 
