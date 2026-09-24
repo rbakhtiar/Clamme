@@ -1,13 +1,11 @@
 {
   "name": "Clamme",
   "short_name": "Clamme",
-  "id": "/Clamme/",
+  "description": "A premium Docs, Slides and Sheets workspace.",
   "start_url": "/Clamme/",
   "scope": "/Clamme/",
   "display": "standalone",
-  "background_color": "#07100c",
-  "theme_color": "#0b261b",
-  "description": "Documents, presentations and spreadsheets in one workspace.",
-  "lang": "en",
-  "dir": "ltr"
+  "background_color": "#07110d",
+  "theme_color": "#0b3d2e",
+  "orientation": "any"
 }
