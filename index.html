@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clamme</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,25 +11,25 @@
 
 <style>
 :root{
-  --black:#030705;
-  --deep:#06100b;
-  --surface:#091811;
-  --surface2:#0d2117;
-  --surface3:#112d20;
+  --black:#020604;
+  --black-2:#050b07;
 
-  --emerald:#185c3b;
-  --emerald2:#20764b;
-  --emerald3:#2b9561;
-  --emerald-soft:#5ec38a;
+  --emerald-0:#07130d;
+  --emerald-1:#0a1c12;
+  --emerald-2:#0d2618;
+  --emerald-3:#123a24;
+  --emerald-4:#185637;
+  --emerald-5:#26734a;
+  --emerald-light:#65c994;
 
-  --line:#173a28;
-  --line-bright:#27563d;
+  --border:#163a27;
+  --border-light:#23563a;
 
-  --text:#f2f8f4;
-  --muted:#91aa9c;
-  --dim:#5f7569;
+  --text:#f2f7f4;
+  --muted:#91a89b;
+  --dim:#60776a;
 
-  --paper:#fbfdfb;
+  --paper:#fcfdfc;
   --ink:#152019;
 }
 
@@ -37,7 +37,8 @@
   box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
   width:100%;
   height:100%;
   margin:0;
@@ -45,8 +46,8 @@ html,body{
 
 body{
   font-family:"Alegreya",serif;
-  background:var(--black);
   color:var(--text);
+  background:var(--black);
   overflow:hidden;
 }
 
@@ -61,82 +62,132 @@ button{
   cursor:pointer;
 }
 
-/* ================================
+/* =========================================================
    APP
-================================ */
+========================================================= */
 
 .app{
-  width:100%;
   height:100vh;
+  width:100%;
+
   display:flex;
-  background:var(--black);
-}
-
-/* ================================
-   SIDEBAR
-================================ */
-
-.sidebar{
-  width:225px;
-  flex-shrink:0;
-
-  padding:24px 14px;
 
   background:
-    linear-gradient(
-      180deg,
-      #091a11 0%,
-      #06100b 100%
-    );
+    radial-gradient(
+      circle at 75% -10%,
+      rgba(28,105,64,.13),
+      transparent 32%
+    ),
+    var(--black);
+}
 
-  border-right:1px solid var(--line);
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+  width:230px;
+  flex-shrink:0;
 
   display:flex;
   flex-direction:column;
-}
 
-.brand{
-  padding:0 12px 28px;
-
-  font-size:30px;
-  font-weight:600;
-  letter-spacing:-.7px;
-}
-
-.brand span{
-  color:var(--emerald-soft);
-}
-
-.new-button{
-  height:42px;
-  width:100%;
-
-  border:1px solid var(--emerald2);
+  padding:26px 16px;
 
   background:
     linear-gradient(
       180deg,
-      var(--emerald2),
-      var(--emerald)
+      #091910 0%,
+      #050c08 100%
     );
 
-  color:white;
+  border-right:1px solid var(--border);
+}
 
-  border-radius:6px;
+.brand{
+  padding:0 10px 30px;
+
+  font-size:31px;
+  line-height:1;
+
+  font-weight:600;
+  letter-spacing:-1px;
+}
+
+.brand span{
+  color:var(--emerald-light);
+}
+
+/* =========================================================
+   PREMIUM NEW BUTTON
+========================================================= */
+
+.new-button{
+  position:relative;
+
+  width:100%;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+
+  border:1px solid #285a3e;
+  border-radius:5px;
+
+  background:#0c2116;
+
+  color:#eef7f1;
 
   font-size:17px;
+  font-weight:500;
+
+  letter-spacing:.1px;
 
   box-shadow:
-    0 5px 18px rgba(0,80,45,.18);
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 4px 16px rgba(0,0,0,.18);
+
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    transform .12s ease;
+}
+
+.new-button::before{
+  content:"+";
+
+  color:var(--emerald-light);
+
+  font-size:21px;
+  line-height:1;
+
+  transform:translateY(-1px);
 }
 
 .new-button:hover{
-  background:var(--emerald3);
-  border-color:var(--emerald-soft);
+  background:#102c1b;
+  border-color:#3b7653;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 5px 18px rgba(0,0,0,.22);
 }
 
+.new-button:active{
+  transform:translateY(1px);
+
+  background:#091a10;
+  border-color:#28583d;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
 .nav{
-  margin-top:24px;
+  margin-top:25px;
 
   display:flex;
   flex-direction:column;
@@ -146,53 +197,58 @@ button{
 .nav button{
   width:100%;
 
-  padding:10px 13px;
+  height:39px;
 
-  background:transparent;
-  border:0;
-
-  color:var(--muted);
+  padding:0 13px;
 
   text-align:left;
 
-  font-size:17px;
-
+  border:0;
   border-left:2px solid transparent;
 
-  transition:.15s;
+  background:transparent;
+
+  color:var(--muted);
+
+  font-size:17px;
+
+  transition:
+    background .15s ease,
+    color .15s ease,
+    border-color .15s ease;
 }
 
 .nav button:hover{
+  background:rgba(30,112,69,.11);
   color:var(--text);
-  background:rgba(30,105,65,.13);
 }
 
 .nav button.active{
-  color:white;
+  color:#ffffff;
+
+  border-left-color:var(--emerald-light);
 
   background:
     linear-gradient(
       90deg,
-      rgba(31,111,69,.34),
-      rgba(31,111,69,.06)
+      rgba(27,107,65,.31),
+      rgba(27,107,65,.045)
     );
-
-  border-left-color:var(--emerald-soft);
 }
 
 .sidebar-footer{
   margin-top:auto;
 
-  padding:12px;
+  padding:12px 10px 0;
 
   color:var(--dim);
 
   font-size:14px;
 }
 
-/* ================================
+/* =========================================================
    MAIN
-================================ */
+========================================================= */
 
 .main{
   min-width:0;
@@ -203,22 +259,27 @@ button{
 }
 
 .topbar{
-  height:60px;
+  height:61px;
   flex-shrink:0;
-
-  padding:0 20px;
 
   display:flex;
   align-items:center;
 
-  background:#07130d;
+  padding:0 21px;
 
-  border-bottom:1px solid var(--line);
+  background:
+    rgba(5,14,9,.94);
+
+  border-bottom:1px solid var(--border);
 }
 
 .title{
   font-size:21px;
   font-weight:500;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .top-actions{
@@ -229,71 +290,79 @@ button{
 }
 
 .top-button{
-  padding:6px 10px;
+  height:31px;
+
+  padding:0 10px;
 
   background:transparent;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
+
+  border-radius:4px;
 
   color:var(--muted);
 
-  border-radius:4px;
+  font-size:14px;
 }
 
 .top-button:hover{
   color:white;
-  border-color:var(--line-bright);
-  background:var(--surface2);
+  background:var(--emerald-1);
+  border-color:var(--border-light);
 }
 
-/* ================================
+/* =========================================================
    WORKSPACE
-================================ */
+========================================================= */
 
 .workspace{
   min-height:0;
   flex:1;
+
   overflow:auto;
 
   background:
     radial-gradient(
       circle at 85% 0%,
-      rgba(38,125,78,.11),
-      transparent 35%
+      rgba(32,117,70,.10),
+      transparent 32%
     ),
-    var(--deep);
+    #050c08;
 }
 
-/* ================================
+/* =========================================================
    HOME
-================================ */
+========================================================= */
 
 .home{
-  width:min(1050px,100%);
+  width:min(1080px,100%);
+
   margin:auto;
 
-  padding:70px 45px;
+  padding:74px 46px;
 }
 
 .hero{
-  margin-bottom:55px;
+  margin-bottom:52px;
 }
 
 .hero h1{
   margin:0;
 
-  font-size:52px;
+  font-size:55px;
+  line-height:1;
+
   font-weight:500;
 
-  letter-spacing:-1.7px;
+  letter-spacing:-2px;
 }
 
 .hero h1 span{
-  color:var(--emerald-soft);
+  color:var(--emerald-light);
 }
 
 .hero p{
-  margin:6px 0 0;
+  margin:10px 0 0;
 
   color:var(--muted);
 
@@ -304,41 +373,42 @@ button{
   display:grid;
   grid-template-columns:repeat(3,1fr);
 
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
 }
 
 .create-card{
-  min-height:165px;
+  min-height:160px;
 
   padding:25px;
+
+  text-align:left;
 
   background:
     linear-gradient(
       145deg,
-      rgba(23,92,59,.20),
-      rgba(8,24,16,.10)
+      rgba(21,82,51,.20),
+      rgba(6,17,11,.08)
     );
-
-  color:white;
 
   border:0;
 
-  text-align:left;
+  color:white;
 
-  transition:.18s;
+  transition:
+    background .17s ease;
 }
 
 .create-card + .create-card{
-  border-left:1px solid var(--line);
+  border-left:1px solid var(--border);
 }
 
 .create-card:hover{
   background:
     linear-gradient(
       145deg,
-      rgba(29,118,74,.30),
-      rgba(8,24,16,.15)
+      rgba(30,111,68,.29),
+      rgba(6,17,11,.10)
     );
 }
 
@@ -347,46 +417,56 @@ button{
 }
 
 .create-card-desc{
-  margin-top:4px;
+  margin-top:3px;
+
   color:var(--muted);
+
   font-size:16px;
 }
 
 .workspace-heading{
-  margin-top:55px;
+  margin-top:52px;
   margin-bottom:14px;
 
   font-size:23px;
 }
 
-/* ================================
-   FILES
-================================ */
+/* =========================================================
+   FILE LIST
+========================================================= */
 
 .file-list{
-  border-top:1px solid var(--line);
+  border-top:1px solid var(--border);
 }
 
 .file-row{
+  min-height:51px;
+
   display:grid;
-  grid-template-columns:1fr 150px 130px;
+  grid-template-columns:1fr 160px 140px;
 
   align-items:center;
 
-  min-height:48px;
+  padding:7px 11px;
 
-  padding:7px 10px;
+  border-bottom:1px solid var(--border);
 
-  border-bottom:1px solid var(--line);
+  transition:
+    background .14s ease;
+}
+
+.file-row:hover{
+  background:rgba(18,58,36,.16);
 }
 
 .file-name{
   font-size:18px;
+
   cursor:pointer;
 }
 
 .file-name:hover{
-  color:var(--emerald-soft);
+  color:var(--emerald-light);
 }
 
 .file-type{
@@ -396,12 +476,13 @@ button{
 .file-actions{
   display:flex;
   justify-content:flex-end;
-  gap:8px;
+  gap:12px;
 }
 
 .file-actions button{
   border:0;
   background:transparent;
+
   color:var(--muted);
 }
 
@@ -409,21 +490,21 @@ button{
   color:white;
 }
 
-/* ================================
-   EMPTY
-================================ */
+/* =========================================================
+   EMPTY STATE
+========================================================= */
 
 .empty{
-  min-height:300px;
+  min-height:290px;
 
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-
-  color:var(--muted);
+  align-items:center;
 
   text-align:center;
+
+  color:var(--muted);
 }
 
 .empty h2{
@@ -431,13 +512,13 @@ button{
 
   color:white;
 
-  font-size:29px;
+  font-size:30px;
   font-weight:500;
 }
 
-/* ================================
-   EDITOR SHELL
-================================ */
+/* =========================================================
+   EDITOR
+========================================================= */
 
 .editor{
   height:100%;
@@ -447,19 +528,19 @@ button{
 }
 
 .toolbar{
-  min-height:50px;
+  min-height:51px;
   flex-shrink:0;
 
   display:flex;
   align-items:center;
 
-  gap:2px;
+  gap:3px;
 
   padding:7px 12px;
 
-  background:#08150e;
+  background:#07140d;
 
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid var(--border);
 
   overflow-x:auto;
 }
@@ -470,66 +551,69 @@ button{
 
   padding:0 9px;
 
-  border:1px solid transparent;
-
   background:transparent;
+
+  border:1px solid transparent;
+  border-radius:4px;
 
   color:var(--muted);
 
-  border-radius:4px;
-
   font-size:15px;
+
+  white-space:nowrap;
 }
 
 .tool:hover{
   color:white;
 
-  border-color:var(--line);
+  background:var(--emerald-1);
 
-  background:var(--surface2);
+  border-color:var(--border);
 }
 
 .tool.primary{
-  color:white;
+  color:#f4fff8;
 
-  background:var(--emerald);
+  background:var(--emerald-3);
 
-  border-color:var(--emerald2);
+  border-color:var(--emerald-4);
 }
 
 .tool.primary:hover{
-  background:var(--emerald2);
+  background:var(--emerald-4);
+  border-color:#397c55;
 }
 
 .select{
   height:32px;
 
-  background:var(--surface);
+  padding:0 9px;
 
-  border:1px solid var(--line);
+  background:var(--emerald-1);
 
-  color:var(--text);
+  border:1px solid var(--border);
 
   border-radius:4px;
 
-  padding:0 9px;
+  color:white;
 }
 
-/* ================================
+/* =========================================================
    DOCUMENT
-================================ */
+========================================================= */
 
 .document-space{
   flex:1;
+
   overflow:auto;
 
-  padding:50px;
+  padding:55px;
 
   background:
-    linear-gradient(
-      135deg,
-      rgba(23,92,59,.04),
-      transparent 40%
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(25,91,55,.07),
+      transparent 45%
     );
 }
 
@@ -539,45 +623,46 @@ button{
 
   margin:auto;
 
-  padding:76px 82px;
-
-  background:var(--paper);
-
-  color:var(--ink);
+  padding:78px 84px;
 
   outline:none;
 
+  background:var(--paper);
+  color:var(--ink);
+
   box-shadow:
-    0 25px 80px rgba(0,0,0,.42);
+    0 25px 80px rgba(0,0,0,.45);
 }
 
-.document:empty:before{
+.document:empty::before{
   content:"Start writing…";
-  color:#a3ada7;
+
+  color:#a2aaa5;
 }
 
 .document p{
-  margin:0 0 12px;
+  margin:0 0 13px;
 
   font-size:18px;
   line-height:1.7;
 }
 
 .document h1{
-  font-size:40px;
+  font-size:41px;
+  line-height:1.15;
 }
 
 .document h2{
-  font-size:29px;
+  font-size:30px;
 }
 
 .document h3{
-  font-size:23px;
+  font-size:24px;
 }
 
-/* ================================
+/* =========================================================
    SLIDES
-================================ */
+========================================================= */
 
 .slides-layout{
   min-height:0;
@@ -587,14 +672,14 @@ button{
 }
 
 .slide-sidebar{
-  width:175px;
+  width:180px;
   flex-shrink:0;
 
   padding:13px;
 
-  background:#07130d;
+  background:#06110b;
 
-  border-right:1px solid var(--line);
+  border-right:1px solid var(--border);
 
   overflow:auto;
 }
@@ -611,18 +696,17 @@ button{
 
   height:32px;
 
+  border:1px solid var(--border);
+  border-radius:4px;
+
   background:transparent;
 
-  border:1px solid var(--line);
-
   color:var(--muted);
-
-  border-radius:4px;
 }
 
 .slide-sidebar-top button:hover{
   color:white;
-  background:var(--surface2);
+  background:var(--emerald-1);
 }
 
 .thumbnail{
@@ -634,26 +718,24 @@ button{
 
   padding:7px;
 
-  background:var(--paper);
-
-  color:var(--ink);
-
-  border:2px solid transparent;
-
   overflow:hidden;
 
   text-align:left;
 
-  font-size:10px;
+  background:var(--paper);
+  color:var(--ink);
+
+  border:2px solid transparent;
 
   font-family:"Alegreya",serif;
+  font-size:10px;
 }
 
 .thumbnail.active{
-  border-color:var(--emerald-soft);
+  border-color:var(--emerald-light);
 
   box-shadow:
-    0 0 0 1px var(--emerald);
+    0 0 0 1px var(--emerald-4);
 }
 
 .slide-stage{
@@ -665,8 +747,8 @@ button{
   padding:45px;
 
   display:flex;
-  align-items:flex-start;
   justify-content:center;
+  align-items:flex-start;
 }
 
 .slide{
@@ -676,26 +758,25 @@ button{
 
   padding:70px;
 
-  background:var(--paper);
-
-  color:var(--ink);
-
   outline:none;
+
+  background:var(--paper);
+  color:var(--ink);
 
   font-size:30px;
 
   box-shadow:
-    0 25px 80px rgba(0,0,0,.42);
+    0 25px 80px rgba(0,0,0,.45);
 }
 
-.slide:empty:before{
+.slide:empty::before{
   content:"Start your presentation…";
-  color:#a3ada7;
+  color:#a2aaa5;
 }
 
-/* ================================
+/* =========================================================
    SHEETS
-================================ */
+========================================================= */
 
 .sheet{
   height:100%;
@@ -705,16 +786,16 @@ button{
 }
 
 .sheet-toolbar{
-  min-height:48px;
+  min-height:49px;
 
   display:flex;
   align-items:center;
 
   padding:7px 12px;
 
-  border-bottom:1px solid var(--line);
+  background:#07140d;
 
-  background:#08150e;
+  border-bottom:1px solid var(--border);
 }
 
 .formula-bar{
@@ -723,22 +804,22 @@ button{
 
   display:flex;
 
-  border-bottom:1px solid var(--line);
+  background:#050c08;
 
-  background:#06100b;
+  border-bottom:1px solid var(--border);
 }
 
 .cell-reference{
-  width:75px;
+  width:76px;
   flex-shrink:0;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  color:var(--emerald-soft);
+  color:var(--emerald-light);
 
-  border-right:1px solid var(--line);
+  border-right:1px solid var(--border);
 
   font-size:16px;
 }
@@ -747,12 +828,12 @@ button{
   min-width:0;
   flex:1;
 
-  padding:0 12px;
-
-  background:transparent;
+  padding:0 13px;
 
   border:0;
   outline:none;
+
+  background:transparent;
 
   color:white;
 
@@ -767,29 +848,29 @@ button{
 }
 
 .sheet-table{
-  border-collapse:collapse;
-
   min-width:100%;
+
+  border-collapse:collapse;
 }
 
 .sheet-table th,
 .sheet-table td{
-  height:32px;
-
+  height:33px;
   min-width:110px;
 
   padding:4px 8px;
 
-  border-right:1px solid #183324;
-  border-bottom:1px solid #183324;
+  border-right:1px solid #173525;
+  border-bottom:1px solid #173525;
 }
 
 .sheet-table th{
   position:sticky;
   top:0;
+
   z-index:3;
 
-  background:#0b1b12;
+  background:#0a1b11;
 
   color:var(--muted);
 
@@ -801,16 +882,17 @@ button{
 .sheet-table .row-number{
   position:sticky;
   left:0;
+
   z-index:4;
 
   width:48px;
   min-width:48px;
 
-  background:#0b1b12;
+  background:#0a1b11;
 }
 
 .sheet-table td{
-  background:#050b07;
+  background:#040a06;
 
   color:white;
 
@@ -818,31 +900,31 @@ button{
 }
 
 .sheet-table td:focus{
-  background:#0c2116;
+  background:#0b2115;
 
   box-shadow:
-    inset 0 0 0 1px var(--emerald-soft);
+    inset 0 0 0 1px var(--emerald-light);
 }
 
 .sheet-table td.formula-result{
-  color:var(--emerald-soft);
+  color:var(--emerald-light);
 }
 
-/* ================================
+/* =========================================================
    MODALS
-================================ */
+========================================================= */
 
 .overlay{
   position:fixed;
   inset:0;
 
+  z-index:100;
+
   display:none;
   align-items:center;
   justify-content:center;
 
-  background:rgba(0,0,0,.76);
-
-  z-index:100;
+  background:rgba(0,0,0,.78);
 }
 
 .overlay.show{
@@ -852,16 +934,16 @@ button{
 .modal{
   width:min(440px,90vw);
 
-  padding:25px;
+  padding:26px;
 
   background:
     linear-gradient(
       145deg,
-      #0c2116,
+      #0d2417,
       #07100b
     );
 
-  border:1px solid var(--line-bright);
+  border:1px solid var(--border-light);
 
   box-shadow:
     0 30px 90px rgba(0,0,0,.55);
@@ -870,7 +952,7 @@ button{
 .modal h2{
   margin:0 0 18px;
 
-  font-size:25px;
+  font-size:26px;
   font-weight:500;
 }
 
@@ -882,17 +964,17 @@ button{
 
   background:#040906;
 
-  border:1px solid var(--line-bright);
-
-  color:white;
+  border:1px solid var(--border-light);
 
   outline:none;
+
+  color:white;
 
   font-size:17px;
 }
 
 .modal-input:focus{
-  border-color:var(--emerald-soft);
+  border-color:var(--emerald-light);
 }
 
 .modal-actions{
@@ -900,16 +982,15 @@ button{
 
   display:flex;
   justify-content:flex-end;
-
-  gap:6px;
+  gap:5px;
 }
 
 .modal-actions button{
-  padding:7px 13px;
-
-  border:0;
+  padding:7px 14px;
 
   background:transparent;
+
+  border:0;
 
   color:var(--muted);
 }
@@ -920,23 +1001,28 @@ button{
 
 .modal-actions .primary{
   color:white;
-  background:var(--emerald);
-  border:1px solid var(--emerald2);
+
+  background:var(--emerald-3);
+
+  border:1px solid var(--emerald-4);
+
+  border-radius:4px;
 }
 
-/* ================================
-   COMMAND
-================================ */
+/* =========================================================
+   COMMAND PALETTE
+========================================================= */
 
 .command{
   width:min(620px,90vw);
 }
 
 .command-list{
-  max-height:330px;
-  overflow:auto;
+  max-height:340px;
 
   margin-top:8px;
+
+  overflow:auto;
 }
 
 .command-item{
@@ -948,13 +1034,13 @@ button{
 }
 
 .command-item:hover{
+  background:var(--emerald-1);
   color:white;
-  background:var(--surface2);
 }
 
-/* ================================
+/* =========================================================
    TOAST
-================================ */
+========================================================= */
 
 .toast{
   position:fixed;
@@ -962,13 +1048,13 @@ button{
   left:50%;
   bottom:22px;
 
-  transform:translate(-50%,12px);
+  z-index:200;
 
-  padding:8px 14px;
+  padding:8px 15px;
 
-  background:#0b2116;
+  background:#0c2116;
 
-  border:1px solid var(--line-bright);
+  border:1px solid var(--border-light);
 
   color:white;
 
@@ -976,9 +1062,9 @@ button{
 
   pointer-events:none;
 
-  transition:.2s;
+  transform:translate(-50%,10px);
 
-  z-index:200;
+  transition:.2s;
 }
 
 .toast.show{
@@ -986,44 +1072,51 @@ button{
   transform:translate(-50%,0);
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:760px){
 
   .sidebar{
-    width:64px;
-    padding:18px 7px;
+    width:65px;
+    padding:19px 7px;
   }
 
   .brand{
-    padding:0 0 25px;
+    padding:0 0 26px;
+
     text-align:center;
+
     font-size:0;
   }
 
   .brand span{
-    font-size:27px;
+    font-size:28px;
   }
 
   .new-button{
     font-size:0;
+    gap:0;
   }
 
-  .new-button:after{
-    content:"+";
+  .new-button::before{
     font-size:24px;
   }
 
   .nav button{
-    font-size:0;
+    padding:0;
+
     text-align:center;
+
+    font-size:0;
+
     border-left:0;
   }
 
-  .nav button:first-letter{
-    font-size:20px;
+  .nav button.active{
+    border-left:0;
+    box-shadow:inset 0 0 0 1px var(--emerald-4);
   }
 
   .sidebar-footer{
@@ -1035,7 +1128,7 @@ button{
   }
 
   .hero h1{
-    font-size:39px;
+    font-size:41px;
   }
 
   .create-grid{
@@ -1048,7 +1141,7 @@ button{
 
   .create-card + .create-card{
     border-left:0;
-    border-top:1px solid var(--line);
+    border-top:1px solid var(--border);
   }
 
   .document-space{
@@ -1089,92 +1182,92 @@ button{
 
 <div class="app">
 
-<!-- SIDEBAR -->
+  <!-- SIDEBAR -->
 
-<aside class="sidebar">
+  <aside class="sidebar">
 
-  <div class="brand">
-    clamme<span>.</span>
-  </div>
-
-  <button
-    class="new-button"
-    onclick="newDocument()"
-  >
-    New
-  </button>
-
-  <nav class="nav">
-
-    <button
-      id="navHome"
-      class="active"
-      onclick="goHome()"
-    >
-      Home
-    </button>
-
-    <button
-      id="navDocs"
-      onclick="showFiles('doc')"
-    >
-      Docs
-    </button>
-
-    <button
-      id="navSlides"
-      onclick="showFiles('slide')"
-    >
-      Slides
-    </button>
-
-    <button
-      id="navSheets"
-      onclick="showFiles('sheet')"
-    >
-      Sheets
-    </button>
-
-  </nav>
-
-  <div class="sidebar-footer">
-    Clamme
-  </div>
-
-</aside>
-
-<!-- MAIN -->
-
-<main class="main">
-
-  <header class="topbar">
-
-    <div
-      id="pageTitle"
-      class="title"
-    >
-      Home
+    <div class="brand">
+      clamme<span>.</span>
     </div>
 
-    <div class="top-actions">
+    <button
+      class="new-button"
+      onclick="newDocument()"
+    >
+      New
+    </button>
+
+    <nav class="nav">
 
       <button
-        class="top-button"
-        onclick="openCommands()"
+        id="navHome"
+        class="active"
+        onclick="goHome()"
       >
-        Ctrl K
+        Home
       </button>
 
+      <button
+        id="navDocs"
+        onclick="showFiles('doc')"
+      >
+        Docs
+      </button>
+
+      <button
+        id="navSlides"
+        onclick="showFiles('slide')"
+      >
+        Slides
+      </button>
+
+      <button
+        id="navSheets"
+        onclick="showFiles('sheet')"
+      >
+        Sheets
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      Clamme
     </div>
 
-  </header>
+  </aside>
 
-  <section
-    id="workspace"
-    class="workspace"
-  ></section>
+  <!-- MAIN -->
 
-</main>
+  <main class="main">
+
+    <header class="topbar">
+
+      <div
+        id="pageTitle"
+        class="title"
+      >
+        Home
+      </div>
+
+      <div class="top-actions">
+
+        <button
+          class="top-button"
+          onclick="openCommands()"
+        >
+          Ctrl K
+        </button>
+
+      </div>
+
+    </header>
+
+    <section
+      id="workspace"
+      class="workspace"
+    ></section>
+
+  </main>
 
 </div>
 
@@ -1216,7 +1309,7 @@ button{
 
 </div>
 
-<!-- COMMAND MODAL -->
+<!-- COMMAND PALETTE -->
 
 <div
   id="commandModal"
@@ -1247,11 +1340,12 @@ button{
 ></div>
 
 <script>
+
 /* =========================================================
-   STORAGE
+   STATE
 ========================================================= */
 
-const STORAGE_KEY="clamme_smart_luxury_v2";
+const STORAGE_KEY="clamme_smart_premium_v3";
 
 let state=
   JSON.parse(
@@ -1273,34 +1367,41 @@ let selectedCell=null;
 let rowCount=30;
 let columnCount=10;
 
+/* =========================================================
+   STORAGE
+========================================================= */
+
 function saveState(){
 
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(state)
   );
+
 }
 
 function toast(message){
 
-  const el=
+  const element=
     document.getElementById("toast");
 
-  el.textContent=message;
+  element.textContent=message;
 
-  el.classList.add("show");
+  element.classList.add("show");
 
-  clearTimeout(window.toastTimer);
+  clearTimeout(window.__toast);
 
-  window.toastTimer=
+  window.__toast=
     setTimeout(
-      ()=>el.classList.remove("show"),
+      ()=>{
+        element.classList.remove("show");
+      },
       1400
     );
 }
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 function setNav(id){
@@ -1308,12 +1409,14 @@ function setNav(id){
   document
     .querySelectorAll(".nav button")
     .forEach(
-      b=>b.classList.remove("active")
+      button=>
+        button.classList.remove("active")
     );
 
   document
     .getElementById(id)
     ?.classList.add("active");
+
 }
 
 /* =========================================================
@@ -1339,7 +1442,7 @@ function goHome(){
         </h1>
 
         <p>
-          A focused workspace for ideas, presentations and data.
+          A focused workspace for writing, presenting and calculating.
         </p>
 
       </div>
@@ -1414,8 +1517,15 @@ function goHome(){
         :
         `
           <div class="empty">
-            <h2>Nothing here.</h2>
-            <div>Your workspace is empty.</div>
+
+            <h2>
+              Nothing here.
+            </h2>
+
+            <div>
+              Your workspace is empty.
+            </div>
+
           </div>
         `
       }
@@ -1423,24 +1533,27 @@ function goHome(){
     </div>
 
   `;
+
 }
 
 /* =========================================================
-   FILE LIST
+   FILES
 ========================================================= */
 
 function typeName(type){
 
-  return type==="doc"
-    ?"Document"
-    :type==="slide"
-      ?"Presentation"
-      :"Spreadsheet";
+  if(type==="doc")
+    return "Document";
+
+  if(type==="slide")
+    return "Presentation";
+
+  return "Spreadsheet";
 }
 
 function fileRow(file){
 
-  return`
+  return `
 
     <div class="file-row">
 
@@ -1493,7 +1606,7 @@ function showFiles(type){
 
   const files=
     state.files.filter(
-      f=>f.type===type
+      file=>file.type===type
     );
 
   workspace.innerHTML=`
@@ -1502,7 +1615,10 @@ function showFiles(type){
 
       <div
         class="workspace-heading"
-        style="margin-top:0;font-size:34px"
+        style="
+          margin-top:0;
+          font-size:34px;
+        "
       >
         ${typeName(type)}s
       </div>
@@ -1516,10 +1632,16 @@ function showFiles(type){
           :
           `
             <div class="empty">
-              <h2>Nothing here.</h2>
+
+              <h2>
+                Nothing here.
+              </h2>
+
               <div>
-                Create your first ${typeName(type).toLowerCase()}.
+                Create your first
+                ${typeName(type).toLowerCase()}.
               </div>
+
             </div>
           `
         }
@@ -1529,14 +1651,17 @@ function showFiles(type){
     </div>
 
   `;
+
 }
 
 /* =========================================================
-   CREATE / RENAME
+   CREATE
 ========================================================= */
 
 function newDocument(){
+
   createFile("doc");
+
 }
 
 function createFile(type){
@@ -1544,7 +1669,7 @@ function createFile(type){
   pendingType=type;
   pendingAction="create";
 
-  const names={
+  const defaultNames={
     doc:"Untitled document",
     slide:"Untitled presentation",
     sheet:"Untitled spreadsheet"
@@ -1553,38 +1678,19 @@ function createFile(type){
   modalHeading.textContent=
     "New "+typeName(type).toLowerCase();
 
-  fileInput.value=names[type];
+  fileInput.value=
+    defaultNames[type];
 
   fileModal.classList.add("show");
 
   setTimeout(
-    ()=>fileInput.select(),
+    ()=>{
+      fileInput.focus();
+      fileInput.select();
+    },
     30
   );
-}
 
-function renameFile(id){
-
-  const file=
-    state.files.find(
-      f=>f.id===id
-    );
-
-  if(!file)return;
-
-  pendingAction="rename";
-  pendingRename=id;
-
-  modalHeading.textContent="Rename";
-
-  fileInput.value=file.name;
-
-  fileModal.classList.add("show");
-
-  setTimeout(
-    ()=>fileInput.select(),
-    30
-  );
 }
 
 function confirmFileModal(){
@@ -1601,11 +1707,14 @@ function confirmFileModal(){
       );
 
     if(file){
+
       file.name=name;
       file.updated=Date.now();
+
     }
 
     saveState();
+
     closeFileModal();
 
     if(currentFile)
@@ -1617,30 +1726,43 @@ function confirmFileModal(){
   }
 
   const file={
-    id:crypto.randomUUID(),
-    name,
-    type:pendingType,
+    id:
+      typeof crypto!=="undefined"
+      &&crypto.randomUUID
+      ?crypto.randomUUID()
+      :Date.now().toString(),
+
+    name:name,
+
+    type:typeSafe(pendingType),
+
     created:Date.now(),
+
     updated:Date.now()
   };
 
-  if(pendingType==="doc"){
+  if(file.type==="doc"){
+
     file.content="";
+
   }
 
-  if(pendingType==="slide"){
+  if(file.type==="slide"){
 
     file.slides=[
       {
-        id:crypto.randomUUID(),
+        id:
+          Date.now().toString(),
         content:""
       }
     ];
 
   }
 
-  if(pendingType==="sheet"){
+  if(file.type==="sheet"){
+
     file.cells={};
+
   }
 
   state.files.push(file);
@@ -1650,11 +1772,50 @@ function confirmFileModal(){
   closeFileModal();
 
   openFile(file.id);
+
+}
+
+function typeSafe(type){
+
+  return ["doc","slide","sheet"]
+    .includes(type)
+    ?type
+    :"doc";
+}
+
+function renameFile(id){
+
+  const file=
+    state.files.find(
+      f=>f.id===id
+    );
+
+  if(!file)
+    return;
+
+  pendingAction="rename";
+  pendingRename=id;
+
+  modalHeading.textContent="Rename";
+
+  fileInput.value=file.name;
+
+  fileModal.classList.add("show");
+
+  setTimeout(
+    ()=>{
+      fileInput.focus();
+      fileInput.select();
+    },
+    30
+  );
+
 }
 
 function closeFileModal(){
 
   fileModal.classList.remove("show");
+
 }
 
 /* =========================================================
@@ -1668,13 +1829,15 @@ function deleteFile(id){
       f=>f.id===id
     );
 
-  if(!file)return;
+  if(!file)
+    return;
 
   if(
     !confirm(
       `Delete "${file.name}"?`
     )
-  )return;
+  )
+    return;
 
   state.files=
     state.files.filter(
@@ -1684,6 +1847,7 @@ function deleteFile(id){
   saveState();
 
   showFiles(file.type);
+
 }
 
 /* =========================================================
@@ -1697,7 +1861,8 @@ function openFile(id){
       f=>f.id===id
     );
 
-  if(!currentFile)return;
+  if(!currentFile)
+    return;
 
   pageTitle.textContent=
     currentFile.name;
@@ -1710,10 +1875,11 @@ function openFile(id){
 
   if(currentFile.type==="sheet")
     renderSpreadsheet();
+
 }
 
 /* =========================================================
-   DOCUMENT EDITOR
+   DOCUMENT
 ========================================================= */
 
 function renderDocument(){
@@ -1828,7 +1994,7 @@ function renderDocument(){
           class="document"
           contenteditable="true"
           spellcheck="true"
-        >${currentFile.content}</article>
+        ></article>
 
       </div>
 
@@ -1836,12 +2002,14 @@ function renderDocument(){
 
   `;
 
-  document
-    .getElementById("documentEditor")
-    .addEventListener(
-      "input",
-      saveDocument
-    );
+  documentEditor.innerHTML=
+    currentFile.content||"";
+
+  documentEditor.addEventListener(
+    "input",
+    saveDocument
+  );
+
 }
 
 function docFormat(command,value=null){
@@ -1852,45 +2020,43 @@ function docFormat(command,value=null){
     value
   );
 
-  document
-    .getElementById(
-      "documentEditor"
-    )
-    ?.focus();
+  documentEditor.focus();
 
   saveDocument();
+
 }
 
 function saveDocument(){
 
-  const editor=
-    document.getElementById(
-      "documentEditor"
-    );
-
-  if(!editor||!currentFile)return;
+  if(!currentFile)
+    return;
 
   currentFile.content=
-    editor.innerHTML;
+    documentEditor.innerHTML;
 
   currentFile.updated=
     Date.now();
 
   saveState();
+
 }
 
 function printDocument(){
 
+  if(!currentFile)
+    return;
+
   const content=
-    document.getElementById(
-      "documentEditor"
-    ).innerHTML;
+    documentEditor.innerHTML;
 
   const win=
     window.open(
       "",
       "_blank"
     );
+
+  if(!win)
+    return;
 
   win.document.write(`
 
@@ -1900,7 +2066,9 @@ function printDocument(){
 
     <head>
 
-      <title>${escapeHTML(currentFile.name)}</title>
+      <title>
+        ${escapeHTML(currentFile.name)}
+      </title>
 
       <link
         href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap"
@@ -1910,9 +2078,11 @@ function printDocument(){
       <style>
 
         body{
-          font-family:Alegreya,serif;
           max-width:794px;
           margin:70px auto;
+
+          font-family:Alegreya,serif;
+
           color:#152019;
         }
 
@@ -1928,7 +2098,13 @@ function printDocument(){
 
   `);
 
-  win.print();
+  win.document.close();
+
+  setTimeout(
+    ()=>win.print(),
+    300
+  );
+
 }
 
 /* =========================================================
@@ -1937,7 +2113,11 @@ function printDocument(){
 
 function renderSlides(){
 
-  activeSlide=0;
+  activeSlide=
+    Math.min(
+      activeSlide,
+      currentFile.slides.length-1
+    );
 
   workspace.innerHTML=`
 
@@ -2015,14 +2195,14 @@ function renderSlides(){
   `;
 
   renderThumbnails();
+
   loadActiveSlide();
 
-  document
-    .getElementById("slideEditor")
-    .addEventListener(
-      "input",
-      saveSlide
-    );
+  slideEditor.addEventListener(
+    "input",
+    saveSlide
+  );
+
 }
 
 function renderThumbnails(){
@@ -2035,8 +2215,8 @@ function renderThumbnails(){
           <button
             class="thumbnail ${
               index===activeSlide
-                ?"active"
-                :""
+              ?"active"
+              :""
             }"
             onclick="selectSlide(${index})"
           >
@@ -2046,19 +2226,24 @@ function renderThumbnails(){
         `
       )
       .join("");
+
 }
 
 function loadActiveSlide(){
 
   slideEditor.innerHTML=
-    currentFile.slides[
-      activeSlide
-    ].content||"";
+    currentFile
+      .slides[
+        activeSlide
+      ]
+      .content||"";
+
 }
 
 function saveSlide(){
 
-  if(!currentFile)return;
+  if(!currentFile)
+    return;
 
   currentFile.slides[
     activeSlide
@@ -2071,17 +2256,26 @@ function saveSlide(){
   saveState();
 
   renderThumbnails();
+
 }
 
 function selectSlide(index){
 
   saveSlide();
 
-  activeSlide=index;
+  activeSlide=
+    Math.max(
+      0,
+      Math.min(
+        index,
+        currentFile.slides.length-1
+      )
+    );
 
   renderThumbnails();
 
   loadActiveSlide();
+
 }
 
 function addSlide(){
@@ -2089,7 +2283,7 @@ function addSlide(){
   saveSlide();
 
   currentFile.slides.push({
-    id:crypto.randomUUID(),
+    id:Date.now().toString(),
     content:""
   });
 
@@ -2099,23 +2293,26 @@ function addSlide(){
   saveState();
 
   renderThumbnails();
+
   loadActiveSlide();
+
+  slideEditor?.focus();
+
 }
 
 function duplicateSlide(){
 
   saveSlide();
 
-  const copy=
-    JSON.parse(
-      JSON.stringify(
-        currentFile.slides[
-          activeSlide
-        ]
-      )
-    );
+  const original=
+    currentFile.slides[
+      activeSlide
+    ];
 
-  copy.id=crypto.randomUUID();
+  const copy={
+    id:Date.now().toString(),
+    content:original.content||""
+  };
 
   currentFile.slides.splice(
     activeSlide+1,
@@ -2128,7 +2325,9 @@ function duplicateSlide(){
   saveState();
 
   renderThumbnails();
+
   loadActiveSlide();
+
 }
 
 function deleteSlide(){
@@ -2137,7 +2336,9 @@ function deleteSlide(){
     currentFile.slides.length<=1
   ){
 
-    toast("A presentation needs one slide");
+    toast(
+      "A presentation needs one slide."
+    );
 
     return;
   }
@@ -2156,7 +2357,9 @@ function deleteSlide(){
   saveState();
 
   renderThumbnails();
+
   loadActiveSlide();
+
 }
 
 function presentSlides(){
@@ -2166,10 +2369,17 @@ function presentSlides(){
   const slides=
     currentFile.slides
       .map(
-        s=>`
+        slide=>`
+
           <section class="presentation-slide">
-            ${s.content}
+
+            ${
+              slide.content||
+              ""
+            }
+
           </section>
+
         `
       )
       .join("");
@@ -2179,6 +2389,9 @@ function presentSlides(){
       "",
       "_blank"
     );
+
+  if(!win)
+    return;
 
   win.document.write(`
 
@@ -2203,8 +2416,15 @@ function presentSlides(){
           box-sizing:border-box;
         }
 
+        html,
         body{
           margin:0;
+          width:100%;
+          height:100%;
+          overflow:hidden;
+        }
+
+        body{
           background:#000;
 
           font-family:Alegreya,serif;
@@ -2218,7 +2438,7 @@ function presentSlides(){
 
           padding:8vw;
 
-          background:#fbfdfb;
+          background:#fcfdfc;
           color:#152019;
 
           font-size:3vw;
@@ -2238,7 +2458,7 @@ function presentSlides(){
 
       <script>
 
-        let i=0;
+        let index=0;
 
         const slides=
           document.querySelectorAll(
@@ -2248,28 +2468,47 @@ function presentSlides(){
         function show(){
 
           slides.forEach(
-            s=>s.style.display="none"
+            slide=>{
+              slide.style.display="none";
+            }
           );
 
-          slides[i].style.display="block";
+          if(slides[index]){
+            slides[index].style.display="block";
+          }
 
         }
 
         document.addEventListener(
           "keydown",
-          e=>{
+          event=>{
 
-            if(e.key==="ArrowRight"){
-              i=Math.min(
-                i+1,
-                slides.length-1
-              );
+            if(event.key==="ArrowRight"){
+
+              index=
+                Math.min(
+                  index+1,
+                  slides.length-1
+                );
+
               show();
+
             }
 
-            if(e.key==="ArrowLeft"){
-              i=Math.max(i-1,0);
+            if(event.key==="ArrowLeft"){
+
+              index=
+                Math.max(
+                  index-1,
+                  0
+                );
+
               show();
+
+            }
+
+            if(event.key==="Escape"){
+              window.close();
             }
 
           }
@@ -2282,10 +2521,13 @@ function presentSlides(){
     </html>
 
   `);
+
+  win.document.close();
+
 }
 
 /* =========================================================
-   SPREADSHEET
+   SHEETS
 ========================================================= */
 
 function columnName(number){
@@ -2296,7 +2538,7 @@ function columnName(number){
 
     result=
       String.fromCharCode(
-        (number%26)+65
+        number%26+65
       )+result;
 
     number=
@@ -2304,6 +2546,25 @@ function columnName(number){
   }
 
   return result;
+
+}
+
+function columnIndex(value){
+
+  let result=0;
+
+  for(
+    const character of value
+  ){
+
+    result=
+      result*26+
+      character.charCodeAt(0)-64;
+
+  }
+
+  return result-1;
+
 }
 
 function renderSpreadsheet(){
@@ -2375,9 +2636,13 @@ function renderSpreadsheet(){
 
               ${
                 Array.from(
-                  {length:columnCount},
-                  (_,i)=>
-                    `<th>${columnName(i)}</th>`
+                  {
+                    length:columnCount
+                  },
+                  (_,index)=>
+                    `<th>
+                      ${columnName(index)}
+                    </th>`
                 ).join("")
               }
 
@@ -2385,9 +2650,7 @@ function renderSpreadsheet(){
 
           </thead>
 
-          <tbody
-            id="sheetBody"
-          ></tbody>
+          <tbody id="sheetBody"></tbody>
 
         </table>
 
@@ -2403,6 +2666,7 @@ function renderSpreadsheet(){
     "keydown",
     formulaKey
   );
+
 }
 
 function buildSheet(){
@@ -2426,13 +2690,13 @@ function buildSheet(){
     `;
 
     for(
-      let col=0;
-      col<columnCount;
-      col++
+      let column=0;
+      column<columnCount;
+      column++
     ){
 
       const ref=
-        columnName(col)+row;
+        columnName(column)+row;
 
       const raw=
         currentFile.cells[ref]??"";
@@ -2445,7 +2709,15 @@ function buildSheet(){
         <td
           contenteditable="true"
           data-cell="${ref}"
-        >${escapeHTML(String(display))}</td>
+          class="${
+            typeof raw==="string"
+            &&raw.startsWith("=")
+            ?"formula-result"
+            :""
+          }"
+        >
+          ${escapeHTML(String(display))}
+        </td>
 
       `;
 
@@ -2457,12 +2729,11 @@ function buildSheet(){
       "beforeend",
       html
     );
+
   }
 
   document
-    .querySelectorAll(
-      "[data-cell]"
-    )
+    .querySelectorAll("[data-cell]")
     .forEach(cell=>{
 
       cell.addEventListener(
@@ -2477,25 +2748,53 @@ function buildSheet(){
       cell.addEventListener(
         "input",
         ()=>{
+
           currentFile.cells[
             cell.dataset.cell
-          ]=cell.innerText;
+          ]=
+            cell.innerText;
 
           currentFile.updated=
             Date.now();
 
           saveState();
+
         }
       );
 
       cell.addEventListener(
-        "blur",
-        ()=>{
-          buildSheet();
+        "keydown",
+        event=>{
+
+          if(event.key==="Enter"){
+
+            event.preventDefault();
+
+            saveCellAndMove(
+              cell,
+              1,
+              0
+            );
+
+          }
+
+          if(event.key==="Tab"){
+
+            event.preventDefault();
+
+            saveCellAndMove(
+              cell,
+              0,
+              1
+            );
+
+          }
+
         }
       );
 
     });
+
 }
 
 function selectCell(ref){
@@ -2506,6 +2805,62 @@ function selectCell(ref){
 
   formulaInput.value=
     currentFile.cells[ref]??"";
+
+}
+
+function saveCellAndMove(
+  cell,
+  rowMove,
+  columnMove
+){
+
+  const current=
+    cell.dataset.cell;
+
+  const match=
+    current.match(
+      /^([A-Z]+)(\d+)$/
+    );
+
+  if(!match)
+    return;
+
+  let column=
+    columnIndex(match[1]);
+
+  let row=
+    Number(match[2])-1;
+
+  row+=rowMove;
+  column+=columnMove;
+
+  row=
+    Math.max(
+      0,
+      Math.min(
+        row,
+        rowCount-1
+      )
+    );
+
+  column=
+    Math.max(
+      0,
+      Math.min(
+        column,
+        columnCount-1
+      )
+    );
+
+  buildSheet();
+
+  const next=
+    document.querySelector(
+      `[data-cell="${columnName(column)}${row+1}"]`
+    );
+
+  next?.focus();
+
 }
 
 function formulaKey(event){
@@ -2513,12 +2868,15 @@ function formulaKey(event){
   if(event.key!=="Enter")
     return;
 
+  event.preventDefault();
+
   if(!selectedCell)
     return;
 
   currentFile.cells[
     selectedCell
-  ]=formulaInput.value;
+  ]=
+    formulaInput.value;
 
   saveState();
 
@@ -2530,47 +2888,79 @@ function formulaKey(event){
     );
 
   cell?.focus();
+
+}
+
+function numericCell(ref){
+
+  const raw=
+    currentFile.cells[ref];
+
+  if(
+    raw===undefined||
+    raw===""
+  )
+    return 0;
+
+  if(
+    typeof raw==="string" &&
+    raw.startsWith("=")
+  ){
+
+    const value=
+      calculateValue(raw);
+
+    return Number(value)||0;
+
+  }
+
+  return Number(raw)||0;
+
 }
 
 function calculateValue(raw){
 
   if(
-    typeof raw!=="string"
-    ||!raw.startsWith("=")
-  ){
+    typeof raw!=="string"||
+    !raw.startsWith("=")
+  )
     return raw;
-  }
 
   return evaluateFormula(
     raw.substring(1)
   );
+
 }
 
-function evaluateFormula(formula){
+function evaluateFormula(expression){
 
-  const range=
-    formula.match(
-      /^(SUM|AVERAGE|MIN|MAX)\(([A-Z]+)(\d+):([A-Z]+)(\d+)\)$/i
+  const functionMatch=
+    expression.match(
+      /^(SUM|AVERAGE|MIN|MAX|COUNT)\(([A-Z]+)(\d+):([A-Z]+)(\d+)\)$/i
     );
 
-  if(range){
+  if(functionMatch){
 
-    const fn=
-      range[1].toUpperCase();
+    const type=
+      functionMatch[1].toUpperCase();
 
-    const startCol=
-      columnIndex(range[2]);
+    const startColumn=
+      columnIndex(
+        functionMatch[2]
+      );
 
-    const endCol=
-      columnIndex(range[4]);
+    const endColumn=
+      columnIndex(
+        functionMatch[4]
+      );
 
     const startRow=
-      Number(range[3]);
+      Number(functionMatch[3]);
 
     const endRow=
-      Number(range[5]);
+      Number(functionMatch[5]);
 
-    let values=[];
+    const values=[];
 
     for(
       let row=startRow;
@@ -2579,28 +2969,29 @@ function evaluateFormula(formula){
     ){
 
       for(
-        let col=startCol;
-        col<=endCol;
-        col++
+        let column=startColumn;
+        column<=endColumn;
+        column++
       ){
 
+        const ref=
+          columnName(column)+row;
+
         values.push(
-          numericCell(
-            columnName(col)+row
-          )
+          numericCell(ref)
         );
 
       }
 
     }
 
-    if(fn==="SUM")
+    if(type==="SUM")
       return values.reduce(
         (a,b)=>a+b,
         0
       );
 
-    if(fn==="AVERAGE")
+    if(type==="AVERAGE")
       return values.length
         ?values.reduce(
           (a,b)=>a+b,
@@ -2608,84 +2999,61 @@ function evaluateFormula(formula){
         )/values.length
         :0;
 
-    if(fn==="MIN")
-      return Math.min(...values);
+    if(type==="MIN")
+      return values.length
+        ?Math.min(...values)
+        :0;
 
-    if(fn==="MAX")
-      return Math.max(...values);
+    if(type==="MAX")
+      return values.length
+        ?Math.max(...values)
+        :0;
+
+    if(type==="COUNT")
+      return values.filter(
+        value=>value!==0
+      ).length;
+
   }
+
+  let safe=
+    expression.replace(
+      /([A-Z]+)(\d+)/g,
+      (_,column,row)=>
+        numericCell(
+          column+row
+        )
+    );
+
+  if(
+    !/^[0-9+\-*/().\s]+$/.test(safe)
+  )
+    return "";
 
   try{
 
-    let expression=
-      formula.replace(
-        /([A-Z]+)(\d+)/g,
-        (_,col,row)=>
-          numericCell(
-            col+row
-          )
-      );
-
-    if(
-      !/^[0-9+\-*/().\s]+$/
-        .test(expression)
-    ){
-      return "";
-    }
-
     return Function(
-      `"use strict";return (${expression})`
+      `"use strict";return (${safe})`
     )();
 
   }catch{
 
     return "";
-  }
-}
-
-function numericCell(ref){
-
-  const raw=
-    currentFile.cells[ref];
-
-  if(raw===undefined||raw==="")
-    return 0;
-
-  if(
-    typeof raw==="string"
-    &&raw.startsWith("=")
-  ){
-    const result=
-      calculateValue(raw);
-
-    return Number(result)||0;
-  }
-
-  return Number(raw)||0;
-}
-
-function columnIndex(value){
-
-  let result=0;
-
-  for(const char of value){
-
-    result=
-      result*26+
-      char.charCodeAt(0)-64;
 
   }
 
-  return result-1;
 }
 
 function insertFormula(type){
 
   if(!selectedCell){
 
-    toast("Select a cell first");
+    toast(
+      "Select a cell first."
+    );
 
     return;
+
   }
 
   currentFile.cells[
@@ -2697,7 +3065,8 @@ function insertFormula(type){
 
   buildSheet();
 
-  toast("Formula added");
+  toast("Formula added.");
+
 }
 
 function addSheetRow(){
@@ -2705,6 +3074,7 @@ function addSheetRow(){
   rowCount++;
 
   buildSheet();
+
 }
 
 function addSheetColumn(){
@@ -2712,6 +3082,7 @@ function addSheetColumn(){
   columnCount++;
 
   buildSheet();
+
 }
 
 /* =========================================================
@@ -2769,6 +3140,7 @@ function openCommands(){
     ()=>commandInput.focus(),
     20
   );
+
 }
 
 function renderCommands(filter=""){
@@ -2784,18 +3156,21 @@ function renderCommands(filter=""){
     );
 
   commandList.innerHTML=
-    visible.map(
-      (command,index)=>`
+    visible
+      .map(
+        command=>`
 
-        <div
-          class="command-item"
-          onclick="runCommand(${index})"
-        >
-          ${command[0]}
-        </div>
+          <div
+            class="command-item"
+            onclick="runCommand('${escapeAttribute(command[0])}')"
+          >
+            ${escapeHTML(command[0])}
+          </div>
 
-      `
-    ).join("");
+        `
+      )
+      .join("");
+
 }
 
 function filterCommands(){
@@ -2803,27 +3178,22 @@ function filterCommands(){
   renderCommands(
     commandInput.value
   );
+
 }
 
-function runCommand(index){
+function runCommand(name){
 
-  const filter=
-    commandInput.value
-      .toLowerCase();
-
-  const visible=
-    commandsData.filter(
-      command=>
-        command[0]
-          .toLowerCase()
-          .includes(filter)
+  const command=
+    commandsData.find(
+      item=>item[0]===name
     );
 
   commandModal.classList.remove(
     "show"
   );
 
-  visible[index]?.[1]();
+  command?.[1]();
+
 }
 
 /* =========================================================
@@ -2835,8 +3205,7 @@ document.addEventListener(
   event=>{
 
     if(
-      (event.ctrlKey||event.metaKey)
-      &&
+      (event.ctrlKey||event.metaKey)&&
       event.key.toLowerCase()==="k"
     ){
 
@@ -2847,8 +3216,7 @@ document.addEventListener(
     }
 
     if(
-      (event.ctrlKey||event.metaKey)
-      &&
+      (event.ctrlKey||event.metaKey)&&
       event.key.toLowerCase()==="s"
     ){
 
@@ -2856,7 +3224,7 @@ document.addEventListener(
 
       saveState();
 
-      toast("Saved");
+      toast("Saved.");
 
     }
 
@@ -2892,6 +3260,7 @@ function fullscreen(){
       .exitFullscreen?.();
 
   }
+
 }
 
 /* =========================================================
@@ -2906,10 +3275,19 @@ function escapeHTML(value){
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
+
+}
+
+function escapeAttribute(value){
+
+  return String(value)
+    .replaceAll("\\","\\\\")
+    .replaceAll("'","\\'");
+
 }
 
 /* =========================================================
-   MODAL CLICK
+   MODAL BEHAVIOR
 ========================================================= */
 
 fileModal.addEventListener(
@@ -2919,7 +3297,9 @@ fileModal.addEventListener(
     if(
       event.target===fileModal
     ){
+
       closeFileModal();
+
     }
 
   }
