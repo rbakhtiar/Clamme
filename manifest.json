@@ -1,0 +1,22 @@
+{
+  "name": "Clamme",
+  "short_name": "Clamme",
+  "description": "A premium productivity suite for documents, presentations and spreadsheets.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07110d",
+  "theme_color": "#0d3b2a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
