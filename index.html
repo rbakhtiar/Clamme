@@ -3,1070 +3,811 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clamme</title>
 
-<title>Clamme.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta
-  name="description"
-  content="Clamme — Docs, Slides and Sheets."
->
-
-<meta name="theme-color" content="#08291d">
-
-<link rel="manifest" href="/Clamme/manifest.json">
+<!-- 100-font Google Fonts collection -->
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Aclonica&family=Alfa+Slab+One&family=Alice&family=Alegreya:wght@400;500;600;700&family=Alegreya+Sans:wght@400;500;600;700&family=Amatic+SC:wght@400;700&family=Anton&family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Arimo:wght@400;500;600;700&family=Asap:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=Bebas+Neue&family=Bitter:wght@400;500;600;700&family=Black+Ops+One&family=Bodoni+Moda:wght@400;500;600;700&family=Bree+Serif&family=Cabin:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&family=Chivo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Comfortaa:wght@400;500;600;700&family=Comic+Neue:wght@400;700&family=Concert+One&family=Cormorant+Garamond:wght@400;500;600;700&family=Courgette&family=Crimson+Text:wght@400;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Dancing+Script:wght@400;500;600;700&family=Domine:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Gabarito:wght@400;500;600;700&family=GFS+Didot&family=Gideon+Roman&family=Gloria+Hallelujah&family=Great+Vibes&family=Heebo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&family=Inconsolata:wght@400;500;600;700&family=Indie+Flower&family=Inter:wght@400;500;600;700&family=Josefin+Sans:wght@400;500;600;700&family=Josefin+Slab:wght@400;500;600;700&family=Jost:wght@400;500;600;700&family=Kalam:wght@400;700&family=Kanit:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Lato:wght@400;700;900&family=League+Spartan:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Libre+Franklin:wght@400;500;600;700&family=Lilita+One&family=Lobster&family=Manrope:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Michroma&family=Montserrat:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&family=Nanum+Gothic:wght@400;700&family=Newsreader:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Old+Standard+TT:wght@400;700&family=Open+Sans:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Pacifico&family=Passion+One:wght@400;700&family=Patrick+Hand&family=Permanent+Marker&family=Philosopher:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Prata&family=Prompt:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Righteous&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;600;700&family=Rock+Salt&family=Rubik:wght@400;500;600;700&family=Satisfy&family=Schoolbell&family=Shadows+Into+Light&family=Signika:wght@400;500;600;700&family=Silkscreen:wght@400;700&family=Source+Code+Pro:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Special+Elite&family=Spectral:wght@400;500;600;700&family=Staatliches&family=Syne:wght@400;500;600;700&family=Teko:wght@400;500;600;700&family=Titillium+Web:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&family=Unbounded:wght@400;500;600;700&family=Varela+Round&family=Vollkorn:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&display=swap');
-
-:root {
-  --bg: #050806;
-  --panel: #08130e;
-  --panel2: #0a1912;
-  --emerald: #0c4b34;
-  --emerald-light: #176b49;
-
-  --line: rgba(147,190,166,.14);
-  --line-strong: rgba(147,190,166,.25);
-
-  --text: #edf5ef;
-  --muted: rgba(225,239,229,.55);
-
-  --paper: #fafbf9;
-  --paper-text: #141815;
+:root{
+  --bg:#06100c;
+  --bg2:#091711;
+  --panel:#0b1c15;
+  --panel2:#0e251b;
+  --emerald:#0d7654;
+  --emeraldBright:#28b27e;
+  --text:#f1f5f2;
+  --muted:#8ea29a;
+  --line:rgba(55,133,101,.32);
+  --softLine:rgba(255,255,255,.065);
+  --shadow:0 25px 70px rgba(0,0,0,.42);
 }
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
 }
 
-body {
-  font-family: "Alegreya", serif;
-
+body{
+  color:var(--text);
   background:
-    radial-gradient(
-      circle at 18% -10%,
-      rgba(17,91,61,.38),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 90% 100%,
-      rgba(8,57,39,.18),
-      transparent 35%
-    ),
+    radial-gradient(circle at 15% 5%,rgba(17,120,83,.14),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(10,88,63,.10),transparent 30%),
     var(--bg);
-
-  color: var(--text);
-
-  overflow: hidden;
+  font-family:"Alegreya",serif;
+  overflow:hidden;
 }
 
 button,
 input,
-select,
-textarea {
-  font-family: "Alegreya", serif;
+select{
+  font-family:"Alegreya",serif;
 }
 
-button {
-  cursor: pointer;
+button{
+  cursor:pointer;
 }
 
-/* =========================================================
-   APP
-========================================================= */
+/* APP */
 
-.app {
-  width: 100%;
-  height: 100vh;
-
-  display: flex;
+.app{
+  height:100vh;
+  display:flex;
 }
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-.sidebar {
-  width: 238px;
 
-  flex-shrink: 0;
+/* SIDEBAR */
 
-  padding: 27px 18px 20px;
-
-  display: flex;
-  flex-direction: column;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8,31,22,.98),
-      rgba(4,12,8,.99)
-    );
-
-  border-right: 1px solid var(--line);
+.sidebar{
+  width:230px;
+  flex-shrink:0;
+  padding:24px 16px;
+  border-right:1px solid var(--line);
+  background:rgba(4,13,10,.92);
+  display:flex;
+  flex-direction:column;
 }
-
-.logo {
-  padding: 0 11px;
 
-  margin-bottom: 29px;
-
-  font-size: 31px;
-
-  font-weight: 600;
-
-  letter-spacing: -1.4px;
+.brand{
+  margin:0 8px 32px;
+  font-size:30px;
+  font-weight:600;
+  letter-spacing:-1.2px;
 }
-
-/* =========================================================
-   NEW
-========================================================= */
-
-.new-button {
-  width: 100%;
-
-  border: 1px solid rgba(131,190,158,.28);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(16,82,56,.88),
-      rgba(8,54,37,.88)
-    );
-
-  border-radius: 7px;
 
-  padding: 11px 15px;
-
-  color: white;
-
-  font-size: 16px;
-
-  text-align: left;
-
-  transition: .18s ease;
+.brand span{
+  color:var(--emeraldBright);
 }
 
-.new-button:hover {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(22,101,69,.95),
-      rgba(10,64,43,.95)
-    );
+.new-btn{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid rgba(48,154,111,.48);
+  border-radius:8px;
+  background:#0d3326;
+  color:#f5faf7;
+  font-size:17px;
+  transition:.2s;
 }
-
-/* =========================================================
-   NAV
-========================================================= */
-
-.nav {
-  display: flex;
-
-  flex-direction: column;
 
-  gap: 3px;
-
-  margin-top: 24px;
+.new-btn:hover{
+  background:#114b38;
+  border-color:#32a87b;
 }
-
-.nav button {
-  width: 100%;
-
-  border: 0;
-
-  background: transparent;
-
-  color: rgba(225,239,229,.57);
-
-  text-align: left;
-
-  padding: 10px 12px;
-
-  border-radius: 6px;
 
-  font-size: 16px;
-
-  transition: .16s ease;
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-top:25px;
 }
 
-.nav button:hover {
-  background: rgba(57,127,93,.13);
-
-  color: white;
+.nav button{
+  padding:10px 12px;
+  border:1px solid transparent;
+  border-radius:6px;
+  background:transparent;
+  color:#94a79e;
+  text-align:left;
+  font-size:17px;
 }
-
-.nav button.active {
-  background: rgba(43,117,81,.21);
 
-  color: white;
+.nav button:hover{
+  color:white;
+  background:rgba(17,99,71,.22);
 }
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.main {
-  flex: 1;
-
-  min-width: 0;
-
-  height: 100%;
 
-  display: flex;
-
-  flex-direction: column;
+.nav button.active{
+  color:white;
+  background:rgba(17,119,84,.27);
 }
-
-.topbar {
-  height: 66px;
-
-  flex-shrink: 0;
-
-  padding: 0 30px;
 
-  display: flex;
+/* MAIN */
 
-  align-items: center;
-
-  border-bottom: 1px solid var(--line);
-
-  background: rgba(4,10,7,.72);
-
-  backdrop-filter: blur(22px);
+.main{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
 }
-
-.page-title {
-  font-size: 21px;
 
-  font-weight: 500;
+.topbar{
+  height:64px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid var(--line);
+  background:rgba(5,17,12,.74);
+  backdrop-filter:blur(18px);
 }
 
-.workspace {
-  flex: 1;
-
-  min-height: 0;
-
-  overflow: auto;
-
-  padding: 38px;
+.page-title{
+  font-size:22px;
+  font-weight:600;
 }
-
-/* =========================================================
-   HOME
-========================================================= */
 
-.home {
-  width: min(1100px,100%);
-
-  margin: auto;
+.top-btn{
+  padding:7px 11px;
+  border:1px solid transparent;
+  border-radius:6px;
+  background:transparent;
+  color:#a7b7b0;
+  font-size:15px;
 }
 
-.home-header {
-  padding: 22px 2px 35px;
+.top-btn:hover{
+  border-color:var(--line);
+  color:white;
 }
-
-.home-header h1 {
-  margin: 0;
-
-  font-size: clamp(46px,6vw,76px);
-
-  line-height: .92;
 
-  font-weight: 500;
-
-  letter-spacing: -2.7px;
+.workspace{
+  flex:1;
+  min-height:0;
+  padding:34px;
+  overflow:auto;
 }
-
-.home-rule {
-  width: 100%;
 
-  height: 1px;
+/* HOME */
 
-  margin-top: 28px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(116,177,145,.36),
-      rgba(116,177,145,.04)
-    );
+.home{
+  max-width:1000px;
+  margin:auto;
 }
-
-.create-grid {
-  display: grid;
 
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-  gap: 14px;
+.home-title{
+  margin:0 0 8px;
+  font-size:40px;
+  font-weight:500;
 }
-
-.create-card {
-  min-height: 148px;
-
-  padding: 23px;
-
-  text-align: left;
 
-  border: 1px solid var(--line);
-
-  border-radius: 7px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(11,38,27,.86),
-      rgba(6,19,13,.82)
-    );
-
-  color: white;
-
-  transition: .18s ease;
+.home-subtitle{
+  margin-bottom:36px;
+  color:var(--muted);
+  font-size:17px;
 }
-
-.create-card:hover {
-  transform: translateY(-2px);
 
-  border-color: var(--line-strong);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(15,54,37,.94),
-      rgba(7,23,16,.9)
-    );
+.create-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
-
-.create-card-title {
-  display: block;
 
-  font-size: 23px;
-
-  font-weight: 600;
-
-  margin-bottom: 9px;
+.create-card{
+  min-height:120px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:rgba(10,31,22,.62);
+  transition:.2s;
 }
-
-.create-card-description {
-  display: block;
-
-  font-size: 15px;
 
-  color: var(--muted);
+.create-card:hover{
+  background:#0d281e;
+  border-color:rgba(49,159,116,.55);
+  transform:translateY(-2px);
 }
 
-/* =========================================================
-   TOOLBAR
-========================================================= */
-
-.editor-shell,
-.slides-shell,
-.sheets-shell {
-  width: min(1200px,100%);
-
-  margin: auto;
+.create-card h3{
+  margin:0 0 7px;
+  font-size:21px;
+  font-weight:600;
 }
-
-.editor-toolbar,
-.slides-toolbar {
-  min-height: 49px;
-
-  display: flex;
 
-  align-items: center;
-
-  gap: 5px;
-
-  padding-bottom: 13px;
-
-  margin-bottom: 22px;
-
-  border-bottom: 1px solid var(--line);
+.create-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
 }
-
-.toolbar-group {
-  display: flex;
 
-  align-items: center;
+/* FILES */
 
-  gap: 3px;
+.file-list{
+  max-width:1000px;
+  margin:auto;
 }
-
-.toolbar-divider {
-  width: 1px;
-
-  height: 23px;
 
-  margin: 0 7px;
-
-  background: var(--line);
+.file-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 17px;
+  border-top:1px solid var(--softLine);
 }
-
-.tool {
-  border: 0;
-
-  background: transparent;
-
-  color: rgba(231,243,235,.68);
 
-  padding: 7px 10px;
-
-  border-radius: 5px;
-
-  font-size: 15px;
-
-  transition: .15s ease;
+.file-name{
+  font-size:18px;
 }
-
-.tool:hover {
-  background: rgba(55,127,90,.15);
 
-  color: white;
+.file-type{
+  color:var(--muted);
+  font-size:14px;
 }
 
-.tool.active {
-  background: rgba(55,127,90,.22);
-
-  color: white;
+.file-actions{
+  display:flex;
+  gap:6px;
 }
-
-.toolbar-select {
-  height: 34px;
-
-  padding: 0 9px;
-
-  border: 1px solid var(--line);
-
-  border-radius: 5px;
-
-  outline: none;
-
-  background: #09170f;
 
-  color: var(--soft);
-
-  font-size: 14px;
+.small-btn{
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:transparent;
+  color:#b7c5be;
 }
-
-/* =========================================================
-   DOCS
-========================================================= */
-
-.docs-area {
-  display: flex;
-
-  justify-content: center;
 
-  padding-bottom: 70px;
+.small-btn:hover{
+  color:white;
+  border-color:#31966d;
 }
-
-.document-page {
-  width: min(820px,100%);
-
-  min-height: 1000px;
-
-  padding: 78px 82px;
-
-  background: var(--paper);
 
-  color: var(--paper-text);
+/* TOOLBAR */
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.30);
-
-  outline: none;
-
-  font-size: 18px;
-
-  line-height: 1.7;
-
-  caret-color: #176b49;
+.editor-shell{
+  max-width:1200px;
+  min-height:calc(100vh - 130px);
+  margin:auto;
+  display:flex;
+  flex-direction:column;
 }
 
-.document-page:empty::before {
-  content: "Start writing";
-
-  color: #a3aaa5;
+.toolbar{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:18px;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#091a13;
 }
-
-.document-page img {
-  max-width: 100%;
-
-  height: auto;
-
-  display: block;
 
-  margin: 20px auto;
+.toolbar button{
+  min-width:34px;
+  height:32px;
+  padding:0 9px;
+  border:1px solid transparent;
+  border-radius:5px;
+  background:transparent;
+  color:#b9c6c0;
+  font-size:15px;
 }
 
-.document-page h1 {
-  font-size: 40px;
-
-  line-height: 1.15;
-
-  margin: 0 0 20px;
+.toolbar button:hover{
+  color:white;
+  border-color:var(--line);
+  background:#0e271d;
 }
 
-.document-page h2 {
-  font-size: 30px;
-
-  margin: 26px 0 12px;
+.font-picker{
+  position:relative;
 }
-
-.document-page h3 {
-  font-size: 23px;
 
-  margin: 22px 0 10px;
+.font-search{
+  width:185px;
+  height:32px;
+  padding:0 10px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#0b1d16;
+  color:white;
+  outline:none;
 }
 
-/* =========================================================
-   SLIDES
-========================================================= */
-
-.slides-toolbar {
-  justify-content: space-between;
+.font-search::placeholder{
+  color:#70857b;
 }
-
-.slides-actions {
-  display: flex;
 
-  align-items: center;
-
-  gap: 3px;
+.font-menu{
+  position:absolute;
+  top:38px;
+  left:0;
+  z-index:50;
+  width:280px;
+  max-height:390px;
+  overflow:auto;
+  padding:5px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:#091a13;
+  box-shadow:var(--shadow);
+  display:none;
 }
-
-.slide-count {
-  color: var(--muted);
 
-  font-size: 14px;
+.font-menu.open{
+  display:block;
 }
 
-.slide-layout {
-  display: grid;
-
-  grid-template-columns: 155px minmax(0,1fr);
-
-  gap: 24px;
+.font-option{
+  width:100%;
+  display:block;
+  padding:8px 10px;
+  border:0;
+  border-radius:4px;
+  background:transparent;
+  color:#d5dfda;
+  text-align:left;
+  font-size:17px;
 }
-
-/* THUMBNAILS */
-
-.slide-sidebar {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 11px;
-
-  max-height: calc(100vh - 180px);
 
-  overflow-y: auto;
+.font-option:hover{
+  background:#123a2b;
+  color:white;
 }
-
-.slide-thumbnail {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 16 / 9;
-
-  padding: 10px;
-
-  border: 1px solid rgba(135,178,151,.16);
-
-  background: #f8faf8;
-
-  color: #161b17;
-
-  overflow: hidden;
 
-  text-align: left;
-
-  font-family: "Alegreya", serif;
-
-  transition: .16s ease;
+.size-select{
+  height:32px;
+  width:75px;
+  padding:0 7px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#0b1d16;
+  color:#dfe8e3;
+  outline:none;
 }
-
-.slide-thumbnail:hover {
-  border-color: rgba(135,194,157,.38);
 
-  transform: translateY(-1px);
+.color-control{
+  height:32px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:3px 7px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#0b1d16;
 }
 
-.slide-thumbnail.active {
-  border: 2px solid #258257;
+.color-control span{
+  color:#aebcb5;
+  font-size:14px;
 }
 
-.slide-thumbnail img {
-  max-width: 100%;
-  max-height: 100%;
+.color-control input{
+  width:24px;
+  height:24px;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
 }
-
-.slide-thumbnail-number {
-  position: absolute;
-
-  left: 7px;
-  bottom: 5px;
-
-  color: #657069;
-
-  font-family: "Alegreya", serif;
 
-  font-size: 10px;
+.color-control input::-webkit-color-swatch-wrapper{
+  padding:0;
 }
 
-/* SLIDE CANVAS */
-
-.slide-stage {
-  display: flex;
-
-  justify-content: center;
-
-  padding-bottom: 60px;
+.color-control input::-webkit-color-swatch{
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:4px;
 }
-
-.slide-canvas {
-  width: min(100%,980px);
-
-  aspect-ratio: 16 / 9;
-
-  padding: 68px;
-
-  background: #fafbf9;
-
-  color: #131713;
 
-  outline: none;
+/* DOCUMENT */
 
-  box-shadow:
-    0 28px 75px rgba(0,0,0,.34);
-
-  overflow: auto;
-
-  font-size: 34px;
-
-  line-height: 1.25;
+.document-page{
+  width:min(850px,100%);
+  min-height:1000px;
+  margin:auto;
+  padding:75px 85px;
+  outline:none;
+  background:white;
+  color:#111;
+  box-shadow:var(--shadow);
+  font-family:"Alegreya",serif;
+  font-size:18px;
+  line-height:1.65;
 }
 
-.slide-canvas:empty::before {
-  content: "Untitled presentation";
-
-  color: #a3aaa5;
+.document-page:focus{
+  outline:1px solid rgba(26,140,99,.35);
 }
-
-.slide-canvas img {
-  max-width: 100%;
-
-  max-height: 75%;
-
-  object-fit: contain;
 
-  display: block;
-
-  margin: 20px auto;
+.document-page img{
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:18px auto;
 }
 
-.slide-canvas h1 {
-  margin: 0 0 20px;
+/* SLIDES */
 
-  font-size: 55px;
+.slides-layout{
+  min-height:calc(100vh - 130px);
+  display:grid;
+  grid-template-columns:185px 1fr;
+  gap:20px;
 }
-
-.slide-canvas h2 {
-  margin: 0 0 17px;
 
-  font-size: 38px;
+.slide-sidebar{
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#091812;
+  overflow:auto;
 }
-
-/* =========================================================
-   PRESENTATION MODE
-========================================================= */
-
-.presentation {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 10000;
-
-  display: none;
-
-  align-items: center;
 
-  justify-content: center;
-
-  background: #020403;
+.slide-thumb{
+  width:100%;
+  aspect-ratio:16/9;
+  margin-bottom:10px;
+  padding:5px;
+  overflow:hidden;
+  border:2px solid transparent;
+  background:white;
+  color:#111;
+  cursor:pointer;
 }
 
-.presentation.active {
-  display: flex;
+.slide-thumb.active{
+  border-color:#39aa7d;
 }
-
-.presentation-slide {
-  width: min(94vw, 1500px);
-
-  aspect-ratio: 16 / 9;
-
-  padding: 7%;
-
-  background: #fafbf9;
-
-  color: #131713;
-
-  overflow: hidden;
-
-  font-size: clamp(22px,3vw,48px);
 
-  line-height: 1.25;
-
-  box-shadow:
-    0 35px 100px rgba(0,0,0,.55);
+.slide-thumb-content{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-size:8px;
 }
-
-.presentation-slide img {
-  max-width: 100%;
-
-  max-height: 80%;
-
-  object-fit: contain;
 
-  display: block;
-
-  margin: auto;
+.slide-area{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
-.presentation-controls {
-  position: fixed;
-
-  left: 50%;
-
-  bottom: 25px;
 
-  transform: translateX(-50%);
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-
-  padding: 7px;
-
-  background: rgba(7,19,13,.9);
-
-  border: 1px solid rgba(141,190,160,.22);
-
-  border-radius: 7px;
-
-  opacity: 0;
-
-  transition: opacity .2s ease;
+.slide{
+  width:min(100%,1000px);
+  aspect-ratio:16/9;
+  padding:70px;
+  overflow:hidden;
+  outline:none;
+  background:white;
+  color:#111;
+  box-shadow:var(--shadow);
+  font-family:"Alegreya",serif;
+  font-size:25px;
+  line-height:1.4;
 }
 
-.presentation:hover .presentation-controls {
-  opacity: 1;
+.slide:focus{
+  outline:1px solid rgba(25,137,96,.4);
 }
-
-.presentation-controls button {
-  border: 0;
-
-  background: transparent;
 
-  color: white;
-
-  padding: 8px 13px;
-
-  border-radius: 5px;
+.slide img{
+  max-width:100%;
+  max-height:65%;
+  display:block;
+  margin:15px auto;
+}
 
-  font-family: "Alegreya",serif;
+/* SHEETS */
 
-  font-size: 15px;
+.sheet-shell{
+  max-width:1250px;
+  margin:auto;
 }
 
-.presentation-controls button:hover {
-  background: rgba(65,136,98,.22);
+.formula-bar{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
 }
-
-.presentation-number {
-  color: rgba(235,245,238,.62);
 
-  padding: 0 8px;
-
-  font-size: 14px;
+.formula-name{
+  width:70px;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#091912;
+  color:#b7c5be;
+  text-align:center;
 }
-
-/* =========================================================
-   SHEETS
-========================================================= */
-
-.sheet-toolbar {
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  margin-bottom: 16px;
-
-  padding-bottom: 13px;
 
-  border-bottom: 1px solid var(--line);
+.formula-input{
+  flex:1;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  outline:none;
+  background:#091912;
+  color:white;
 }
 
-.cell-name {
-  width: 70px;
-
-  height: 36px;
-
-  border: 1px solid var(--line);
-
-  background: #09170f;
-
-  color: var(--muted);
-
-  text-align: center;
-
-  outline: none;
+.sheet-wrap{
+  overflow:auto;
+  border:1px solid var(--line);
 }
-
-.formula-input {
-  flex: 1;
-
-  height: 36px;
 
-  border: 1px solid var(--line);
-
-  background: #09170f;
-
-  color: white;
-
-  padding: 0 11px;
-
-  outline: none;
+.sheet{
+  min-width:1000px;
+  border-collapse:collapse;
+  background:#07110d;
 }
-
-.sheet-frame {
-  border: 1px solid var(--line);
-
-  overflow: auto;
-
-  max-height: calc(100vh - 180px);
 
-  background: #edf0ed;
+.sheet th,
+.sheet td{
+  min-width:100px;
+  height:34px;
+  padding:6px 8px;
+  border-right:1px solid rgba(75,120,101,.18);
+  border-bottom:1px solid rgba(75,120,101,.18);
+  font-family:"Alegreya",serif;
 }
 
-.sheet-table {
-  border-collapse: collapse;
-
-  min-width: 1100px;
-
-  width: 100%;
-
-  table-layout: fixed;
+.sheet th{
+  background:#0c2018;
+  color:#8fa49a;
+  font-weight:500;
+  text-align:center;
 }
-
-.sheet-table th,
-.sheet-table td {
-  height: 35px;
 
-  border-right: 1px solid #d7ddd8;
-
-  border-bottom: 1px solid #d7ddd8;
+.sheet td{
+  outline:none;
+  background:#07120e;
+  color:#dce6e0;
 }
-
-.sheet-table th {
-  width: 78px;
 
-  background: #e6eae6;
-
-  color: #566058;
+.sheet td:focus{
+  background:#0a1b14;
+  box-shadow:inset 0 0 0 1px #29976c;
+}
 
-  font-size: 13px;
+/* MODAL */
 
-  text-align: center;
+.modal-bg{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(8px);
 }
 
-.sheet-table td {
-  min-width: 115px;
+.modal{
+  width:min(420px,90%);
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#0b1c15;
+  box-shadow:var(--shadow);
+}
 
-  padding: 6px 9px;
+.modal h2{
+  margin:0 0 16px;
+  font-size:24px;
+}
 
-  background: #fbfcfb;
+.modal input{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  outline:none;
+  background:#07120e;
+  color:white;
+}
 
-  color: #171b18;
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:18px;
+}
 
-  outline: none;
+/* PRESENTATION */
 
-  font-size: 15px;
+.presentation{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:#000;
 }
 
-.sheet-table td:hover {
-  background: #f2f5f2;
+.presentation-slide{
+  width:100vw;
+  height:100vh;
+  padding:7vw;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:white;
+  color:#111;
+  font-family:"Alegreya",serif;
 }
 
-.sheet-table td.selected {
-  box-shadow:
-    inset 0 0 0 2px #18724c;
+.presentation-controls{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:7px;
+  background:rgba(15,15,15,.82);
 }
 
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast {
-  position: fixed;
-
-  left: 50%;
-
-  bottom: 24px;
+.presentation-controls button{
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:5px;
+  background:transparent;
+  color:white;
+}
 
-  transform:
-    translate(-50%,15px);
+.presentation-controls button:hover{
+  background:rgba(255,255,255,.08);
+}
 
-  opacity: 0;
+.slide-counter{
+  padding:8px 10px;
+  color:#aaa;
+}
 
-  pointer-events: none;
+/* COMMAND */
 
-  padding: 10px 17px;
+.command-bg{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:none;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:100px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);
+}
 
-  background: #0b3020;
+.command{
+  width:min(600px,90%);
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#0a1b14;
+  box-shadow:var(--shadow);
+}
 
-  border: 1px solid rgba(124,192,151,.28);
+.command input{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  outline:none;
+  background:transparent;
+  color:white;
+  font-size:17px;
+}
 
-  color: #eef8f1;
+.command-list button{
+  width:100%;
+  padding:12px 15px;
+  border:0;
+  background:transparent;
+  color:#c5d0cb;
+  text-align:left;
+  font-size:16px;
+}
 
-  border-radius: 6px;
+.command-list button:hover{
+  background:#123426;
+  color:white;
+}
 
-  transition: .2s ease;
+/* TOAST */
 
-  z-index: 20000;
+.toast{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  z-index:500;
+  padding:10px 15px;
+  border:1px solid #276f52;
+  border-radius:6px;
+  background:#102a20;
+  color:white;
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:.25s;
 }
-
-.toast.show {
-  opacity: 1;
 
-  transform:
-    translate(-50%,0);
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 
-@media(max-width:900px) {
+@media(max-width:800px){
 
-  .sidebar {
-    width: 205px;
+  .sidebar{
+    width:72px;
+    padding:18px 8px;
   }
 
-  .workspace {
-    padding: 25px;
+  .brand{
+    margin:0 0 25px;
+    font-size:20px;
+    text-align:center;
   }
 
-  .slide-layout {
-    grid-template-columns: 1fr;
+  .new-btn{
+    padding:10px;
+    font-size:0;
   }
 
-  .slide-sidebar {
-    flex-direction: row;
-
-    max-height: none;
-
-    overflow-x: auto;
+  .new-btn::after{
+    content:"+";
+    font-size:22px;
   }
 
-  .slide-thumbnail {
-    flex: 0 0 135px;
+  .nav button{
+    padding:11px 4px;
+    font-size:0;
+    text-align:center;
   }
 
-  .document-page {
-    padding: 55px;
+  .workspace{
+    padding:18px;
   }
 
-}
-
-@media(max-width:650px) {
-
-  body {
-    overflow: auto;
+  .create-row{
+    grid-template-columns:1fr;
   }
 
-  .sidebar {
-    width: 68px;
-
-    min-height: 100vh;
-
-    padding: 18px 7px;
+  .document-page{
+    padding:40px 25px;
   }
 
-  .logo {
-    font-size: 20px;
-
-    padding: 0;
-
-    text-align: center;
-
-    margin-bottom: 25px;
+  .slides-layout{
+    grid-template-columns:100px 1fr;
+    gap:10px;
   }
 
-  .new-button {
-    font-size: 0;
-
-    text-align: center;
-
-    padding: 11px 4px;
+  .slide{
+    padding:30px;
+    font-size:18px;
   }
 
-  .new-button::after {
-    content: "+";
-
-    font-size: 22px;
+  .font-search{
+    width:145px;
   }
-
-  .nav button {
-    font-size: 0;
-
-    text-align: center;
-
-    padding: 12px 4px;
-  }
-
-  .workspace {
-    padding: 18px;
-  }
-
-  .create-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .document-page {
-    min-height: 700px;
-
-    padding: 38px 25px;
-  }
-
-  .slide-canvas {
-    padding: 35px;
-
-    font-size: 23px;
-  }
-
-  .slide-canvas h1 {
-    font-size: 35px;
-  }
-
-  .editor-toolbar {
-    overflow-x: auto;
-  }
-
 }
 </style>
 </head>
@@ -1075,168 +816,301 @@ button {
 
 <div class="app">
 
-  <!-- SIDEBAR -->
-
   <aside class="sidebar">
 
-    <div class="logo">
-      Clamme.
+    <div class="brand">
+      clamme<span>.</span>
     </div>
 
     <button
+      class="new-btn"
       id="newButton"
-      class="new-button"
-      onclick="createCurrent()"
-    >
-      + New document
-    </button>
+      onclick="newCurrentFile()"
+    >+ New document</button>
 
-    <nav class="nav">
-
-      <button
-        id="nav-home"
-        onclick="goHome()"
-      >
-        Home
-      </button>
-
-      <button
-        id="nav-docs"
-        onclick="openSection('docs')"
-      >
-        Docs
-      </button>
-
-      <button
-        id="nav-slides"
-        onclick="openSection('slides')"
-      >
-        Slides
-      </button>
-
-      <button
-        id="nav-sheets"
-        onclick="openSection('sheets')"
-      >
-        Sheets
-      </button>
-
-    </nav>
+    <div class="nav">
+      <button id="navHome" class="active" onclick="goHome()">Home</button>
+      <button id="navDocs" onclick="showFiles('docs')">Docs</button>
+      <button id="navSlides" onclick="showFiles('slides')">Slides</button>
+      <button id="navSheets" onclick="showFiles('sheets')">Sheets</button>
+    </div>
 
   </aside>
-
-
-  <!-- MAIN -->
 
   <main class="main">
 
     <header class="topbar">
 
-      <div
-        id="pageTitle"
-        class="page-title"
-      >
-        Home
-      </div>
+      <div class="page-title" id="pageTitle">Home</div>
+
+      <button class="top-btn" onclick="openCommand()">⌘ K</button>
 
     </header>
 
-
-    <section
-      id="workspace"
-      class="workspace"
-    ></section>
+    <section class="workspace" id="workspace"></section>
 
   </main>
 
 </div>
 
+<!-- MODAL -->
 
-<!-- PRESENTATION -->
+<div class="modal-bg" id="modalBg">
 
-<div
-  id="presentation"
-  class="presentation"
->
+  <div class="modal">
 
-  <div
-    id="presentationSlide"
-    class="presentation-slide"
-  ></div>
+    <h2 id="modalTitle">Create</h2>
 
+    <input id="modalInput" placeholder="Name">
 
-  <div class="presentation-controls">
-
-    <button onclick="previousPresentationSlide()">
-      Previous
-    </button>
-
-    <span
-      id="presentationNumber"
-      class="presentation-number"
-    ></span>
-
-    <button onclick="nextPresentationSlide()">
-      Next
-    </button>
-
-    <button onclick="exitPresentation()">
-      Exit
-    </button>
+    <div class="modal-actions">
+      <button class="small-btn" onclick="closeModal()">Cancel</button>
+      <button
+        class="new-btn"
+        style="width:auto"
+        onclick="confirmModal()"
+      >Create</button>
+    </div>
 
   </div>
 
 </div>
 
+<!-- PRESENTATION -->
+
+<div class="presentation" id="presentation">
+
+  <div
+    class="presentation-slide"
+    id="presentationSlide"
+  ></div>
+
+  <div class="presentation-controls">
+
+    <button onclick="previousSlide()">Previous</button>
+
+    <button onclick="nextSlide()">Next</button>
+
+    <span class="slide-counter" id="slideCounter">1 / 1</span>
+
+    <button onclick="exitPresentation()">Exit</button>
+
+  </div>
+
+</div>
+
+<!-- COMMAND PALETTE -->
 
 <div
-  id="toast"
-  class="toast"
-></div>
+  class="command-bg"
+  id="commandBg"
+  onclick="closeCommand(event)"
+>
 
+  <div
+    class="command"
+    onclick="event.stopPropagation()"
+  >
+
+    <input
+      id="commandInput"
+      placeholder="Search commands..."
+      oninput="filterCommands()"
+    >
+
+    <div class="command-list" id="commandList">
+
+      <button onclick="newDocument()">New document</button>
+      <button onclick="newPresentation()">New presentation</button>
+      <button onclick="newSpreadsheet()">New spreadsheet</button>
+
+      <button onclick="goHome()">Go home</button>
+
+      <button onclick="showFiles('docs')">Open Docs</button>
+      <button onclick="showFiles('slides')">Open Slides</button>
+      <button onclick="showFiles('sheets')">Open Sheets</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
 
 /* =========================================================
-   CORE
+   CLAMME DATA
 ========================================================= */
 
-const BASE = "/Clamme/";
+const STORAGE_KEY="clamme_files_v5";
 
-let currentSection = "home";
+let files=JSON.parse(
+  localStorage.getItem(STORAGE_KEY)||"[]"
+);
 
-let currentSlide = 0;
-
-let slides = [""];
+let currentSection="home";
+let currentFileId=null;
+let modalAction=null;
+let presentationIndex=0;
 
 
 /* =========================================================
-   SERVICE WORKER
+   100 FONTS
 ========================================================= */
 
-if ("serviceWorker" in navigator) {
+const fonts=[
 
-  window.addEventListener(
-    "load",
-    () => {
+"Alegreya",
+"Abril Fatface",
+"Aclonica",
+"Alfa Slab One",
+"Alice",
+"Alegreya Sans",
+"Amatic SC",
+"Anton",
+"Archivo",
+"Archivo Black",
+"Arimo",
+"Asap",
+"Barlow",
+"Bebas Neue",
+"Bitter",
+"Black Ops One",
+"Bodoni Moda",
+"Bree Serif",
+"Cabin",
+"Caveat",
+"Chakra Petch",
+"Chivo",
+"Cinzel",
+"Comfortaa",
+"Comic Neue",
+"Comic Sans MS",
+"Concert One",
+"Cormorant Garamond",
+"Courgette",
+"Crimson Text",
+"DM Mono",
+"DM Sans",
+"DM Serif Display",
+"Dancing Script",
+"Domine",
+"EB Garamond",
+"Exo 2",
+"Figtree",
+"Fira Code",
+"Fira Sans",
+"Frank Ruhl Libre",
+"Fredoka",
+"Gabarito",
+"GFS Didot",
+"Gideon Roman",
+"Gloria Hallelujah",
+"Great Vibes",
+"Heebo",
+"IBM Plex Mono",
+"IBM Plex Sans",
+"IBM Plex Serif",
+"Inconsolata",
+"Indie Flower",
+"Inter",
+"Josefin Sans",
+"Josefin Slab",
+"Jost",
+"Kalam",
+"Kanit",
+"Karla",
+"Lato",
+"League Spartan",
+"Lexend",
+"Libre Baskerville",
+"Libre Franklin",
+"Lilita One",
+"Lobster",
+"Manrope",
+"Merriweather",
+"Michroma",
+"Montserrat",
+"Mukta",
+"Nanum Gothic",
+"Newsreader",
+"Nunito",
+"Old Standard TT",
+"Open Sans",
+"Orbitron",
+"Oswald",
+"Outfit",
+"Pacifico",
+"Passion One",
+"Patrick Hand",
+"Permanent Marker",
+"Philosopher",
+"Playfair Display",
+"Plus Jakarta Sans",
+"Poppins",
+"Prata",
+"Prompt",
+"Quicksand",
+"Raleway",
+"Righteous",
+"Roboto",
+"Roboto Mono",
+"Roboto Slab",
+"Rock Salt",
+"Rubik",
+"Satisfy",
+"Schoolbell",
+"Shadows Into Light",
+"Signika",
+"Silkscreen",
+"Source Code Pro",
+"Source Sans 3",
+"Space Grotesk",
+"Space Mono",
+"Special Elite",
+"Spectral",
+"Staatliches",
+"Syne",
+"Teko",
+"Titillium Web",
+"Ubuntu",
+"Unbounded",
+"Varela Round",
+"Vollkorn",
+"Work Sans"
 
-      navigator.serviceWorker
-        .register(
-          BASE + "sw.js",
-          {
-            scope: BASE
-          }
-        )
-        .catch(
-          error => console.error(
-            "Clamme service worker:",
-            error
-          )
-        );
+];
 
-    }
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function saveFiles(){
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(files)
   );
+}
 
+function uid(){
+  return Date.now().toString(36)+
+    Math.random().toString(36).slice(2);
+}
+
+function escapeHTML(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function findFile(id){
+  return files.find(f=>f.id===id);
 }
 
 
@@ -1244,115 +1118,70 @@ if ("serviceWorker" in navigator) {
    NAVIGATION
 ========================================================= */
 
-function setActive(section) {
+function setActiveNav(section){
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      button =>
-        button.classList.remove("active")
-    );
+  document.querySelectorAll(".nav button")
+    .forEach(button=>button.classList.remove("active"));
 
-  const button =
-    document.getElementById(
-      "nav-" + section
-    );
+  if(section==="home")
+    document.getElementById("navHome").classList.add("active");
 
-  if (button) {
+  if(section==="docs")
+    document.getElementById("navDocs").classList.add("active");
 
-    button.classList.add("active");
+  if(section==="slides")
+    document.getElementById("navSlides").classList.add("active");
 
-  }
-
+  if(section==="sheets")
+    document.getElementById("navSheets").classList.add("active");
 }
 
+function updateNewButton(){
 
-function updateNewButton() {
+  const button=document.getElementById("newButton");
 
-  const button =
-    document.getElementById(
-      "newButton"
-    );
-
-  if (currentSection === "slides") {
-
-    button.textContent =
-      "+ New presentation";
-
+  if(currentSection==="slides"){
+    button.textContent="+ New presentation";
   }
-
-  else if (currentSection === "sheets") {
-
-    button.textContent =
-      "+ New spreadsheet";
-
+  else if(currentSection==="sheets"){
+    button.textContent="+ New spreadsheet";
   }
-
-  else {
-
-    button.textContent =
-      "+ New document";
-
+  else{
+    button.textContent="+ New document";
   }
-
 }
 
+function goHome(){
 
-function goHome() {
+  currentSection="home";
+  currentFileId=null;
 
-  currentSection = "home";
+  document.getElementById("pageTitle").textContent="Home";
 
-  setActive("home");
-
+  setActiveNav("home");
   updateNewButton();
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent = "Home";
 
   renderHome();
-
 }
 
+function showFiles(type){
 
-function openSection(section) {
+  currentSection=type;
+  currentFileId=null;
 
-  currentSection = section;
+  const titles={
+    docs:"Docs",
+    slides:"Slides",
+    sheets:"Sheets"
+  };
 
-  setActive(section);
+  document.getElementById("pageTitle")
+    .textContent=titles[type];
 
+  setActiveNav(type);
   updateNewButton();
 
-  if (section === "docs") {
-
-    document.getElementById(
-      "pageTitle"
-    ).textContent = "Docs";
-
-    renderDocs();
-
-  }
-
-  else if (section === "slides") {
-
-    document.getElementById(
-      "pageTitle"
-    ).textContent = "Slides";
-
-    renderSlides();
-
-  }
-
-  else if (section === "sheets") {
-
-    document.getElementById(
-      "pageTitle"
-    ).textContent = "Sheets";
-
-    renderSheets();
-
-  }
-
+  renderFileList(type);
 }
 
 
@@ -1360,314 +1189,694 @@ function openSection(section) {
    HOME
 ========================================================= */
 
-function renderHome() {
+function renderHome(){
 
-  document.getElementById(
-    "workspace"
-  ).innerHTML = `
+  document.getElementById("workspace").innerHTML=`
 
     <div class="home">
 
-      <div class="home-header">
+      <h1 class="home-title">Create.</h1>
 
-        <h1>Clamme.</h1>
+      <div class="home-subtitle">
+        Documents, presentations and spreadsheets in one place.
+      </div>
 
-        <div class="home-rule"></div>
+      <div class="create-row">
+
+        <div class="create-card" onclick="newDocument()">
+          <h3>Document</h3>
+          <p>Write and format a document.</p>
+        </div>
+
+        <div class="create-card" onclick="newPresentation()">
+          <h3>Presentation</h3>
+          <p>Build a presentation and present it.</p>
+        </div>
+
+        <div class="create-card" onclick="newSpreadsheet()">
+          <h3>Spreadsheet</h3>
+          <p>Work with data and formulas.</p>
+        </div>
 
       </div>
 
+      <div style="margin-top:55px">
 
-      <div class="create-grid">
+        <h2 style="font-size:24px;font-weight:500">
+          Your files
+        </h2>
 
-        <button
-          class="create-card"
-          onclick="newDocument()"
-        >
-
-          <span class="create-card-title">
-            Document
-          </span>
-
-          <span class="create-card-description">
-            Write and refine.
-          </span>
-
-        </button>
-
-
-        <button
-          class="create-card"
-          onclick="newPresentation()"
-        >
-
-          <span class="create-card-title">
-            Presentation
-          </span>
-
-          <span class="create-card-description">
-            Design and present.
-          </span>
-
-        </button>
-
-
-        <button
-          class="create-card"
-          onclick="newSpreadsheet()"
-        >
-
-          <span class="create-card-title">
-            Spreadsheet
-          </span>
-
-          <span class="create-card-description">
-            Organize and calculate.
-          </span>
-
-        </button>
+        <div id="homeFiles"></div>
 
       </div>
 
     </div>
-
   `;
 
+  renderHomeFiles();
 }
 
+function renderHomeFiles(){
 
-/* =========================================================
-   FONT OPTIONS
-========================================================= */
+  const container=document.getElementById("homeFiles");
 
-const fontOptions = `
+  if(!files.length){
 
-  <option value="Alegreya">
-    Alegreya
-  </option>
+    container.innerHTML=`
+      <div style="
+        color:#82948b;
+        border-top:1px solid var(--softLine);
+        padding-top:18px
+      ">
+        No files yet.
+      </div>
+    `;
 
-  <option value="Georgia">
-    Georgia
-  </option>
+    return;
+  }
 
-  <option value="Playfair Display">
-    Playfair Display
-  </option>
+  container.innerHTML=files
+    .slice()
+    .reverse()
+    .map(file=>`
 
-  <option value="Libre Baskerville">
-    Libre Baskerville
-  </option>
+      <div class="file-row">
 
-  <option value="Merriweather">
-    Merriweather
-  </option>
+        <div>
 
-  <option value="Inter">
-    Inter
-  </option>
+          <div class="file-name">
+            ${escapeHTML(file.name)}
+          </div>
 
-  <option value="Roboto">
-    Roboto
-  </option>
-
-  <option value="Source Sans 3">
-    Source Sans
-  </option>
-
-`;
-
-
-const sizeOptions = `
-
-  <option value="1">
-    12
-  </option>
-
-  <option value="2">
-    14
-  </option>
-
-  <option value="3">
-    16
-  </option>
-
-  <option value="4">
-    18
-  </option>
-
-  <option value="5">
-    22
-  </option>
-
-  <option value="6">
-    28
-  </option>
-
-  <option value="7">
-    36
-  </option>
-
-`;
-
-
-/* =========================================================
-   DOCS
-========================================================= */
-
-function renderDocs() {
-
-  const saved =
-    localStorage.getItem(
-      "clamme-document"
-    ) || "";
-
-
-  document.getElementById(
-    "workspace"
-  ).innerHTML = `
-
-    <div class="editor-shell">
-
-      <div class="editor-toolbar">
-
-        <select
-          id="docFont"
-          class="toolbar-select"
-          onchange="changeDocFont(this.value)"
-        >
-
-          ${fontOptions}
-
-        </select>
-
-
-        <select
-          class="toolbar-select"
-          onchange="changeDocSize(this.value)"
-        >
-
-          ${sizeOptions}
-
-        </select>
-
-
-        <div class="toolbar-divider"></div>
-
-
-        <div class="toolbar-group">
-
-          <button
-            class="tool"
-            onclick="docCommand('bold')"
-          >
-            Bold
-          </button>
-
-          <button
-            class="tool"
-            onclick="docCommand('italic')"
-          >
-            Italic
-          </button>
-
-          <button
-            class="tool"
-            onclick="docCommand('underline')"
-          >
-            Underline
-          </button>
+          <div class="file-type">
+            ${file.type}
+          </div>
 
         </div>
 
+        <div class="file-actions">
 
-        <div class="toolbar-divider"></div>
+          <button
+            class="small-btn"
+            onclick="openFile('${file.id}')"
+          >Open</button>
 
+          <button
+            class="small-btn"
+            onclick="renameFile('${file.id}')"
+          >Rename</button>
 
-        <button
-          class="tool"
-          onclick="insertDocumentImage()"
-        >
-          Image
-        </button>
+          <button
+            class="small-btn"
+            onclick="deleteFile('${file.id}')"
+          >Delete</button>
 
-
-        <button
-          class="tool"
-          onclick="docCommand('justifyLeft')"
-        >
-          Left
-        </button>
-
-
-        <button
-          class="tool"
-          onclick="docCommand('justifyCenter')"
-        >
-          Center
-        </button>
-
-
-        <button
-          class="tool"
-          onclick="docCommand('justifyRight')"
-        >
-          Right
-        </button>
-
-
-        <div class="toolbar-divider"></div>
-
-
-        <button
-          class="tool"
-          onclick="printDocument()"
-        >
-          Print
-        </button>
+        </div>
 
       </div>
 
+    `).join("");
+}
 
-      <div class="docs-area">
 
-        <article
-          id="documentPage"
-          class="document-page"
-          contenteditable="true"
-          spellcheck="true"
-        >${saved}</article>
+/* =========================================================
+   FILE LIST
+========================================================= */
+
+function renderFileList(type){
+
+  const list=files.filter(
+    file=>file.type===type
+  );
+
+  const workspace=document.getElementById("workspace");
+
+  if(!list.length){
+
+    workspace.innerHTML=`
+      <div class="file-list">
+        <div style="
+          padding:40px 0;
+          color:#83958d
+        ">
+          No ${type} yet.
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  workspace.innerHTML=`
+
+    <div class="file-list">
+
+      ${list.slice().reverse().map(file=>`
+
+        <div class="file-row">
+
+          <div>
+
+            <div class="file-name">
+              ${escapeHTML(file.name)}
+            </div>
+
+            <div class="file-type">
+              ${file.type}
+            </div>
+
+          </div>
+
+          <div class="file-actions">
+
+            <button
+              class="small-btn"
+              onclick="openFile('${file.id}')"
+            >Open</button>
+
+            <button
+              class="small-btn"
+              onclick="renameFile('${file.id}')"
+            >Rename</button>
+
+            <button
+              class="small-btn"
+              onclick="duplicateFile('${file.id}')"
+            >Duplicate</button>
+
+            <button
+              class="small-btn"
+              onclick="deleteFile('${file.id}')"
+            >Delete</button>
+
+          </div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   CREATE
+========================================================= */
+
+function newCurrentFile(){
+
+  if(currentSection==="slides"){
+    newPresentation();
+  }
+  else if(currentSection==="sheets"){
+    newSpreadsheet();
+  }
+  else{
+    newDocument();
+  }
+}
+
+function createFile(type,name){
+
+  const file={
+    id:uid(),
+    name:name,
+    type:type,
+
+    content:
+      type==="docs"
+      ? ""
+      : type==="slides"
+      ? [{content:""}]
+      : Array.from(
+          {length:20},
+          ()=>Array.from(
+            {length:10},
+            ()=>""
+          )
+        ),
+
+    updated:Date.now()
+  };
+
+  files.push(file);
+
+  saveFiles();
+
+  openFile(file.id);
+}
+
+function newDocument(){
+
+  openCreateModal(
+    "New document",
+    "Document",
+    name=>{
+      createFile(
+        "docs",
+        name||"Untitled document"
+      );
+    }
+  );
+}
+
+function newPresentation(){
+
+  openCreateModal(
+    "New presentation",
+    "Presentation",
+    name=>{
+      createFile(
+        "slides",
+        name||"Untitled presentation"
+      );
+    }
+  );
+}
+
+function newSpreadsheet(){
+
+  openCreateModal(
+    "New spreadsheet",
+    "Spreadsheet",
+    name=>{
+      createFile(
+        "sheets",
+        name||"Untitled spreadsheet"
+      );
+    }
+  );
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openCreateModal(title,placeholder,callback){
+
+  modalAction=callback;
+
+  document.getElementById("modalTitle")
+    .textContent=title;
+
+  const input=
+    document.getElementById("modalInput");
+
+  input.placeholder=placeholder;
+  input.value="";
+
+  document.getElementById("modalBg")
+    .style.display="flex";
+
+  setTimeout(
+    ()=>input.focus(),
+    50
+  );
+}
+
+function closeModal(){
+
+  document.getElementById("modalBg")
+    .style.display="none";
+
+  modalAction=null;
+}
+
+function confirmModal(){
+
+  const value=
+    document.getElementById("modalInput")
+      .value.trim();
+
+  if(modalAction){
+
+    const action=modalAction;
+
+    closeModal();
+
+    action(value);
+  }
+}
+
+document.getElementById("modalInput")
+  .addEventListener("keydown",e=>{
+
+    if(e.key==="Enter")
+      confirmModal();
+
+    if(e.key==="Escape")
+      closeModal();
+
+  });
+
+
+/* =========================================================
+   FILE ACTIONS
+========================================================= */
+
+function openFile(id){
+
+  const file=findFile(id);
+
+  if(!file) return;
+
+  currentFileId=id;
+  currentSection=file.type;
+
+  document.getElementById("pageTitle")
+    .textContent=file.name;
+
+  setActiveNav(file.type);
+  updateNewButton();
+
+  if(file.type==="docs")
+    renderDocs(file);
+
+  if(file.type==="slides")
+    renderSlides(file);
+
+  if(file.type==="sheets")
+    renderSheets(file);
+}
+
+function renameFile(id){
+
+  const file=findFile(id);
+
+  if(!file) return;
+
+  openCreateModal(
+    "Rename file",
+    "New name",
+    name=>{
+
+      if(name){
+
+        file.name=name;
+
+        saveFiles();
+
+        openFile(id);
+      }
+
+    }
+  );
+}
+
+function duplicateFile(id){
+
+  const file=findFile(id);
+
+  if(!file) return;
+
+  const copy=
+    JSON.parse(JSON.stringify(file));
+
+  copy.id=uid();
+  copy.name=file.name+" copy";
+  copy.updated=Date.now();
+
+  files.push(copy);
+
+  saveFiles();
+
+  showToast("File duplicated");
+
+  renderFileList(file.type);
+}
+
+function deleteFile(id){
+
+  const file=findFile(id);
+
+  if(!file) return;
+
+  if(!confirm("Delete this file?"))
+    return;
+
+  files=files.filter(
+    file=>file.id!==id
+  );
+
+  saveFiles();
+
+  showToast("File deleted");
+
+  if(currentSection==="home")
+    renderHome();
+  else
+    renderFileList(currentSection);
+}
+
+
+/* =========================================================
+   FONT PICKER
+========================================================= */
+
+function createFontPicker(target){
+
+  return `
+
+    <div class="font-picker">
+
+      <input
+        class="font-search"
+        id="${target}FontSearch"
+        placeholder="Choose font..."
+        autocomplete="off"
+        onclick="openFontMenu('${target}')"
+        oninput="filterFonts('${target}')"
+      >
+
+      <div
+        class="font-menu"
+        id="${target}FontMenu"
+      >
+
+        ${fonts.map(font=>`
+
+          <button
+            class="font-option"
+            data-font="${escapeHTML(font)}"
+            style="font-family:'${font}',sans-serif"
+            onclick="selectFont('${target}',${JSON.stringify(font)})"
+          >
+            ${escapeHTML(font)}
+          </button>
+
+        `).join("")}
 
       </div>
 
     </div>
 
-    <input
-      id="documentImageInput"
-      type="file"
-      accept="image/*"
-      hidden
-    >
-
   `;
+}
 
+function openFontMenu(target){
 
-  const page =
+  const menu=
     document.getElementById(
-      "documentPage"
+      target+"FontMenu"
     );
 
+  if(menu)
+    menu.classList.add("open");
+}
 
-  page.addEventListener(
-    "input",
-    saveDocument
-  );
+function closeFontMenus(){
 
+  document.querySelectorAll(".font-menu")
+    .forEach(menu=>{
+      menu.classList.remove("open");
+    });
+}
+
+document.addEventListener("click",e=>{
+
+  if(
+    !e.target.closest(".font-picker")
+  ){
+    closeFontMenus();
+  }
+
+});
+
+function filterFonts(target){
+
+  const search=
+    document.getElementById(
+      target+"FontSearch"
+    );
+
+  const menu=
+    document.getElementById(
+      target+"FontMenu"
+    );
+
+  if(!search || !menu)
+    return;
+
+  menu.classList.add("open");
+
+  const query=
+    search.value.toLowerCase();
+
+  menu.querySelectorAll(".font-option")
+    .forEach(option=>{
+
+      const name=
+        option.dataset.font.toLowerCase();
+
+      option.style.display=
+        name.includes(query)
+        ? "block"
+        : "none";
+
+    });
+}
+
+function selectFont(target,font){
+
+  const search=
+    document.getElementById(
+      target+"FontSearch"
+    );
+
+  if(search)
+    search.value=font;
+
+  closeFontMenus();
+
+  if(target==="doc")
+    formatDoc("fontName",font);
+
+  if(target==="slide")
+    formatSlide("fontName",font);
 }
 
 
-function docCommand(
-  command,
-  value = null
-) {
+/* =========================================================
+   DOCUMENTS
+========================================================= */
+
+function documentToolbar(){
+
+  return `
+
+    <div class="toolbar">
+
+      ${createFontPicker("doc")}
+
+      <select
+        class="size-select"
+        onchange="formatDoc('fontSize',this.value)"
+      >
+        <option value="2">12</option>
+        <option value="3" selected>16</option>
+        <option value="4">18</option>
+        <option value="5">24</option>
+        <option value="6">32</option>
+        <option value="7">40</option>
+        <option value="7">48</option>
+        <option value="7">60</option>
+        <option value="7">72</option>
+      </select>
+
+      <div class="color-control">
+
+        <span>Text</span>
+
+        <input
+          id="docColor"
+          type="color"
+          value="#111111"
+          onchange="formatDoc('foreColor',this.value)"
+          title="Text color"
+        >
+
+      </div>
+
+      <button onclick="formatDoc('bold')">
+        <b>B</b>
+      </button>
+
+      <button onclick="formatDoc('italic')">
+        <i>I</i>
+      </button>
+
+      <button onclick="formatDoc('underline')">
+        <u>U</u>
+      </button>
+
+      <button onclick="formatDoc('justifyLeft')">
+        Left
+      </button>
+
+      <button onclick="formatDoc('justifyCenter')">
+        Center
+      </button>
+
+      <button onclick="formatDoc('justifyRight')">
+        Right
+      </button>
+
+      <button onclick="insertDocImage()">
+        Image
+      </button>
+
+      <button onclick="window.print()">
+        Print
+      </button>
+
+      <input
+        id="docImageInput"
+        type="file"
+        accept="image/*"
+        style="display:none"
+        onchange="addDocImage(event)"
+      >
+
+    </div>
+
+  `;
+}
+
+function renderDocs(file){
+
+  document.getElementById("workspace").innerHTML=`
+
+    <div class="editor-shell">
+
+      ${documentToolbar()}
+
+      <div
+        id="docEditor"
+        class="document-page"
+        contenteditable="true"
+        spellcheck="true"
+      >${file.content}</div>
+
+    </div>
+
+  `;
+
+  const editor=
+    document.getElementById("docEditor");
+
+  editor.addEventListener("input",()=>{
+
+    file.content=editor.innerHTML;
+    file.updated=Date.now();
+
+    saveFiles();
+
+  });
+}
+
+function formatDoc(command,value=null){
 
   document.execCommand(
     command,
@@ -1675,159 +1884,73 @@ function docCommand(
     value
   );
 
-  saveDocument();
+  const editor=
+    document.getElementById("docEditor");
 
+  if(editor){
+
+    const file=
+      findFile(currentFileId);
+
+    if(file){
+
+      file.content=
+        editor.innerHTML;
+
+      file.updated=
+        Date.now();
+
+      saveFiles();
+
+    }
+  }
 }
 
+function insertDocImage(){
 
-function changeDocFont(font) {
-
-  document.execCommand(
-    "fontName",
-    false,
-    font
-  );
-
-  saveDocument();
-
+  document.getElementById(
+    "docImageInput"
+  ).click();
 }
 
+function addDocImage(event){
 
-function changeDocSize(size) {
+  const imageFile=
+    event.target.files[0];
 
-  document.execCommand(
-    "fontSize",
-    false,
-    size
-  );
+  if(!imageFile)
+    return;
 
-  saveDocument();
+  const reader=
+    new FileReader();
 
-}
+  reader.onload=e=>{
 
+    const editor=
+      document.getElementById("docEditor");
 
-function insertDocumentImage() {
+    editor.focus();
 
-  const input =
-    document.getElementById(
-      "documentImageInput"
+    document.execCommand(
+      "insertHTML",
+      false,
+      `<img src="${e.target.result}" alt="Image">`
     );
 
-  if (!input) return;
+    const file=
+      findFile(currentFileId);
 
-  input.click();
+    if(file){
 
+      file.content=
+        editor.innerHTML;
 
-  input.onchange = event => {
+      saveFiles();
 
-    const file =
-      event.target.files[0];
-
-    if (!file) return;
-
-    const reader =
-      new FileReader();
-
-    reader.onload = event => {
-
-      const page =
-        document.getElementById(
-          "documentPage"
-        );
-
-      page.focus();
-
-      document.execCommand(
-        "insertImage",
-        false,
-        event.target.result
-      );
-
-      saveDocument();
-
-    };
-
-    reader.readAsDataURL(file);
-
+    }
   };
 
-}
-
-
-function saveDocument() {
-
-  const page =
-    document.getElementById(
-      "documentPage"
-    );
-
-  if (!page) return;
-
-  localStorage.setItem(
-    "clamme-document",
-    page.innerHTML
-  );
-
-}
-
-
-function printDocument() {
-
-  const page =
-    document.getElementById(
-      "documentPage"
-    );
-
-  if (!page) return;
-
-  const printWindow =
-    window.open(
-      "",
-      "_blank"
-    );
-
-  printWindow.document.write(`
-
-    <!DOCTYPE html>
-
-    <html>
-
-    <head>
-
-      <title>Clamme Document</title>
-
-      <style>
-
-        body {
-          font-family: Georgia, serif;
-          padding: 60px;
-          line-height: 1.7;
-        }
-
-        img {
-          max-width: 100%;
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      ${page.innerHTML}
-
-    </body>
-
-    </html>
-
-  `);
-
-  printWindow.document.close();
-
-  printWindow.focus();
-
-  printWindow.print();
-
+  reader.readAsDataURL(imageFile);
 }
 
 
@@ -1835,191 +1958,126 @@ function printDocument() {
    SLIDES
 ========================================================= */
 
-function loadSlides() {
+function renderSlides(file){
 
-  try {
+  if(
+    !Array.isArray(file.content) ||
+    !file.content.length
+  ){
 
-    const saved =
-      JSON.parse(
-        localStorage.getItem(
-          "clamme-slides"
-        )
-      );
+    file.content=[{content:""}];
 
-    if (
-      Array.isArray(saved) &&
-      saved.length > 0
-    ) {
-
-      slides = saved;
-
-    }
-
-    else {
-
-      slides = [""];
-
-    }
-
+    saveFiles();
   }
 
-  catch {
+  let active=0;
 
-    slides = [""];
+  document.getElementById("workspace").innerHTML=`
 
-  }
+    <div class="editor-shell">
 
-}
+      <div class="toolbar">
 
+        ${createFontPicker("slide")}
 
-function saveSlides() {
+        <select
+          class="size-select"
+          onchange="formatSlide('fontSize',this.value)"
+        >
+          <option value="2">12</option>
+          <option value="3">16</option>
+          <option value="4" selected>18</option>
+          <option value="5">24</option>
+          <option value="6">32</option>
+          <option value="7">40</option>
+          <option value="7">48</option>
+          <option value="7">60</option>
+          <option value="7">72</option>
+        </select>
 
-  localStorage.setItem(
-    "clamme-slides",
-    JSON.stringify(slides)
-  );
+        <div class="color-control">
 
-}
+          <span>Text</span>
 
-
-function renderSlides() {
-
-  loadSlides();
-
-  currentSlide =
-    Math.min(
-      currentSlide,
-      slides.length - 1
-    );
-
-
-  document.getElementById(
-    "workspace"
-  ).innerHTML = `
-
-    <div class="slides-shell">
-
-      <div class="slides-toolbar">
-
-        <div class="slides-actions">
-
-          <select
-            id="slideFont"
-            class="toolbar-select"
-            onchange="changeSlideFont(this.value)"
+          <input
+            id="slideColor"
+            type="color"
+            value="#111111"
+            onchange="formatSlide('foreColor',this.value)"
+            title="Text color"
           >
-
-            ${fontOptions}
-
-          </select>
-
-
-          <select
-            class="toolbar-select"
-            onchange="changeSlideSize(this.value)"
-          >
-
-            ${sizeOptions}
-
-          </select>
-
-
-          <div class="toolbar-divider"></div>
-
-
-          <button
-            class="tool"
-            onclick="slideCommand('bold')"
-          >
-            Bold
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="slideCommand('italic')"
-          >
-            Italic
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="slideCommand('underline')"
-          >
-            Underline
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="insertSlideImage()"
-          >
-            Image
-          </button>
-
-
-          <div class="toolbar-divider"></div>
-
-
-          <button
-            class="tool"
-            onclick="addSlide()"
-          >
-            New slide
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="duplicateSlide()"
-          >
-            Duplicate
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="deleteSlide()"
-          >
-            Delete
-          </button>
-
-
-          <button
-            class="tool"
-            onclick="startPresentation()"
-          >
-            Present
-          </button>
 
         </div>
 
+        <button onclick="formatSlide('bold')">
+          <b>B</b>
+        </button>
 
-        <div
-          id="slideCount"
-          class="slide-count"
-        ></div>
+        <button onclick="formatSlide('italic')">
+          <i>I</i>
+        </button>
+
+        <button onclick="formatSlide('underline')">
+          <u>U</u>
+        </button>
+
+        <button onclick="formatSlide('justifyLeft')">
+          Left
+        </button>
+
+        <button onclick="formatSlide('justifyCenter')">
+          Center
+        </button>
+
+        <button onclick="formatSlide('justifyRight')">
+          Right
+        </button>
+
+        <button onclick="addSlide()">
+          New slide
+        </button>
+
+        <button onclick="duplicateSlide()">
+          Duplicate
+        </button>
+
+        <button onclick="deleteSlide()">
+          Delete
+        </button>
+
+        <button onclick="insertSlideImage()">
+          Image
+        </button>
+
+        <button onclick="startPresentation()">
+          Present
+        </button>
+
+        <input
+          id="slideImageInput"
+          type="file"
+          accept="image/*"
+          style="display:none"
+          onchange="addSlideImage(event)"
+        >
 
       </div>
 
+      <div class="slides-layout">
 
-      <div class="slide-layout">
-
-        <aside
-          id="slideSidebar"
+        <div
           class="slide-sidebar"
-        ></aside>
+          id="slideSidebar"
+        ></div>
 
+        <div class="slide-area">
 
-        <div class="slide-stage">
-
-          <article
-            id="slideCanvas"
-            class="slide-canvas"
+          <div
+            id="slideEditor"
+            class="slide"
             contenteditable="true"
             spellcheck="true"
-          ></article>
+          ></div>
 
         </div>
 
@@ -2027,61 +2085,79 @@ function renderSlides() {
 
     </div>
 
-
-    <input
-      id="slideImageInput"
-      type="file"
-      accept="image/*"
-      hidden
-    >
-
   `;
 
+  function renderActive(){
 
-  renderSlideThumbnails();
+    const editor=
+      document.getElementById(
+        "slideEditor"
+      );
 
-  renderCurrentSlide();
+    editor.innerHTML=
+      file.content[active].content||"";
 
+    editor.oninput=()=>{
 
-  document
-    .getElementById(
-      "slideCanvas"
-    )
-    .addEventListener(
-      "input",
-      saveCurrentSlide
-    );
+      file.content[active].content=
+        editor.innerHTML;
 
+      file.updated=Date.now();
+
+      saveFiles();
+
+      renderThumbs();
+
+    };
+
+    renderThumbs();
+  }
+
+  function renderThumbs(){
+
+    const sidebar=
+      document.getElementById(
+        "slideSidebar"
+      );
+
+    sidebar.innerHTML=
+      file.content.map(
+        (slide,index)=>`
+
+        <div
+          class="slide-thumb ${index===active?"active":""}"
+          onclick="window.__selectSlide(${index})"
+        >
+
+          <div class="slide-thumb-content">
+            ${slide.content||""}
+          </div>
+
+        </div>
+
+      `
+      ).join("");
+  }
+
+  window.__selectSlide=index=>{
+
+    active=index;
+
+    renderActive();
+
+  };
+
+  window.__slideState={
+    get active(){
+      return active;
+    },
+    file:file
+  };
+
+  renderActive();
 }
 
-
-/* =========================================================
-   SLIDE EDITING
-========================================================= */
-
-function saveCurrentSlide() {
-
-  const canvas =
-    document.getElementById(
-      "slideCanvas"
-    );
-
-  if (!canvas) return;
-
-  slides[currentSlide] =
-    canvas.innerHTML;
-
-  saveSlides();
-
-  renderSlideThumbnails();
-
-}
-
-
-function slideCommand(
-  command,
-  value = null
-) {
+function formatSlide(command,value=null){
 
   document.execCommand(
     command,
@@ -2089,448 +2165,302 @@ function slideCommand(
     value
   );
 
-  saveCurrentSlide();
+  const state=
+    window.__slideState;
 
-}
+  if(!state)
+    return;
 
-
-function changeSlideFont(font) {
-
-  document.execCommand(
-    "fontName",
-    false,
-    font
-  );
-
-  saveCurrentSlide();
-
-}
-
-
-function changeSlideSize(size) {
-
-  document.execCommand(
-    "fontSize",
-    false,
-    size
-  );
-
-  saveCurrentSlide();
-
-}
-
-
-function insertSlideImage() {
-
-  const input =
+  const editor=
     document.getElementById(
-      "slideImageInput"
+      "slideEditor"
     );
 
-  if (!input) return;
+  state.file.content[
+    state.active
+  ].content=
+    editor.innerHTML;
 
-  input.click();
+  state.file.updated=
+    Date.now();
 
+  saveFiles();
+}
 
-  input.onchange = event => {
+function addSlide(){
 
-    const file =
-      event.target.files[0];
+  const state=
+    window.__slideState;
 
-    if (!file) return;
+  if(!state)
+    return;
 
-    const reader =
-      new FileReader();
+  state.file.content.splice(
+    state.active+1,
+    0,
+    {content:""}
+  );
 
-    reader.onload = event => {
+  saveFiles();
 
-      const canvas =
-        document.getElementById(
-          "slideCanvas"
-        );
+  const next=
+    state.active+1;
 
-      canvas.focus();
+  openFile(state.file.id);
 
-      document.execCommand(
-        "insertImage",
-        false,
-        event.target.result
+  setTimeout(()=>{
+    if(window.__selectSlide)
+      window.__selectSlide(next);
+  },30);
+}
+
+function duplicateSlide(){
+
+  const state=
+    window.__slideState;
+
+  if(!state)
+    return;
+
+  const copy=
+    JSON.parse(
+      JSON.stringify(
+        state.file.content[
+          state.active
+        ]
+      )
+    );
+
+  const next=
+    state.active+1;
+
+  state.file.content.splice(
+    next,
+    0,
+    copy
+  );
+
+  saveFiles();
+
+  openFile(state.file.id);
+
+  setTimeout(()=>{
+    if(window.__selectSlide)
+      window.__selectSlide(next);
+  },30);
+}
+
+function deleteSlide(){
+
+  const state=
+    window.__slideState;
+
+  if(!state)
+    return;
+
+  if(state.file.content.length<=1){
+
+    showToast(
+      "A presentation needs at least one slide"
+    );
+
+    return;
+  }
+
+  state.file.content.splice(
+    state.active,
+    1
+  );
+
+  saveFiles();
+
+  openFile(state.file.id);
+}
+
+function insertSlideImage(){
+
+  document.getElementById(
+    "slideImageInput"
+  ).click();
+}
+
+function addSlideImage(event){
+
+  const imageFile=
+    event.target.files[0];
+
+  if(!imageFile)
+    return;
+
+  const reader=
+    new FileReader();
+
+  reader.onload=e=>{
+
+    const state=
+      window.__slideState;
+
+    if(!state)
+      return;
+
+    const editor=
+      document.getElementById(
+        "slideEditor"
       );
 
-      saveCurrentSlide();
+    editor.focus();
 
-    };
+    document.execCommand(
+      "insertHTML",
+      false,
+      `<img src="${e.target.result}" alt="Image">`
+    );
 
-    reader.readAsDataURL(file);
+    state.file.content[
+      state.active
+    ].content=
+      editor.innerHTML;
+
+    saveFiles();
 
   };
 
+  reader.readAsDataURL(imageFile);
 }
 
 
 /* =========================================================
-   SLIDE THUMBNAILS
+   PRESENTATION
 ========================================================= */
 
-function renderSlideThumbnails() {
+function startPresentation(){
 
-  const sidebar =
-    document.getElementById(
-      "slideSidebar"
-    );
+  const state=
+    window.__slideState;
 
-  if (!sidebar) return;
+  if(!state)
+    return;
 
-  sidebar.innerHTML = "";
+  presentationIndex=0;
 
-
-  slides.forEach(
-    (content,index) => {
-
-      const thumbnail =
-        document.createElement(
-          "button"
-        );
-
-      thumbnail.className =
-        "slide-thumbnail" +
-        (
-          index === currentSlide
-            ? " active"
-            : ""
-        );
-
-
-      thumbnail.innerHTML = `
-
-        <div>
-          ${content || ""}
-        </div>
-
-        <span class="slide-thumbnail-number">
-          ${index + 1}
-        </span>
-
-      `;
-
-
-      thumbnail.onclick = () => {
-
-        currentSlide = index;
-
-        renderSlides();
-
-      };
-
-
-      sidebar.appendChild(
-        thumbnail
-      );
-
-    }
-  );
-
-
-  const count =
-    document.getElementById(
-      "slideCount"
-    );
-
-  if (count) {
-
-    count.textContent =
-      `${currentSlide + 1} / ${slides.length}`;
-
-  }
-
-}
-
-
-/* =========================================================
-   CURRENT SLIDE
-========================================================= */
-
-function renderCurrentSlide() {
-
-  const canvas =
-    document.getElementById(
-      "slideCanvas"
-    );
-
-  if (!canvas) return;
-
-  canvas.innerHTML =
-    slides[currentSlide] || "";
-
-}
-
-
-/* =========================================================
-   SLIDE ACTIONS
-========================================================= */
-
-function addSlide() {
-
-  slides.splice(
-    currentSlide + 1,
-    0,
-    ""
-  );
-
-  currentSlide++;
-
-  saveSlides();
-
-  renderSlides();
-
-}
-
-
-function duplicateSlide() {
-
-  slides.splice(
-    currentSlide + 1,
-    0,
-    slides[currentSlide]
-  );
-
-  currentSlide++;
-
-  saveSlides();
-
-  renderSlides();
-
-}
-
-
-function deleteSlide() {
-
-  if (slides.length === 1) {
-
-    slides[0] = "";
-
-    currentSlide = 0;
-
-  }
-
-  else {
-
-    slides.splice(
-      currentSlide,
-      1
-    );
-
-    currentSlide =
-      Math.max(
-        0,
-        currentSlide - 1
-      );
-
-  }
-
-  saveSlides();
-
-  renderSlides();
-
-}
-
-
-/* =========================================================
-   REAL PRESENTATION MODE
-========================================================= */
-
-let presentationIndex = 0;
-
-
-function startPresentation() {
-
-  saveCurrentSlide();
-
-  presentationIndex = 0;
-
-  renderPresentation();
-
-  const presentation =
+  const presentation=
     document.getElementById(
       "presentation"
     );
 
-  presentation.classList.add(
-    "active"
-  );
+  presentation.style.display="flex";
 
+  renderPresentationSlide();
 
-  if (
-    presentation.requestFullscreen
-  ) {
+  if(presentation.requestFullscreen){
 
     presentation
       .requestFullscreen()
-      .catch(() => {});
+      .catch(()=>{});
 
   }
-
 }
 
+function renderPresentationSlide(){
 
-function renderPresentation() {
+  const state=
+    window.__slideState;
 
-  const output =
-    document.getElementById(
-      "presentationSlide"
-    );
+  if(!state)
+    return;
 
-  const number =
-    document.getElementById(
-      "presentationNumber"
-    );
+  const slide=
+    state.file.content[
+      presentationIndex
+    ];
 
-  if (!output) return;
+  document.getElementById(
+    "presentationSlide"
+  ).innerHTML=
+    slide.content||"";
 
-  output.innerHTML =
-    slides[presentationIndex] || "";
-
-
-  if (number) {
-
-    number.textContent =
-      `${presentationIndex + 1} / ${slides.length}`;
-
-  }
-
+  document.getElementById(
+    "slideCounter"
+  ).textContent=
+    `${presentationIndex+1} / ${state.file.content.length}`;
 }
 
+function nextSlide(){
 
-function nextPresentationSlide() {
+  const state=
+    window.__slideState;
 
-  if (
-    presentationIndex <
-    slides.length - 1
-  ) {
+  if(!state)
+    return;
+
+  if(
+    presentationIndex<
+    state.file.content.length-1
+  ){
 
     presentationIndex++;
 
-    renderPresentation();
-
+    renderPresentationSlide();
   }
-
 }
 
+function previousSlide(){
 
-function previousPresentationSlide() {
-
-  if (
-    presentationIndex > 0
-  ) {
+  if(presentationIndex>0){
 
     presentationIndex--;
 
-    renderPresentation();
-
+    renderPresentationSlide();
   }
-
 }
 
+function exitPresentation(){
 
-function exitPresentation() {
+  document.getElementById(
+    "presentation"
+  ).style.display="none";
 
-  const presentation =
-    document.getElementById(
-      "presentation"
-    );
+  if(document.fullscreenElement){
 
-  presentation.classList.remove(
-    "active"
-  );
-
-
-  if (
-    document.fullscreenElement
-  ) {
-
-    document.exitFullscreen()
-      .catch(() => {});
+    document
+      .exitFullscreen()
+      .catch(()=>{});
 
   }
-
 }
-
 
 document.addEventListener(
   "keydown",
-  event => {
+  e=>{
 
-    const presentation =
+    if(
       document.getElementById(
         "presentation"
-      );
+      ).style.display==="flex"
+    ){
 
-    if (
-      !presentation.classList.contains(
-        "active"
-      )
-    ) {
+      if(
+        e.key==="ArrowRight" ||
+        e.key===" " ||
+        e.key==="Enter"
+      ){
 
-      return;
+        e.preventDefault();
 
-    }
+        nextSlide();
+      }
 
+      if(e.key==="ArrowLeft"){
 
-    if (
-      event.key === "ArrowRight" ||
-      event.key === " " ||
-      event.key === "Enter"
-    ) {
+        e.preventDefault();
 
-      event.preventDefault();
+        previousSlide();
+      }
 
-      nextPresentationSlide();
+      if(e.key==="Escape"){
 
-    }
-
-
-    if (
-      event.key === "ArrowLeft"
-    ) {
-
-      event.preventDefault();
-
-      previousPresentationSlide();
-
-    }
-
-
-    if (
-      event.key === "Escape"
-    ) {
-
-      exitPresentation();
-
-    }
-
-  }
-);
-
-
-document.addEventListener(
-  "dblclick",
-  event => {
-
-    const presentation =
-      document.getElementById(
-        "presentation"
-      );
-
-    if (
-      presentation.classList.contains(
-        "active"
-      ) &&
-      event.target ===
-      presentation
-    ) {
-
-      nextPresentationSlide();
-
+        exitPresentation();
+      }
     }
 
   }
@@ -2541,225 +2471,129 @@ document.addEventListener(
    SHEETS
 ========================================================= */
 
-const SHEET_ROWS = 30;
+function renderSheets(file){
 
-const SHEET_COLUMNS = 12;
+  const rows=20;
+  const cols=10;
 
+  while(file.content.length<rows){
 
-function columnName(index) {
-
-  let result = "";
-
-  let number = index + 1;
-
-  while (number > 0) {
-
-    const remainder =
-      (number - 1) % 26;
-
-    result =
-      String.fromCharCode(
-        65 + remainder
-      ) + result;
-
-    number =
-      Math.floor(
-        (number - 1) / 26
-      );
+    file.content.push([]);
 
   }
 
-  return result;
+  for(let r=0;r<rows;r++){
 
-}
+    while(
+      file.content[r].length<cols
+    ){
 
+      file.content[r].push("");
 
-function sheetKey(
-  row,
-  column
-) {
+    }
 
-  return `clamme-sheet-${row}-${column}`;
+  }
 
-}
+  saveFiles();
 
+  let html=`
 
-function renderSheets() {
+    <div class="sheet-shell">
 
-  let html = `
+      <div class="toolbar">
 
-    <div class="sheets-shell">
-
-      <div class="sheet-toolbar">
-
-        <select
-          id="sheetFont"
-          class="toolbar-select"
-        >
-
-          ${fontOptions}
-
-        </select>
-
-
-        <select
-          id="sheetSize"
-          class="toolbar-select"
-        >
-
-          ${sizeOptions}
-
-        </select>
-
-
-        <button
-          class="tool"
-          onclick="sheetCommand('bold')"
-        >
-          Bold
+        <button onclick="formatSheet('fontFamily','Alegreya')">
+          Alegreya
         </button>
 
-
-        <button
-          class="tool"
-          onclick="sheetCommand('italic')"
-        >
-          Italic
+        <button onclick="formatSheet('fontWeight','bold')">
+          <b>B</b>
         </button>
 
-
-        <button
-          class="tool"
-          onclick="sheetAlign('left')"
-        >
-          Left
+        <button onclick="formatSheet('fontStyle','italic')">
+          <i>I</i>
         </button>
 
-
-        <button
-          class="tool"
-          onclick="sheetAlign('center')"
-        >
-          Center
+        <button onclick="addSheetRow()">
+          Add row
         </button>
 
+        <button onclick="addSheetColumn()">
+          Add column
+        </button>
 
-        <div class="toolbar-divider"></div>
+      </div>
 
+      <div class="formula-bar">
 
-        <input
+        <div
+          class="formula-name"
           id="cellName"
-          class="cell-name"
-          readonly
-          placeholder="A1"
-        >
-
+        >A1</div>
 
         <input
-          id="formulaInput"
           class="formula-input"
-          placeholder="Formula or value"
+          id="formulaInput"
+          placeholder="Value or formula"
         >
 
       </div>
 
+      <div class="sheet-wrap">
 
-      <div class="sheet-frame">
-
-        <table class="sheet-table">
+        <table class="sheet">
 
           <thead>
 
             <tr>
-
               <th></th>
-
   `;
 
+  for(let c=0;c<cols;c++){
 
-  for (
-    let column = 0;
-    column < SHEET_COLUMNS;
-    column++
-  ) {
-
-    html += `
-      <th>${columnName(column)}</th>
+    html+=`
+      <th>${columnName(c)}</th>
     `;
 
   }
 
-
-  html += `
+  html+=`
 
             </tr>
 
           </thead>
 
           <tbody>
-
   `;
 
+  for(let r=0;r<rows;r++){
 
-  for (
-    let row = 0;
-    row < SHEET_ROWS;
-    row++
-  ) {
-
-    html += `
-
+    html+=`
       <tr>
-
-        <th>${row + 1}</th>
-
+        <th>${r+1}</th>
     `;
 
+    for(let c=0;c<cols;c++){
 
-    for (
-      let column = 0;
-      column < SHEET_COLUMNS;
-      column++
-    ) {
-
-      const key =
-        sheetKey(
-          row,
-          column
-        );
-
-      const value =
-        localStorage.getItem(
-          key
-        ) || "";
-
-
-      html += `
+      html+=`
 
         <td
           contenteditable="true"
-          data-row="${row}"
-          data-column="${column}"
-          data-key="${key}"
-        >
-          ${escapeHTML(value)}
-        </td>
+          data-row="${r}"
+          data-col="${c}"
+        >${escapeHTML(
+          file.content[r][c]||""
+        )}</td>
 
       `;
 
     }
 
-
-    html += `
-
-      </tr>
-
-    `;
+    html+=`</tr>`;
 
   }
 
-
-  html += `
+  html+=`
 
           </tbody>
 
@@ -2768,363 +2602,433 @@ function renderSheets() {
       </div>
 
     </div>
-
   `;
-
 
   document.getElementById(
     "workspace"
-  ).innerHTML = html;
+  ).innerHTML=html;
 
-
-  const font =
-    document.getElementById(
-      "sheetFont"
+  const cells=
+    document.querySelectorAll(
+      ".sheet td"
     );
 
-  const size =
-    document.getElementById(
-      "sheetSize"
+  cells.forEach(cell=>{
+
+    cell.addEventListener(
+      "focus",
+      ()=>{
+
+        const r=
+          Number(cell.dataset.row);
+
+        const c=
+          Number(cell.dataset.col);
+
+        document.getElementById(
+          "cellName"
+        ).textContent=
+          columnName(c)+(r+1);
+
+        document.getElementById(
+          "formulaInput"
+        ).value=
+          file.content[r][c]||"";
+
+      }
     );
 
+    cell.addEventListener(
+      "input",
+      ()=>{
 
-  font.onchange = () => {
+        const r=
+          Number(cell.dataset.row);
 
-    const cell =
-      document.querySelector(
-        ".sheet-table td.selected"
-      );
+        const c=
+          Number(cell.dataset.col);
 
-    if (!cell) return;
+        file.content[r][c]=
+          cell.innerText;
 
-    cell.style.fontFamily =
-      font.value;
+        file.updated=
+          Date.now();
 
-  };
+        saveFiles();
 
+        calculateSheet(file);
 
-  size.onchange = () => {
+      }
+    );
 
-    const cell =
-      document.querySelector(
-        ".sheet-table td.selected"
-      );
-
-    if (!cell) return;
-
-    const sizes = {
-      1: "12px",
-      2: "14px",
-      3: "16px",
-      4: "18px",
-      5: "22px",
-      6: "28px",
-      7: "36px"
-    };
-
-    cell.style.fontSize =
-      sizes[size.value];
-
-  };
-
-
-  document
-    .querySelectorAll(
-      ".sheet-table td"
-    )
-    .forEach(cell => {
-
-      cell.addEventListener(
-        "focus",
-        () => {
-
-          document
-            .querySelectorAll(
-              ".sheet-table td"
-            )
-            .forEach(
-              c =>
-                c.classList.remove(
-                  "selected"
-                )
-            );
-
-
-          cell.classList.add(
-            "selected"
-          );
-
-
-          const row =
-            Number(
-              cell.dataset.row
-            );
-
-          const column =
-            Number(
-              cell.dataset.column
-            );
-
-
-          document.getElementById(
-            "cellName"
-          ).value =
-            `${columnName(column)}${row + 1}`;
-
-
-          document.getElementById(
-            "formulaInput"
-          ).value =
-            cell.textContent.trim();
-
-        }
-      );
-
-
-      cell.addEventListener(
-        "input",
-        () => {
-
-          localStorage.setItem(
-            cell.dataset.key,
-            cell.textContent
-          );
-
-        }
-      );
-
-
-      cell.addEventListener(
-        "keydown",
-        event => {
-
-          if (
-            event.key === "Enter"
-          ) {
-
-            event.preventDefault();
-
-            const row =
-              Number(
-                cell.dataset.row
-              );
-
-            const column =
-              Number(
-                cell.dataset.column
-              );
-
-
-            const next =
-              document.querySelector(
-                `td[data-row="${row + 1}"][data-column="${column}"]`
-              );
-
-
-            if (next) {
-
-              next.focus();
-
-            }
-
-          }
-
-        }
-      );
-
-    });
-
+  });
 
   document.getElementById(
     "formulaInput"
   ).addEventListener(
-    "input",
-    event => {
+    "change",
+    e=>{
 
-      const cell =
-        document.querySelector(
-          ".sheet-table td.selected"
-        );
+      const name=
+        document.getElementById(
+          "cellName"
+        ).textContent;
 
-      if (!cell) return;
+      const parsed=
+        parseCellName(name);
 
-      cell.textContent =
-        event.target.value;
+      if(!parsed)
+        return;
 
-      localStorage.setItem(
-        cell.dataset.key,
-        cell.textContent
-      );
+      file.content[
+        parsed.row
+      ][
+        parsed.col
+      ]=
+        e.target.value;
+
+      saveFiles();
+
+      renderSheets(file);
 
     }
   );
-
 }
 
+function columnName(index){
 
-function sheetCommand(command) {
+  let result="";
 
-  const cell =
-    document.querySelector(
-      ".sheet-table td.selected"
+  index++;
+
+  while(index>0){
+
+    const remainder=
+      (index-1)%26;
+
+    result=
+      String.fromCharCode(
+        65+remainder
+      )+result;
+
+    index=
+      Math.floor(
+        (index-1)/26
+      );
+  }
+
+  return result;
+}
+
+function parseCellName(name){
+
+  const match=
+    name.match(
+      /^([A-Z]+)(\d+)$/
     );
 
-  if (!cell) return;
+  if(!match)
+    return null;
 
-  if (command === "bold") {
+  let col=0;
 
-    cell.style.fontWeight =
-      cell.style.fontWeight === "700"
-        ? "400"
-        : "700";
+  for(
+    const char of match[1]
+  ){
+
+    col=
+      col*26+
+      (char.charCodeAt(0)-64);
 
   }
 
-  if (command === "italic") {
+  return {
+    col:col-1,
+    row:Number(match[2])-1
+  };
+}
 
-    cell.style.fontStyle =
-      cell.style.fontStyle === "italic"
-        ? "normal"
-        : "italic";
+function calculateSheet(file){
+
+  const cells=
+    document.querySelectorAll(
+      ".sheet td"
+    );
+
+  cells.forEach(cell=>{
+
+    const r=
+      Number(cell.dataset.row);
+
+    const c=
+      Number(cell.dataset.col);
+
+    const value=
+      file.content[r][c];
+
+    if(
+      typeof value==="string" &&
+      value.startsWith("=")
+    ){
+
+      const formula=
+        value.slice(1).trim();
+
+      try{
+
+        const result=
+          evaluateFormula(
+            formula,
+            file
+          );
+
+        if(
+          result!==undefined &&
+          !Number.isNaN(result)
+        ){
+
+          cell.textContent=result;
+
+        }
+
+      }
+      catch{}
+
+    }
+
+  });
+}
+
+function evaluateFormula(
+  formula,
+  file
+){
+
+  const sumMatch=
+    formula.match(
+      /^SUM\(([A-Z]+\d+):([A-Z]+\d+)\)$/i
+    );
+
+  if(sumMatch){
+
+    const a=
+      parseCellName(
+        sumMatch[1]
+      );
+
+    const b=
+      parseCellName(
+        sumMatch[2]
+      );
+
+    let total=0;
+
+    for(
+      let r=a.row;
+      r<=b.row;
+      r++
+    ){
+
+      for(
+        let c=a.col;
+        c<=b.col;
+        c++
+      ){
+
+        const value=
+          parseFloat(
+            file.content[r]?.[c]
+          );
+
+        if(!Number.isNaN(value))
+          total+=value;
+
+      }
+
+    }
+
+    return total;
+  }
+
+  const avgMatch=
+    formula.match(
+      /^AVERAGE\(([A-Z]+\d+):([A-Z]+\d+)\)$/i
+    );
+
+  if(avgMatch){
+
+    const a=
+      parseCellName(
+        avgMatch[1]
+      );
+
+    const b=
+      parseCellName(
+        avgMatch[2]
+      );
+
+    const values=[];
+
+    for(
+      let r=a.row;
+      r<=b.row;
+      r++
+    ){
+
+      for(
+        let c=a.col;
+        c<=b.col;
+        c++
+      ){
+
+        const value=
+          parseFloat(
+            file.content[r]?.[c]
+          );
+
+        if(!Number.isNaN(value))
+          values.push(value);
+
+      }
+
+    }
+
+    return values.length
+      ? values.reduce(
+          (a,b)=>a+b,
+          0
+        )/values.length
+      : 0;
+  }
+
+  if(
+    /^[0-9+\-*/().\s]+$/
+      .test(formula)
+  ){
+
+    return Function(
+      '"use strict";return ('+
+      formula+
+      ')'
+    )();
 
   }
 
+  return undefined;
 }
 
+function formatSheet(property,value){
 
-function sheetAlign(direction) {
+  const selected=
+    document.activeElement;
 
-  const cell =
-    document.querySelector(
-      ".sheet-table td.selected"
-    );
+  if(
+    !selected ||
+    selected.tagName!=="TD"
+  )
+    return;
 
-  if (!cell) return;
-
-  cell.style.textAlign =
-    direction;
-
+  selected.style[property]=value;
 }
 
+function addSheetRow(){
 
-function escapeHTML(value) {
+  const file=
+    findFile(currentFileId);
 
-  return String(value)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+  if(!file)
+    return;
 
+  const cols=
+    file.content[0]?.length||10;
+
+  file.content.push(
+    Array.from(
+      {length:cols},
+      ()=> ""
+    )
+  );
+
+  saveFiles();
+
+  renderSheets(file);
+}
+
+function addSheetColumn(){
+
+  const file=
+    findFile(currentFileId);
+
+  if(!file)
+    return;
+
+  file.content.forEach(
+    row=>row.push("")
+  );
+
+  saveFiles();
+
+  renderSheets(file);
 }
 
 
 /* =========================================================
-   NEW
+   COMMAND PALETTE
 ========================================================= */
 
-function createCurrent() {
+function openCommand(){
 
-  if (
-    currentSection === "slides"
-  ) {
+  document.getElementById(
+    "commandBg"
+  ).style.display="flex";
 
-    newPresentation();
+  const input=
+    document.getElementById(
+      "commandInput"
+    );
 
+  input.value="";
+
+  input.focus();
+}
+
+function closeCommand(event){
+
+  if(
+    event &&
+    event.target!==
+    document.getElementById(
+      "commandBg"
+    )
+  )
     return;
 
-  }
-
-
-  if (
-    currentSection === "sheets"
-  ) {
-
-    newSpreadsheet();
-
-    return;
-
-  }
-
-
-  newDocument();
-
+  document.getElementById(
+    "commandBg"
+  ).style.display="none";
 }
 
+function filterCommands(){
 
-function newDocument() {
+  const query=
+    document.getElementById(
+      "commandInput"
+    ).value.toLowerCase();
 
-  currentSection = "docs";
+  document
+    .querySelectorAll(
+      "#commandList button"
+    )
+    .forEach(button=>{
 
-  localStorage.removeItem(
-    "clamme-document"
-  );
+      button.style.display=
+        button.textContent
+          .toLowerCase()
+          .includes(query)
+        ? "block"
+        : "none";
 
-  setActive("docs");
-
-  updateNewButton();
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent = "Docs";
-
-  renderDocs();
-
-}
-
-
-function newPresentation() {
-
-  currentSection = "slides";
-
-  slides = [""];
-
-  currentSlide = 0;
-
-  saveSlides();
-
-  setActive("slides");
-
-  updateNewButton();
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent = "Slides";
-
-  renderSlides();
-
-}
-
-
-function newSpreadsheet() {
-
-  currentSection = "sheets";
-
-  setActive("sheets");
-
-  updateNewButton();
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent = "Sheets";
-
-  renderSheets();
-
+    });
 }
 
 
@@ -3132,37 +3036,62 @@ function newSpreadsheet() {
    TOAST
 ========================================================= */
 
-function toast(message) {
+function showToast(message){
 
-  const element =
+  const toast=
     document.getElementById(
       "toast"
     );
 
-  element.textContent =
-    message;
+  toast.textContent=message;
 
-  element.classList.add(
-    "show"
-  );
+  toast.classList.add("show");
 
   clearTimeout(
-    window.clammeToast
+    window.toastTimer
   );
 
-  window.clammeToast =
+  window.toastTimer=
     setTimeout(
-      () => {
-
-        element.classList.remove(
-          "show"
-        );
-
+      ()=>{
+        toast.classList.remove("show");
       },
-      2400
+      1800
     );
-
 }
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(
+      (e.ctrlKey||e.metaKey) &&
+      e.key.toLowerCase()==="k"
+    ){
+
+      e.preventDefault();
+
+      openCommand();
+
+    }
+
+    if(e.key==="Escape"){
+
+      document.getElementById(
+        "commandBg"
+      ).style.display="none";
+
+      closeFontMenus();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
