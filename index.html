@@ -47,15 +47,11 @@ button,input,select{
 
 button{cursor:pointer}
 
-/* APP */
-
 .app{
   width:100%;
   height:100%;
   display:flex;
 }
-
-/* SIDEBAR */
 
 .sidebar{
   width:225px;
@@ -115,8 +111,6 @@ button{cursor:pointer}
   color:white;
 }
 
-/* MAIN */
-
 .main{
   flex:1;
   min-width:0;
@@ -160,8 +154,6 @@ button{cursor:pointer}
   overflow:auto;
   padding:34px;
 }
-
-/* HOME */
 
 .home{
   max-width:1050px;
@@ -212,8 +204,6 @@ button{cursor:pointer}
   color:var(--muted);
 }
 
-/* FILE LIST */
-
 .file-list{
   max-width:1050px;
   margin:auto;
@@ -256,8 +246,6 @@ button{cursor:pointer}
   border-color:#36c58c;
 }
 
-/* TOOLBAR */
-
 .editor-shell{
   max-width:1250px;
   min-height:calc(100vh - 130px);
@@ -291,8 +279,6 @@ button{cursor:pointer}
   background:#0d291d;
   color:white;
 }
-
-/* FONT PICKER */
 
 .font-picker{
   position:relative;
@@ -351,8 +337,6 @@ button{cursor:pointer}
   color:white;
 }
 
-/* SIZE */
-
 .size{
   height:32px;
   width:78px;
@@ -363,8 +347,6 @@ button{cursor:pointer}
   background:#091a12;
   color:#d8e1dc;
 }
-
-/* COLOR */
 
 .color{
   height:32px;
@@ -386,8 +368,6 @@ button{cursor:pointer}
   border:0;
   background:none;
 }
-
-/* DOC */
 
 .doc-page{
   width:min(850px,100%);
@@ -415,8 +395,6 @@ button{cursor:pointer}
   display:block;
   margin:20px auto;
 }
-
-/* SLIDES */
 
 .slides{
   min-height:calc(100vh - 130px);
@@ -489,8 +467,6 @@ button{cursor:pointer}
   margin:15px auto;
 }
 
-/* SHEETS */
-
 .sheet-shell{
   max-width:1250px;
   margin:auto;
@@ -559,8 +535,6 @@ td:focus{
   box-shadow:inset 0 0 0 1px #36c58c;
 }
 
-/* MODAL */
-
 .modal-bg{
   position:fixed;
   inset:0;
@@ -601,8 +575,6 @@ td:focus{
   gap:8px;
   margin-top:18px;
 }
-
-/* PRESENTATION */
 
 .presentation{
   position:fixed;
@@ -652,8 +624,6 @@ td:focus{
   color:#aaa;
 }
 
-/* COMMAND */
-
 .command-bg{
   position:fixed;
   inset:0;
@@ -701,8 +671,6 @@ td:focus{
   color:white;
 }
 
-/* TOAST */
-
 .toast{
   position:fixed;
   right:24px;
@@ -722,8 +690,6 @@ td:focus{
   opacity:1;
   transform:translateY(0);
 }
-
-/* MOBILE */
 
 @media(max-width:800px){
 
@@ -789,36 +755,20 @@ td:focus{
     clamme<span>.</span>
   </div>
 
-  <button
-    class="new"
-    id="newButton"
-    onclick="newCurrent()"
-  >
+  <button class="new" id="newButton" onclick="newCurrent()">
     + New document
   </button>
 
   <nav class="nav">
 
-    <button id="homeNav" onclick="goHome()">
-      Home
-    </button>
-
-    <button id="docsNav" onclick="showFiles('docs')">
-      Docs
-    </button>
-
-    <button id="slidesNav" onclick="showFiles('slides')">
-      Slides
-    </button>
-
-    <button id="sheetsNav" onclick="showFiles('sheets')">
-      Sheets
-    </button>
+    <button id="homeNav" onclick="goHome()">Home</button>
+    <button id="docsNav" onclick="showFiles('docs')">Docs</button>
+    <button id="slidesNav" onclick="showFiles('slides')">Slides</button>
+    <button id="sheetsNav" onclick="showFiles('sheets')">Sheets</button>
 
   </nav>
 
 </aside>
-
 
 <main class="main">
 
@@ -828,49 +778,29 @@ td:focus{
     Home
   </div>
 
-  <button
-    class="command-button"
-    onclick="openCommand()"
-  >
-    ⌘ K
+  <button class="command-button" onclick="openCommand()">
+    Command
   </button>
 
 </header>
 
-<section
-  class="workspace"
-  id="workspace"
-></section>
+<section class="workspace" id="workspace"></section>
 
 </main>
 
 </div>
 
-
-<!-- MODAL -->
-
-<div
-  class="modal-bg"
-  id="modalBg"
->
+<div class="modal-bg" id="modalBg">
 
 <div class="modal">
 
-<h2 id="modalTitle">
-  Create
-</h2>
+<h2 id="modalTitle">Create</h2>
 
-<input
-  id="modalInput"
-  placeholder="Name"
->
+<input id="modalInput" placeholder="Name">
 
 <div class="modal-actions">
 
-<button
-  class="small"
-  onclick="closeModal()"
->
+<button class="small" onclick="closeModal()">
   Cancel
 </button>
 
@@ -887,13 +817,7 @@ td:focus{
 </div>
 </div>
 
-
-<!-- PRESENTATION -->
-
-<div
-  class="presentation"
-  id="presentation"
->
+<div class="presentation" id="presentation">
 
 <div
   class="presentation-slide"
@@ -906,10 +830,7 @@ td:focus{
   Previous
 </button>
 
-<span
-  class="counter"
-  id="counter"
->
+<span class="counter" id="counter">
   1 / 1
 </span>
 
@@ -924,9 +845,6 @@ td:focus{
 </div>
 
 </div>
-
-
-<!-- COMMAND PALETTE -->
 
 <div
   class="command-bg"
@@ -945,38 +863,15 @@ td:focus{
   oninput="filterCommands()"
 >
 
-<div
-  class="command-list"
-  id="commandList"
->
+<div class="command-list" id="commandList">
 
-<button onclick="newDocument()">
-  New document
-</button>
-
-<button onclick="newPresentation()">
-  New presentation
-</button>
-
-<button onclick="newSpreadsheet()">
-  New spreadsheet
-</button>
-
-<button onclick="showFiles('docs')">
-  Docs
-</button>
-
-<button onclick="showFiles('slides')">
-  Slides
-</button>
-
-<button onclick="showFiles('sheets')">
-  Sheets
-</button>
-
-<button onclick="goHome()">
-  Home
-</button>
+<button onclick="newDocument()">New document</button>
+<button onclick="newPresentation()">New presentation</button>
+<button onclick="newSpreadsheet()">New spreadsheet</button>
+<button onclick="showFiles('docs')">Docs</button>
+<button onclick="showFiles('slides')">Slides</button>
+<button onclick="showFiles('sheets')">Sheets</button>
+<button onclick="goHome()">Home</button>
 
 </div>
 
@@ -984,12 +879,7 @@ td:focus{
 
 </div>
 
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
+<div class="toast" id="toast"></div>
 
 <script>
 
@@ -1006,14 +896,12 @@ let files=
 
 let currentSection="home";
 let currentFileId=null;
-
 let modalCallback=null;
-
 let presentationIndex=0;
 
 
 /* =========================================================
-   100 WEB FONTS
+   WEB FONTS
 ========================================================= */
 
 const fonts=[
@@ -1140,64 +1028,213 @@ const fonts=[
 
 
 /* =========================================================
-   WEB FONT LOADER
+   FIXED FONT LOADER
 ========================================================= */
 
-const loadedFonts=new Set();
+const loadedFonts=new Map();
 
 async function loadFont(font){
 
-  if(loadedFonts.has(font))
-    return;
-
-  const safe=
-    font
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g,"-");
-
-  const existing=
-    document.getElementById(
-      "font-"+safe
-    );
-
-  if(existing){
-
-    loadedFonts.add(font);
-
-    return;
-
+  if(loadedFonts.has(font)){
+    return loadedFonts.get(font);
   }
 
-  const link=
-    document.createElement("link");
+  const promise=new Promise(resolve=>{
 
-  link.id="font-"+safe;
+    const safe=
+      font
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g,"-");
 
-  link.rel="stylesheet";
+    const existing=
+      document.getElementById(
+        "font-"+safe
+      );
 
-  link.href=
-    "https://fonts.googleapis.com/css2?family="+
-    encodeURIComponent(font).replace(/%20/g,"+")+
-    ":ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700"+
-    "&display=swap";
+    if(existing){
 
-  document.head.appendChild(link);
+      if(existing.sheet){
 
-  try{
+        document.fonts
+          .load(`400 24px "${font}"`)
+          .finally(resolve);
 
-    await document.fonts.load(
-      `16px "${font}"`
-    );
+      }else{
 
-  }catch{}
+        existing.addEventListener(
+          "load",
+          async ()=>{
 
-  loadedFonts.add(font);
+            try{
+
+              await document.fonts.load(
+                `400 24px "${font}"`
+              );
+
+            }catch(e){}
+
+            resolve();
+
+          },
+          {once:true}
+        );
+
+        existing.addEventListener(
+          "error",
+          ()=>resolve(),
+          {once:true}
+        );
+
+      }
+
+      return;
+    }
+
+    const link=
+      document.createElement("link");
+
+    link.id="font-"+safe;
+    link.rel="stylesheet";
+
+    /*
+      IMPORTANT FIX:
+      We request only the standard family.
+      The previous version requested multiple
+      italic/weight axes that some fonts do not support.
+    */
+
+    link.href=
+      "https://fonts.googleapis.com/css2?family="+
+      encodeURIComponent(font).replace(/%20/g,"+")+
+      "&display=swap";
+
+    link.onload=async ()=>{
+
+      try{
+
+        await document.fonts.load(
+          `400 24px "${font}"`
+        );
+
+      }catch(e){}
+
+      resolve();
+
+    };
+
+    link.onerror=()=>{
+      resolve();
+    };
+
+    document.head.appendChild(link);
+
+  });
+
+  loadedFonts.set(font,promise);
+
+  await promise;
 
 }
 
 
 /* =========================================================
-   BASIC HELPERS
+   PRESERVE EDITOR SELECTION
+========================================================= */
+
+let savedEditorRange=null;
+
+document.addEventListener(
+  "selectionchange",
+  ()=>{
+
+    const selection=
+      window.getSelection();
+
+    if(
+      !selection ||
+      !selection.rangeCount
+    ){
+      return;
+    }
+
+    const range=
+      selection.getRangeAt(0);
+
+    const docEditor=
+      document.getElementById(
+        "docEditor"
+      );
+
+    const slideEditor=
+      document.getElementById(
+        "slideEditor"
+      );
+
+    if(
+      docEditor &&
+      docEditor.contains(
+        range.commonAncestorContainer
+      )
+    ){
+
+      savedEditorRange=
+        range.cloneRange();
+
+      savedEditorRange.editor="doc";
+
+    }
+
+    if(
+      slideEditor &&
+      slideEditor.contains(
+        range.commonAncestorContainer
+      )
+    ){
+
+      savedEditorRange=
+        range.cloneRange();
+
+      savedEditorRange.editor="slide";
+
+    }
+
+  }
+);
+
+
+function restoreEditorSelection(editor){
+
+  if(
+    !savedEditorRange ||
+    !editor
+  ){
+    return false;
+  }
+
+  if(
+    !editor.contains(
+      savedEditorRange.commonAncestorContainer
+    )
+  ){
+    return false;
+  }
+
+  const selection=
+    window.getSelection();
+
+  selection.removeAllRanges();
+
+  selection.addRange(
+    savedEditorRange
+  );
+
+  return true;
+
+}
+
+
+/* =========================================================
+   HELPERS
 ========================================================= */
 
 function save(){
@@ -1391,7 +1428,7 @@ function renderHome(){
       <div style="
         padding-top:18px;
         color:#81948b;
-        border-top:1px solid var(--line2);
+        border-top:1px solid var(--line);
       ">
         No files yet.
       </div>
@@ -1616,10 +1653,7 @@ function openModal(
   modalCallback=callback;
 
   modalTitle.textContent=heading;
-
-  modalInput.placeholder=
-    placeholder;
-
+  modalInput.placeholder=placeholder;
   modalInput.value="";
 
   modalBg.style.display="flex";
@@ -1634,7 +1668,6 @@ function openModal(
 function closeModal(){
 
   modalBg.style.display="none";
-
   modalCallback=null;
 
 }
@@ -1644,8 +1677,7 @@ function confirmModal(){
   if(!modalCallback)
     return;
 
-  const callback=
-    modalCallback;
+  const callback=modalCallback;
 
   const value=
     modalInput.value.trim();
@@ -1676,8 +1708,7 @@ modalInput.addEventListener(
 
 function openFile(fileId){
 
-  const file=
-    getFile(fileId);
+  const file=getFile(fileId);
 
   if(!file)
     return;
@@ -1685,8 +1716,7 @@ function openFile(fileId){
   currentFileId=fileId;
   currentSection=file.type;
 
-  title.textContent=
-    file.name;
+  title.textContent=file.name;
 
   activeNav(file.type);
   updateNewButton();
@@ -1704,8 +1734,7 @@ function openFile(fileId){
 
 function renameFile(fileId){
 
-  const file=
-    getFile(fileId);
+  const file=getFile(fileId);
 
   if(!file)
     return;
@@ -1731,8 +1760,7 @@ function renameFile(fileId){
 
 function duplicateFile(fileId){
 
-  const file=
-    getFile(fileId);
+  const file=getFile(fileId);
 
   if(!file)
     return;
@@ -1743,17 +1771,13 @@ function duplicateFile(fileId){
     );
 
   copy.id=id();
-
-  copy.name=
-    file.name+" copy";
+  copy.name=file.name+" copy";
 
   files.push(copy);
 
   save();
 
-  showToast(
-    "Duplicated"
-  );
+  showToast("Duplicated");
 
   renderFiles(file.type);
 
@@ -1810,7 +1834,7 @@ function fontPicker(target){
         <button
           class="font-option"
           data-font="${escapeHTML(font)}"
-          style="font-family:${JSON.stringify(font)},sans-serif"
+          style="font-family:'${font}',sans-serif"
           onclick="chooseFont('${target}',${JSON.stringify(font)})"
         >
           ${escapeHTML(font)}
@@ -1889,10 +1913,7 @@ function closeFontMenus(){
 
 }
 
-async function chooseFont(
-  target,
-  font
-){
+async function chooseFont(target,font){
 
   await loadFont(font);
 
@@ -1913,10 +1934,10 @@ async function chooseFont(
   closeFontMenus();
 
   if(target==="doc")
-    applyDocFont(font);
+    await applyDocFont(font);
 
   if(target==="slide")
-    applySlideFont(font);
+    await applySlideFont(font);
 
 }
 
@@ -2036,10 +2057,7 @@ function renderDocs(file){
 
 }
 
-function docCommand(
-  command,
-  value=null
-){
+function docCommand(command,value=null){
 
   const editor=
     document.getElementById(
@@ -2051,23 +2069,11 @@ function docCommand(
 
   editor.focus();
 
-  if(command==="fontSize"){
-
-    document.execCommand(
-      "fontSize",
-      false,
-      value
-    );
-
-  }else{
-
-    document.execCommand(
-      command,
-      false,
-      value
-    );
-
-  }
+  document.execCommand(
+    command,
+    false,
+    value
+  );
 
   saveDoc();
 
@@ -2075,8 +2081,6 @@ function docCommand(
 
 async function applyDocFont(font){
 
-  await loadFont(font);
-
   const editor=
     document.getElementById(
       "docEditor"
@@ -2085,12 +2089,18 @@ async function applyDocFont(font){
   if(!editor)
     return;
 
+  await loadFont(font);
+
   editor.focus();
+
+  const hadSelection=
+    restoreEditorSelection(editor);
 
   const selection=
     window.getSelection();
 
   if(
+    hadSelection &&
     selection &&
     selection.rangeCount &&
     !selection
@@ -2102,12 +2112,10 @@ async function applyDocFont(font){
       selection.getRangeAt(0);
 
     const span=
-      document.createElement(
-        "span"
-      );
+      document.createElement("span");
 
     span.style.fontFamily=
-      `"${font}",sans-serif`;
+      `"${font}", sans-serif`;
 
     span.appendChild(
       range.extractContents()
@@ -2115,10 +2123,25 @@ async function applyDocFont(font){
 
     range.insertNode(span);
 
+    selection.removeAllRanges();
+
+    const newRange=
+      document.createRange();
+
+    newRange.selectNodeContents(span);
+
+    selection.addRange(newRange);
+
+    savedEditorRange=
+      newRange.cloneRange();
+
   }else{
 
     editor.style.fontFamily=
-      `"${font}",sans-serif`;
+      `"${font}", sans-serif`;
+
+    editor.dataset.currentFont=
+      font;
 
   }
 
@@ -2128,8 +2151,7 @@ async function applyDocFont(font){
 
 function saveDoc(){
 
-  const file=
-    getFile(currentFileId);
+  const file=getFile(currentFileId);
 
   const editor=
     document.getElementById(
@@ -2142,8 +2164,7 @@ function saveDoc(){
   file.content=
     editor.innerHTML;
 
-  file.updated=
-    Date.now();
+  file.updated=Date.now();
 
   save();
 
@@ -2180,9 +2201,7 @@ function insertDocImage(event){
 
     };
 
-  reader.readAsDataURL(
-    selected
-  );
+  reader.readAsDataURL(selected);
 
 }
 
@@ -2411,10 +2430,7 @@ function selectSlide(index){
 
 }
 
-function slideCommand(
-  command,
-  value=null
-){
+function slideCommand(command,value=null){
 
   const editor=
     document.getElementById(
@@ -2450,8 +2466,6 @@ function slideCommand(
 
 async function applySlideFont(font){
 
-  await loadFont(font);
-
   const editor=
     document.getElementById(
       "slideEditor"
@@ -2463,12 +2477,18 @@ async function applySlideFont(font){
   if(!editor || !state)
     return;
 
+  await loadFont(font);
+
   editor.focus();
+
+  const hadSelection=
+    restoreEditorSelection(editor);
 
   const selection=
     window.getSelection();
 
   if(
+    hadSelection &&
     selection &&
     selection.rangeCount &&
     !selection
@@ -2480,12 +2500,10 @@ async function applySlideFont(font){
       selection.getRangeAt(0);
 
     const span=
-      document.createElement(
-        "span"
-      );
+      document.createElement("span");
 
     span.style.fontFamily=
-      `"${font}",sans-serif`;
+      `"${font}", sans-serif`;
 
     span.appendChild(
       range.extractContents()
@@ -2493,10 +2511,25 @@ async function applySlideFont(font){
 
     range.insertNode(span);
 
+    selection.removeAllRanges();
+
+    const newRange=
+      document.createRange();
+
+    newRange.selectNodeContents(span);
+
+    selection.addRange(newRange);
+
+    savedEditorRange=
+      newRange.cloneRange();
+
   }else{
 
     editor.style.fontFamily=
-      `"${font}",sans-serif`;
+      `"${font}", sans-serif`;
+
+    editor.dataset.currentFont=
+      font;
 
   }
 
@@ -2644,9 +2677,7 @@ function insertSlideImage(event){
 
     };
 
-  reader.readAsDataURL(
-    selected
-  );
+  reader.readAsDataURL(selected);
 
 }
 
@@ -2665,14 +2696,11 @@ function startPresentation(){
 
   presentationIndex=0;
 
-  presentation.style.display=
-    "flex";
+  presentation.style.display="flex";
 
   renderPresentation();
 
-  if(
-    presentation.requestFullscreen
-  ){
+  if(presentation.requestFullscreen){
 
     presentation
       .requestFullscreen()
@@ -2735,8 +2763,7 @@ function previousPresentation(){
 
 function exitPresentation(){
 
-  presentation.style.display=
-    "none";
+  presentation.style.display="none";
 
   if(document.fullscreenElement){
 
@@ -2797,9 +2824,7 @@ function renderSheets(file){
   const rows=20;
   const cols=10;
 
-  while(
-    file.content.length<rows
-  ){
+  while(file.content.length<rows){
 
     file.content.push(
       Array(cols).fill("")
@@ -2847,10 +2872,7 @@ function renderSheets(file){
 
     <div class="formula">
 
-      <div
-        class="cell-name"
-        id="cellName"
-      >
+      <div class="cell-name" id="cellName">
         A1
       </div>
 
@@ -2874,11 +2896,7 @@ function renderSheets(file){
 
   `;
 
-  for(
-    let c=0;
-    c<cols;
-    c++
-  ){
+  for(let c=0;c<cols;c++){
 
     html+=`
       <th>${columnName(c)}</th>
@@ -2896,11 +2914,7 @@ function renderSheets(file){
 
   `;
 
-  for(
-    let r=0;
-    r<rows;
-    r++
-  ){
+  for(let r=0;r<rows;r++){
 
     html+=`
 
@@ -2910,11 +2924,7 @@ function renderSheets(file){
 
     `;
 
-    for(
-      let c=0;
-      c<cols;
-      c++
-    ){
+    for(let c=0;c<cols;c++){
 
       html+=`
 
@@ -2963,14 +2973,10 @@ function renderSheets(file){
         ()=>{
 
           const r=
-            Number(
-              cell.dataset.row
-            );
+            Number(cell.dataset.row);
 
           const c=
-            Number(
-              cell.dataset.col
-            );
+            Number(cell.dataset.col);
 
           cellName.textContent=
             columnName(c)+(r+1);
@@ -2986,14 +2992,10 @@ function renderSheets(file){
         ()=>{
 
           const r=
-            Number(
-              cell.dataset.row
-            );
+            Number(cell.dataset.row);
 
           const c=
-            Number(
-              cell.dataset.col
-            );
+            Number(cell.dataset.col);
 
           file.content[r][c]=
             cell.innerText;
@@ -3010,7 +3012,9 @@ function renderSheets(file){
     ()=>{
 
       const parsed=
-        parseCell(cellName.textContent);
+        parseCell(
+          cellName.textContent
+        );
 
       if(!parsed)
         return;
@@ -3070,9 +3074,7 @@ function parseCell(name){
 
   let col=0;
 
-  for(
-    const char of match[1]
-  ){
+  for(const char of match[1]){
 
     col=
       col*26+
@@ -3126,10 +3128,7 @@ function addSheetColumn(){
 
 }
 
-function sheetStyle(
-  property,
-  value
-){
+function sheetStyle(property,value){
 
   const active=
     document.activeElement;
@@ -3145,9 +3144,9 @@ function sheetStyle(
 
 }
 
-function setSheetFont(font){
+async function setSheetFont(font){
 
-  loadFont(font);
+  await loadFont(font);
 
   const active=
     document.activeElement;
@@ -3171,8 +3170,7 @@ function setSheetFont(font){
 
 function openCommand(){
 
-  commandBg.style.display=
-    "flex";
+  commandBg.style.display="flex";
 
   commandInput.value="";
 
@@ -3188,8 +3186,7 @@ function closeCommand(event){
   )
     return;
 
-  commandBg.style.display=
-    "none";
+  commandBg.style.display="none";
 
 }
 
@@ -3223,8 +3220,7 @@ function filterCommands(){
 
 function showToast(message){
 
-  toast.textContent=
-    message;
+  toast.textContent=message;
 
   toast.classList.add("show");
 
@@ -3235,9 +3231,7 @@ function showToast(message){
   window.toastTimer=
     setTimeout(
       ()=>{
-        toast.classList.remove(
-          "show"
-        );
+        toast.classList.remove("show");
       },
       1800
     );
@@ -3254,8 +3248,7 @@ document.addEventListener(
   event=>{
 
     if(
-      (event.ctrlKey ||
-       event.metaKey) &&
+      (event.ctrlKey || event.metaKey) &&
       event.key.toLowerCase()==="k"
     ){
 
@@ -3269,8 +3262,7 @@ document.addEventListener(
 
       closeFontMenus();
 
-      commandBg.style.display=
-        "none";
+      commandBg.style.display="none";
 
     }
 
@@ -3282,7 +3274,7 @@ document.addEventListener(
    INITIAL FONT
 ========================================================= */
 
-loadFont("Alegreya");
+loadFont("Alegreya").catch(()=>{});
 
 
 /* =========================================================
