@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Clamme.</title>
@@ -17,19 +16,21 @@
 <link rel="manifest" href="/Clamme/manifest.json">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Libre+Baskerville:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&display=swap');
 
 :root {
   --bg: #050806;
   --panel: #08130e;
-  --panel-2: #0a1912;
+  --panel2: #0a1912;
   --emerald: #0c4b34;
-  --emerald-2: #116043;
-  --line: rgba(147, 190, 166, 0.14);
-  --line-strong: rgba(147, 190, 166, 0.24);
+  --emerald-light: #176b49;
+
+  --line: rgba(147,190,166,.14);
+  --line-strong: rgba(147,190,166,.25);
+
   --text: #edf5ef;
-  --muted: rgba(225, 239, 229, 0.55);
-  --soft: rgba(225, 239, 229, 0.72);
+  --muted: rgba(225,239,229,.55);
+
   --paper: #fafbf9;
   --paper-text: #141815;
 }
@@ -47,31 +48,34 @@ body {
 
 body {
   font-family: "Alegreya", serif;
+
   background:
     radial-gradient(
       circle at 18% -10%,
-      rgba(17, 91, 61, 0.38),
+      rgba(17,91,61,.38),
       transparent 34%
     ),
     radial-gradient(
       circle at 90% 100%,
-      rgba(8, 57, 39, 0.18),
+      rgba(8,57,39,.18),
       transparent 35%
     ),
     var(--bg);
+
   color: var(--text);
+
   overflow: hidden;
 }
 
 button,
 input,
-textarea,
-select {
+select,
+textarea {
   font-family: "Alegreya", serif;
 }
 
 button {
-  color: inherit;
+  cursor: pointer;
 }
 
 /* =========================================================
@@ -81,6 +85,7 @@ button {
 .app {
   width: 100%;
   height: 100vh;
+
   display: flex;
 }
 
@@ -90,6 +95,7 @@ button {
 
 .sidebar {
   width: 238px;
+
   flex-shrink: 0;
 
   padding: 27px 18px 20px;
@@ -100,8 +106,8 @@ button {
   background:
     linear-gradient(
       180deg,
-      rgba(8, 31, 22, 0.98),
-      rgba(4, 12, 8, 0.99)
+      rgba(8,31,22,.98),
+      rgba(4,12,8,.99)
     );
 
   border-right: 1px solid var(--line);
@@ -110,69 +116,62 @@ button {
 .logo {
   padding: 0 11px;
 
-  font-size: 31px;
-  font-weight: 600;
-  letter-spacing: -1.4px;
-
-  color: #f2f7f3;
-
   margin-bottom: 29px;
+
+  font-size: 31px;
+
+  font-weight: 600;
+
+  letter-spacing: -1.4px;
 }
 
 /* =========================================================
-   NEW BUTTON
+   NEW
 ========================================================= */
 
 .new-button {
   width: 100%;
 
-  border: 1px solid rgba(131, 190, 158, 0.28);
+  border: 1px solid rgba(131,190,158,.28);
 
   background:
     linear-gradient(
       180deg,
-      rgba(16, 82, 56, 0.88),
-      rgba(8, 54, 37, 0.88)
+      rgba(16,82,56,.88),
+      rgba(8,54,37,.88)
     );
 
   border-radius: 7px;
 
   padding: 11px 15px;
 
+  color: white;
+
   font-size: 16px;
 
   text-align: left;
 
-  cursor: pointer;
-
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
+  transition: .18s ease;
 }
 
 .new-button:hover {
   background:
     linear-gradient(
       180deg,
-      rgba(22, 101, 69, 0.95),
-      rgba(10, 64, 43, 0.95)
+      rgba(22,101,69,.95),
+      rgba(10,64,43,.95)
     );
-
-  border-color: rgba(145, 211, 174, 0.4);
-}
-
-.new-button:active {
-  transform: translateY(1px);
 }
 
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 .nav {
   display: flex;
+
   flex-direction: column;
+
   gap: 3px;
 
   margin-top: 24px;
@@ -185,7 +184,7 @@ button {
 
   background: transparent;
 
-  color: rgba(225, 239, 229, 0.57);
+  color: rgba(225,239,229,.57);
 
   text-align: left;
 
@@ -195,21 +194,19 @@ button {
 
   font-size: 16px;
 
-  cursor: pointer;
-
-  transition:
-    background 160ms ease,
-    color 160ms ease;
+  transition: .16s ease;
 }
 
 .nav button:hover {
-  background: rgba(57, 127, 93, 0.13);
-  color: #f0f6f2;
+  background: rgba(57,127,93,.13);
+
+  color: white;
 }
 
 .nav button.active {
-  background: rgba(43, 117, 81, 0.21);
-  color: #ffffff;
+  background: rgba(43,117,81,.21);
+
+  color: white;
 }
 
 /* =========================================================
@@ -218,46 +215,43 @@ button {
 
 .main {
   flex: 1;
+
   min-width: 0;
+
   height: 100%;
 
   display: flex;
+
   flex-direction: column;
 }
 
-/* =========================================================
-   TOP BAR
-========================================================= */
-
 .topbar {
   height: 66px;
+
   flex-shrink: 0;
 
   padding: 0 30px;
 
   display: flex;
+
   align-items: center;
 
   border-bottom: 1px solid var(--line);
 
-  background: rgba(4, 10, 7, 0.72);
+  background: rgba(4,10,7,.72);
 
   backdrop-filter: blur(22px);
 }
 
 .page-title {
   font-size: 21px;
+
   font-weight: 500;
-
-  letter-spacing: -0.2px;
 }
-
-/* =========================================================
-   WORKSPACE
-========================================================= */
 
 .workspace {
   flex: 1;
+
   min-height: 0;
 
   overflow: auto;
@@ -270,8 +264,9 @@ button {
 ========================================================= */
 
 .home {
-  width: min(1100px, 100%);
-  margin: 0 auto;
+  width: min(1100px,100%);
+
+  margin: auto;
 }
 
 .home-header {
@@ -281,9 +276,9 @@ button {
 .home-header h1 {
   margin: 0;
 
-  font-size: clamp(46px, 6vw, 76px);
+  font-size: clamp(46px,6vw,76px);
 
-  line-height: 0.92;
+  line-height: .92;
 
   font-weight: 500;
 
@@ -292,6 +287,7 @@ button {
 
 .home-rule {
   width: 100%;
+
   height: 1px;
 
   margin-top: 28px;
@@ -299,8 +295,8 @@ button {
   background:
     linear-gradient(
       90deg,
-      rgba(116, 177, 145, 0.36),
-      rgba(116, 177, 145, 0.04)
+      rgba(116,177,145,.36),
+      rgba(116,177,145,.04)
     );
 }
 
@@ -308,7 +304,7 @@ button {
   display: grid;
 
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(3,minmax(0,1fr));
 
   gap: 14px;
 }
@@ -327,16 +323,13 @@ button {
   background:
     linear-gradient(
       145deg,
-      rgba(11, 38, 27, 0.86),
-      rgba(6, 19, 13, 0.82)
+      rgba(11,38,27,.86),
+      rgba(6,19,13,.82)
     );
 
-  cursor: pointer;
+  color: white;
 
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
+  transition: .18s ease;
 }
 
 .create-card:hover {
@@ -347,8 +340,8 @@ button {
   background:
     linear-gradient(
       145deg,
-      rgba(15, 54, 37, 0.94),
-      rgba(7, 23, 16, 0.9)
+      rgba(15,54,37,.94),
+      rgba(7,23,16,.9)
     );
 }
 
@@ -356,6 +349,7 @@ button {
   display: block;
 
   font-size: 23px;
+
   font-weight: 600;
 
   margin-bottom: 9px;
@@ -370,20 +364,26 @@ button {
 }
 
 /* =========================================================
-   EDITOR COMMON
+   TOOLBAR
 ========================================================= */
 
-.editor-shell {
-  width: min(1100px, 100%);
-  margin: 0 auto;
+.editor-shell,
+.slides-shell,
+.sheets-shell {
+  width: min(1200px,100%);
+
+  margin: auto;
 }
 
-.editor-toolbar {
-  min-height: 48px;
+.editor-toolbar,
+.slides-toolbar {
+  min-height: 49px;
 
   display: flex;
+
   align-items: center;
-  gap: 3px;
+
+  gap: 5px;
 
   padding-bottom: 13px;
 
@@ -394,15 +394,18 @@ button {
 
 .toolbar-group {
   display: flex;
+
   align-items: center;
-  gap: 2px;
+
+  gap: 3px;
 }
 
 .toolbar-divider {
   width: 1px;
-  height: 22px;
 
-  margin: 0 8px;
+  height: 23px;
+
+  margin: 0 7px;
 
   background: var(--line);
 }
@@ -412,7 +415,7 @@ button {
 
   background: transparent;
 
-  color: rgba(231, 243, 235, 0.66);
+  color: rgba(231,243,235,.68);
 
   padding: 7px 10px;
 
@@ -420,20 +423,37 @@ button {
 
   font-size: 15px;
 
-  cursor: pointer;
-
-  transition:
-    background 150ms ease,
-    color 150ms ease;
+  transition: .15s ease;
 }
 
 .tool:hover {
-  background: rgba(55, 127, 90, 0.15);
-  color: #ffffff;
+  background: rgba(55,127,90,.15);
+
+  color: white;
 }
 
-.tool:active {
-  background: rgba(55, 127, 90, 0.23);
+.tool.active {
+  background: rgba(55,127,90,.22);
+
+  color: white;
+}
+
+.toolbar-select {
+  height: 34px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 5px;
+
+  outline: none;
+
+  background: #09170f;
+
+  color: var(--soft);
+
+  font-size: 14px;
 }
 
 /* =========================================================
@@ -442,15 +462,16 @@ button {
 
 .docs-area {
   display: flex;
+
   justify-content: center;
 
-  padding-bottom: 60px;
+  padding-bottom: 70px;
 }
 
 .document-page {
-  width: min(820px, 100%);
+  width: min(820px,100%);
 
-  min-height: 980px;
+  min-height: 1000px;
 
   padding: 78px 82px;
 
@@ -459,7 +480,7 @@ button {
   color: var(--paper-text);
 
   box-shadow:
-    0 22px 65px rgba(0, 0, 0, 0.30);
+    0 25px 70px rgba(0,0,0,.30);
 
   outline: none;
 
@@ -467,28 +488,37 @@ button {
 
   line-height: 1.7;
 
-  caret-color: #145d40;
+  caret-color: #176b49;
 }
 
 .document-page:empty::before {
   content: "Start writing";
 
   color: #a3aaa5;
+}
 
-  pointer-events: none;
+.document-page img {
+  max-width: 100%;
+
+  height: auto;
+
+  display: block;
+
+  margin: 20px auto;
 }
 
 .document-page h1 {
-  font-size: 38px;
+  font-size: 40px;
+
   line-height: 1.15;
 
   margin: 0 0 20px;
 }
 
 .document-page h2 {
-  font-size: 29px;
+  font-size: 30px;
 
-  margin: 25px 0 12px;
+  margin: 26px 0 12px;
 }
 
 .document-page h3 {
@@ -497,59 +527,46 @@ button {
   margin: 22px 0 10px;
 }
 
-.document-page p {
-  margin: 0 0 13px;
-}
-
 /* =========================================================
    SLIDES
 ========================================================= */
 
-.slides-shell {
-  width: min(1200px, 100%);
-  margin: 0 auto;
-}
-
 .slides-toolbar {
-  display: flex;
-  align-items: center;
-
   justify-content: space-between;
-
-  padding-bottom: 13px;
-
-  margin-bottom: 22px;
-
-  border-bottom: 1px solid var(--line);
 }
 
 .slides-actions {
   display: flex;
-  gap: 4px;
+
+  align-items: center;
+
+  gap: 3px;
 }
 
 .slide-count {
   color: var(--muted);
+
   font-size: 14px;
 }
 
 .slide-layout {
   display: grid;
 
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 155px minmax(0,1fr);
 
-  gap: 22px;
+  gap: 24px;
 }
 
 /* THUMBNAILS */
 
 .slide-sidebar {
   display: flex;
+
   flex-direction: column;
 
   gap: 11px;
 
-  max-height: calc(100vh - 185px);
+  max-height: calc(100vh - 180px);
 
   overflow-y: auto;
 }
@@ -561,78 +578,82 @@ button {
 
   aspect-ratio: 16 / 9;
 
-  background: #f7f9f7;
-
-  border: 1px solid rgba(135, 178, 151, 0.15);
-
-  color: #171c18;
-
-  cursor: pointer;
-
   padding: 10px;
 
-  font-size: 11px;
+  border: 1px solid rgba(135,178,151,.16);
+
+  background: #f8faf8;
+
+  color: #161b17;
+
+  overflow: hidden;
 
   text-align: left;
 
-  transition:
-    border-color 160ms ease,
-    transform 160ms ease;
+  font-family: "Alegreya", serif;
+
+  transition: .16s ease;
 }
 
 .slide-thumbnail:hover {
-  transform: translateY(-1px);
+  border-color: rgba(135,194,157,.38);
 
-  border-color: rgba(135, 194, 157, 0.35);
+  transform: translateY(-1px);
 }
 
 .slide-thumbnail.active {
-  border: 2px solid #31835c;
+  border: 2px solid #258257;
 }
 
-.thumbnail-number {
+.slide-thumbnail img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.slide-thumbnail-number {
   position: absolute;
 
   left: 7px;
   bottom: 5px;
 
-  font-size: 10px;
+  color: #657069;
 
-  color: #67736b;
+  font-family: "Alegreya", serif;
+
+  font-size: 10px;
 }
 
-/* SLIDE STAGE */
+/* SLIDE CANVAS */
 
 .slide-stage {
   display: flex;
 
-  align-items: flex-start;
   justify-content: center;
 
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 .slide-canvas {
-  width: min(100%, 980px);
+  width: min(100%,980px);
 
   aspect-ratio: 16 / 9;
+
+  padding: 68px;
 
   background: #fafbf9;
 
   color: #131713;
 
-  box-shadow:
-    0 25px 70px rgba(0, 0, 0, 0.34);
-
   outline: none;
 
-  padding: 68px;
+  box-shadow:
+    0 28px 75px rgba(0,0,0,.34);
+
+  overflow: auto;
 
   font-size: 34px;
 
   line-height: 1.25;
-
-  overflow: auto;
 }
 
 .slide-canvas:empty::before {
@@ -641,76 +662,195 @@ button {
   color: #a3aaa5;
 }
 
+.slide-canvas img {
+  max-width: 100%;
+
+  max-height: 75%;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: 20px auto;
+}
+
 .slide-canvas h1 {
-  font-size: 54px;
   margin: 0 0 20px;
+
+  font-size: 55px;
 }
 
 .slide-canvas h2 {
-  font-size: 37px;
-  margin: 0 0 16px;
+  margin: 0 0 17px;
+
+  font-size: 38px;
+}
+
+/* =========================================================
+   PRESENTATION MODE
+========================================================= */
+
+.presentation {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 10000;
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #020403;
+}
+
+.presentation.active {
+  display: flex;
+}
+
+.presentation-slide {
+  width: min(94vw, 1500px);
+
+  aspect-ratio: 16 / 9;
+
+  padding: 7%;
+
+  background: #fafbf9;
+
+  color: #131713;
+
+  overflow: hidden;
+
+  font-size: clamp(22px,3vw,48px);
+
+  line-height: 1.25;
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.55);
+}
+
+.presentation-slide img {
+  max-width: 100%;
+
+  max-height: 80%;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: auto;
+}
+
+.presentation-controls {
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 7px;
+
+  background: rgba(7,19,13,.9);
+
+  border: 1px solid rgba(141,190,160,.22);
+
+  border-radius: 7px;
+
+  opacity: 0;
+
+  transition: opacity .2s ease;
+}
+
+.presentation:hover .presentation-controls {
+  opacity: 1;
+}
+
+.presentation-controls button {
+  border: 0;
+
+  background: transparent;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 5px;
+
+  font-family: "Alegreya",serif;
+
+  font-size: 15px;
+}
+
+.presentation-controls button:hover {
+  background: rgba(65,136,98,.22);
+}
+
+.presentation-number {
+  color: rgba(235,245,238,.62);
+
+  padding: 0 8px;
+
+  font-size: 14px;
 }
 
 /* =========================================================
    SHEETS
 ========================================================= */
 
-.sheets-shell {
-  width: min(1250px, 100%);
-  margin: 0 auto;
-}
-
 .sheet-toolbar {
   display: flex;
+
   align-items: center;
 
-  gap: 10px;
+  gap: 7px;
 
   margin-bottom: 16px;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid var(--line);
 }
 
 .cell-name {
-  width: 78px;
-  height: 38px;
+  width: 70px;
 
-  padding: 0 10px;
+  height: 36px;
 
   border: 1px solid var(--line);
 
-  background: rgba(7, 23, 16, 0.85);
+  background: #09170f;
 
-  color: var(--soft);
-
-  outline: none;
+  color: var(--muted);
 
   text-align: center;
 
-  font-size: 14px;
+  outline: none;
 }
 
 .formula-input {
   flex: 1;
 
-  min-width: 0;
-
-  height: 38px;
-
-  padding: 0 13px;
+  height: 36px;
 
   border: 1px solid var(--line);
 
-  background: rgba(7, 23, 16, 0.85);
+  background: #09170f;
 
-  color: var(--text);
+  color: white;
+
+  padding: 0 11px;
 
   outline: none;
-
-  font-size: 15px;
-}
-
-.formula-input:focus,
-.cell-name:focus {
-  border-color: rgba(104, 177, 136, 0.4);
 }
 
 .sheet-frame {
@@ -726,7 +866,7 @@ button {
 .sheet-table {
   border-collapse: collapse;
 
-  min-width: 1050px;
+  min-width: 1100px;
 
   width: 100%;
 
@@ -735,7 +875,7 @@ button {
 
 .sheet-table th,
 .sheet-table td {
-  height: 34px;
+  height: 35px;
 
   border-right: 1px solid #d7ddd8;
 
@@ -743,15 +883,13 @@ button {
 }
 
 .sheet-table th {
-  width: 88px;
+  width: 78px;
 
   background: #e6eae6;
 
   color: #566058;
 
   font-size: 13px;
-
-  font-weight: 600;
 
   text-align: center;
 }
@@ -767,11 +905,7 @@ button {
 
   outline: none;
 
-  font-family: "Alegreya", serif;
-
   font-size: 15px;
-
-  cursor: cell;
 }
 
 .sheet-table td:hover {
@@ -791,10 +925,11 @@ button {
   position: fixed;
 
   left: 50%;
-  bottom: 25px;
+
+  bottom: 24px;
 
   transform:
-    translate(-50%, 16px);
+    translate(-50%,15px);
 
   opacity: 0;
 
@@ -804,33 +939,29 @@ button {
 
   background: #0b3020;
 
-  border: 1px solid rgba(124, 192, 151, 0.28);
+  border: 1px solid rgba(124,192,151,.28);
 
   color: #eef8f1;
 
   border-radius: 6px;
 
-  font-size: 14px;
+  transition: .2s ease;
 
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
-
-  z-index: 9999;
+  z-index: 20000;
 }
 
 .toast.show {
   opacity: 1;
 
   transform:
-    translate(-50%, 0);
+    translate(-50%,0);
 }
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media(max-width:900px) {
 
   .sidebar {
     width: 205px;
@@ -853,23 +984,19 @@ button {
   }
 
   .slide-thumbnail {
-    flex: 0 0 130px;
+    flex: 0 0 135px;
   }
 
   .document-page {
     padding: 55px;
   }
+
 }
 
-@media (max-width: 650px) {
+@media(max-width:650px) {
 
   body {
     overflow: auto;
-  }
-
-  .app {
-    min-height: 100vh;
-    height: auto;
   }
 
   .sidebar {
@@ -883,9 +1010,9 @@ button {
   .logo {
     font-size: 20px;
 
-    text-align: center;
-
     padding: 0;
+
+    text-align: center;
 
     margin-bottom: 25px;
   }
@@ -910,14 +1037,6 @@ button {
     text-align: center;
 
     padding: 12px 4px;
-  }
-
-  .nav button::first-letter {
-    font-size: 18px;
-  }
-
-  .topbar {
-    padding: 0 17px;
   }
 
   .workspace {
@@ -965,8 +1084,8 @@ button {
     </div>
 
     <button
-      class="new-button"
       id="newButton"
+      class="new-button"
       onclick="createCurrent()"
     >
       + New document
@@ -1014,8 +1133,8 @@ button {
     <header class="topbar">
 
       <div
-        class="page-title"
         id="pageTitle"
+        class="page-title"
       >
         Home
       </div>
@@ -1024,8 +1143,8 @@ button {
 
 
     <section
-      class="workspace"
       id="workspace"
+      class="workspace"
     ></section>
 
   </main>
@@ -1033,9 +1152,46 @@ button {
 </div>
 
 
+<!-- PRESENTATION -->
+
 <div
-  class="toast"
+  id="presentation"
+  class="presentation"
+>
+
+  <div
+    id="presentationSlide"
+    class="presentation-slide"
+  ></div>
+
+
+  <div class="presentation-controls">
+
+    <button onclick="previousPresentationSlide()">
+      Previous
+    </button>
+
+    <span
+      id="presentationNumber"
+      class="presentation-number"
+    ></span>
+
+    <button onclick="nextPresentationSlide()">
+      Next
+    </button>
+
+    <button onclick="exitPresentation()">
+      Exit
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
   id="toast"
+  class="toast"
 ></div>
 
 
@@ -1051,7 +1207,7 @@ let currentSection = "home";
 
 let currentSlide = 0;
 
-let slides = [];
+let slides = [""];
 
 
 /* =========================================================
@@ -1060,20 +1216,26 @@ let slides = [];
 
 if ("serviceWorker" in navigator) {
 
-  window.addEventListener("load", () => {
+  window.addEventListener(
+    "load",
+    () => {
 
-    navigator.serviceWorker
-      .register(BASE + "sw.js", {
-        scope: BASE
-      })
-      .catch(error => {
-        console.error(
-          "Clamme service worker:",
-          error
+      navigator.serviceWorker
+        .register(
+          BASE + "sw.js",
+          {
+            scope: BASE
+          }
+        )
+        .catch(
+          error => console.error(
+            "Clamme service worker:",
+            error
+          )
         );
-      });
 
-  });
+    }
+  );
 
 }
 
@@ -1086,9 +1248,10 @@ function setActive(section) {
 
   document
     .querySelectorAll(".nav button")
-    .forEach(button => {
-      button.classList.remove("active");
-    });
+    .forEach(
+      button =>
+        button.classList.remove("active")
+    );
 
   const button =
     document.getElementById(
@@ -1096,7 +1259,9 @@ function setActive(section) {
     );
 
   if (button) {
+
     button.classList.add("active");
+
   }
 
 }
@@ -1105,7 +1270,9 @@ function setActive(section) {
 function updateNewButton() {
 
   const button =
-    document.getElementById("newButton");
+    document.getElementById(
+      "newButton"
+    );
 
   if (currentSection === "slides") {
 
@@ -1139,8 +1306,9 @@ function goHome() {
 
   updateNewButton();
 
-  document.getElementById("pageTitle").textContent =
-    "Home";
+  document.getElementById(
+    "pageTitle"
+  ).textContent = "Home";
 
   renderHome();
 
@@ -1157,8 +1325,9 @@ function openSection(section) {
 
   if (section === "docs") {
 
-    document.getElementById("pageTitle").textContent =
-      "Docs";
+    document.getElementById(
+      "pageTitle"
+    ).textContent = "Docs";
 
     renderDocs();
 
@@ -1166,8 +1335,9 @@ function openSection(section) {
 
   else if (section === "slides") {
 
-    document.getElementById("pageTitle").textContent =
-      "Slides";
+    document.getElementById(
+      "pageTitle"
+    ).textContent = "Slides";
 
     renderSlides();
 
@@ -1175,8 +1345,9 @@ function openSection(section) {
 
   else if (section === "sheets") {
 
-    document.getElementById("pageTitle").textContent =
-      "Sheets";
+    document.getElementById(
+      "pageTitle"
+    ).textContent = "Sheets";
 
     renderSheets();
 
@@ -1191,7 +1362,9 @@ function openSection(section) {
 
 function renderHome() {
 
-  document.getElementById("workspace").innerHTML = `
+  document.getElementById(
+    "workspace"
+  ).innerHTML = `
 
     <div class="home">
 
@@ -1216,7 +1389,7 @@ function renderHome() {
           </span>
 
           <span class="create-card-description">
-            Write, edit and format.
+            Write and refine.
           </span>
 
         </button>
@@ -1232,7 +1405,7 @@ function renderHome() {
           </span>
 
           <span class="create-card-description">
-            Build polished presentations.
+            Design and present.
           </span>
 
         </button>
@@ -1263,6 +1436,80 @@ function renderHome() {
 
 
 /* =========================================================
+   FONT OPTIONS
+========================================================= */
+
+const fontOptions = `
+
+  <option value="Alegreya">
+    Alegreya
+  </option>
+
+  <option value="Georgia">
+    Georgia
+  </option>
+
+  <option value="Playfair Display">
+    Playfair Display
+  </option>
+
+  <option value="Libre Baskerville">
+    Libre Baskerville
+  </option>
+
+  <option value="Merriweather">
+    Merriweather
+  </option>
+
+  <option value="Inter">
+    Inter
+  </option>
+
+  <option value="Roboto">
+    Roboto
+  </option>
+
+  <option value="Source Sans 3">
+    Source Sans
+  </option>
+
+`;
+
+
+const sizeOptions = `
+
+  <option value="1">
+    12
+  </option>
+
+  <option value="2">
+    14
+  </option>
+
+  <option value="3">
+    16
+  </option>
+
+  <option value="4">
+    18
+  </option>
+
+  <option value="5">
+    22
+  </option>
+
+  <option value="6">
+    28
+  </option>
+
+  <option value="7">
+    36
+  </option>
+
+`;
+
+
+/* =========================================================
    DOCS
 ========================================================= */
 
@@ -1273,11 +1520,38 @@ function renderDocs() {
       "clamme-document"
     ) || "";
 
-  document.getElementById("workspace").innerHTML = `
+
+  document.getElementById(
+    "workspace"
+  ).innerHTML = `
 
     <div class="editor-shell">
 
       <div class="editor-toolbar">
+
+        <select
+          id="docFont"
+          class="toolbar-select"
+          onchange="changeDocFont(this.value)"
+        >
+
+          ${fontOptions}
+
+        </select>
+
+
+        <select
+          class="toolbar-select"
+          onchange="changeDocSize(this.value)"
+        >
+
+          ${sizeOptions}
+
+        </select>
+
+
+        <div class="toolbar-divider"></div>
+
 
         <div class="toolbar-group">
 
@@ -1308,30 +1582,36 @@ function renderDocs() {
         <div class="toolbar-divider"></div>
 
 
-        <div class="toolbar-group">
+        <button
+          class="tool"
+          onclick="insertDocumentImage()"
+        >
+          Image
+        </button>
 
-          <button
-            class="tool"
-            onclick="docCommand('formatBlock','h1')"
-          >
-            Title
-          </button>
 
-          <button
-            class="tool"
-            onclick="docCommand('formatBlock','h2')"
-          >
-            Heading
-          </button>
+        <button
+          class="tool"
+          onclick="docCommand('justifyLeft')"
+        >
+          Left
+        </button>
 
-          <button
-            class="tool"
-            onclick="docCommand('formatBlock','p')"
-          >
-            Text
-          </button>
 
-        </div>
+        <button
+          class="tool"
+          onclick="docCommand('justifyCenter')"
+        >
+          Center
+        </button>
+
+
+        <button
+          class="tool"
+          onclick="docCommand('justifyRight')"
+        >
+          Right
+        </button>
 
 
         <div class="toolbar-divider"></div>
@@ -1360,6 +1640,13 @@ function renderDocs() {
 
     </div>
 
+    <input
+      id="documentImageInput"
+      type="file"
+      accept="image/*"
+      hidden
+    >
+
   `;
 
 
@@ -1367,6 +1654,7 @@ function renderDocs() {
     document.getElementById(
       "documentPage"
     );
+
 
   page.addEventListener(
     "input",
@@ -1388,6 +1676,80 @@ function docCommand(
   );
 
   saveDocument();
+
+}
+
+
+function changeDocFont(font) {
+
+  document.execCommand(
+    "fontName",
+    false,
+    font
+  );
+
+  saveDocument();
+
+}
+
+
+function changeDocSize(size) {
+
+  document.execCommand(
+    "fontSize",
+    false,
+    size
+  );
+
+  saveDocument();
+
+}
+
+
+function insertDocumentImage() {
+
+  const input =
+    document.getElementById(
+      "documentImageInput"
+    );
+
+  if (!input) return;
+
+  input.click();
+
+
+  input.onchange = event => {
+
+    const file =
+      event.target.files[0];
+
+    if (!file) return;
+
+    const reader =
+      new FileReader();
+
+    reader.onload = event => {
+
+      const page =
+        document.getElementById(
+          "documentPage"
+        );
+
+      page.focus();
+
+      document.execCommand(
+        "insertImage",
+        false,
+        event.target.result
+      );
+
+      saveDocument();
+
+    };
+
+    reader.readAsDataURL(file);
+
+  };
 
 }
 
@@ -1418,49 +1780,53 @@ function printDocument() {
 
   if (!page) return;
 
-  const windowPrint =
+  const printWindow =
     window.open(
       "",
       "_blank"
     );
 
-  windowPrint.document.write(`
+  printWindow.document.write(`
 
     <!DOCTYPE html>
 
     <html>
 
-      <head>
+    <head>
 
-        <title>Clamme Document</title>
+      <title>Clamme Document</title>
 
-        <style>
+      <style>
 
-          body {
-            font-family: Georgia, serif;
-            padding: 60px;
-            line-height: 1.7;
-          }
+        body {
+          font-family: Georgia, serif;
+          padding: 60px;
+          line-height: 1.7;
+        }
 
-        </style>
+        img {
+          max-width: 100%;
+        }
 
-      </head>
+      </style>
 
-      <body>
+    </head>
 
-        ${page.innerHTML}
+    <body>
 
-      </body>
+      ${page.innerHTML}
+
+    </body>
 
     </html>
 
   `);
 
-  windowPrint.document.close();
+  printWindow.document.close();
 
-  windowPrint.focus();
+  printWindow.focus();
 
-  windowPrint.print();
+  printWindow.print();
 
 }
 
@@ -1482,7 +1848,7 @@ function loadSlides() {
 
     if (
       Array.isArray(saved) &&
-      saved.length
+      saved.length > 0
     ) {
 
       slides = saved;
@@ -1520,22 +1886,81 @@ function renderSlides() {
 
   loadSlides();
 
-  if (
-    currentSlide >= slides.length
-  ) {
+  currentSlide =
+    Math.min(
+      currentSlide,
+      slides.length - 1
+    );
 
-    currentSlide =
-      slides.length - 1;
 
-  }
-
-  document.getElementById("workspace").innerHTML = `
+  document.getElementById(
+    "workspace"
+  ).innerHTML = `
 
     <div class="slides-shell">
 
       <div class="slides-toolbar">
 
         <div class="slides-actions">
+
+          <select
+            id="slideFont"
+            class="toolbar-select"
+            onchange="changeSlideFont(this.value)"
+          >
+
+            ${fontOptions}
+
+          </select>
+
+
+          <select
+            class="toolbar-select"
+            onchange="changeSlideSize(this.value)"
+          >
+
+            ${sizeOptions}
+
+          </select>
+
+
+          <div class="toolbar-divider"></div>
+
+
+          <button
+            class="tool"
+            onclick="slideCommand('bold')"
+          >
+            Bold
+          </button>
+
+
+          <button
+            class="tool"
+            onclick="slideCommand('italic')"
+          >
+            Italic
+          </button>
+
+
+          <button
+            class="tool"
+            onclick="slideCommand('underline')"
+          >
+            Underline
+          </button>
+
+
+          <button
+            class="tool"
+            onclick="insertSlideImage()"
+          >
+            Image
+          </button>
+
+
+          <div class="toolbar-divider"></div>
+
 
           <button
             class="tool"
@@ -1544,12 +1969,14 @@ function renderSlides() {
             New slide
           </button>
 
+
           <button
             class="tool"
             onclick="duplicateSlide()"
           >
             Duplicate
           </button>
+
 
           <button
             class="tool"
@@ -1558,9 +1985,10 @@ function renderSlides() {
             Delete
           </button>
 
+
           <button
             class="tool"
-            onclick="presentSlides()"
+            onclick="startPresentation()"
           >
             Present
           </button>
@@ -1569,8 +1997,8 @@ function renderSlides() {
 
 
         <div
-          class="slide-count"
           id="slideCount"
+          class="slide-count"
         ></div>
 
       </div>
@@ -1579,8 +2007,8 @@ function renderSlides() {
       <div class="slide-layout">
 
         <aside
-          class="slide-sidebar"
           id="slideSidebar"
+          class="slide-sidebar"
         ></aside>
 
 
@@ -1599,6 +2027,14 @@ function renderSlides() {
 
     </div>
 
+
+    <input
+      id="slideImageInput"
+      type="file"
+      accept="image/*"
+      hidden
+    >
+
   `;
 
 
@@ -1608,25 +2044,133 @@ function renderSlides() {
 
 
   document
-    .getElementById("slideCanvas")
+    .getElementById(
+      "slideCanvas"
+    )
     .addEventListener(
       "input",
-      () => {
-
-        slides[currentSlide] =
-          document.getElementById(
-            "slideCanvas"
-          ).innerHTML;
-
-        saveSlides();
-
-        renderSlideThumbnails();
-
-      }
+      saveCurrentSlide
     );
 
 }
 
+
+/* =========================================================
+   SLIDE EDITING
+========================================================= */
+
+function saveCurrentSlide() {
+
+  const canvas =
+    document.getElementById(
+      "slideCanvas"
+    );
+
+  if (!canvas) return;
+
+  slides[currentSlide] =
+    canvas.innerHTML;
+
+  saveSlides();
+
+  renderSlideThumbnails();
+
+}
+
+
+function slideCommand(
+  command,
+  value = null
+) {
+
+  document.execCommand(
+    command,
+    false,
+    value
+  );
+
+  saveCurrentSlide();
+
+}
+
+
+function changeSlideFont(font) {
+
+  document.execCommand(
+    "fontName",
+    false,
+    font
+  );
+
+  saveCurrentSlide();
+
+}
+
+
+function changeSlideSize(size) {
+
+  document.execCommand(
+    "fontSize",
+    false,
+    size
+  );
+
+  saveCurrentSlide();
+
+}
+
+
+function insertSlideImage() {
+
+  const input =
+    document.getElementById(
+      "slideImageInput"
+    );
+
+  if (!input) return;
+
+  input.click();
+
+
+  input.onchange = event => {
+
+    const file =
+      event.target.files[0];
+
+    if (!file) return;
+
+    const reader =
+      new FileReader();
+
+    reader.onload = event => {
+
+      const canvas =
+        document.getElementById(
+          "slideCanvas"
+        );
+
+      canvas.focus();
+
+      document.execCommand(
+        "insertImage",
+        false,
+        event.target.result
+      );
+
+      saveCurrentSlide();
+
+    };
+
+    reader.readAsDataURL(file);
+
+  };
+
+}
+
+
+/* =========================================================
+   SLIDE THUMBNAILS
+========================================================= */
 
 function renderSlideThumbnails() {
 
@@ -1639,8 +2183,9 @@ function renderSlideThumbnails() {
 
   sidebar.innerHTML = "";
 
+
   slides.forEach(
-    (content, index) => {
+    (content,index) => {
 
       const thumbnail =
         document.createElement(
@@ -1655,17 +2200,19 @@ function renderSlideThumbnails() {
             : ""
         );
 
+
       thumbnail.innerHTML = `
 
         <div>
-          ${content || " "}
+          ${content || ""}
         </div>
 
-        <span class="thumbnail-number">
+        <span class="slide-thumbnail-number">
           ${index + 1}
         </span>
 
       `;
+
 
       thumbnail.onclick = () => {
 
@@ -1675,6 +2222,7 @@ function renderSlideThumbnails() {
 
       };
 
+
       sidebar.appendChild(
         thumbnail
       );
@@ -1683,20 +2231,24 @@ function renderSlideThumbnails() {
   );
 
 
-  const counter =
+  const count =
     document.getElementById(
       "slideCount"
     );
 
-  if (counter) {
+  if (count) {
 
-    counter.textContent =
+    count.textContent =
       `${currentSlide + 1} / ${slides.length}`;
 
   }
 
 }
 
+
+/* =========================================================
+   CURRENT SLIDE
+========================================================= */
 
 function renderCurrentSlide() {
 
@@ -1712,6 +2264,10 @@ function renderCurrentSlide() {
 
 }
 
+
+/* =========================================================
+   SLIDE ACTIONS
+========================================================= */
 
 function addSlide() {
 
@@ -1779,18 +2335,206 @@ function deleteSlide() {
 }
 
 
-function presentSlides() {
+/* =========================================================
+   REAL PRESENTATION MODE
+========================================================= */
 
-  const canvas =
+let presentationIndex = 0;
+
+
+function startPresentation() {
+
+  saveCurrentSlide();
+
+  presentationIndex = 0;
+
+  renderPresentation();
+
+  const presentation =
     document.getElementById(
-      "slideCanvas"
+      "presentation"
     );
 
-  if (!canvas) return;
+  presentation.classList.add(
+    "active"
+  );
 
-  canvas.requestFullscreen?.();
+
+  if (
+    presentation.requestFullscreen
+  ) {
+
+    presentation
+      .requestFullscreen()
+      .catch(() => {});
+
+  }
 
 }
+
+
+function renderPresentation() {
+
+  const output =
+    document.getElementById(
+      "presentationSlide"
+    );
+
+  const number =
+    document.getElementById(
+      "presentationNumber"
+    );
+
+  if (!output) return;
+
+  output.innerHTML =
+    slides[presentationIndex] || "";
+
+
+  if (number) {
+
+    number.textContent =
+      `${presentationIndex + 1} / ${slides.length}`;
+
+  }
+
+}
+
+
+function nextPresentationSlide() {
+
+  if (
+    presentationIndex <
+    slides.length - 1
+  ) {
+
+    presentationIndex++;
+
+    renderPresentation();
+
+  }
+
+}
+
+
+function previousPresentationSlide() {
+
+  if (
+    presentationIndex > 0
+  ) {
+
+    presentationIndex--;
+
+    renderPresentation();
+
+  }
+
+}
+
+
+function exitPresentation() {
+
+  const presentation =
+    document.getElementById(
+      "presentation"
+    );
+
+  presentation.classList.remove(
+    "active"
+  );
+
+
+  if (
+    document.fullscreenElement
+  ) {
+
+    document.exitFullscreen()
+      .catch(() => {});
+
+  }
+
+}
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    const presentation =
+      document.getElementById(
+        "presentation"
+      );
+
+    if (
+      !presentation.classList.contains(
+        "active"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    if (
+      event.key === "ArrowRight" ||
+      event.key === " " ||
+      event.key === "Enter"
+    ) {
+
+      event.preventDefault();
+
+      nextPresentationSlide();
+
+    }
+
+
+    if (
+      event.key === "ArrowLeft"
+    ) {
+
+      event.preventDefault();
+
+      previousPresentationSlide();
+
+    }
+
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      exitPresentation();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "dblclick",
+  event => {
+
+    const presentation =
+      document.getElementById(
+        "presentation"
+      );
+
+    if (
+      presentation.classList.contains(
+        "active"
+      ) &&
+      event.target ===
+      presentation
+    ) {
+
+      nextPresentationSlide();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -1804,7 +2548,7 @@ const SHEET_COLUMNS = 12;
 
 function columnName(index) {
 
-  let name = "";
+  let result = "";
 
   let number = index + 1;
 
@@ -1813,10 +2557,10 @@ function columnName(index) {
     const remainder =
       (number - 1) % 26;
 
-    name =
+    result =
       String.fromCharCode(
         65 + remainder
-      ) + name;
+      ) + result;
 
     number =
       Math.floor(
@@ -1825,7 +2569,7 @@ function columnName(index) {
 
   }
 
-  return name;
+  return result;
 
 }
 
@@ -1842,11 +2586,66 @@ function sheetKey(
 
 function renderSheets() {
 
-  let table = `
+  let html = `
 
     <div class="sheets-shell">
 
       <div class="sheet-toolbar">
+
+        <select
+          id="sheetFont"
+          class="toolbar-select"
+        >
+
+          ${fontOptions}
+
+        </select>
+
+
+        <select
+          id="sheetSize"
+          class="toolbar-select"
+        >
+
+          ${sizeOptions}
+
+        </select>
+
+
+        <button
+          class="tool"
+          onclick="sheetCommand('bold')"
+        >
+          Bold
+        </button>
+
+
+        <button
+          class="tool"
+          onclick="sheetCommand('italic')"
+        >
+          Italic
+        </button>
+
+
+        <button
+          class="tool"
+          onclick="sheetAlign('left')"
+        >
+          Left
+        </button>
+
+
+        <button
+          class="tool"
+          onclick="sheetAlign('center')"
+        >
+          Center
+        </button>
+
+
+        <div class="toolbar-divider"></div>
+
 
         <input
           id="cellName"
@@ -1854,6 +2653,7 @@ function renderSheets() {
           readonly
           placeholder="A1"
         >
+
 
         <input
           id="formulaInput"
@@ -1883,16 +2683,14 @@ function renderSheets() {
     column++
   ) {
 
-    table += `
-      <th>
-        ${columnName(column)}
-      </th>
+    html += `
+      <th>${columnName(column)}</th>
     `;
 
   }
 
 
-  table += `
+  html += `
 
             </tr>
 
@@ -1909,13 +2707,11 @@ function renderSheets() {
     row++
   ) {
 
-    table += `
+    html += `
 
       <tr>
 
-        <th>
-          ${row + 1}
-        </th>
+        <th>${row + 1}</th>
 
     `;
 
@@ -1937,21 +2733,24 @@ function renderSheets() {
           key
         ) || "";
 
-      table += `
+
+      html += `
 
         <td
           contenteditable="true"
           data-row="${row}"
           data-column="${column}"
           data-key="${key}"
-        >${escapeHTML(value)}</td>
+        >
+          ${escapeHTML(value)}
+        </td>
 
       `;
 
     }
 
 
-    table += `
+    html += `
 
       </tr>
 
@@ -1960,7 +2759,7 @@ function renderSheets() {
   }
 
 
-  table += `
+  html += `
 
           </tbody>
 
@@ -1973,8 +2772,60 @@ function renderSheets() {
   `;
 
 
-  document.getElementById("workspace").innerHTML =
-    table;
+  document.getElementById(
+    "workspace"
+  ).innerHTML = html;
+
+
+  const font =
+    document.getElementById(
+      "sheetFont"
+    );
+
+  const size =
+    document.getElementById(
+      "sheetSize"
+    );
+
+
+  font.onchange = () => {
+
+    const cell =
+      document.querySelector(
+        ".sheet-table td.selected"
+      );
+
+    if (!cell) return;
+
+    cell.style.fontFamily =
+      font.value;
+
+  };
+
+
+  size.onchange = () => {
+
+    const cell =
+      document.querySelector(
+        ".sheet-table td.selected"
+      );
+
+    if (!cell) return;
+
+    const sizes = {
+      1: "12px",
+      2: "14px",
+      3: "16px",
+      4: "18px",
+      5: "22px",
+      6: "28px",
+      7: "36px"
+    };
+
+    cell.style.fontSize =
+      sizes[size.value];
+
+  };
 
 
   document
@@ -1991,15 +2842,18 @@ function renderSheets() {
             .querySelectorAll(
               ".sheet-table td"
             )
-            .forEach(c =>
-              c.classList.remove(
-                "selected"
-              )
+            .forEach(
+              c =>
+                c.classList.remove(
+                  "selected"
+                )
             );
+
 
           cell.classList.add(
             "selected"
           );
+
 
           const row =
             Number(
@@ -2011,15 +2865,17 @@ function renderSheets() {
               cell.dataset.column
             );
 
+
           document.getElementById(
             "cellName"
           ).value =
             `${columnName(column)}${row + 1}`;
 
+
           document.getElementById(
             "formulaInput"
           ).value =
-            cell.textContent;
+            cell.textContent.trim();
 
         }
       );
@@ -2058,10 +2914,12 @@ function renderSheets() {
                 cell.dataset.column
               );
 
+
             const next =
               document.querySelector(
                 `td[data-row="${row + 1}"][data-column="${column}"]`
               );
+
 
             if (next) {
 
@@ -2077,31 +2935,74 @@ function renderSheets() {
     });
 
 
-  document
-    .getElementById(
-      "formulaInput"
-    )
-    .addEventListener(
-      "input",
-      event => {
+  document.getElementById(
+    "formulaInput"
+  ).addEventListener(
+    "input",
+    event => {
 
-        const active =
-          document.querySelector(
-            ".sheet-table td.selected"
-          );
-
-        if (!active) return;
-
-        active.textContent =
-          event.target.value;
-
-        localStorage.setItem(
-          active.dataset.key,
-          active.textContent
+      const cell =
+        document.querySelector(
+          ".sheet-table td.selected"
         );
 
-      }
+      if (!cell) return;
+
+      cell.textContent =
+        event.target.value;
+
+      localStorage.setItem(
+        cell.dataset.key,
+        cell.textContent
+      );
+
+    }
+  );
+
+}
+
+
+function sheetCommand(command) {
+
+  const cell =
+    document.querySelector(
+      ".sheet-table td.selected"
     );
+
+  if (!cell) return;
+
+  if (command === "bold") {
+
+    cell.style.fontWeight =
+      cell.style.fontWeight === "700"
+        ? "400"
+        : "700";
+
+  }
+
+  if (command === "italic") {
+
+    cell.style.fontStyle =
+      cell.style.fontStyle === "italic"
+        ? "normal"
+        : "italic";
+
+  }
+
+}
+
+
+function sheetAlign(direction) {
+
+  const cell =
+    document.querySelector(
+      ".sheet-table td.selected"
+    );
+
+  if (!cell) return;
+
+  cell.style.textAlign =
+    direction;
 
 }
 
@@ -2109,7 +3010,10 @@ function renderSheets() {
 function escapeHTML(value) {
 
   return String(value)
-    .replaceAll("&", "&amp;")
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
     .replaceAll(
       "<",
       "&lt;"
@@ -2131,7 +3035,7 @@ function escapeHTML(value) {
 
 
 /* =========================================================
-   NEW ACTIONS
+   NEW
 ========================================================= */
 
 function createCurrent() {
