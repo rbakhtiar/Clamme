@@ -12,12 +12,27 @@
   content="Clamme — Docs, Slides and Sheets."
 >
 
-<meta name="theme-color" content="#0b3d2e">
+<meta name="theme-color" content="#08291d">
 
 <link rel="manifest" href="/Clamme/manifest.json">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #050806;
+  --panel: #08130e;
+  --panel-2: #0a1912;
+  --emerald: #0c4b34;
+  --emerald-2: #116043;
+  --line: rgba(147, 190, 166, 0.14);
+  --line-strong: rgba(147, 190, 166, 0.24);
+  --text: #edf5ef;
+  --muted: rgba(225, 239, 229, 0.55);
+  --soft: rgba(225, 239, 229, 0.72);
+  --paper: #fafbf9;
+  --paper-text: #141815;
+}
 
 * {
   box-sizing: border-box;
@@ -25,21 +40,27 @@
 
 html,
 body {
-  margin: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
 }
 
 body {
   font-family: "Alegreya", serif;
   background:
     radial-gradient(
-      circle at 20% 0%,
-      rgba(10, 74, 52, .42),
+      circle at 18% -10%,
+      rgba(17, 91, 61, 0.38),
       transparent 34%
     ),
-    #050806;
-  color: #edf4ef;
+    radial-gradient(
+      circle at 90% 100%,
+      rgba(8, 57, 39, 0.18),
+      transparent 35%
+    ),
+    var(--bg);
+  color: var(--text);
+  overflow: hidden;
 }
 
 button,
@@ -50,265 +71,340 @@ select {
 }
 
 button {
-  cursor: pointer;
+  color: inherit;
 }
 
-/* APP */
+/* =========================================================
+   APP
+========================================================= */
 
 .app {
-  display: flex;
   width: 100%;
   height: 100vh;
+  display: flex;
 }
 
-/* SIDEBAR */
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
 .sidebar {
-  width: 225px;
+  width: 238px;
   flex-shrink: 0;
+
+  padding: 27px 18px 20px;
+
+  display: flex;
+  flex-direction: column;
 
   background:
     linear-gradient(
       180deg,
-      rgba(8, 38, 28, .96),
-      rgba(4, 13, 9, .98)
+      rgba(8, 31, 22, 0.98),
+      rgba(4, 12, 8, 0.99)
     );
 
-  border-right: 1px solid rgba(98, 157, 127, .16);
-
-  padding: 25px 17px;
-
-  display: flex;
-  flex-direction: column;
+  border-right: 1px solid var(--line);
 }
 
 .logo {
-  font-size: 30px;
+  padding: 0 11px;
+
+  font-size: 31px;
   font-weight: 600;
-  letter-spacing: -1px;
-  margin: 2px 9px 30px;
+  letter-spacing: -1.4px;
+
+  color: #f2f7f3;
+
+  margin-bottom: 29px;
 }
 
-/* NEW */
+/* =========================================================
+   NEW BUTTON
+========================================================= */
 
 .new-button {
   width: 100%;
 
-  border: 1px solid rgba(105, 181, 143, .30);
+  border: 1px solid rgba(131, 190, 158, 0.28);
 
   background:
     linear-gradient(
       180deg,
-      rgba(18, 82, 59, .92),
-      rgba(8, 47, 32, .92)
+      rgba(16, 82, 56, 0.88),
+      rgba(8, 54, 37, 0.88)
     );
 
-  color: #f0f8f3;
+  border-radius: 7px;
 
-  padding: 12px 15px;
+  padding: 11px 15px;
 
   font-size: 16px;
 
-  border-radius: 8px;
+  text-align: left;
 
-  transition: .18s ease;
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .new-button:hover {
   background:
     linear-gradient(
       180deg,
-      rgba(25, 103, 73, .98),
-      rgba(10, 59, 40, .98)
+      rgba(22, 101, 69, 0.95),
+      rgba(10, 64, 43, 0.95)
     );
 
-  border-color: rgba(124, 207, 163, .42);
+  border-color: rgba(145, 211, 174, 0.4);
 }
 
-/* NAV */
+.new-button:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav {
-  margin-top: 25px;
-
   display: flex;
   flex-direction: column;
-
   gap: 3px;
+
+  margin-top: 24px;
 }
 
 .nav button {
+  width: 100%;
+
   border: 0;
 
   background: transparent;
 
-  color: rgba(226, 239, 231, .65);
+  color: rgba(225, 239, 229, 0.57);
 
   text-align: left;
 
-  padding: 10px 11px;
+  padding: 10px 12px;
 
   border-radius: 6px;
 
   font-size: 16px;
 
-  transition: .15s ease;
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease;
 }
 
 .nav button:hover {
-  background: rgba(38, 104, 75, .18);
-
-  color: #eef7f1;
+  background: rgba(57, 127, 93, 0.13);
+  color: #f0f6f2;
 }
 
 .nav button.active {
-  background: rgba(37, 108, 76, .25);
-
+  background: rgba(43, 117, 81, 0.21);
   color: #ffffff;
 }
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
 
 .main {
   flex: 1;
-
   min-width: 0;
+  height: 100%;
 
   display: flex;
-
   flex-direction: column;
 }
 
-/* TOPBAR */
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .topbar {
-  height: 64px;
-
+  height: 66px;
   flex-shrink: 0;
 
-  display: flex;
+  padding: 0 30px;
 
+  display: flex;
   align-items: center;
 
-  padding: 0 28px;
+  border-bottom: 1px solid var(--line);
 
-  border-bottom: 1px solid rgba(104, 155, 127, .12);
+  background: rgba(4, 10, 7, 0.72);
 
-  background: rgba(4, 10, 7, .74);
-
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(22px);
 }
 
 .page-title {
   font-size: 21px;
+  font-weight: 500;
+
+  letter-spacing: -0.2px;
 }
 
-/* WORKSPACE */
+/* =========================================================
+   WORKSPACE
+========================================================= */
 
 .workspace {
   flex: 1;
+  min-height: 0;
 
   overflow: auto;
 
-  padding: 45px;
+  padding: 38px;
 }
 
-/* HOME */
+/* =========================================================
+   HOME
+========================================================= */
 
 .home {
-  max-width: 1050px;
-
-  margin: auto;
+  width: min(1100px, 100%);
+  margin: 0 auto;
 }
 
-.hero {
-  padding: 20px 0 35px;
+.home-header {
+  padding: 22px 2px 35px;
 }
 
-.hero h1 {
+.home-header h1 {
   margin: 0;
 
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(46px, 6vw, 76px);
 
-  line-height: .95;
+  line-height: 0.92;
 
   font-weight: 500;
 
-  letter-spacing: -2px;
+  letter-spacing: -2.7px;
 }
 
-/* CREATE */
+.home-rule {
+  width: 100%;
+  height: 1px;
 
-.create-row {
+  margin-top: 28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(116, 177, 145, 0.36),
+      rgba(116, 177, 145, 0.04)
+    );
+}
+
+.create-grid {
   display: grid;
 
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 15px;
-
-  margin-top: 15px;
+  gap: 14px;
 }
 
 .create-card {
-  min-height: 130px;
+  min-height: 148px;
 
-  border: 1px solid rgba(104, 163, 130, .18);
-
-  background: rgba(9, 29, 21, .58);
-
-  padding: 20px;
-
-  border-radius: 8px;
+  padding: 23px;
 
   text-align: left;
 
-  color: #eef7f1;
+  border: 1px solid var(--line);
 
-  transition: .18s ease;
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(11, 38, 27, 0.86),
+      rgba(6, 19, 13, 0.82)
+    );
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
 .create-card:hover {
-  background: rgba(16, 55, 39, .72);
+  transform: translateY(-2px);
 
-  border-color: rgba(105, 181, 143, .35);
+  border-color: var(--line-strong);
 
-  transform: translateY(-1px);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 54, 37, 0.94),
+      rgba(7, 23, 16, 0.9)
+    );
 }
 
-.create-card strong {
+.create-card-title {
   display: block;
 
-  font-size: 22px;
+  font-size: 23px;
+  font-weight: 600;
 
-  margin-bottom: 7px;
+  margin-bottom: 9px;
 }
 
-.create-card span {
-  color: rgba(221, 238, 226, .46);
+.create-card-description {
+  display: block;
 
   font-size: 15px;
+
+  color: var(--muted);
 }
 
-/* EDITOR */
+/* =========================================================
+   EDITOR COMMON
+========================================================= */
 
-.editor {
-  max-width: 1050px;
-
-  margin: auto;
+.editor-shell {
+  width: min(1100px, 100%);
+  margin: 0 auto;
 }
 
 .editor-toolbar {
+  min-height: 48px;
+
   display: flex;
-
   align-items: center;
-
-  gap: 5px;
-
-  margin-bottom: 15px;
+  gap: 3px;
 
   padding-bottom: 13px;
 
-  border-bottom: 1px solid rgba(105, 160, 128, .14);
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 22px;
+
+  margin: 0 8px;
+
+  background: var(--line);
 }
 
 .tool {
@@ -316,184 +412,409 @@ button {
 
   background: transparent;
 
-  color: rgba(231, 244, 235, .66);
+  color: rgba(231, 243, 235, 0.66);
 
   padding: 7px 10px;
 
   border-radius: 5px;
 
   font-size: 15px;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
 }
 
 .tool:hover {
-  background: rgba(37, 104, 73, .2);
-
-  color: white;
+  background: rgba(55, 127, 90, 0.15);
+  color: #ffffff;
 }
 
-/* DOCUMENT */
+.tool:active {
+  background: rgba(55, 127, 90, 0.23);
+}
 
-.document {
-  max-width: 820px;
+/* =========================================================
+   DOCS
+========================================================= */
 
-  min-height: 900px;
+.docs-area {
+  display: flex;
+  justify-content: center;
 
-  margin: auto;
+  padding-bottom: 60px;
+}
 
-  padding: 70px;
+.document-page {
+  width: min(820px, 100%);
 
-  background: #f7f8f6;
+  min-height: 980px;
 
-  color: #101511;
+  padding: 78px 82px;
+
+  background: var(--paper);
+
+  color: var(--paper-text);
+
+  box-shadow:
+    0 22px 65px rgba(0, 0, 0, 0.30);
 
   outline: none;
-
-  box-shadow: 0 18px 60px rgba(0,0,0,.25);
-
-  border-radius: 2px;
 
   font-size: 18px;
 
-  line-height: 1.65;
+  line-height: 1.7;
+
+  caret-color: #145d40;
 }
 
-/* SLIDES */
+.document-page:empty::before {
+  content: "Start writing";
 
-.slides {
-  max-width: 1100px;
+  color: #a3aaa5;
 
-  margin: auto;
+  pointer-events: none;
 }
 
-.slide-toolbar {
+.document-page h1 {
+  font-size: 38px;
+  line-height: 1.15;
+
+  margin: 0 0 20px;
+}
+
+.document-page h2 {
+  font-size: 29px;
+
+  margin: 25px 0 12px;
+}
+
+.document-page h3 {
+  font-size: 23px;
+
+  margin: 22px 0 10px;
+}
+
+.document-page p {
+  margin: 0 0 13px;
+}
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.slides-shell {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.slides-toolbar {
   display: flex;
+  align-items: center;
 
-  gap: 7px;
+  justify-content: space-between;
 
-  margin-bottom: 20px;
+  padding-bottom: 13px;
+
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid var(--line);
 }
 
-.slide {
-  width: min(960px, 100%);
+.slides-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.slide-count {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.slide-layout {
+  display: grid;
+
+  grid-template-columns: 150px minmax(0, 1fr);
+
+  gap: 22px;
+}
+
+/* THUMBNAILS */
+
+.slide-sidebar {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  max-height: calc(100vh - 185px);
+
+  overflow-y: auto;
+}
+
+.slide-thumbnail {
+  position: relative;
+
+  width: 100%;
 
   aspect-ratio: 16 / 9;
 
-  margin: auto;
+  background: #f7f9f7;
 
-  background: #f7f8f6;
+  border: 1px solid rgba(135, 178, 151, 0.15);
 
-  color: #101511;
+  color: #171c18;
 
-  border-radius: 2px;
+  cursor: pointer;
 
-  box-shadow: 0 18px 60px rgba(0,0,0,.27);
+  padding: 10px;
 
-  padding: 60px;
+  font-size: 11px;
+
+  text-align: left;
+
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.slide-thumbnail:hover {
+  transform: translateY(-1px);
+
+  border-color: rgba(135, 194, 157, 0.35);
+}
+
+.slide-thumbnail.active {
+  border: 2px solid #31835c;
+}
+
+.thumbnail-number {
+  position: absolute;
+
+  left: 7px;
+  bottom: 5px;
+
+  font-size: 10px;
+
+  color: #67736b;
+}
+
+/* SLIDE STAGE */
+
+.slide-stage {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-bottom: 50px;
+}
+
+.slide-canvas {
+  width: min(100%, 980px);
+
+  aspect-ratio: 16 / 9;
+
+  background: #fafbf9;
+
+  color: #131713;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.34);
 
   outline: none;
 
-  font-size: 32px;
-}
+  padding: 68px;
 
-/* SHEETS */
+  font-size: 34px;
 
-.sheet {
-  max-width: 1100px;
-
-  margin: auto;
+  line-height: 1.25;
 
   overflow: auto;
-
-  border: 1px solid rgba(108, 167, 133, .18);
 }
 
-.formula {
-  width: 100%;
+.slide-canvas:empty::before {
+  content: "Untitled presentation";
 
-  height: 42px;
+  color: #a3aaa5;
+}
 
-  border: 0;
+.slide-canvas h1 {
+  font-size: 54px;
+  margin: 0 0 20px;
+}
 
-  border-bottom: 1px solid rgba(108, 167, 133, .18);
+.slide-canvas h2 {
+  font-size: 37px;
+  margin: 0 0 16px;
+}
 
-  background: #09150f;
+/* =========================================================
+   SHEETS
+========================================================= */
 
-  color: #eef7f1;
+.sheets-shell {
+  width: min(1250px, 100%);
+  margin: 0 auto;
+}
+
+.sheet-toolbar {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 16px;
+}
+
+.cell-name {
+  width: 78px;
+  height: 38px;
+
+  padding: 0 10px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(7, 23, 16, 0.85);
+
+  color: var(--soft);
 
   outline: none;
 
+  text-align: center;
+
+  font-size: 14px;
+}
+
+.formula-input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 38px;
+
   padding: 0 13px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(7, 23, 16, 0.85);
+
+  color: var(--text);
+
+  outline: none;
 
   font-size: 15px;
 }
 
-table {
+.formula-input:focus,
+.cell-name:focus {
+  border-color: rgba(104, 177, 136, 0.4);
+}
+
+.sheet-frame {
+  border: 1px solid var(--line);
+
+  overflow: auto;
+
+  max-height: calc(100vh - 180px);
+
+  background: #edf0ed;
+}
+
+.sheet-table {
   border-collapse: collapse;
 
-  min-width: 900px;
+  min-width: 1050px;
 
   width: 100%;
+
+  table-layout: fixed;
 }
 
-th,
-td {
-  border-right: 1px solid #d8ddd9;
+.sheet-table th,
+.sheet-table td {
+  height: 34px;
 
-  border-bottom: 1px solid #d8ddd9;
+  border-right: 1px solid #d7ddd8;
 
-  min-width: 110px;
-
-  height: 36px;
-
-  padding: 6px 8px;
+  border-bottom: 1px solid #d7ddd8;
 }
 
-th {
-  background: #e9ece9;
+.sheet-table th {
+  width: 88px;
 
-  color: #1b211d;
+  background: #e6eae6;
+
+  color: #566058;
+
+  font-size: 13px;
 
   font-weight: 600;
+
+  text-align: center;
 }
 
-td {
+.sheet-table td {
+  min-width: 115px;
+
+  padding: 6px 9px;
+
   background: #fbfcfb;
 
-  color: #151915;
+  color: #171b18;
 
   outline: none;
+
+  font-family: "Alegreya", serif;
+
+  font-size: 15px;
+
+  cursor: cell;
 }
 
-td:focus {
-  box-shadow: inset 0 0 0 2px #176b48;
+.sheet-table td:hover {
+  background: #f2f5f2;
 }
 
-/* TOAST */
+.sheet-table td.selected {
+  box-shadow:
+    inset 0 0 0 2px #18724c;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast {
   position: fixed;
 
   left: 50%;
-
   bottom: 25px;
 
-  transform: translate(-50%, 20px);
+  transform:
+    translate(-50%, 16px);
 
   opacity: 0;
 
   pointer-events: none;
 
-  background: #0b2e20;
+  padding: 10px 17px;
 
-  border: 1px solid rgba(103, 181, 142, .3);
+  background: #0b3020;
 
-  color: #e9f7ee;
+  border: 1px solid rgba(124, 192, 151, 0.28);
 
-  padding: 11px 17px;
+  color: #eef8f1;
 
-  border-radius: 7px;
+  border-radius: 6px;
 
-  transition: .2s ease;
+  font-size: 14px;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 
   z-index: 9999;
 }
@@ -501,37 +822,86 @@ td:focus {
 .toast.show {
   opacity: 1;
 
-  transform: translate(-50%, 0);
+  transform:
+    translate(-50%, 0);
 }
 
-/* MOBILE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media(max-width: 750px) {
+@media (max-width: 900px) {
 
   .sidebar {
-    width: 70px;
+    width: 205px;
+  }
 
-    padding: 18px 8px;
+  .workspace {
+    padding: 25px;
+  }
+
+  .slide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-sidebar {
+    flex-direction: row;
+
+    max-height: none;
+
+    overflow-x: auto;
+  }
+
+  .slide-thumbnail {
+    flex: 0 0 130px;
+  }
+
+  .document-page {
+    padding: 55px;
+  }
+}
+
+@media (max-width: 650px) {
+
+  body {
+    overflow: auto;
+  }
+
+  .app {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 68px;
+
+    min-height: 100vh;
+
+    padding: 18px 7px;
   }
 
   .logo {
-    font-size: 21px;
+    font-size: 20px;
 
     text-align: center;
 
-    margin: 5px 0 25px;
+    padding: 0;
+
+    margin-bottom: 25px;
   }
 
   .new-button {
     font-size: 0;
 
-    padding: 12px 4px;
+    text-align: center;
+
+    padding: 11px 4px;
   }
 
   .new-button::after {
     content: "+";
 
-    font-size: 21px;
+    font-size: 22px;
   }
 
   .nav button {
@@ -542,21 +912,42 @@ td:focus {
     padding: 12px 4px;
   }
 
-  .workspace {
-    padding: 25px 15px;
+  .nav button::first-letter {
+    font-size: 18px;
   }
 
   .topbar {
-    padding: 0 15px;
+    padding: 0 17px;
   }
 
-  .create-row {
+  .workspace {
+    padding: 18px;
+  }
+
+  .create-grid {
     grid-template-columns: 1fr;
   }
 
-  .document {
-    padding: 35px 25px;
+  .document-page {
+    min-height: 700px;
+
+    padding: 38px 25px;
   }
+
+  .slide-canvas {
+    padding: 35px;
+
+    font-size: 23px;
+  }
+
+  .slide-canvas h1 {
+    font-size: 35px;
+  }
+
+  .editor-toolbar {
+    overflow-x: auto;
+  }
+
 }
 </style>
 </head>
@@ -565,9 +956,13 @@ td:focus {
 
 <div class="app">
 
+  <!-- SIDEBAR -->
+
   <aside class="sidebar">
 
-    <div class="logo">Clamme.</div>
+    <div class="logo">
+      Clamme.
+    </div>
 
     <button
       class="new-button"
@@ -612,6 +1007,8 @@ td:focus {
   </aside>
 
 
+  <!-- MAIN -->
+
   <main class="main">
 
     <header class="topbar">
@@ -625,6 +1022,7 @@ td:focus {
 
     </header>
 
+
     <section
       class="workspace"
       id="workspace"
@@ -634,6 +1032,7 @@ td:focus {
 
 </div>
 
+
 <div
   class="toast"
   id="toast"
@@ -642,74 +1041,62 @@ td:focus {
 
 <script>
 
-/* --------------------------------
-   SETTINGS
--------------------------------- */
+/* =========================================================
+   CORE
+========================================================= */
 
 const BASE = "/Clamme/";
 
 let currentSection = "home";
 
-let toastTimer;
+let currentSlide = 0;
+
+let slides = [];
 
 
-/* --------------------------------
+/* =========================================================
    SERVICE WORKER
--------------------------------- */
+========================================================= */
 
 if ("serviceWorker" in navigator) {
 
-  window.addEventListener(
-    "load",
-    async () => {
+  window.addEventListener("load", () => {
 
-      try {
-
-        await navigator.serviceWorker.register(
-          BASE + "sw.js",
-          {
-            scope: BASE
-          }
-        );
-
-      } catch (error) {
-
+    navigator.serviceWorker
+      .register(BASE + "sw.js", {
+        scope: BASE
+      })
+      .catch(error => {
         console.error(
-          "Service worker failed:",
+          "Clamme service worker:",
           error
         );
+      });
 
-      }
-
-    }
-  );
+  });
 
 }
 
 
-/* --------------------------------
+/* =========================================================
    NAVIGATION
--------------------------------- */
+========================================================= */
 
 function setActive(section) {
 
   document
     .querySelectorAll(".nav button")
     .forEach(button => {
-
       button.classList.remove("active");
-
     });
 
-  const active =
+  const button =
     document.getElementById(
       "nav-" + section
     );
 
-  if (active) {
-
-    active.classList.add("active");
-
+  if (button) {
+    button.classList.add("active");
   }
 
 }
@@ -768,20 +1155,10 @@ function openSection(section) {
 
   updateNewButton();
 
-  const names = {
-
-    docs: "Docs",
-
-    slides: "Slides",
-
-    sheets: "Sheets"
-
-  };
-
-  document.getElementById("pageTitle").textContent =
-    names[section];
-
   if (section === "docs") {
+
+    document.getElementById("pageTitle").textContent =
+      "Docs";
 
     renderDocs();
 
@@ -789,11 +1166,17 @@ function openSection(section) {
 
   else if (section === "slides") {
 
+    document.getElementById("pageTitle").textContent =
+      "Slides";
+
     renderSlides();
 
   }
 
   else if (section === "sheets") {
+
+    document.getElementById("pageTitle").textContent =
+      "Sheets";
 
     renderSheets();
 
@@ -802,9 +1185,9 @@ function openSection(section) {
 }
 
 
-/* --------------------------------
+/* =========================================================
    HOME
--------------------------------- */
+========================================================= */
 
 function renderHome() {
 
@@ -812,23 +1195,28 @@ function renderHome() {
 
     <div class="home">
 
-      <div class="hero">
+      <div class="home-header">
 
         <h1>Clamme.</h1>
 
+        <div class="home-rule"></div>
+
       </div>
 
-      <div class="create-row">
+
+      <div class="create-grid">
 
         <button
           class="create-card"
-          onclick="openSection('docs')"
+          onclick="newDocument()"
         >
 
-          <strong>Document</strong>
+          <span class="create-card-title">
+            Document
+          </span>
 
-          <span>
-            Write with Clamme Docs.
+          <span class="create-card-description">
+            Write, edit and format.
           </span>
 
         </button>
@@ -836,13 +1224,15 @@ function renderHome() {
 
         <button
           class="create-card"
-          onclick="openSection('slides')"
+          onclick="newPresentation()"
         >
 
-          <strong>Presentation</strong>
+          <span class="create-card-title">
+            Presentation
+          </span>
 
-          <span>
-            Build with Clamme Slides.
+          <span class="create-card-description">
+            Build polished presentations.
           </span>
 
         </button>
@@ -850,13 +1240,15 @@ function renderHome() {
 
         <button
           class="create-card"
-          onclick="openSection('sheets')"
+          onclick="newSpreadsheet()"
         >
 
-          <strong>Spreadsheet</strong>
+          <span class="create-card-title">
+            Spreadsheet
+          </span>
 
-          <span>
-            Calculate with Clamme Sheets.
+          <span class="create-card-description">
+            Organize and calculate.
           </span>
 
         </button>
@@ -870,86 +1262,124 @@ function renderHome() {
 }
 
 
-/* --------------------------------
+/* =========================================================
    DOCS
--------------------------------- */
+========================================================= */
 
 function renderDocs() {
 
+  const saved =
+    localStorage.getItem(
+      "clamme-document"
+    ) || "";
+
   document.getElementById("workspace").innerHTML = `
 
-    <div class="editor">
+    <div class="editor-shell">
 
       <div class="editor-toolbar">
 
-        <button
-          class="tool"
-          onclick="format('bold')"
-        >
-          Bold
-        </button>
+        <div class="toolbar-group">
+
+          <button
+            class="tool"
+            onclick="docCommand('bold')"
+          >
+            Bold
+          </button>
+
+          <button
+            class="tool"
+            onclick="docCommand('italic')"
+          >
+            Italic
+          </button>
+
+          <button
+            class="tool"
+            onclick="docCommand('underline')"
+          >
+            Underline
+          </button>
+
+        </div>
+
+
+        <div class="toolbar-divider"></div>
+
+
+        <div class="toolbar-group">
+
+          <button
+            class="tool"
+            onclick="docCommand('formatBlock','h1')"
+          >
+            Title
+          </button>
+
+          <button
+            class="tool"
+            onclick="docCommand('formatBlock','h2')"
+          >
+            Heading
+          </button>
+
+          <button
+            class="tool"
+            onclick="docCommand('formatBlock','p')"
+          >
+            Text
+          </button>
+
+        </div>
+
+
+        <div class="toolbar-divider"></div>
+
 
         <button
           class="tool"
-          onclick="format('italic')"
+          onclick="printDocument()"
         >
-          Italic
-        </button>
-
-        <button
-          class="tool"
-          onclick="format('underline')"
-        >
-          Underline
-        </button>
-
-        <button
-          class="tool"
-          onclick="format('formatBlock','h1')"
-        >
-          Heading
+          Print
         </button>
 
       </div>
 
-      <div
-        id="document"
-        class="document"
-        contenteditable="true"
-        spellcheck="true"
-      ></div>
+
+      <div class="docs-area">
+
+        <article
+          id="documentPage"
+          class="document-page"
+          contenteditable="true"
+          spellcheck="true"
+        >${saved}</article>
+
+      </div>
 
     </div>
 
   `;
 
-  const saved =
-    localStorage.getItem("clamme-document");
 
-  document.getElementById("document").innerHTML =
-    saved || "";
-
-  document
-    .getElementById("document")
-    .addEventListener(
-      "input",
-      saveDocument
+  const page =
+    document.getElementById(
+      "documentPage"
     );
 
-}
-
-
-function saveDocument() {
-
-  localStorage.setItem(
-    "clamme-document",
-    document.getElementById("document").innerHTML
+  page.addEventListener(
+    "input",
+    saveDocument
   );
 
 }
 
 
-function format(command, value = null) {
+function docCommand(
+  command,
+  value = null
+) {
 
   document.execCommand(
     command,
@@ -962,60 +1392,235 @@ function format(command, value = null) {
 }
 
 
-/* --------------------------------
+function saveDocument() {
+
+  const page =
+    document.getElementById(
+      "documentPage"
+    );
+
+  if (!page) return;
+
+  localStorage.setItem(
+    "clamme-document",
+    page.innerHTML
+  );
+
+}
+
+
+function printDocument() {
+
+  const page =
+    document.getElementById(
+      "documentPage"
+    );
+
+  if (!page) return;
+
+  const windowPrint =
+    window.open(
+      "",
+      "_blank"
+    );
+
+  windowPrint.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+      <head>
+
+        <title>Clamme Document</title>
+
+        <style>
+
+          body {
+            font-family: Georgia, serif;
+            padding: 60px;
+            line-height: 1.7;
+          }
+
+        </style>
+
+      </head>
+
+      <body>
+
+        ${page.innerHTML}
+
+      </body>
+
+    </html>
+
+  `);
+
+  windowPrint.document.close();
+
+  windowPrint.focus();
+
+  windowPrint.print();
+
+}
+
+
+/* =========================================================
    SLIDES
--------------------------------- */
+========================================================= */
+
+function loadSlides() {
+
+  try {
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem(
+          "clamme-slides"
+        )
+      );
+
+    if (
+      Array.isArray(saved) &&
+      saved.length
+    ) {
+
+      slides = saved;
+
+    }
+
+    else {
+
+      slides = [""];
+
+    }
+
+  }
+
+  catch {
+
+    slides = [""];
+
+  }
+
+}
+
+
+function saveSlides() {
+
+  localStorage.setItem(
+    "clamme-slides",
+    JSON.stringify(slides)
+  );
+
+}
+
 
 function renderSlides() {
 
+  loadSlides();
+
+  if (
+    currentSlide >= slides.length
+  ) {
+
+    currentSlide =
+      slides.length - 1;
+
+  }
+
   document.getElementById("workspace").innerHTML = `
 
-    <div class="slides">
+    <div class="slides-shell">
 
-      <div class="slide-toolbar">
+      <div class="slides-toolbar">
 
-        <button
-          class="tool"
-          onclick="clearSlide()"
-        >
-          New slide
-        </button>
+        <div class="slides-actions">
 
-        <button
-          class="tool"
-          onclick="presentSlide()"
-        >
-          Present
-        </button>
+          <button
+            class="tool"
+            onclick="addSlide()"
+          >
+            New slide
+          </button>
+
+          <button
+            class="tool"
+            onclick="duplicateSlide()"
+          >
+            Duplicate
+          </button>
+
+          <button
+            class="tool"
+            onclick="deleteSlide()"
+          >
+            Delete
+          </button>
+
+          <button
+            class="tool"
+            onclick="presentSlides()"
+          >
+            Present
+          </button>
+
+        </div>
+
+
+        <div
+          class="slide-count"
+          id="slideCount"
+        ></div>
 
       </div>
 
-      <div
-        id="slide"
-        class="slide"
-        contenteditable="true"
-      ></div>
+
+      <div class="slide-layout">
+
+        <aside
+          class="slide-sidebar"
+          id="slideSidebar"
+        ></aside>
+
+
+        <div class="slide-stage">
+
+          <article
+            id="slideCanvas"
+            class="slide-canvas"
+            contenteditable="true"
+            spellcheck="true"
+          ></article>
+
+        </div>
+
+      </div>
 
     </div>
 
   `;
 
-  const saved =
-    localStorage.getItem("clamme-slide");
 
-  document.getElementById("slide").innerHTML =
-    saved || "";
+  renderSlideThumbnails();
+
+  renderCurrentSlide();
+
 
   document
-    .getElementById("slide")
+    .getElementById("slideCanvas")
     .addEventListener(
       "input",
       () => {
 
-        localStorage.setItem(
-          "clamme-slide",
-          document.getElementById("slide").innerHTML
-        );
+        slides[currentSlide] =
+          document.getElementById(
+            "slideCanvas"
+          ).innerHTML;
+
+        saveSlides();
+
+        renderSlideThumbnails();
 
       }
     );
@@ -1023,134 +1628,402 @@ function renderSlides() {
 }
 
 
-function clearSlide() {
+function renderSlideThumbnails() {
 
-  const slide =
-    document.getElementById("slide");
+  const sidebar =
+    document.getElementById(
+      "slideSidebar"
+    );
 
-  slide.innerHTML = "";
+  if (!sidebar) return;
 
-  slide.focus();
+  sidebar.innerHTML = "";
 
-  localStorage.removeItem(
-    "clamme-slide"
+  slides.forEach(
+    (content, index) => {
+
+      const thumbnail =
+        document.createElement(
+          "button"
+        );
+
+      thumbnail.className =
+        "slide-thumbnail" +
+        (
+          index === currentSlide
+            ? " active"
+            : ""
+        );
+
+      thumbnail.innerHTML = `
+
+        <div>
+          ${content || " "}
+        </div>
+
+        <span class="thumbnail-number">
+          ${index + 1}
+        </span>
+
+      `;
+
+      thumbnail.onclick = () => {
+
+        currentSlide = index;
+
+        renderSlides();
+
+      };
+
+      sidebar.appendChild(
+        thumbnail
+      );
+
+    }
   );
 
-}
 
+  const counter =
+    document.getElementById(
+      "slideCount"
+    );
 
-function presentSlide() {
+  if (counter) {
 
-  const slide =
-    document.getElementById("slide");
-
-  if (slide.requestFullscreen) {
-
-    slide.requestFullscreen();
+    counter.textContent =
+      `${currentSlide + 1} / ${slides.length}`;
 
   }
 
 }
 
 
-/* --------------------------------
+function renderCurrentSlide() {
+
+  const canvas =
+    document.getElementById(
+      "slideCanvas"
+    );
+
+  if (!canvas) return;
+
+  canvas.innerHTML =
+    slides[currentSlide] || "";
+
+}
+
+
+function addSlide() {
+
+  slides.splice(
+    currentSlide + 1,
+    0,
+    ""
+  );
+
+  currentSlide++;
+
+  saveSlides();
+
+  renderSlides();
+
+}
+
+
+function duplicateSlide() {
+
+  slides.splice(
+    currentSlide + 1,
+    0,
+    slides[currentSlide]
+  );
+
+  currentSlide++;
+
+  saveSlides();
+
+  renderSlides();
+
+}
+
+
+function deleteSlide() {
+
+  if (slides.length === 1) {
+
+    slides[0] = "";
+
+    currentSlide = 0;
+
+  }
+
+  else {
+
+    slides.splice(
+      currentSlide,
+      1
+    );
+
+    currentSlide =
+      Math.max(
+        0,
+        currentSlide - 1
+      );
+
+  }
+
+  saveSlides();
+
+  renderSlides();
+
+}
+
+
+function presentSlides() {
+
+  const canvas =
+    document.getElementById(
+      "slideCanvas"
+    );
+
+  if (!canvas) return;
+
+  canvas.requestFullscreen?.();
+
+}
+
+
+/* =========================================================
    SHEETS
--------------------------------- */
+========================================================= */
+
+const SHEET_ROWS = 30;
+
+const SHEET_COLUMNS = 12;
+
+
+function columnName(index) {
+
+  let name = "";
+
+  let number = index + 1;
+
+  while (number > 0) {
+
+    const remainder =
+      (number - 1) % 26;
+
+    name =
+      String.fromCharCode(
+        65 + remainder
+      ) + name;
+
+    number =
+      Math.floor(
+        (number - 1) / 26
+      );
+
+  }
+
+  return name;
+
+}
+
+
+function sheetKey(
+  row,
+  column
+) {
+
+  return `clamme-sheet-${row}-${column}`;
+
+}
+
 
 function renderSheets() {
 
-  let html = `
+  let table = `
 
-    <div class="sheet">
+    <div class="sheets-shell">
 
-      <input
-        class="formula"
-        id="formula"
-        placeholder="Formula or value"
-      >
+      <div class="sheet-toolbar">
 
-      <table>
+        <input
+          id="cellName"
+          class="cell-name"
+          readonly
+          placeholder="A1"
+        >
 
-        <thead>
+        <input
+          id="formulaInput"
+          class="formula-input"
+          placeholder="Formula or value"
+        >
 
-          <tr>
+      </div>
 
-            <th></th>
+
+      <div class="sheet-frame">
+
+        <table class="sheet-table">
+
+          <thead>
+
+            <tr>
+
+              <th></th>
 
   `;
 
+
   for (
     let column = 0;
-    column < 10;
+    column < SHEET_COLUMNS;
     column++
   ) {
 
-    html += `
-      <th>${columnLetter(column)}</th>
+    table += `
+      <th>
+        ${columnName(column)}
+      </th>
     `;
 
   }
 
-  html += `
-          </tr>
-        </thead>
 
-        <tbody>
+  table += `
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
   `;
+
 
   for (
     let row = 0;
-    row < 25;
+    row < SHEET_ROWS;
     row++
   ) {
 
-    html += `<tr>`;
+    table += `
 
-    html += `
-      <th>${row + 1}</th>
+      <tr>
+
+        <th>
+          ${row + 1}
+        </th>
+
     `;
+
 
     for (
       let column = 0;
-      column < 10;
+      column < SHEET_COLUMNS;
       column++
     ) {
 
       const key =
-        `clamme-${row}-${column}`;
+        sheetKey(
+          row,
+          column
+        );
 
       const value =
-        localStorage.getItem(key) || "";
+        localStorage.getItem(
+          key
+        ) || "";
 
-      html += `
+      table += `
+
         <td
           contenteditable="true"
+          data-row="${row}"
+          data-column="${column}"
           data-key="${key}"
         >${escapeHTML(value)}</td>
+
       `;
 
     }
 
-    html += `</tr>`;
+
+    table += `
+
+      </tr>
+
+    `;
 
   }
 
-  html += `
 
-        </tbody>
+  table += `
 
-      </table>
+          </tbody>
+
+        </table>
+
+      </div>
 
     </div>
 
   `;
 
+
   document.getElementById("workspace").innerHTML =
-    html;
+    table;
+
 
   document
-    .querySelectorAll("td")
+    .querySelectorAll(
+      ".sheet-table td"
+    )
     .forEach(cell => {
+
+      cell.addEventListener(
+        "focus",
+        () => {
+
+          document
+            .querySelectorAll(
+              ".sheet-table td"
+            )
+            .forEach(c =>
+              c.classList.remove(
+                "selected"
+              )
+            );
+
+          cell.classList.add(
+            "selected"
+          );
+
+          const row =
+            Number(
+              cell.dataset.row
+            );
+
+          const column =
+            Number(
+              cell.dataset.column
+            );
+
+          document.getElementById(
+            "cellName"
+          ).value =
+            `${columnName(column)}${row + 1}`;
+
+          document.getElementById(
+            "formulaInput"
+          ).value =
+            cell.textContent;
+
+        }
+      );
+
 
       cell.addEventListener(
         "input",
@@ -1164,104 +2037,233 @@ function renderSheets() {
         }
       );
 
-      cell.addEventListener(
-        "focus",
-        () => {
 
-          document.getElementById("formula").value =
-            cell.textContent;
+      cell.addEventListener(
+        "keydown",
+        event => {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            event.preventDefault();
+
+            const row =
+              Number(
+                cell.dataset.row
+              );
+
+            const column =
+              Number(
+                cell.dataset.column
+              );
+
+            const next =
+              document.querySelector(
+                `td[data-row="${row + 1}"][data-column="${column}"]`
+              );
+
+            if (next) {
+
+              next.focus();
+
+            }
+
+          }
 
         }
       );
 
     });
 
-}
 
+  document
+    .getElementById(
+      "formulaInput"
+    )
+    .addEventListener(
+      "input",
+      event => {
 
-function columnLetter(index) {
+        const active =
+          document.querySelector(
+            ".sheet-table td.selected"
+          );
 
-  return String.fromCharCode(
-    65 + index
-  );
+        if (!active) return;
+
+        active.textContent =
+          event.target.value;
+
+        localStorage.setItem(
+          active.dataset.key,
+          active.textContent
+        );
+
+      }
+    );
 
 }
 
 
 function escapeHTML(value) {
 
-  return value
+  return String(value)
     .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-/* --------------------------------
-   NEW
--------------------------------- */
+/* =========================================================
+   NEW ACTIONS
+========================================================= */
 
 function createCurrent() {
 
-  if (currentSection === "slides") {
+  if (
+    currentSection === "slides"
+  ) {
 
-    openSection("slides");
-
-    setTimeout(
-      () => clearSlide(),
-      0
-    );
+    newPresentation();
 
     return;
 
   }
 
-  if (currentSection === "sheets") {
 
-    openSection("sheets");
+  if (
+    currentSection === "sheets"
+  ) {
+
+    newSpreadsheet();
 
     return;
 
   }
 
-  openSection("docs");
+
+  newDocument();
 
 }
 
 
-/* --------------------------------
+function newDocument() {
+
+  currentSection = "docs";
+
+  localStorage.removeItem(
+    "clamme-document"
+  );
+
+  setActive("docs");
+
+  updateNewButton();
+
+  document.getElementById(
+    "pageTitle"
+  ).textContent = "Docs";
+
+  renderDocs();
+
+}
+
+
+function newPresentation() {
+
+  currentSection = "slides";
+
+  slides = [""];
+
+  currentSlide = 0;
+
+  saveSlides();
+
+  setActive("slides");
+
+  updateNewButton();
+
+  document.getElementById(
+    "pageTitle"
+  ).textContent = "Slides";
+
+  renderSlides();
+
+}
+
+
+function newSpreadsheet() {
+
+  currentSection = "sheets";
+
+  setActive("sheets");
+
+  updateNewButton();
+
+  document.getElementById(
+    "pageTitle"
+  ).textContent = "Sheets";
+
+  renderSheets();
+
+}
+
+
+/* =========================================================
    TOAST
--------------------------------- */
+========================================================= */
 
 function toast(message) {
 
   const element =
-    document.getElementById("toast");
+    document.getElementById(
+      "toast"
+    );
 
-  element.textContent = message;
+  element.textContent =
+    message;
 
-  element.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(
-    () => {
-
-      element.classList.remove("show");
-
-    },
-    2800
+  element.classList.add(
+    "show"
   );
+
+  clearTimeout(
+    window.clammeToast
+  );
+
+  window.clammeToast =
+    setTimeout(
+      () => {
+
+        element.classList.remove(
+          "show"
+        );
+
+      },
+      2400
+    );
 
 }
 
 
-/* --------------------------------
+/* =========================================================
    START
--------------------------------- */
+========================================================= */
 
 goHome();
 
