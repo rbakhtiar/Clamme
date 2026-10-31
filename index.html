@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07110b">
 <title>Clamme Studio</title>
 
@@ -12,562 +13,758 @@
 
 <style>
 :root {
-  --font: "Alegreya", serif;
-  --bg: #07110b;
-  --panel: #0c1911;
-  --panel2: #102218;
-  --panel3: #14291d;
-  --border: rgba(207, 226, 207, .12);
-  --text: #edf5ed;
-  --muted: #91a493;
-  --green: #49a875;
-  --green2: #76c99a;
-  --gold: #d6bd82;
-  --danger: #d77979;
-  --radius: 15px;
+  --font:"Alegreya",serif;
+  --bg:#07110b;
+  --surface:#0c1911;
+  --surface2:#102319;
+  --surface3:#172d20;
+  --surface4:#203b2a;
+  --border:rgba(207,230,211,.11);
+  --border2:rgba(207,230,211,.2);
+  --text:#edf5ed;
+  --muted:#91a493;
+  --green:#49a875;
+  --green2:#83d2a1;
+  --gold:#d6bd82;
+  --red:#df8585;
+  --shadow:0 20px 70px rgba(0,0,0,.25);
+  --radius:17px;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  font-family: var(--font) !important;
+  box-sizing:border-box;
+  font-family:var(--font)!important;
 }
 
-html, body {
-  margin: 0;
-  min-height: 100%;
-  background: var(--bg);
-  color: var(--text);
+html,body {
+  margin:0;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
 }
 
 body {
-  font-size: 16px;
+  font-size:16px;
   background:
-    radial-gradient(ellipse at 15% 0%, rgba(36, 100, 60, .16), transparent 40%),
+    radial-gradient(ellipse at 10% 0%,rgba(40,110,65,.16),transparent 42%),
+    radial-gradient(ellipse at 100% 100%,rgba(25,75,45,.1),transparent 40%),
     var(--bg);
 }
 
-button, input, textarea, select {
-  color: inherit;
-  font: inherit;
+button,input,textarea,select {
+  font:inherit;
+  color:inherit;
 }
 
-button {
-  cursor: pointer;
-}
+button {cursor:pointer}
 
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [contenteditable]:focus-visible {
-  outline: 2px solid var(--green2);
-  outline-offset: 3px;
+  outline:2px solid var(--green2);
+  outline-offset:3px;
+}
+
+button:disabled {
+  opacity:.4;
+  cursor:not-allowed;
 }
 
 .app {
-  min-height: 100vh;
-  display: flex;
+  display:flex;
+  min-height:100vh;
 }
 
+/* SIDEBAR */
+
 .sidebar {
-  width: 245px;
-  min-width: 245px;
-  min-height: 100vh;
-  background: rgba(7, 17, 11, .95);
-  border-right: 1px solid var(--border);
-  padding: 24px 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  width:255px;
+  min-width:255px;
+  height:100vh;
+  position:sticky;
+  top:0;
+  padding:22px 15px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  overflow:hidden;
+  background:rgba(7,17,11,.94);
+  border-right:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  transition:width .28s ease,min-width .28s ease,padding .28s ease,opacity .2s;
+  z-index:5;
+}
+
+.sidebar-hidden .sidebar {
+  width:0;
+  min-width:0;
+  padding-left:0;
+  padding-right:0;
+  opacity:0;
+  border:0;
+  pointer-events:none;
 }
 
 .brand {
-  padding: 3px 12px 20px;
-  border-bottom: 1px solid var(--border);
+  padding:4px 12px 20px;
+  border-bottom:1px solid var(--border);
+  white-space:nowrap;
 }
 
 .brand-name {
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -.7px;
+  font-size:31px;
+  font-weight:900;
+  letter-spacing:-1px;
 }
 
-.brand-name span {
-  color: var(--green2);
-}
+.brand-name span {color:var(--green2)}
 
 .brand-sub {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 2px;
+  font-size:13px;
+  color:var(--muted);
 }
 
 .side-label {
-  color: #748878;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 11px;
-  padding: 0 12px 8px;
-  font-weight: 800;
+  padding:0 12px 9px;
+  color:#718677;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.6px;
+  white-space:nowrap;
 }
 
 .nav {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
 }
 
 .nav button {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--muted);
-  text-align: left;
-  padding: 11px 13px;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: .2s;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:11px 13px;
+  text-align:left;
+  white-space:nowrap;
+  color:var(--muted);
+  border:1px solid transparent;
+  border-radius:11px;
+  background:transparent;
+  font-size:16px;
+  transition:.2s;
 }
 
 .nav button:hover {
-  background: var(--panel2);
-  color: var(--text);
+  color:var(--text);
+  background:var(--surface2);
 }
 
 .nav button.active {
-  background: linear-gradient(100deg, rgba(55, 130, 82, .25), rgba(55, 130, 82, .07));
-  border-color: rgba(100, 180, 120, .2);
-  color: var(--green2);
+  color:var(--green2);
+  background:linear-gradient(100deg,rgba(62,140,87,.23),rgba(62,140,87,.06));
+  border-color:rgba(118,201,154,.17);
+}
+
+.nav-icon {
+  width:20px;
+  text-align:center;
+  font-size:18px;
 }
 
 .sidebar-bottom {
-  margin-top: auto;
-  padding: 15px 12px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 13px;
+  margin-top:auto;
+  padding:15px 12px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:13px;
+  white-space:nowrap;
 }
 
+/* MAIN */
+
 .main {
-  flex: 1;
-  min-width: 0;
-  padding: 25px clamp(15px, 4vw, 45px);
+  flex:1;
+  min-width:0;
+  padding:24px clamp(15px,3.8vw,46px);
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.top-left,.top-right {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
 }
 
 .breadcrumb {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  flex-wrap: wrap;
+  color:var(--muted);
+  font-size:14px;
+  white-space:nowrap;
 }
 
 .button {
-  border: 1px solid var(--border);
-  background: var(--panel2);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 9px 15px;
-  font-size: 15px;
-  transition: .2s;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--text);
+  border-radius:10px;
+  padding:9px 14px;
+  font-size:15px;
+  transition:.2s;
 }
 
 .button:hover {
-  border-color: rgba(118, 201, 154, .5);
-  background: var(--panel3);
+  background:var(--surface3);
+  border-color:var(--border2);
+  transform:translateY(-1px);
 }
 
 .button.primary {
-  background: linear-gradient(135deg, #267447, #398d5c);
-  border-color: #46996a;
-  color: white;
+  background:linear-gradient(135deg,#267447,#398d5c);
+  border-color:#46996a;
+  color:white;
 }
 
 .button.gold {
-  color: var(--gold);
-  border-color: rgba(214, 189, 130, .3);
+  color:var(--gold);
+  border-color:rgba(214,189,130,.3);
 }
 
-.button.danger {
-  color: var(--danger);
+.button.danger {color:var(--red)}
+
+.icon-button {
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  font-size:21px;
 }
 
 h1 {
-  font-size: clamp(29px, 4vw, 43px);
-  line-height: 1.1;
-  margin: 0 0 9px;
-  font-weight: 800;
-  letter-spacing: -.7px;
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.08;
+  font-weight:900;
+  letter-spacing:-.8px;
+  margin:0 0 9px;
 }
 
 h2 {
-  font-size: 23px;
-  margin: 0;
-  font-weight: 700;
+  font-size:24px;
+  margin:0;
+  font-weight:800;
 }
 
 h3 {
-  font-size: 18px;
-  margin: 0;
+  font-size:19px;
+  margin:0;
+  font-weight:800;
 }
 
 .subtitle {
-  color: var(--muted);
-  margin: 0 0 27px;
-  font-size: 16px;
+  color:var(--muted);
+  margin:0 0 27px;
+  font-size:16px;
 }
 
-.section {
-  display: none;
-  animation: appear .25s ease;
-}
-
-.section.active {
-  display: block;
-}
+.section {display:none;animation:appear .25s ease}
+.section.active {display:block}
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {opacity:0;transform:translateY(6px)}
+  to {opacity:1;transform:translateY(0)}
 }
 
+/* SURFACES */
+
 .card {
-  background: linear-gradient(145deg, rgba(18, 39, 26, .95), rgba(10, 23, 15, .98));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
+  padding:21px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(145deg,rgba(19,42,28,.92),rgba(10,23,15,.98));
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
-  gap: 15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:15px;
 }
 
 .stat {
-  font-size: 31px;
-  font-weight: 800;
-  margin: 10px 0 3px;
-  color: var(--green2);
+  color:var(--green2);
+  font-size:34px;
+  font-weight:900;
+  margin:8px 0 2px;
 }
 
-.muted {
-  color: var(--muted);
-}
+.muted {color:var(--muted)}
 
 .section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin: 28px 0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:30px 0 15px;
 }
 
 .quick-card {
-  cursor: pointer;
-  transition: .2s;
+  cursor:pointer;
+  transition:.2s;
+  position:relative;
+  overflow:hidden;
 }
 
 .quick-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(118, 201, 154, .4);
+  transform:translateY(-4px);
+  border-color:rgba(118,201,154,.4);
+  box-shadow:var(--shadow);
 }
 
 .quick-icon {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: var(--gold);
+  color:var(--gold);
+  font-size:27px;
+  margin-bottom:13px;
 }
 
 .quick-card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 0;
+  color:var(--muted);
+  margin-bottom:0;
+  font-size:14px;
 }
 
-.workspace {
-  background: rgba(10, 23, 15, .85);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
+/* INPUTS */
+
+input,textarea,select {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 12px;
+  outline:none;
+  min-width:0;
 }
 
-.toolbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 12px;
-  border-bottom: 1px solid var(--border);
-  background: var(--panel);
-}
-
-.toolbar button,
-.toolbar select {
-  border: 1px solid var(--border);
-  background: var(--panel2);
-  color: var(--text);
-  border-radius: 7px;
-  padding: 6px 10px;
-  font-size: 14px;
-}
-
-.toolbar button:hover {
-  background: var(--panel3);
-}
-
-.toolbar select {
-  max-width: 130px;
-}
-
-.editor-title {
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-  background: transparent;
-  padding: 20px 24px;
-  color: var(--text);
-  font-size: 27px;
-  font-weight: 800;
-  outline: none;
-}
-
-.editor {
-  min-height: 420px;
-  padding: 25px;
-  outline: none;
-  line-height: 1.8;
-  font-size: 18px;
-  overflow-wrap: anywhere;
-}
-
-.editor:empty::before {
-  content: "Start writing something wonderful...";
-  color: #718477;
-  pointer-events: none;
-}
-
-.editor h1, .editor h2, .editor h3 {
-  color: var(--text);
-}
-
-.editor img {
-  max-width: 100%;
-  border-radius: 10px;
-}
-
-.statusbar {
-  padding: 9px 15px;
-  background: var(--panel);
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-input, textarea, select {
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 10px 12px;
-  outline: none;
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: var(--green);
+input:focus,textarea:focus,select:focus {
+  border-color:var(--green);
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-bottom: 14px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin-bottom:15px;
 }
 
 .field label {
-  color: var(--muted);
-  font-size: 14px;
+  color:var(--muted);
+  font-size:14px;
 }
 
+/* SEARCH */
+
+.search-wrap {
+  position:relative;
+}
+
+.search-input {
+  width:220px;
+  background:var(--surface);
+}
+
+.search-results {
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  width:min(340px,90vw);
+  max-height:350px;
+  overflow:auto;
+  padding:8px;
+  background:#102218;
+  border:1px solid var(--border2);
+  border-radius:13px;
+  box-shadow:var(--shadow);
+  z-index:10;
+  display:none;
+}
+
+.search-results.open {display:block}
+
+.search-result {
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.search-result:hover {background:var(--surface3)}
+
+.search-result small {
+  display:block;
+  color:var(--muted);
+}
+
+/* DOCUMENTS */
+
+.workspace {
+  background:rgba(10,23,15,.88);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+
+.toolbar {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+  padding:11px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+
+.toolbar button,.toolbar select {
+  padding:7px 10px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  border-radius:8px;
+  font-size:14px;
+}
+
+.toolbar button:hover {background:var(--surface3)}
+
+.editor-title {
+  display:block;
+  width:100%;
+  padding:21px 25px;
+  font-size:29px;
+  font-weight:900;
+  border:0;
+  border-bottom:1px solid var(--border);
+  background:transparent;
+  border-radius:0;
+}
+
+.editor {
+  min-height:480px;
+  padding:27px;
+  font-size:19px;
+  line-height:1.8;
+  outline:none;
+  overflow-wrap:anywhere;
+}
+
+.editor:empty::before {
+  content:"Start writing something wonderful...";
+  color:#718477;
+  pointer-events:none;
+}
+
+.editor img {max-width:100%;border-radius:12px}
+
+.editor blockquote {
+  border-left:3px solid var(--gold);
+  padding-left:15px;
+  color:#c8d5c9;
+}
+
+.statusbar {
+  display:flex;
+  justify-content:space-between;
+  padding:9px 15px;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* PRESENTATIONS */
+
 .slide-stage {
-  min-height: 400px;
-  background: #101f16;
-  display: grid;
-  place-items: center;
-  padding: 25px;
+  min-height:440px;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  background:#0b1810;
+  border:1px solid var(--border);
+  border-radius:13px;
 }
 
 .slide {
-  width: min(100%, 700px);
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #173a25, #07110b);
-  border: 1px solid rgba(214, 189, 130, .25);
-  border-radius: 10px;
-  padding: 45px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  width:min(100%,760px);
+  aspect-ratio:16/9;
+  padding:8%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(214,189,130,.3);
+  border-radius:12px;
+  background:
+    radial-gradient(circle at 90% 80%,rgba(118,201,154,.16),transparent 35%),
+    linear-gradient(135deg,#173a25,#07110b);
+  box-shadow:0 20px 70px #0005;
 }
 
 .slide::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 1px solid rgba(214, 189, 130, .12);
-  border-radius: 50%;
-  right: -90px;
-  bottom: -120px;
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  border:1px solid rgba(214,189,130,.13);
+  border-radius:50%;
+  right:-100px;
+  bottom:-130px;
+  pointer-events:none;
 }
 
 .slide h1 {
-  font-size: clamp(25px, 5vw, 48px);
-  color: #f1e7cb;
+  color:#f1e7cb;
+  font-size:clamp(26px,5vw,55px);
 }
 
 .slide p {
-  color: #c6d7c9;
-  font-size: 20px;
+  color:#c6d7c9;
+  font-size:clamp(16px,2.5vw,25px);
+  line-height:1.5;
 }
 
 .slide-controls {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 14px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
 }
 
-.sheet-wrap {
-  overflow: auto;
-  max-width: 100%;
-}
+/* SHEETS */
+
+.sheet-wrap {overflow:auto}
 
 .sheet {
-  border-collapse: collapse;
-  min-width: 650px;
-  width: 100%;
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse;
 }
 
-.sheet th, .sheet td {
-  border: 1px solid var(--border);
-  min-width: 100px;
-  height: 37px;
-  padding: 5px 9px;
-  text-align: left;
+.sheet th,.sheet td {
+  min-width:100px;
+  height:39px;
+  padding:6px 9px;
+  border:1px solid var(--border);
+  text-align:left;
 }
 
 .sheet th {
-  background: var(--panel2);
-  color: var(--muted);
-  font-weight: 700;
+  color:var(--muted);
+  background:var(--surface2);
 }
 
-.sheet td {
-  background: rgba(255,255,255,.015);
-}
+.sheet td {background:rgba(255,255,255,.015)}
 
 .sheet td:focus {
-  outline: 2px solid var(--green);
-  outline-offset: -2px;
-  background: rgba(73,168,117,.1);
+  outline:2px solid var(--green);
+  outline-offset:-2px;
+  background:rgba(73,168,117,.1);
 }
 
-.file-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+/* FILES */
+
+.file-list {display:flex;flex-direction:column;gap:9px}
 
 .file-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 13px 15px;
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 15px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  border-radius:11px;
 }
 
-.file-row button {
-  flex-shrink: 0;
+.file-actions {display:flex;gap:6px;flex-wrap:wrap}
+
+.file-meta {
+  min-width:0;
+  overflow-wrap:anywhere;
 }
+
+/* MODALS */
+
+.modal-backdrop {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:30;
+}
+
+.modal-backdrop.open {display:flex}
+
+.modal {
+  width:min(440px,100%);
+  padding:23px;
+  border:1px solid var(--border2);
+  border-radius:18px;
+  background:#102218;
+  box-shadow:var(--shadow);
+  animation:appear .2s ease;
+}
+
+.modal h2 {margin-bottom:17px}
+
+.modal-actions {
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:18px;
+}
+
+/* TOAST */
 
 .toast {
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  background: #183c27;
-  border: 1px solid rgba(118,201,154,.4);
-  padding: 12px 18px;
-  border-radius: 10px;
-  color: white;
-  box-shadow: 0 10px 40px #0008;
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  transition: .25s;
-  z-index: 20;
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  padding:12px 18px;
+  background:#183c27;
+  border:1px solid rgba(118,201,154,.4);
+  border-radius:11px;
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:.25s;
+  z-index:50;
 }
 
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
+.toast.show {opacity:1;transform:translateY(0)}
+
+/* PRESENTATION MODE */
+
+body.presenting {overflow:hidden}
+
+body.presenting .sidebar,
+body.presenting .topbar,
+body.presenting #slides > h1,
+body.presenting #slides > .subtitle,
+body.presenting #slides > .card > :not(.slide-stage) {
+  display:none!important;
 }
 
-@media (max-width: 750px) {
-  .app { display: block; }
+body.presenting .main {
+  position:fixed;
+  inset:0;
+  padding:0;
+  z-index:40;
+  background:#07110b;
+}
+
+body.presenting #slides {
+  display:block!important;
+  height:100vh;
+}
+
+body.presenting .card {
+  height:100vh;
+  border:0;
+  padding:0;
+  border-radius:0;
+}
+
+body.presenting .slide-stage {
+  height:100vh;
+  padding:4vw;
+  border:0;
+}
+
+body.presenting .slide {
+  width:100%;
+  height:100%;
+  max-width:none;
+  aspect-ratio:auto;
+  border-radius:0;
+}
+
+.present-controls {
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  display:none;
+  gap:8px;
+  z-index:60;
+}
+
+body.presenting .present-controls {display:flex}
+
+/* MOBILE */
+
+@media(max-width:800px) {
   .sidebar {
-    width: 100%;
-    min-width: 0;
-    min-height: auto;
-    padding: 12px;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-    gap: 12px;
+    width:220px;
+    min-width:220px;
   }
-  .brand {
-    padding: 5px 8px 10px;
-    border: 0;
+
+  .main {padding:18px 14px}
+
+  .topbar {align-items:flex-start}
+
+  .search-input {width:145px}
+}
+
+@media(max-width:650px) {
+  .sidebar {
+    position:fixed;
+    inset:0 auto 0 0;
+    height:100vh;
+    box-shadow:var(--shadow);
   }
-  .brand-name { font-size: 24px; }
-  .nav {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 3px;
+
+  .sidebar-hidden .sidebar {
+    width:0;
+    min-width:0;
   }
-  .nav button {
-    white-space: nowrap;
-    padding: 8px 12px;
-  }
-  .side-label, .sidebar-bottom { display: none; }
-  .main { padding: 20px 13px; }
-  .topbar { align-items: flex-start; }
-  .editor { padding: 18px; }
-  .slide { padding: 25px; }
+
+  .main {width:100%;padding:16px 12px}
+
+  .topbar {gap:8px;flex-wrap:wrap}
+
+  .top-right {margin-left:auto}
+
+  .search-wrap {display:none}
+
+  .breadcrumb {font-size:13px}
+
+  .editor {padding:18px;min-height:400px}
+
+  .file-row {align-items:flex-start;flex-direction:column}
+
+  .slide-stage {min-height:280px;padding:12px}
+
+  .slide {padding:7%}
 }
 </style>
 </head>
 
 <body>
-<div class="app">
+<div class="app" id="app">
 
 <aside class="sidebar">
   <div class="brand">
@@ -578,238 +775,265 @@ input:focus, textarea:focus, select:focus {
   <div>
     <div class="side-label">Workspace</div>
     <nav class="nav">
-      <button class="active" data-page="home">⌂ &nbsp; Overview</button>
-      <button data-page="docs">▤ &nbsp; Documents</button>
-      <button data-page="slides">▣ &nbsp; Presentations</button>
-      <button data-page="sheets">▦ &nbsp; Spreadsheets</button>
-      <button data-page="files">▧ &nbsp; My files</button>
+      <button class="active" data-page="home"><span class="nav-icon">⌂</span>Overview</button>
+      <button data-page="docs"><span class="nav-icon">▤</span>Documents</button>
+      <button data-page="slides"><span class="nav-icon">▣</span>Presentations</button>
+      <button data-page="sheets"><span class="nav-icon">▦</span>Spreadsheets</button>
+      <button data-page="files"><span class="nav-icon">▧</span>My files</button>
     </nav>
   </div>
 
   <div>
     <div class="side-label">Preferences</div>
     <nav class="nav">
-      <button data-page="settings">⚙ &nbsp; Settings</button>
+      <button data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
     </nav>
   </div>
 
   <div class="sidebar-bottom">
     Clamme Studio<br>
-    <span style="color:var(--green2)">A quieter way to create.</span>
+    <span style="color:var(--green2)">Create with clarity.</span>
   </div>
 </aside>
 
 <main class="main">
-  <header class="topbar">
+<header class="topbar">
+  <div class="top-left">
+    <button class="button icon-button" id="sidebarToggle" title="Toggle sidebar" aria-expanded="true">☰</button>
     <div class="breadcrumb" id="breadcrumb">Workspace / Overview</div>
-    <div class="top-actions">
-      <button class="button" id="backupBtn">Export backup</button>
-      <button class="button primary" id="newBtn">+ Create</button>
+  </div>
+
+  <div class="top-right">
+    <div class="search-wrap">
+      <input class="search-input" id="globalSearch" placeholder="Search files..." autocomplete="off">
+      <div class="search-results" id="searchResults"></div>
     </div>
-  </header>
+    <button class="button" id="backupBtn">Backup</button>
+    <button class="button primary" id="newBtn">+ Create</button>
+  </div>
+</header>
 
-  <!-- HOME -->
-  <section class="section active" id="home">
-    <h1>Good work begins here.</h1>
-    <p class="subtitle">Your creative workspace, organised in one place.</p>
+<!-- OVERVIEW -->
+<section class="section active" id="home">
+  <h1>Your workspace.</h1>
+  <p class="subtitle">Ideas become things here.</p>
 
-    <div class="grid">
-      <div class="card">
-        <div class="muted">Documents</div>
-        <div class="stat" id="docCount">0</div>
-        <div class="muted">Your written work</div>
-      </div>
-      <div class="card">
-        <div class="muted">Presentations</div>
-        <div class="stat" id="slideCount">0</div>
-        <div class="muted">Your visual stories</div>
-      </div>
-      <div class="card">
-        <div class="muted">Spreadsheets</div>
-        <div class="stat" id="sheetCount">0</div>
-        <div class="muted">Your organised data</div>
-      </div>
-    </div>
-
-    <div class="section-heading">
-      <h2>Create something</h2>
-    </div>
-
-    <div class="grid">
-      <div class="card quick-card" data-create="doc">
-        <div class="quick-icon">▤</div>
-        <h3>New document</h3>
-        <p>Write, edit and organise your ideas.</p>
-      </div>
-      <div class="card quick-card" data-create="slide">
-        <div class="quick-icon">▣</div>
-        <h3>New presentation</h3>
-        <p>Build a presentation, one slide at a time.</p>
-      </div>
-      <div class="card quick-card" data-create="sheet">
-        <div class="quick-icon">▦</div>
-        <h3>New spreadsheet</h3>
-        <p>Keep your information organised.</p>
-      </div>
-    </div>
-
-    <div class="section-heading">
-      <h2>Recently created</h2>
-    </div>
-    <div class="file-list" id="recentFiles"></div>
-  </section>
-
-  <!-- DOCUMENTS -->
-  <section class="section" id="docs">
-    <h1>Documents</h1>
-    <p class="subtitle">A focused space for your writing.</p>
-
-    <div class="workspace">
-      <div class="toolbar">
-        <button data-command="bold"><b>B</b></button>
-        <button data-command="italic"><i>I</i></button>
-        <button data-command="underline"><u>U</u></button>
-        <button data-command="insertUnorderedList">• List</button>
-        <button data-command="insertOrderedList">1. List</button>
-        <select id="formatSelect">
-          <option value="p">Normal text</option>
-          <option value="h1">Heading 1</option>
-          <option value="h2">Heading 2</option>
-          <option value="h3">Heading 3</option>
-          <option value="blockquote">Quote</option>
-        </select>
-        <button id="linkBtn">Link</button>
-        <button id="clearFormat">Clear format</button>
-        <button id="exportDoc" class="gold">Export HTML</button>
-      </div>
-
-      <input class="editor-title" id="docTitle" placeholder="Untitled document" spellcheck="true" lang="en">
-
-      <div
-        class="editor"
-        id="docEditor"
-        contenteditable="true"
-        spellcheck="true"
-        lang="en"
-        autocorrect="on"
-        autocomplete="on"
-        autocapitalize="sentences"
-      ></div>
-
-      <div class="statusbar">
-        <span id="wordCount">0 words</span>
-        <span id="saveStatus">Saved locally</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDES -->
-  <section class="section" id="slides">
-    <h1>Presentations</h1>
-    <p class="subtitle">Turn your ideas into visual stories.</p>
-
+  <div class="grid">
     <div class="card">
-      <div class="field">
-        <label>Presentation title</label>
-        <input id="presentationTitle" value="Untitled presentation" spellcheck="true" lang="en">
-      </div>
-
-      <div class="slide-stage">
-        <div class="slide">
-          <h1 id="slideHeading" contenteditable="true" spellcheck="true" lang="en">Your next big idea.</h1>
-          <p id="slideText" contenteditable="true" spellcheck="true" lang="en">A presentation made with Clamme Studio.</p>
-        </div>
-      </div>
-
-      <div class="slide-controls">
-        <div>
-          <button class="button" id="prevSlide">← Previous</button>
-          <button class="button" id="nextSlide">Next →</button>
-        </div>
-        <div>
-          <span class="muted" id="slideNumber">Slide 1 of 1</span>
-          <button class="button primary" id="addSlide">+ Add slide</button>
-        </div>
-      </div>
-
-      <div class="slide-controls">
-        <button class="button gold" id="exportSlides">Export presentation</button>
-        <button class="button danger" id="deleteSlide">Delete slide</button>
-      </div>
+      <div class="muted">Documents</div>
+      <div class="stat" id="docCount">0</div>
+      <div class="muted">Written creations</div>
     </div>
-  </section>
-
-  <!-- SHEETS -->
-  <section class="section" id="sheets">
-    <h1>Spreadsheets</h1>
-    <p class="subtitle">Simple tables for your information.</p>
-
     <div class="card">
-      <div class="top-actions" style="margin-bottom:15px">
-        <input id="sheetTitle" value="Untitled spreadsheet" spellcheck="true">
-        <button class="button" id="addRow">+ Row</button>
-        <button class="button" id="addColumn">+ Column</button>
-        <button class="button gold" id="exportCSV">Export CSV</button>
-      </div>
-      <div class="sheet-wrap">
-        <table class="sheet" id="sheetTable"></table>
-      </div>
-      <p class="muted" style="font-size:13px;margin-bottom:0">
-        Tip: Enter simple formulas beginning with =, such as =A1+B1 or =A1*2.
-      </p>
+      <div class="muted">Presentations</div>
+      <div class="stat" id="slideCount">0</div>
+      <div class="muted">Visual stories</div>
     </div>
-  </section>
-
-  <!-- FILES -->
-  <section class="section" id="files">
-    <h1>My files</h1>
-    <p class="subtitle">Everything you have created in Clamme Studio.</p>
-    <div class="file-list" id="allFiles"></div>
-  </section>
-
-  <!-- SETTINGS -->
-  <section class="section" id="settings">
-    <h1>Settings</h1>
-    <p class="subtitle">Make your workspace work the way you want.</p>
-
     <div class="card">
-      <h2>Typography</h2>
-      <p class="muted">Clamme Studio uses Alegreya throughout its interface and created content.</p>
-      <div class="field">
-        <label>Interface font</label>
-        <input value="Alegreya" disabled>
-      </div>
+      <div class="muted">Spreadsheets</div>
+      <div class="stat" id="sheetCount">0</div>
+      <div class="muted">Organised information</div>
+    </div>
+  </div>
 
-      <div class="field">
-        <label>Spelling correction</label>
-        <select id="spellSetting">
-          <option value="true">Enabled</option>
-          <option value="false">Disabled</option>
-        </select>
-      </div>
+  <div class="section-heading">
+    <h2>Start creating</h2>
+  </div>
 
-      <div class="field">
-        <label>Editor language</label>
-        <select id="languageSetting">
-          <option value="en">English</option>
-          <option value="en-GB">English (UK)</option>
-          <option value="en-US">English (US)</option>
-        </select>
-      </div>
+  <div class="grid">
+    <div class="card quick-card" data-create="doc">
+      <div class="quick-icon">▤</div>
+      <h3>New document</h3>
+      <p>Write, format and develop your ideas.</p>
+    </div>
+    <div class="card quick-card" data-create="slide">
+      <div class="quick-icon">▣</div>
+      <h3>New presentation</h3>
+      <p>Build your next visual story.</p>
+    </div>
+    <div class="card quick-card" data-create="sheet">
+      <div class="quick-icon">▦</div>
+      <h3>New spreadsheet</h3>
+      <p>Organise and calculate your data.</p>
+    </div>
+  </div>
 
-      <button class="button primary" id="saveSettings">Save settings</button>
+  <div class="section-heading">
+    <h2>Recent files</h2>
+    <button class="button" data-page="files">View all</button>
+  </div>
+  <div class="file-list" id="recentFiles"></div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="section" id="docs">
+  <h1>Documents</h1>
+  <p class="subtitle">A place for your words and ideas.</p>
+
+  <div class="workspace">
+    <div class="toolbar">
+      <button data-command="bold"><b>B</b></button>
+      <button data-command="italic"><i>I</i></button>
+      <button data-command="underline"><u>U</u></button>
+      <button data-command="strikeThrough"><s>S</s></button>
+      <button data-command="insertUnorderedList">• List</button>
+      <button data-command="insertOrderedList">1. List</button>
+      <select id="formatSelect">
+        <option value="p">Paragraph</option>
+        <option value="h1">Heading 1</option>
+        <option value="h2">Heading 2</option>
+        <option value="h3">Heading 3</option>
+        <option value="blockquote">Quote</option>
+      </select>
+      <button id="linkBtn">Link</button>
+      <button id="imageBtn">Image</button>
+      <button id="undoBtn">Undo</button>
+      <button id="redoBtn">Redo</button>
+      <button id="clearFormat">Clear</button>
+      <button class="gold" id="exportDoc">Export</button>
     </div>
 
-    <div class="card" style="margin-top:15px">
-      <h2>Data management</h2>
-      <p class="muted">Export a backup to keep a copy of your work.</p>
-      <button class="button" id="settingsBackup">Export backup</button>
-      <button class="button" id="importBackup">Import backup</button>
-      <input type="file" id="backupFile" accept=".json,application/json" hidden>
-    </div>
-  </section>
+    <input class="editor-title" id="docTitle" placeholder="Untitled document" spellcheck="true" lang="en">
 
+    <div class="editor" id="docEditor"
+      contenteditable="true"
+      spellcheck="true"
+      lang="en"
+      autocorrect="on"
+      autocapitalize="sentences"
+      autocomplete="on"></div>
+
+    <div class="statusbar">
+      <span id="wordCount">0 words</span>
+      <span id="saveStatus">Saved locally</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section class="section" id="slides">
+  <h1>Presentations</h1>
+  <p class="subtitle">Create something worth presenting.</p>
+
+  <div class="card">
+    <div class="field">
+      <label>Presentation title</label>
+      <input id="presentationTitle" value="Untitled presentation" spellcheck="true">
+    </div>
+
+    <div class="slide-stage">
+      <div class="slide">
+        <h1 id="slideHeading" contenteditable="true" spellcheck="true">Your next big idea.</h1>
+        <p id="slideText" contenteditable="true" spellcheck="true">A presentation made with Clamme Studio.</p>
+      </div>
+    </div>
+
+    <div class="slide-controls">
+      <div>
+        <button class="button" id="prevSlide">← Previous</button>
+        <button class="button" id="nextSlide">Next →</button>
+      </div>
+      <span class="muted" id="slideNumber">Slide 1 of 1</span>
+      <div>
+        <button class="button primary" id="addSlide">+ Add slide</button>
+        <button class="button danger" id="deleteSlide">Delete</button>
+      </div>
+    </div>
+
+    <div class="slide-controls">
+      <button class="button gold" id="exportSlides">Export presentation</button>
+      <button class="button" id="presentSlides">Present full screen</button>
+    </div>
+  </div>
+</section>
+
+<!-- SPREADSHEETS -->
+<section class="section" id="sheets">
+  <h1>Spreadsheets</h1>
+  <p class="subtitle">Numbers, tables and calculations.</p>
+
+  <div class="card">
+    <div class="top-right" style="margin-bottom:15px;flex-wrap:wrap">
+      <input id="sheetTitle" value="Untitled spreadsheet">
+      <button class="button" id="addRow">+ Row</button>
+      <button class="button" id="addColumn">+ Column</button>
+      <button class="button gold" id="exportCSV">Export CSV</button>
+    </div>
+    <div class="sheet-wrap">
+      <table class="sheet" id="sheetTable"></table>
+    </div>
+    <p class="muted" style="font-size:13px">
+      Formulas supported: =A1+B1, =A1*2, =SUM(A1:A5), =AVERAGE(A1:A5)
+    </p>
+  </div>
+</section>
+
+<!-- FILES -->
+<section class="section" id="files">
+  <h1>My files</h1>
+  <p class="subtitle">Your creations, all in one place.</p>
+  <div class="file-list" id="allFiles"></div>
+</section>
+
+<!-- SETTINGS -->
+<section class="section" id="settings">
+  <h1>Settings</h1>
+  <p class="subtitle">Your workspace preferences.</p>
+
+  <div class="card">
+    <h2>Typography</h2>
+    <p class="muted">Alegreya is used throughout Clamme Studio.</p>
+    <div class="field">
+      <label>Interface typeface</label>
+      <input value="Alegreya" disabled>
+    </div>
+
+    <div class="field">
+      <label>Spellcheck</label>
+      <select id="spellSetting">
+        <option value="true">Enabled</option>
+        <option value="false">Disabled</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Language</label>
+      <select id="languageSetting">
+        <option value="en">English</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="en-US">English (US)</option>
+      </select>
+    </div>
+
+    <button class="button primary" id="saveSettings">Save preferences</button>
+  </div>
+
+  <div class="card" style="margin-top:15px">
+    <h2>Workspace data</h2>
+    <p class="muted">Export your work or restore a previous backup.</p>
+    <button class="button" id="settingsBackup">Export backup</button>
+    <button class="button" id="importBackup">Import backup</button>
+    <input type="file" id="backupFile" accept=".json,application/json" hidden>
+  </div>
+</section>
 </main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <h2 id="modalTitle">Create something</h2>
+    <div id="modalContent"></div>
+    <div class="modal-actions">
+      <button class="button" id="modalCancel">Cancel</button>
+      <button class="button primary" id="modalConfirm">Continue</button>
+    </div>
+  </div>
+</div>
+
+<div class="present-controls">
+  <button class="button" id="presentPrev">←</button>
+  <button class="button" id="presentNext">→</button>
+  <button class="button primary" id="exitPresent">Exit</button>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -817,495 +1041,632 @@ input:focus, textarea:focus, select:focus {
 <script>
 "use strict";
 
-/* -------------------------------------------------------
-   CLAMME STUDIO
-   Local-first workspace with Alegreya typography
-------------------------------------------------------- */
-
-const $ = selector => document.querySelector(selector);
-
-const STORAGE_KEY = "clamme_studio_data_v2";
-const SETTINGS_KEY = "clamme_studio_settings_v2";
+const $ = s => document.querySelector(s);
+const KEY = "clamme_studio_v3";
+const SETTINGS_KEY = "clamme_studio_settings_v3";
 
 let data = loadData();
 let settings = loadSettings();
 
-let currentPage = "home";
+let activeDocId = null;
+let activePresentationId = null;
+let activeSheetId = null;
 let currentSlide = 0;
+let currentPage = "home";
+let saveTimer = null;
+let modalCallback = null;
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+}
 
 function loadData() {
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved && Array.isArray(saved.docs) &&
-        Array.isArray(saved.slides) &&
-        Array.isArray(saved.sheets)) return saved;
-  } catch (error) {
-    console.warn("Could not load saved workspace.", error);
-  }
-
-  return {
-    docs: [],
-    slides: [],
-    sheets: []
-  };
+    const d = JSON.parse(localStorage.getItem(KEY));
+    if (d && Array.isArray(d.docs) && Array.isArray(d.slides) && Array.isArray(d.sheets)) return d;
+  } catch(e) {}
+  return {docs:[],slides:[],sheets:[]};
 }
 
 function loadSettings() {
   try {
-    return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {
-      spellcheck: true,
-      language: "en"
-    };
-  } catch {
-    return { spellcheck: true, language: "en" };
+    return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {spellcheck:true,language:"en"};
+  } catch(e) {
+    return {spellcheck:true,language:"en"};
   }
 }
 
-function saveData() {
+function persist() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(KEY,JSON.stringify(data));
     $("#saveStatus").textContent = "Saved locally";
-    updateDashboard();
-  } catch (error) {
-    showToast("Storage is full. Export a backup.");
-    $("#saveStatus").textContent = "Could not save";
+    dashboard();
+  } catch(e) {
+    $("#saveStatus").textContent = "Storage full";
+    toast("Storage is full. Export a backup.");
   }
+}
+
+function scheduleSave() {
+  $("#saveStatus").textContent = "Saving...";
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(persist,350);
 }
 
 function saveSettings() {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));
 }
 
-function uid() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-}
-
-function showToast(message) {
-  const toast = $("#toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(() => toast.classList.remove("show"), 2500);
+function toast(message) {
+  const el = $("#toast");
+  el.textContent = message;
+  el.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(()=>el.classList.remove("show"),2600);
 }
 
 function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
+  return String(value).replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
 }
 
-function safeFileName(value) {
+function filename(value) {
   return String(value || "clamme-file")
-    .replace(/[^\w\-]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60) || "clamme-file";
+    .replace(/[^\w-]+/g,"-")
+    .replace(/^-+|-+$/g,"")
+    .slice(0,60) || "clamme-file";
 }
 
-function downloadFile(filename, content, type) {
-  const blob = new Blob([content], { type });
+function download(name,content,type) {
+  const blob = new Blob([content],{type});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = filename;
+  a.download = name;
   document.body.appendChild(a);
   a.click();
   a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-/* -------------------------------------------------------
-   NAVIGATION
-------------------------------------------------------- */
+/* NAVIGATION */
 
 function navigate(page) {
   currentPage = page;
 
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.toggle("active", section.id === page);
+  document.querySelectorAll(".section").forEach(s=>{
+    s.classList.toggle("active",s.id===page);
   });
 
-  document.querySelectorAll(".nav button").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === page);
+  document.querySelectorAll("[data-page]").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page===page);
   });
 
   const names = {
-    home: "Overview",
-    docs: "Documents",
-    slides: "Presentations",
-    sheets: "Spreadsheets",
-    files: "My files",
-    settings: "Settings"
+    home:"Overview",docs:"Documents",slides:"Presentations",
+    sheets:"Spreadsheets",files:"My files",settings:"Settings"
   };
 
   $("#breadcrumb").textContent = "Workspace / " + (names[page] || page);
   renderFiles();
 }
 
-document.querySelectorAll("[data-page]").forEach(button => {
-  button.addEventListener("click", () => navigate(button.dataset.page));
+document.querySelectorAll("[data-page]").forEach(b=>{
+  b.addEventListener("click",()=>navigate(b.dataset.page));
 });
 
-/* -------------------------------------------------------
-   DOCUMENTS
-------------------------------------------------------- */
+/* SIDEBAR */
 
-let activeDocId = null;
+$("#sidebarToggle").addEventListener("click",()=>{
+  const hidden = $("#app").classList.toggle("sidebar-hidden");
+  $("#sidebarToggle").setAttribute("aria-expanded",String(!hidden));
+  $("#sidebarToggle").title = hidden ? "Show sidebar" : "Hide sidebar";
+});
 
-function createDocument() {
-  const doc = {
-    id: uid(),
-    title: "Untitled document",
-    content: "",
-    updated: Date.now()
-  };
+/* MODAL SYSTEM */
 
+function modal(title,content,onConfirm) {
+  $("#modalTitle").textContent = title;
+  $("#modalContent").innerHTML = content;
+  $("#modalBackdrop").classList.add("open");
+  modalCallback = onConfirm;
+}
+
+function closeModal() {
+  $("#modalBackdrop").classList.remove("open");
+  modalCallback = null;
+}
+
+$("#modalCancel").addEventListener("click",closeModal);
+$("#modalBackdrop").addEventListener("click",e=>{
+  if(e.target === $("#modalBackdrop")) closeModal();
+});
+
+$("#modalConfirm").addEventListener("click",()=>{
+  if(modalCallback) modalCallback();
+});
+
+/* CREATE */
+
+function create(type) {
+  if(type==="doc") createDoc();
+  if(type==="slide") createPresentation();
+  if(type==="sheet") createSheet();
+}
+
+function createMenu() {
+  modal("Create new",`
+    <div class="grid">
+      <button class="button" data-choice="doc">▤ Document</button>
+      <button class="button" data-choice="slide">▣ Presentation</button>
+      <button class="button" data-choice="sheet">▦ Spreadsheet</button>
+    </div>
+  `,()=>{});
+
+  $("#modalConfirm").style.display="none";
+
+  $("#modalContent").querySelectorAll("[data-choice]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      const type=b.dataset.choice;
+      closeModal();
+      create(type);
+    });
+  });
+}
+
+$("#newBtn").addEventListener("click",createMenu);
+
+document.querySelectorAll("[data-create]").forEach(b=>{
+  b.addEventListener("click",()=>create(b.dataset.create));
+});
+
+/* DOCUMENTS */
+
+function createDoc() {
+  const doc = {id:uid(),title:"Untitled document",content:"",updated:Date.now()};
   data.docs.unshift(doc);
-  activeDocId = doc.id;
-  saveData();
-  openDocument(doc.id);
+  activeDocId=doc.id;
+  persist();
+  openDoc(doc.id);
   navigate("docs");
-  showToast("Document created");
+  toast("Document created");
 }
 
-function openDocument(id) {
-  const doc = data.docs.find(item => item.id === id);
-  if (!doc) return;
-
-  activeDocId = id;
-  $("#docTitle").value = doc.title;
-  $("#docEditor").innerHTML = doc.content;
-  updateWordCount();
+function openDoc(id) {
+  const doc=data.docs.find(x=>x.id===id);
+  if(!doc)return;
+  activeDocId=id;
+  $("#docTitle").value=doc.title;
+  $("#docEditor").innerHTML=doc.content;
+  wordCount();
+  applySpellcheck();
 }
 
-function saveDocument() {
-  if (!activeDocId) return;
-
-  const doc = data.docs.find(item => item.id === activeDocId);
-  if (!doc) return;
-
-  doc.title = $("#docTitle").value.trim() || "Untitled document";
-  doc.content = $("#docEditor").innerHTML;
-  doc.updated = Date.now();
-
-  saveData();
-  updateWordCount();
+function saveDoc() {
+  const doc=data.docs.find(x=>x.id===activeDocId);
+  if(!doc)return;
+  doc.title=$("#docTitle").value.trim() || "Untitled document";
+  doc.content=$("#docEditor").innerHTML;
+  doc.updated=Date.now();
+  wordCount();
+  scheduleSave();
 }
 
-function updateWordCount() {
-  const text = $("#docEditor").innerText.trim();
-  const words = text ? text.split(/\s+/).length : 0;
-  $("#wordCount").textContent = words + (words === 1 ? " word" : " words");
+function wordCount() {
+  const text=$("#docEditor").innerText.trim();
+  const words=text ? text.split(/\s+/).length : 0;
+  $("#wordCount").textContent=words+" words";
 }
 
-$("#docTitle").addEventListener("input", saveDocument);
-$("#docEditor").addEventListener("input", saveDocument);
+$("#docTitle").addEventListener("input",saveDoc);
+$("#docEditor").addEventListener("input",saveDoc);
 
-document.querySelectorAll("[data-command]").forEach(button => {
-  button.addEventListener("click", () => {
+document.querySelectorAll("[data-command]").forEach(b=>{
+  b.addEventListener("click",()=>{
     $("#docEditor").focus();
-    document.execCommand(button.dataset.command, false, null);
-    saveDocument();
+    document.execCommand(b.dataset.command,false,null);
+    saveDoc();
   });
 });
 
-$("#formatSelect").addEventListener("change", event => {
+$("#formatSelect").addEventListener("change",e=>{
   $("#docEditor").focus();
-  document.execCommand("formatBlock", false, event.target.value);
-  saveDocument();
+  document.execCommand("formatBlock",false,e.target.value);
+  saveDoc();
 });
 
-$("#linkBtn").addEventListener("click", () => {
-  const url = prompt("Enter a website address:");
-  if (!url) return;
-
+$("#linkBtn").addEventListener("click",()=>{
+  const value=prompt("Enter a website URL");
+  if(!value)return;
   try {
-    const parsed = new URL(url);
-    if (!["http:", "https:"].includes(parsed.protocol)) {
-      throw new Error("Invalid protocol");
-    }
-
+    const url=new URL(value);
+    if(!["http:","https:"].includes(url.protocol))throw Error();
     $("#docEditor").focus();
-    document.execCommand("createLink", false, parsed.href);
-    saveDocument();
-  } catch {
-    showToast("Please enter a valid web address.");
+    document.execCommand("createLink",false,url.href);
+    saveDoc();
+  } catch(e) {
+    toast("Enter a valid HTTP or HTTPS URL.");
   }
 });
 
-$("#clearFormat").addEventListener("click", () => {
+$("#imageBtn").addEventListener("click",()=>{
+  const input=document.createElement("input");
+  input.type="file";
+  input.accept="image/*";
+  input.onchange=()=>{
+    const file=input.files[0];
+    if(!file)return;
+    if(file.size>1200000) {
+      toast("Choose an image smaller than 1.2 MB.");
+      return;
+    }
+    const reader=new FileReader();
+    reader.onload=()=>{
+      $("#docEditor").focus();
+      document.execCommand("insertImage",false,reader.result);
+      saveDoc();
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+});
+
+$("#undoBtn").addEventListener("click",()=>{
   $("#docEditor").focus();
-  document.execCommand("removeFormat", false, null);
-  saveDocument();
+  document.execCommand("undo");
+  saveDoc();
 });
 
-$("#exportDoc").addEventListener("click", () => {
-  if (!activeDocId) {
-    showToast("Create a document first.");
-    return;
-  }
+$("#redoBtn").addEventListener("click",()=>{
+  $("#docEditor").focus();
+  document.execCommand("redo");
+  saveDoc();
+});
 
-  saveDocument();
+$("#clearFormat").addEventListener("click",()=>{
+  $("#docEditor").focus();
+  document.execCommand("removeFormat");
+  saveDoc();
+});
 
-  const doc = data.docs.find(item => item.id === activeDocId);
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+$("#exportDoc").addEventListener("click",()=>{
+  const doc=data.docs.find(x=>x.id===activeDocId);
+  if(!doc)return toast("Create a document first.");
+  saveDoc();
+
+  const html=`<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <title>${escapeHTML(doc.title)}</title>
-<style>
-* { font-family: "Alegreya", serif !important; }
-body { max-width: 850px; margin: 50px auto; padding: 20px; line-height: 1.8; font-size: 19px; }
-h1,h2,h3 { line-height: 1.2; }
-</style>
-</head>
-<body>
-<h1>${escapeHTML(doc.title)}</h1>
-${doc.content}
-</body>
-</html>`;
+<style>*{font-family:"Alegreya",serif!important}body{max-width:850px;margin:50px auto;padding:20px;font-size:19px;line-height:1.8}</style>
+</head><body><h1>${escapeHTML(doc.title)}</h1>${doc.content}</body></html>`;
 
-  downloadFile(safeFileName(doc.title) + ".html", html, "text/html");
+  download(filename(doc.title)+".html",html,"text/html");
 });
 
-/* -------------------------------------------------------
-   PRESENTATIONS
-------------------------------------------------------- */
-
-let activePresentationId = null;
+/* PRESENTATIONS */
 
 function createPresentation() {
-  const presentation = {
-    id: uid(),
-    title: "Untitled presentation",
-    slides: [{
-      title: "Your next big idea.",
-      text: "A presentation made with Clamme Studio."
-    }],
-    updated: Date.now()
+  const p={
+    id:uid(),
+    title:"Untitled presentation",
+    slides:[{title:"Your next big idea.",text:"A presentation made with Clamme Studio."}],
+    updated:Date.now()
   };
-
-  data.slides.unshift(presentation);
-  activePresentationId = presentation.id;
-  currentSlide = 0;
-  saveData();
-  openPresentation(presentation.id);
+  data.slides.unshift(p);
+  activePresentationId=p.id;
+  currentSlide=0;
+  persist();
+  openPresentation(p.id);
   navigate("slides");
-  showToast("Presentation created");
-}
-
-function openPresentation(id) {
-  const presentation = data.slides.find(item => item.id === id);
-  if (!presentation) return;
-
-  activePresentationId = id;
-  currentSlide = 0;
-
-  $("#presentationTitle").value = presentation.title;
-  renderSlide();
+  toast("Presentation created");
 }
 
 function getPresentation() {
-  return data.slides.find(item => item.id === activePresentationId);
+  return data.slides.find(x=>x.id===activePresentationId);
+}
+
+function openPresentation(id) {
+  const p=data.slides.find(x=>x.id===id);
+  if(!p)return;
+  activePresentationId=id;
+  currentSlide=0;
+  $("#presentationTitle").value=p.title;
+  renderSlide();
 }
 
 function savePresentation() {
-  const presentation = getPresentation();
-  if (!presentation) return;
-
-  presentation.title = $("#presentationTitle").value.trim() || "Untitled presentation";
-  presentation.slides[currentSlide].title = $("#slideHeading").innerText;
-  presentation.slides[currentSlide].text = $("#slideText").innerText;
-  presentation.updated = Date.now();
-
-  saveData();
+  const p=getPresentation();
+  if(!p)return;
+  const s=p.slides[currentSlide];
+  if(!s)return;
+  p.title=$("#presentationTitle").value.trim() || "Untitled presentation";
+  s.title=$("#slideHeading").innerText;
+  s.text=$("#slideText").innerText;
+  p.updated=Date.now();
+  scheduleSave();
 }
 
 function renderSlide() {
-  const presentation = getPresentation();
-  if (!presentation) return;
-
-  const slide = presentation.slides[currentSlide];
-  $("#slideHeading").textContent = slide.title;
-  $("#slideText").textContent = slide.text;
-  $("#slideNumber").textContent =
-    `Slide ${currentSlide + 1} of ${presentation.slides.length}`;
+  const p=getPresentation();
+  if(!p)return;
+  const s=p.slides[currentSlide];
+  if(!s)return;
+  $("#slideHeading").textContent=s.title;
+  $("#slideText").textContent=s.text;
+  $("#slideNumber").textContent=`Slide ${currentSlide+1} of ${p.slides.length}`;
+  $("#prevSlide").disabled=currentSlide===0;
+  $("#nextSlide").disabled=currentSlide===p.slides.length-1;
+  applySpellcheck();
 }
 
-$("#presentationTitle").addEventListener("input", savePresentation);
-$("#slideHeading").addEventListener("input", savePresentation);
-$("#slideText").addEventListener("input", savePresentation);
+$("#presentationTitle").addEventListener("input",savePresentation);
+$("#slideHeading").addEventListener("input",savePresentation);
+$("#slideText").addEventListener("input",savePresentation);
 
-$("#prevSlide").addEventListener("click", () => {
-  const presentation = getPresentation();
-  if (!presentation) return;
-
+function moveSlide(direction) {
+  const p=getPresentation();
+  if(!p)return;
   savePresentation();
-  currentSlide = Math.max(0, currentSlide - 1);
+  currentSlide=Math.max(0,Math.min(p.slides.length-1,currentSlide+direction));
   renderSlide();
+}
+
+$("#prevSlide").addEventListener("click",()=>moveSlide(-1));
+$("#nextSlide").addEventListener("click",()=>moveSlide(1));
+$("#presentPrev").addEventListener("click",()=>moveSlide(-1));
+$("#presentNext").addEventListener("click",()=>moveSlide(1));
+
+$("#addSlide").addEventListener("click",()=>{
+  const p=getPresentation();
+  if(!p)return toast("Create a presentation first.");
+  savePresentation();
+  p.slides.push({title:"New slide",text:"Add your ideas here."});
+  currentSlide=p.slides.length-1;
+  renderSlide();
+  persist();
 });
 
-$("#nextSlide").addEventListener("click", () => {
-  const presentation = getPresentation();
-  if (!presentation) return;
-
-  savePresentation();
-  currentSlide = Math.min(presentation.slides.length - 1, currentSlide + 1);
+$("#deleteSlide").addEventListener("click",()=>{
+  const p=getPresentation();
+  if(!p)return;
+  if(p.slides.length===1)return toast("Keep at least one slide.");
+  if(!confirm("Delete this slide?"))return;
+  p.slides.splice(currentSlide,1);
+  currentSlide=Math.min(currentSlide,p.slides.length-1);
   renderSlide();
+  persist();
 });
 
-$("#addSlide").addEventListener("click", () => {
-  const presentation = getPresentation();
-  if (!presentation) {
-    showToast("Create a presentation first.");
-    return;
-  }
-
-  savePresentation();
-  presentation.slides.push({
-    title: "New slide",
-    text: "Add your ideas here."
-  });
-
-  currentSlide = presentation.slides.length - 1;
-  renderSlide();
-  saveData();
-});
-
-$("#deleteSlide").addEventListener("click", () => {
-  const presentation = getPresentation();
-  if (!presentation) return;
-
-  if (presentation.slides.length === 1) {
-    showToast("A presentation needs at least one slide.");
-    return;
-  }
-
-  if (!confirm("Delete this slide?")) return;
-
-  presentation.slides.splice(currentSlide, 1);
-  currentSlide = Math.min(currentSlide, presentation.slides.length - 1);
-  renderSlide();
-  saveData();
-});
-
-$("#exportSlides").addEventListener("click", () => {
-  const presentation = getPresentation();
-  if (!presentation) {
-    showToast("Create a presentation first.");
-    return;
-  }
-
+$("#exportSlides").addEventListener("click",()=>{
+  const p=getPresentation();
+  if(!p)return toast("Create a presentation first.");
   savePresentation();
 
-  const slidesHTML = presentation.slides.map((slide, index) => `
+  const sections=p.slides.map((s,i)=>`
     <section class="slide">
-      <small>${index + 1} / ${presentation.slides.length}</small>
-      <h1>${escapeHTML(slide.title)}</h1>
-      <p>${escapeHTML(slide.text)}</p>
+      <small>${i+1} / ${p.slides.length}</small>
+      <h1>${escapeHTML(s.title)}</h1>
+      <p>${escapeHTML(s.text)}</p>
     </section>
   `).join("");
 
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<title>${escapeHTML(presentation.title)}</title>
+<title>${escapeHTML(p.title)}</title>
 <style>
-* { box-sizing:border-box; font-family:"Alegreya",serif !important; }
-body { margin:0; background:#07110b; color:#edf5ed; }
-.slide { min-height:100vh; padding:10vw; display:flex; flex-direction:column; justify-content:center; page-break-after:always; background:linear-gradient(135deg,#173a25,#07110b); }
-h1 { font-size:clamp(35px,6vw,70px); color:#f1e7cb; }
-p { font-size:clamp(20px,3vw,32px); color:#c6d7c9; }
-small { color:#d6bd82; }
-@media print { .slide { height:100vh; } }
-</style>
-</head>
-<body>${slidesHTML}</body>
-</html>`;
+*{box-sizing:border-box;font-family:"Alegreya",serif!important}
+body{margin:0;background:#07110b;color:#edf5ed}
+.slide{min-height:100vh;padding:10vw;display:flex;flex-direction:column;justify-content:center;page-break-after:always;background:linear-gradient(135deg,#173a25,#07110b)}
+h1{font-size:clamp(35px,6vw,70px);color:#f1e7cb}
+p{font-size:clamp(20px,3vw,32px);color:#c6d7c9}
+small{color:#d6bd82}
+@media print{.slide{height:100vh}}
+</style></head><body>${sections}</body></html>`;
 
-  downloadFile(safeFileName(presentation.title) + ".html", html, "text/html");
+  download(filename(p.title)+".html",html,"text/html");
 });
 
-/* -------------------------------------------------------
-   SPREADSHEETS
-------------------------------------------------------- */
+$("#presentSlides").addEventListener("click",()=>{
+  if(!getPresentation())return toast("Create a presentation first.");
+  document.body.classList.add("presenting");
+  if(document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }
+});
 
-let activeSheetId = null;
+$("#exitPresent").addEventListener("click",exitPresentation);
 
-function createSpreadsheet() {
-  const sheet = {
-    id: uid(),
-    title: "Untitled spreadsheet",
-    rows: Array.from({ length: 10 }, () => Array(6).fill("")),
-    updated: Date.now()
+function exitPresentation() {
+  document.body.classList.remove("presenting");
+  if(document.fullscreenElement && document.exitFullscreen) {
+    document.exitFullscreen().catch(()=>{});
+  }
+}
+
+document.addEventListener("fullscreenchange",()=>{
+  if(!document.fullscreenElement)document.body.classList.remove("presenting");
+});
+
+/* SPREADSHEETS */
+
+function createSheet() {
+  const s={
+    id:uid(),
+    title:"Untitled spreadsheet",
+    rows:Array.from({length:12},()=>Array(6).fill("")),
+    updated:Date.now()
   };
-
-  data.sheets.unshift(sheet);
-  activeSheetId = sheet.id;
-  saveData();
-  openSpreadsheet(sheet.id);
+  data.sheets.unshift(s);
+  activeSheetId=s.id;
+  persist();
+  openSheet(s.id);
   navigate("sheets");
-  showToast("Spreadsheet created");
+  toast("Spreadsheet created");
 }
 
 function getSheet() {
-  return data.sheets.find(item => item.id === activeSheetId);
+  return data.sheets.find(x=>x.id===activeSheetId);
 }
 
-function openSpreadsheet(id) {
-  const sheet = data.sheets.find(item => item.id === id);
-  if (!sheet) return;
-
-  activeSheetId = id;
-  $("#sheetTitle").value = sheet.title;
+function openSheet(id) {
+  const s=data.sheets.find(x=>x.id===id);
+  if(!s)return;
+  activeSheetId=id;
+  $("#sheetTitle").value=s.title;
   renderSheet();
 }
 
-function renderSheet() {
-  const sheet = getSheet();
-  if (!sheet) return;
+function columnName(n) {
+  let out="";
+  while(n>=0) {
+    out=String.fromCharCode(n%26+65)+out;
+    n=Math.floor(n/26)-1;
+  }
+  return out;
+}
 
-  const table = $("#sheetTable");
-  table.innerHTML = "";
+function parseRef(ref) {
+  const m=ref.match(/^([A-Z]+)(\d+)$/);
+  if(!m)throw Error("Invalid cell reference");
+  let col=0;
+  for(const c of m[1])col=col*26+c.charCodeAt(0)-64;
+  return {row:Number(m[2])-1,col:col-1};
+}
 
-  const header = document.createElement("tr");
-  header.innerHTML = "<th></th>";
+function cellValue(row,col,visited=new Set()) {
+  const s=getSheet();
+  if(!s || !s.rows[row] || s.rows[row][col]===undefined)return 0;
+  const key=row+":"+col;
+  if(visited.has(key))throw Error("Circular reference");
 
-  for (let column = 0; column < sheet.rows[0].length; column++) {
-    const th = document.createElement("th");
-    th.textContent = columnName(column);
-    header.appendChild(th);
+  const raw=String(s.rows[row][col]).trim();
+  if(!raw.startsWith("=")) {
+    const n=Number(raw);
+    return raw!=="" && Number.isFinite(n)?n:0;
   }
 
+  visited.add(key);
+  let expression=raw.slice(1).toUpperCase();
+
+  expression=expression.replace(/(SUM|AVERAGE|MIN|MAX)\(([A-Z]+\d+):([A-Z]+\d+)\)/g,
+    (whole,fn,start,end)=>{
+      const a=parseRef(start),b=parseRef(end);
+      const values=[];
+      for(let r=Math.min(a.row,b.row);r<=Math.max(a.row,b.row);r++) {
+        for(let c=Math.min(a.col,b.col);c<=Math.max(a.col,b.col);c++) {
+          values.push(cellValue(r,c,new Set(visited)));
+        }
+      }
+      if(fn==="SUM")return values.reduce((x,y)=>x+y,0);
+      if(fn==="AVERAGE")return values.length?values.reduce((x,y)=>x+y,0)/values.length:0;
+      if(fn==="MIN")return Math.min(...values);
+      return Math.max(...values);
+    }
+  );
+
+  expression=expression.replace(/\b([A-Z]+\d+)\b/g,ref=>{
+    const pos=parseRef(ref);
+    return String(cellValue(pos.row,pos.col,new Set(visited)));
+  });
+
+  visited.delete(key);
+  return arithmetic(expression);
+}
+
+function arithmetic(expression) {
+  const tokens=expression.match(/\d+(?:\.\d+)?|[()+\-*/]/g);
+  if(!tokens || tokens.join("")!==expression.replace(/\s/g,""))throw Error("Invalid formula");
+  let i=0;
+
+  function factor() {
+    const t=tokens[i++];
+    if(t==="(") {
+      const v=sum();
+      if(tokens[i++]!==")")throw Error("Missing bracket");
+      return v;
+    }
+    if(t==="-")return -factor();
+    if(t==="+")return factor();
+    const n=Number(t);
+    if(!Number.isFinite(n))throw Error("Invalid number");
+    return n;
+  }
+
+  function product() {
+    let v=factor();
+    while(tokens[i]==="*"||tokens[i]==="/") {
+      const op=tokens[i++];
+      const n=factor();
+      v=op==="*"?v*n:v/n;
+    }
+    return v;
+  }
+
+  function sum() {
+    let v=product();
+    while(tokens[i]==="+"||tokens[i]==="-") {
+      const op=tokens[i++];
+      const n=product();
+      v=op==="+"?v+n:v-n;
+    }
+    return v;
+  }
+
+  const result=sum();
+  if(i!==tokens.length||!Number.isFinite(result))throw Error("Invalid result");
+  return result;
+}
+
+function renderSheet() {
+  const s=getSheet();
+  if(!s)return;
+
+  const table=$("#sheetTable");
+  table.replaceChildren();
+
+  const header=document.createElement("tr");
+  const empty=document.createElement("th");
+  header.appendChild(empty);
+
+  for(let c=0;c<s.rows[0].length;c++) {
+    const th=document.createElement("th");
+    th.textContent=columnName(c);
+    header.appendChild(th);
+  }
   table.appendChild(header);
 
-  sheet.rows.forEach((row, rowIndex) => {
-    const tr = document.createElement("tr");
-    const heading = document.createElement("th");
-    heading.textContent = rowIndex + 1;
-    tr.appendChild(heading);
+  s.rows.forEach((row,r)=>{
+    const tr=document.createElement("tr");
+    const th=document.createElement("th");
+    th.textContent=r+1;
+    tr.appendChild(th);
 
-    row.forEach((value, columnIndex) => {
-      const td = document.createElement("td");
-      td.contentEditable = "true";
-      td.spellcheck = true;
-      td.lang = settings.language;
-      td.dataset.row = rowIndex;
-      td.dataset.col = columnIndex;
-      td.textContent = value;
-      td.addEventListener("input", () => {
-        sheet.rows[rowIndex][columnIndex] = td.textContent;
-        sheet.updated = Date.now();
-        saveData();
+    row.forEach((value,c)=>{
+      const td=document.createElement("td");
+      td.contentEditable="true";
+      td.spellcheck=true;
+      td.textContent=value;
+      td.dataset.row=r;
+      td.dataset.col=c;
+
+      td.addEventListener("input",()=>{
+        s.rows[r][c]=td.textContent;
+        s.updated=Date.now();
+        scheduleSave();
       });
+
+      td.addEventListener("blur",()=>{
+        if(String(s.rows[r][c]).startsWith("=")) {
+          try {
+            td.title="Result: "+cellValue(r,c);
+          } catch(e) {
+            td.title=e.message;
+          }
+        }
+      });
+
       tr.appendChild(td);
     });
 
@@ -1313,382 +1674,346 @@ function renderSheet() {
   });
 }
 
-function columnName(index) {
-  let name = "";
-  while (index >= 0) {
-    name = String.fromCharCode(index % 26 + 65) + name;
-    index = Math.floor(index / 26) - 1;
-  }
-  return name;
-}
-
-/* A small arithmetic parser: no JavaScript eval or Function(). */
-function calculate(expression) {
-  const tokens = expression.match(/\d+(?:\.\d+)?|[()+\-*/]/g);
-  if (!tokens || tokens.join("") !== expression.replace(/\s/g, "")) {
-    throw new Error("Invalid formula");
-  }
-
-  let position = 0;
-
-  function factor() {
-    const token = tokens[position++];
-
-    if (token === "(") {
-      const value = sum();
-      if (tokens[position++] !== ")") throw new Error("Missing )");
-      return value;
-    }
-
-    if (token === "-") return -factor();
-    if (token === "+") return factor();
-
-    const number = Number(token);
-    if (!Number.isFinite(number)) throw new Error("Invalid number");
-    return number;
-  }
-
-  function product() {
-    let value = factor();
-
-    while (tokens[position] === "*" || tokens[position] === "/") {
-      const operator = tokens[position++];
-      const next = factor();
-      value = operator === "*" ? value * next : value / next;
-    }
-
-    return value;
-  }
-
-  function sum() {
-    let value = product();
-
-    while (tokens[position] === "+" || tokens[position] === "-") {
-      const operator = tokens[position++];
-      const next = product();
-      value = operator === "+" ? value + next : value - next;
-    }
-
-    return value;
-  }
-
-  const result = sum();
-  if (position !== tokens.length || !Number.isFinite(result)) {
-    throw new Error("Invalid formula");
-  }
-
-  return result;
-}
-
-function evaluateCell(row, column, visited = new Set()) {
-  const sheet = getSheet();
-  if (!sheet || !sheet.rows[row] || sheet.rows[row][column] === undefined) return 0;
-
-  const key = row + ":" + column;
-  if (visited.has(key)) throw new Error("Circular reference");
-
-  const raw = String(sheet.rows[row][column]).trim();
-  if (!raw.startsWith("=")) {
-    const number = Number(raw);
-    return raw !== "" && Number.isFinite(number) ? number : 0;
-  }
-
-  visited.add(key);
-
-  let expression = raw.slice(1).replace(
-    /\b([A-Z]+)(\d+)\b/g,
-    (_, letters, rowNumber) => {
-      let col = 0;
-      for (const char of letters) col = col * 26 + char.charCodeAt(0) - 64;
-      return String(evaluateCell(Number(rowNumber) - 1, col - 1, visited));
-    }
-  );
-
-  visited.delete(key);
-  return calculate(expression);
-}
-
-$("#sheetTitle").addEventListener("input", () => {
-  const sheet = getSheet();
-  if (!sheet) return;
-  sheet.title = $("#sheetTitle").value;
-  saveData();
+$("#sheetTitle").addEventListener("input",()=>{
+  const s=getSheet();
+  if(!s)return;
+  s.title=$("#sheetTitle").value;
+  scheduleSave();
 });
 
-$("#addRow").addEventListener("click", () => {
-  const sheet = getSheet();
-  if (!sheet) return;
-  sheet.rows.push(Array(sheet.rows[0].length).fill(""));
+$("#addRow").addEventListener("click",()=>{
+  const s=getSheet();
+  if(!s)return;
+  s.rows.push(Array(s.rows[0].length).fill(""));
   renderSheet();
-  saveData();
+  persist();
 });
 
-$("#addColumn").addEventListener("click", () => {
-  const sheet = getSheet();
-  if (!sheet) return;
-  sheet.rows.forEach(row => row.push(""));
+$("#addColumn").addEventListener("click",()=>{
+  const s=getSheet();
+  if(!s)return;
+  s.rows.forEach(row=>row.push(""));
   renderSheet();
-  saveData();
+  persist();
 });
 
-$("#exportCSV").addEventListener("click", () => {
-  const sheet = getSheet();
-  if (!sheet) {
-    showToast("Create a spreadsheet first.");
-    return;
-  }
+$("#exportCSV").addEventListener("click",()=>{
+  const s=getSheet();
+  if(!s)return toast("Create a spreadsheet first.");
 
-  const csv = sheet.rows.map(row =>
-    row.map(value => {
-      const safe = String(value).replace(/"/g, '""');
-      return `"${safe}"`;
-    }).join(",")
-  ).join("\n");
+  const csv=s.rows.map((row,r)=>row.map((value,c)=>{
+    let output=String(value);
+    if(output.startsWith("=")) {
+      try {output=String(cellValue(r,c));}
+      catch(e) {}
+    }
+    return '"'+output.replace(/"/g,'""')+'"';
+  }).join(",")).join("\n");
 
-  downloadFile(safeFileName(sheet.title) + ".csv", csv, "text/csv");
+  download(filename(s.title)+".csv",csv,"text/csv");
 });
 
-/* -------------------------------------------------------
-   FILE MANAGEMENT
-------------------------------------------------------- */
+/* FILE MANAGEMENT */
 
-function getAllFiles() {
+function allFiles() {
   return [
-    ...data.docs.map(item => ({ ...item, type: "Document", kind: "doc" })),
-    ...data.slides.map(item => ({ ...item, type: "Presentation", kind: "slide" })),
-    ...data.sheets.map(item => ({ ...item, type: "Spreadsheet", kind: "sheet" }))
-  ].sort((a, b) => b.updated - a.updated);
+    ...data.docs.map(x=>({...x,type:"Document",kind:"doc"})),
+    ...data.slides.map(x=>({...x,type:"Presentation",kind:"slide"})),
+    ...data.sheets.map(x=>({...x,type:"Spreadsheet",kind:"sheet"}))
+  ].sort((a,b)=>b.updated-a.updated);
 }
 
 function openFile(file) {
-  if (file.kind === "doc") {
-    openDocument(file.id);
+  if(file.kind==="doc") {
+    openDoc(file.id);
     navigate("docs");
-  } else if (file.kind === "slide") {
+  } else if(file.kind==="slide") {
     openPresentation(file.id);
     navigate("slides");
-  } else if (file.kind === "sheet") {
-    openSpreadsheet(file.id);
+  } else {
+    openSheet(file.id);
     navigate("sheets");
   }
 }
 
 function deleteFile(file) {
-  if (!confirm("Delete " + file.title + "?")) return;
+  if(!confirm("Delete "+file.title+"?"))return;
 
-  const collection = file.kind === "doc" ? data.docs :
-    file.kind === "slide" ? data.slides : data.sheets;
+  const list=file.kind==="doc"?data.docs:
+    file.kind==="slide"?data.slides:data.sheets;
 
-  const index = collection.findIndex(item => item.id === file.id);
-  if (index >= 0) collection.splice(index, 1);
+  const index=list.findIndex(x=>x.id===file.id);
+  if(index>=0)list.splice(index,1);
 
-  saveData();
+  if(file.id===activeDocId)activeDocId=null;
+  if(file.id===activePresentationId)activePresentationId=null;
+  if(file.id===activeSheetId)activeSheetId=null;
+
+  persist();
   renderFiles();
-  showToast("File deleted");
+  toast("File deleted");
 }
 
-function makeFileRow(file) {
-  const row = document.createElement("div");
-  row.className = "file-row";
+function renameFile(file) {
+  modal("Rename file",`
+    <div class="field">
+      <label>New name</label>
+      <input id="renameInput" value="${escapeHTML(file.title)}" spellcheck="true">
+    </div>
+  `,()=>{
+    const value=$("#renameInput").value.trim();
+    if(!value)return toast("Enter a name.");
+    const list=file.kind==="doc"?data.docs:
+      file.kind==="slide"?data.slides:data.sheets;
+    const item=list.find(x=>x.id===file.id);
+    if(item)item.title=value;
+    if(file.id===activeDocId)$("#docTitle").value=value;
+    if(file.id===activePresentationId)$("#presentationTitle").value=value;
+    if(file.id===activeSheetId)$("#sheetTitle").value=value;
+    closeModal();
+    persist();
+    renderFiles();
+    toast("Renamed");
+  });
+}
 
-  const info = document.createElement("div");
-  info.style.minWidth = "0";
+function duplicateFile(file) {
+  const list=file.kind==="doc"?data.docs:
+    file.kind==="slide"?data.slides:data.sheets;
+  const original=list.find(x=>x.id===file.id);
+  if(!original)return;
+  const copy=JSON.parse(JSON.stringify(original));
+  copy.id=uid();
+  copy.title=original.title+" Copy";
+  copy.updated=Date.now();
+  list.unshift(copy);
+  persist();
+  renderFiles();
+  toast("Duplicate created");
+}
 
-  const title = document.createElement("strong");
-  title.textContent = file.title || "Untitled";
+function fileRow(file) {
+  const row=document.createElement("div");
+  row.className="file-row";
 
-  const type = document.createElement("div");
-  type.className = "muted";
-  type.style.fontSize = "13px";
-  type.textContent = file.type + " · " + new Date(file.updated).toLocaleDateString();
+  const meta=document.createElement("div");
+  meta.className="file-meta";
 
-  info.append(title, type);
+  const title=document.createElement("strong");
+  title.textContent=file.title;
 
-  const actions = document.createElement("div");
-  actions.className = "top-actions";
+  const detail=document.createElement("div");
+  detail.className="muted";
+  detail.textContent=file.type+" · "+new Date(file.updated).toLocaleDateString();
 
-  const open = document.createElement("button");
-  open.className = "button";
-  open.textContent = "Open";
-  open.addEventListener("click", () => openFile(file));
+  meta.append(title,detail);
 
-  const remove = document.createElement("button");
-  remove.className = "button danger";
-  remove.textContent = "Delete";
-  remove.addEventListener("click", () => deleteFile(file));
+  const actions=document.createElement("div");
+  actions.className="file-actions";
 
-  actions.append(open, remove);
-  row.append(info, actions);
+  [
+    ["Open",()=>openFile(file),"button"],
+    ["Rename",()=>renameFile(file),"button"],
+    ["Duplicate",()=>duplicateFile(file),"button"],
+    ["Delete",()=>deleteFile(file),"button danger"]
+  ].forEach(([label,fn,cls])=>{
+    const b=document.createElement("button");
+    b.className=cls;
+    b.textContent=label;
+    b.addEventListener("click",fn);
+    actions.appendChild(b);
+  });
+
+  row.append(meta,actions);
   return row;
 }
 
 function renderFiles() {
-  const files = getAllFiles();
+  const files=allFiles();
 
-  const all = $("#allFiles");
-  const recent = $("#recentFiles");
+  $("#allFiles").replaceChildren();
+  $("#recentFiles").replaceChildren();
 
-  if (all) {
-    all.replaceChildren();
-
-    if (!files.length) {
-      all.textContent = "No files yet. Create something to get started.";
-    } else {
-      files.forEach(file => all.appendChild(makeFileRow(file)));
-    }
+  if(!files.length) {
+    $("#allFiles").textContent="No files yet. Create your first project.";
+    $("#recentFiles").textContent="Your recent creations will appear here.";
+  } else {
+    files.forEach(f=>$("#allFiles").appendChild(fileRow(f)));
+    files.slice(0,5).forEach(f=>$("#recentFiles").appendChild(fileRow(f)));
   }
 
-  if (recent) {
-    recent.replaceChildren();
+  dashboard();
+}
 
-    if (!files.length) {
-      recent.textContent = "Your recent files will appear here.";
-    } else {
-      files.slice(0, 5).forEach(file => recent.appendChild(makeFileRow(file)));
-    }
+function dashboard() {
+  $("#docCount").textContent=data.docs.length;
+  $("#slideCount").textContent=data.slides.length;
+  $("#sheetCount").textContent=data.sheets.length;
+}
+
+/* SEARCH */
+
+$("#globalSearch").addEventListener("input",e=>{
+  const q=e.target.value.trim().toLowerCase();
+  const results=$("#searchResults");
+  results.replaceChildren();
+
+  if(!q) {
+    results.classList.remove("open");
+    return;
   }
 
-  updateDashboard();
-}
+  const matches=allFiles().filter(f=>f.title.toLowerCase().includes(q));
+  results.classList.add("open");
 
-function updateDashboard() {
-  $("#docCount").textContent = data.docs.length;
-  $("#slideCount").textContent = data.slides.length;
-  $("#sheetCount").textContent = data.sheets.length;
-}
+  if(!matches.length) {
+    results.textContent="No matching files.";
+    return;
+  }
 
-/* -------------------------------------------------------
-   CREATE MENU
-------------------------------------------------------- */
+  matches.forEach(file=>{
+    const item=document.createElement("div");
+    item.className="search-result";
 
-function createByType(type) {
-  if (type === "doc") createDocument();
-  if (type === "slide") createPresentation();
-  if (type === "sheet") createSpreadsheet();
-}
+    const name=document.createElement("strong");
+    name.textContent=file.title;
 
-document.querySelectorAll("[data-create]").forEach(card => {
-  card.addEventListener("click", () => createByType(card.dataset.create));
+    const type=document.createElement("small");
+    type.textContent=file.type;
+
+    item.append(name,type);
+    item.addEventListener("click",()=>{
+      openFile(file);
+      results.classList.remove("open");
+      $("#globalSearch").value="";
+    });
+
+    results.appendChild(item);
+  });
 });
 
-$("#newBtn").addEventListener("click", () => {
-  const choice = prompt(
-    "What would you like to create?\n\n1 - Document\n2 - Presentation\n3 - Spreadsheet"
-  );
-
-  if (choice === "1") createDocument();
-  if (choice === "2") createPresentation();
-  if (choice === "3") createSpreadsheet();
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".search-wrap"))$("#searchResults").classList.remove("open");
 });
 
-/* -------------------------------------------------------
-   BACKUP AND RESTORE
-------------------------------------------------------- */
+/* BACKUP */
 
-function exportBackup() {
-  const backup = {
-    application: "Clamme Studio",
-    version: 2,
-    exported: new Date().toISOString(),
+function backup() {
+  const content={
+    application:"Clamme Studio",
+    version:3,
+    exported:new Date().toISOString(),
     data
   };
 
-  downloadFile(
-    "clamme-studio-backup.json",
-    JSON.stringify(backup, null, 2),
-    "application/json"
-  );
-
-  showToast("Backup exported");
+  download("clamme-studio-backup.json",JSON.stringify(content,null,2),"application/json");
+  toast("Backup exported");
 }
 
-$("#backupBtn").addEventListener("click", exportBackup);
-$("#settingsBackup").addEventListener("click", exportBackup);
+$("#backupBtn").addEventListener("click",backup);
+$("#settingsBackup").addEventListener("click",backup);
 
-$("#importBackup").addEventListener("click", () => $("#backupFile").click());
+$("#importBackup").addEventListener("click",()=>$("#backupFile").click());
 
-$("#backupFile").addEventListener("change", async event => {
-  const file = event.target.files[0];
-  if (!file) return;
+$("#backupFile").addEventListener("change",async e=>{
+  const file=e.target.files[0];
+  if(!file)return;
 
   try {
-    const backup = JSON.parse(await file.text());
-    const incoming = backup.data || backup;
+    const backup=JSON.parse(await file.text());
+    const incoming=backup.data||backup;
 
-    if (!Array.isArray(incoming.docs) ||
-        !Array.isArray(incoming.slides) ||
-        !Array.isArray(incoming.sheets)) {
-      throw new Error("Invalid backup");
-    }
+    if(!Array.isArray(incoming.docs)||
+       !Array.isArray(incoming.slides)||
+       !Array.isArray(incoming.sheets))throw Error();
 
-    if (!confirm("Import this backup? Your current workspace will be replaced.")) {
-      event.target.value = "";
-      return;
-    }
+    if(!confirm("Replace your current workspace with this backup?"))return;
 
-    data = incoming;
-    saveData();
+    data=incoming;
+    activeDocId=null;
+    activePresentationId=null;
+    activeSheetId=null;
+    persist();
     renderFiles();
-    showToast("Backup imported");
-  } catch {
-    showToast("That backup file could not be imported.");
+    toast("Backup imported");
+  } catch(e) {
+    toast("Invalid backup file.");
   }
 
-  event.target.value = "";
+  e.target.value="";
 });
 
-/* -------------------------------------------------------
-   SPELLCHECK SETTINGS
-------------------------------------------------------- */
+/* SPELLCHECK */
 
 function applySpellcheck() {
-  const enabled = settings.spellcheck !== false;
-  const language = settings.language || "en";
+  const enabled=settings.spellcheck!==false;
+  const lang=settings.language||"en";
 
   document.querySelectorAll(
-    'input:not([type="file"]), textarea, [contenteditable="true"], td[contenteditable="true"]'
-  ).forEach(element => {
-    element.spellcheck = enabled;
-    element.lang = language;
-    element.setAttribute("autocorrect", enabled ? "on" : "off");
-    element.setAttribute("autocomplete", "on");
+    'input:not([type="file"]),textarea,[contenteditable="true"],td[contenteditable="true"]'
+  ).forEach(el=>{
+    el.spellcheck=enabled;
+    el.lang=lang;
+    el.setAttribute("autocorrect",enabled?"on":"off");
+    el.setAttribute("autocomplete","on");
   });
 
-  $("#spellSetting").value = String(enabled);
-  $("#languageSetting").value = language;
+  $("#spellSetting").value=String(enabled);
+  $("#languageSetting").value=lang;
 }
 
-$("#saveSettings").addEventListener("click", () => {
-  settings.spellcheck = $("#spellSetting").value === "true";
-  settings.language = $("#languageSetting").value;
+$("#saveSettings").addEventListener("click",()=>{
+  settings.spellcheck=$("#spellSetting").value==="true";
+  settings.language=$("#languageSetting").value;
   saveSettings();
   applySpellcheck();
-  showToast("Settings saved");
+  toast("Preferences saved");
 });
 
-/* -------------------------------------------------------
-   INITIALISE
-------------------------------------------------------- */
+/* KEYBOARD SHORTCUTS */
 
-function initialise() {
-  if (data.docs.length) {
-    activeDocId = data.docs[0].id;
-    openDocument(activeDocId);
+document.addEventListener("keydown",e=>{
+  const mod=e.ctrlKey||e.metaKey;
+
+  if(mod && e.key.toLowerCase()==="k") {
+    e.preventDefault();
+    $("#globalSearch").focus();
   }
 
-  if (data.slides.length) {
-    activePresentationId = data.slides[0].id;
+  if(mod && e.key.toLowerCase()==="s") {
+    e.preventDefault();
+    if(currentPage==="docs")saveDoc();
+    if(currentPage==="slides")savePresentation();
+    persist();
+    toast("Saved");
+  }
+
+  if(e.key==="Escape" && document.body.classList.contains("presenting")) {
+    exitPresentation();
+  }
+});
+
+/* STARTUP */
+
+function initialise() {
+  if(data.docs.length) {
+    activeDocId=data.docs[0].id;
+    openDoc(activeDocId);
+  }
+
+  if(data.slides.length) {
+    activePresentationId=data.slides[0].id;
     openPresentation(activePresentationId);
   }
 
-  if (data.sheets.length) {
-    activeSheetId = data.sheets[0].id;
-    openSpreadsheet(activeSheetId);
+  if(data.sheets.length) {
+    activeSheetId=data.sheets[0].id;
+    openSheet(activeSheetId);
   }
 
   applySpellcheck();
   renderFiles();
-  updateDashboard();
+  dashboard();
 }
 
 initialise();
