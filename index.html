@@ -1,171 +1,195 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07100b">
-<meta name="description" content="Clamme Studio — a refined workspace for documents, presentations and spreadsheets.">
 <title>Clamme Studio</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-:root {
+<style>
+:root{
   color-scheme:dark;
-  --bg:#070d09;
-  --surface:#0b140e;
-  --surface2:#101c14;
-  --surface3:#17251b;
+  --bg:#070c09;
+  --panel:#0c1510;
+  --panel2:#111d15;
+  --panel3:#17271b;
   --line:#263b2c;
   --text:#edf5ee;
-  --muted:#899b8e;
-  --green:#4ac477;
-  --light:#a0e8b3;
-  --gold:#c5aa70;
-  --red:#d77b7b;
-  --serif:'Alegreya',Georgia,serif;
-  --sans:'Inter',system-ui,sans-serif;
+  --muted:#91a194;
+  --green:#48bb76;
+  --light:#a0e8b2;
+  --gold:#c6aa72;
+  --font:'Alegreya',serif;
 }
 
-* {box-sizing:border-box}
+*{box-sizing:border-box}
 
-body {
+html{scroll-behavior:smooth}
+
+body{
   margin:0;
   min-height:100vh;
   background:
-    radial-gradient(ellipse at 15% -20%,#1d593333,transparent 45%),
-    radial-gradient(ellipse at 100% 100%,#153b2220,transparent 40%),
+    radial-gradient(ellipse at 15% -15%,#1b563044,transparent 45%),
+    radial-gradient(ellipse at 100% 100%,#173b2220,transparent 40%),
     var(--bg);
   color:var(--text);
-  font:13px var(--sans);
+  font-family:var(--font);
+  font-size:15px;
 }
 
-button,input,textarea,select {font:inherit}
-button {cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible,
-select:focus-visible,[contenteditable]:focus-visible {
+button,input,textarea,select{
+  font-family:var(--font)!important;
+  font-size:inherit;
+}
+
+button{cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[contenteditable]:focus-visible{
   outline:2px solid var(--green);
-  outline-offset:3px;
+  outline-offset:2px;
 }
-button:disabled {opacity:.4;cursor:not-allowed}
 
-.app {
+.app{
   min-height:100vh;
   display:grid;
-  grid-template-columns:240px minmax(0,1fr);
+  grid-template-columns:235px minmax(0,1fr);
 }
 
-/* SIDEBAR */
-
-.sidebar {
+.sidebar{
+  height:100vh;
   position:sticky;
   top:0;
-  height:100vh;
   display:flex;
   flex-direction:column;
-  padding:22px 15px 15px;
-  background:#09110cee;
+  padding:23px 14px 15px;
+  background:#09100df2;
   border-right:1px solid var(--line);
   z-index:10;
 }
 
-.brand {
+.brand{
   display:flex;
   align-items:center;
   gap:12px;
-  padding:5px 8px 30px;
+  padding:5px 8px 28px;
 }
 
-.brand-mark {
-  width:41px;
-  height:41px;
+.brand-star{
+  width:42px;
+  height:42px;
   display:grid;
   place-items:center;
-  border:1px solid #438457;
+  border:1px solid #438456;
   border-radius:13px;
-  background:linear-gradient(145deg,#215b36,#102819);
+  background:linear-gradient(145deg,#205a35,#0c2114);
   color:var(--light);
-  font-size:25px;
-  box-shadow:0 5px 25px #0006, inset 0 1px #ffffff20;
+  font-size:27px;
+  box-shadow:0 8px 25px #0006;
 }
 
-.brand-name {font:26px var(--serif);letter-spacing:.2px}
-.brand-sub {
-  margin-top:1px;
-  color:#86a68d;
-  font-size:9px;
+.brand-name{
+  font-size:27px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+
+.brand-sub{
+  color:#83a28a;
+  font-size:11px;
   letter-spacing:2px;
 }
 
-.section-label {
-  padding:12px 11px;
-  color:#6f8575;
-  font-size:9px;
+.section-label{
+  color:#75897a;
+  font-size:12px;
   letter-spacing:2px;
+  padding:12px;
 }
 
-.nav {display:grid;gap:4px}
+.nav{display:grid;gap:5px}
 
-.nav button,.side-button {
+.nav button,.side-button{
+  width:100%;
   display:flex;
   align-items:center;
   gap:12px;
-  width:100%;
-  padding:11px 12px;
-  color:#9aab9e;
-  text-align:left;
-  background:transparent;
-  border:1px solid transparent;
+  padding:11px 13px;
   border-radius:10px;
+  border:1px solid transparent;
+  background:transparent;
+  color:#a9b9ad;
+  text-align:left;
   transition:.18s;
 }
 
-.nav button:hover,.side-button:hover {
-  background:#ffffff09;
+.nav button:hover,.side-button:hover{
+  background:#ffffff0a;
   color:white;
 }
 
-.nav button.active {
-  color:#eff9f0;
-  border-color:#315c3e;
-  background:linear-gradient(100deg,#19452b,#102017);
+.nav button.active{
+  color:white;
+  background:linear-gradient(100deg,#17452b,#102017);
+  border-color:#376047;
 }
 
-.nav-icon {
+.nav-icon{
   width:20px;
-  color:#8dc69a;
-  font-size:17px;
   text-align:center;
+  color:#8ac69a;
+  font-size:19px;
 }
 
-.push {flex:1}
+.push{flex:1}
 
-.side-note {
+.side-note{
   padding:16px;
-  margin:14px 2px;
-  border:1px solid #2b4832;
+  margin:15px 2px;
+  border:1px solid #304a35;
   border-radius:14px;
-  background:linear-gradient(145deg,#172b1c,#0c1510);
+  background:linear-gradient(145deg,#14291a,#0c1510);
 }
 
-.side-note .star {color:var(--light);font-size:20px}
-.side-note h3 {font:20px var(--serif);margin:9px 0 5px}
-.side-note p {color:var(--muted);font-size:11px;line-height:1.7;margin:0}
+.side-note .star{
+  color:var(--light);
+  font-size:21px;
+}
 
-.status {
-  padding:15px 8px 3px;
+.side-note h3{
+  font-size:21px;
+  font-weight:500;
+  margin:8px 0 5px;
+}
+
+.side-note p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin:0;
+}
+
+.status{
   border-top:1px solid var(--line);
-  color:#839687;
-  font-size:10px;
+  padding:15px 8px 3px;
+  color:#91a294;
+  font-size:12px;
 }
-.status span {color:var(--green)}
 
-/* MAIN */
+.status span{color:var(--green)}
 
-main {min-width:0}
+main{min-width:0}
 
-.topbar {
+.topbar{
   height:68px;
   position:sticky;
   top:0;
@@ -175,556 +199,655 @@ main {min-width:0}
   justify-content:space-between;
   gap:12px;
   padding:0 27px;
-  background:#080f0bed;
-  backdrop-filter:blur(20px);
   border-bottom:1px solid #203126;
+  background:#080f0bf2;
+  backdrop-filter:blur(18px);
 }
 
-.top-left,.actions {display:flex;align-items:center;gap:10px}
-.crumb {color:#899b8e}
-.crumb strong {color:#eff7f0;font-weight:500}
+.crumb{color:#91a294}
+.crumb strong{color:white;font-weight:600}
 
-.btn,.icon-btn {
+.actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.save-state{
+  color:#9bac9f;
+  font-size:12px;
+  margin-right:8px;
+}
+
+.save-state:before{
+  content:"●";
+  color:var(--green);
+  margin-right:7px;
+}
+
+.btn,.icon-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:7px;
   padding:9px 13px;
-  border:1px solid #304636;
   border-radius:9px;
-  background:#111d15;
   color:#dce8de;
-  white-space:nowrap;
+  background:#111d15;
+  border:1px solid #304735;
   transition:.18s;
+  white-space:nowrap;
 }
 
-.btn:hover,.icon-btn:hover {
-  border-color:#578263;
-  background:#1a2b1e;
+.btn:hover,.icon-btn:hover{
+  border-color:#5b9569;
+  background:#192a1d;
 }
 
-.btn.primary {
-  color:white;
-  border-color:#398a52;
-  background:linear-gradient(135deg,#318b4e,#18552f);
-  box-shadow:inset 0 1px #ffffff15;
+.btn.primary{
+  color:#f5fff6;
+  border-color:#469b5e;
+  background:linear-gradient(135deg,#318d50,#185c32);
 }
 
-.btn.primary:hover {
-  background:linear-gradient(135deg,#3ba55d,#206c3c);
+.btn.primary:hover{
+  background:linear-gradient(135deg,#3aa560,#21733e);
 }
 
-.btn.quiet {background:transparent;border-color:transparent;color:#a0b0a3}
-.btn.danger {color:#e7a1a1}
-.icon-btn {width:36px;height:36px;padding:0}
+.btn.quiet{
+  background:transparent;
+  border-color:transparent;
+  color:#a3b5a7;
+}
 
-.save-state {color:#91a395;font-size:10px}
-.save-state::before {content:'●';color:var(--green);margin-right:7px}
+.btn.danger{color:#e8a0a0}
 
-/* CONTENT */
+.icon-btn{
+  width:37px;
+  height:37px;
+  padding:0;
+}
 
-.content {
-  width:100%;
+.content{
   max-width:1500px;
-  padding:31px;
   margin:auto;
+  padding:32px;
 }
 
-.page-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:16px;
-  margin-bottom:26px;
-}
-
-.eyebrow {
-  color:#82d39a;
-  font-size:9px;
+.eyebrow{
+  color:#86d39a;
+  font-size:12px;
   letter-spacing:2.5px;
   margin-bottom:10px;
 }
 
-.page-title {
-  font:500 clamp(30px,4vw,44px)/1.08 var(--serif);
+.page-title{
+  font-size:clamp(32px,4vw,47px);
+  line-height:1.08;
+  font-weight:500;
   margin:0;
 }
 
-.subtitle {
-  color:#91a196;
+.subtitle{
+  color:#9aab9d;
   line-height:1.8;
-  font-size:12px;
-  max-width:620px;
+  font-size:15px;
+  max-width:650px;
   margin:10px 0 0;
 }
 
-.head-actions {display:flex;gap:8px;flex-wrap:wrap}
-
-.hero {
-  position:relative;
-  min-height:240px;
+.page-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:20px;
+  align-items:end;
+  gap:15px;
+  margin-bottom:26px;
+}
+
+.head-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.hero{
+  position:relative;
   overflow:hidden;
+  min-height:230px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
   padding:36px;
-  border:1px solid #315b3c;
+  border:1px solid #345d3e;
   border-radius:20px;
   background:
-    radial-gradient(ellipse at 85% 40%,#31935438,transparent 42%),
-    linear-gradient(120deg,#142d1d,#0b1510 75%);
-  box-shadow:inset 0 1px #ffffff0a,0 15px 40px #0002;
+    radial-gradient(ellipse at 85% 40%,#348c5038,transparent 42%),
+    linear-gradient(120deg,#112b1b,#0b1510 70%);
+  box-shadow:0 18px 55px #0002;
 }
 
-.hero-copy {z-index:1}
-.hero h2 {font:400 clamp(35px,5vw,54px)/1.03 var(--serif);margin:0}
-.hero h2 em {font-style:normal;color:var(--light)}
-.hero p {max-width:500px;color:#a1b2a5;line-height:1.8;margin:14px 0 20px}
-.hero-mark {
+.hero h2{
+  font-size:clamp(37px,4.5vw,54px);
+  line-height:1.04;
+  font-weight:500;
+  margin:0;
+}
+
+.hero h2 em{
+  color:var(--light);
+  font-style:normal;
+}
+
+.hero p{
+  color:#a5b6a8;
+  max-width:500px;
+  line-height:1.8;
+  margin:14px 0 20px;
+  font-size:15px;
+}
+
+.hero-mark{
   font-size:clamp(90px,13vw,155px);
-  color:#a0e8b3;
-  text-shadow:0 0 60px #48bb763d;
-  padding:0 25px;
-  animation:float 5s ease-in-out infinite;
+  color:#91e5aa;
+  text-shadow:0 0 50px #3eb16b55;
+  padding:0 22px;
 }
 
-@keyframes float {
-  0%,100% {transform:translateY(0)}
-  50% {transform:translateY(-9px)}
-}
+.hero-copy{z-index:1}
+.hero-actions{display:flex;gap:9px;flex-wrap:wrap}
 
-.hero-actions,.head-actions {display:flex;gap:8px;flex-wrap:wrap}
-
-.section-head {
+.section-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:29px 0 14px;
+  margin:30px 0 14px;
 }
 
-.section-title {font:24px var(--serif)}
-.muted {font-size:11px;color:var(--muted)}
+.section-title{
+  font-size:25px;
+  font-weight:500;
+}
 
-.quick-grid {
+.muted{color:var(--muted);font-size:13px}
+
+.quick-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:14px;
 }
 
-.quick-card {
-  min-height:150px;
-  padding:20px;
+.quick-card{
+  min-height:145px;
+  padding:19px;
   text-align:left;
   color:var(--text);
-  border:1px solid #293e2e;
+  border:1px solid #2b4030;
   border-radius:15px;
-  background:linear-gradient(145deg,#121e15,#0b130e);
+  background:linear-gradient(145deg,#111d15,#0b120d);
   transition:.2s;
 }
 
-.quick-card:hover {
+.quick-card:hover{
   transform:translateY(-3px);
   border-color:#568464;
-  box-shadow:0 12px 35px #0003;
+  box-shadow:0 12px 30px #0003;
 }
 
-.quick-icon {
+.quick-icon{
   display:grid;
   place-items:center;
-  width:38px;
-  height:38px;
-  margin-bottom:16px;
-  border:1px solid #345b3d;
+  width:39px;
+  height:39px;
+  margin-bottom:14px;
   border-radius:11px;
-  background:#193a25;
+  border:1px solid #376047;
+  background:#153522;
   color:var(--light);
-  font-size:18px;
+  font-size:20px;
 }
 
-.quick-card strong {display:block;font:22px var(--serif);font-weight:500}
-.quick-card small {display:block;color:#91a195;margin-top:6px;line-height:1.6}
+.quick-card strong{
+  display:block;
+  font-size:23px;
+  font-weight:500;
+}
 
-/* FILES */
+.quick-card small{
+  display:block;
+  color:#9aaa9d;
+  margin-top:5px;
+  line-height:1.6;
+  font-size:13px;
+}
 
-.file-list {
-  overflow:hidden;
-  border:1px solid #293c2e;
+.file-list{
+  border:1px solid #2b4030;
   border-radius:14px;
+  overflow:hidden;
 }
 
-.file-row {
+.file-row{
   display:grid;
   grid-template-columns:40px minmax(0,1fr) auto auto;
   align-items:center;
   gap:12px;
-  padding:13px 15px;
-  background:#0d1610;
-  border-bottom:1px solid #213126;
+  padding:14px 16px;
+  border-bottom:1px solid #203126;
+  background:#0d1510;
 }
 
-.file-row:last-child {border-bottom:0}
-.file-row:hover {background:#132019}
+.file-row:last-child{border-bottom:0}
+.file-row:hover{background:#132019}
 
-.file-icon {
+.file-icon{
   display:grid;
   place-items:center;
-  width:36px;
-  height:36px;
-  border:1px solid #34543a;
+  width:37px;
+  height:37px;
+  border:1px solid #35513a;
   border-radius:10px;
-  background:#14291b;
-  color:#a0e8b3;
-  font-size:17px;
+  background:#13251a;
+  color:#a0e8b2;
+  font-size:18px;
 }
 
-.file-title {font-weight:600;font-size:12px}
-.file-info {margin-top:4px;color:#819487;font-size:10px}
-.file-type {
+.file-title{font-size:15px;font-weight:600}
+.file-info{font-size:12px;color:#91a294;margin-top:3px}
+
+.file-type{
+  font-size:12px;
+  color:#a4b6a8;
+  border:1px solid #304333;
   padding:5px 8px;
-  border:1px solid #304334;
   border-radius:6px;
-  color:#a2b2a5;
-  font-size:10px;
 }
 
-.file-tools {display:flex;gap:5px}
-.file-tools .btn {padding:7px 9px;font-size:11px}
-
-.empty {
-  padding:35px;
+.empty{
+  padding:32px;
+  color:#91a294;
   text-align:center;
-  color:#899a8d;
-  line-height:1.8;
+  font-size:15px;
 }
 
-/* EDITOR */
-
-.editor {
+.editor{
   display:grid;
-  grid-template-columns:205px minmax(0,1fr);
-  min-height:530px;
+  grid-template-columns:210px minmax(0,1fr);
+  min-height:520px;
   overflow:hidden;
-  border:1px solid #293e2e;
-  border-radius:15px;
-  background:#0b130e;
-  box-shadow:0 15px 40px #0002;
+  border:1px solid #2b4030;
+  border-radius:16px;
+  background:#0b120d;
 }
 
-.rail {
+.rail{
   padding:15px;
-  background:#0d1710;
-  border-right:1px solid #26392b;
+  border-right:1px solid #203126;
+  background:#0c1510;
 }
 
-.rail-head {
+.rail-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  color:#91a294;
+  font-size:13px;
   margin-bottom:13px;
-  color:#91a397;
-  font-size:10px;
 }
 
-.rail-item {
+.rail-item{
   display:flex;
   align-items:center;
   gap:9px;
   width:100%;
   padding:10px;
-  margin-bottom:5px;
-  color:#b6c4b9;
-  text-align:left;
-  background:transparent;
   border:1px solid transparent;
   border-radius:9px;
+  text-align:left;
+  background:transparent;
+  color:#b8c7ba;
+  margin-bottom:5px;
 }
 
-.rail-item:hover {background:#16251a}
-.rail-item.active {background:#193724;border-color:#355c40;color:white}
-.rail-item .remove {margin-left:auto;color:#9aa99d}
+.rail-item:hover{background:#142219}
 
-.editor-main {display:flex;flex-direction:column;min-width:0}
+.rail-item.active{
+  background:#173322;
+  border-color:#3b6546;
+  color:white;
+}
 
-.toolbar {
+.rail-item .remove{
+  margin-left:auto;
+  color:#879789;
+  padding:0 3px;
+}
+
+.editor-main{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.toolbar{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:7px;
   padding:12px;
-  border-bottom:1px solid #26392b;
-  background:#101a13;
+  border-bottom:1px solid #213126;
+  background:#0d1711;
 }
 
-.toolbar .btn {padding:8px 10px}
-.toolbar-spacer {flex:1}
+.toolbar .btn{padding:8px 11px}
+.toolbar-spacer{flex:1}
 
-select,.input {
+select,.input{
   min-width:0;
-  padding:9px;
-  border:1px solid #304636;
+  background:#111d15;
+  color:#e1ebe2;
+  border:1px solid #304735;
   border-radius:8px;
-  background:#111e15;
-  color:#e0ebe2;
+  padding:9px 11px;
 }
 
-.workspace {flex:1;min-width:0;padding:25px;overflow:auto}
+.workspace{
+  flex:1;
+  min-width:0;
+  padding:24px;
+  overflow:auto;
+}
 
-/* DOCUMENTS */
-
-.doc-paper {
-  width:min(820px,100%);
-  min-height:490px;
-  margin:auto;
-  padding:42px clamp(22px,5vw,72px) 60px;
+.doc-paper{
+  width:min(800px,100%);
+  min-height:460px;
+  margin:0 auto;
+  padding:38px clamp(20px,5vw,68px) 50px;
   background:#f4f5ef;
   color:#263027;
-  border:1px solid #e0e6dd;
-  box-shadow:0 20px 55px #0004;
+  border:1px solid #e2e7de;
+  box-shadow:0 20px 50px #0004;
 }
 
-.doc-title {
-  display:block;
+.doc-title{
   width:100%;
   padding:0;
-  margin-bottom:20px;
-  color:#203125;
-  font:36px var(--serif);
-  border:0;
-  outline:0;
+  margin-bottom:18px;
   background:transparent;
-}
-
-.doc-body {
-  min-height:350px;
+  border:0;
   outline:none;
+  color:#1b2b20;
+  font-size:36px;
+  font-weight:600;
+}
+
+.doc-title:focus{outline:none}
+
+.doc-body{
+  min-height:320px;
+  outline:none;
+  font-size:18px;
+  line-height:1.8;
   overflow-wrap:anywhere;
-  color:#28332a;
-  font:16px/1.85 Georgia,serif;
 }
 
-.doc-body:empty::before {
-  content:'Start writing something worth keeping…';
-  color:#a0aaa0;
+.doc-body h1,.doc-body h2,.doc-body h3{line-height:1.2}
+.doc-body:empty:before{
+  content:"Start writing something worth keeping…";
+  color:#a0a89f;
 }
 
-.doc-body h1,.doc-body h2,.doc-body h3 {line-height:1.2}
-.doc-body blockquote {border-left:3px solid #5c9569;padding-left:15px;color:#637269}
-
-/* PRESENTATIONS */
-
-.slide-list {
+.slide-list{
   display:flex;
   gap:10px;
   overflow-x:auto;
-  padding:4px 4px 15px;
+  padding:3px 3px 15px;
 }
 
-.slide-thumb {
-  position:relative;
+.slide-thumb{
   flex:0 0 130px;
   height:80px;
+  position:relative;
+  overflow:hidden;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  overflow:hidden;
-  padding:10px;
+  padding:9px;
+  border:1px solid #34483a;
+  border-radius:8px;
   text-align:left;
   color:#203326;
   background:#e8eee5;
-  border:1px solid #435447;
-  border-radius:9px;
 }
 
-.slide-thumb.active {outline:2px solid #60ce83;outline-offset:2px}
-.slide-thumb strong {position:relative;z-index:1;font:14px var(--serif)}
-.slide-thumb small {position:relative;z-index:1;margin-top:5px;opacity:.7}
-.slide-thumb img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.slide-thumb.has-image {color:white}
+.slide-thumb.active{
+  outline:2px solid #57c57b;
+  outline-offset:1px;
+}
 
-.slide-stage {
+.slide-thumb strong{
+  font-size:16px;
   position:relative;
-  width:min(100%,1050px);
-  aspect-ratio:16/9;
-  margin:auto;
+  z-index:1;
+}
+
+.slide-thumb small{
+  margin-top:5px;
+  position:relative;
+  z-index:1;
+  opacity:.7;
+}
+
+.slide-thumb img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.slide-thumb.has-image{color:white}
+
+.slide-stage{
+  position:relative;
   overflow:hidden;
+  width:min(100%,1000px);
+  margin:0 auto;
+  aspect-ratio:16/9;
   background:#edf2e9;
   color:#1c3022;
   box-shadow:0 20px 55px #0005;
 }
 
-.slide-stage.has-image {color:white}
-.slide-bg {position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.slide-shade {
+.slide-stage.has-image{color:white}
+
+.slide-stage .slide-bg{
   position:absolute;
   inset:0;
-  background:linear-gradient(90deg,#06130be0,#06130b66);
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.slide-copy {
+.slide-shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#06130bd9,#06130b66);
+}
+
+.slide-copy{
   position:absolute;
   z-index:1;
   inset:0;
+  padding:8%;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:8%;
 }
 
-.slide-heading {
+.slide-heading{
   width:100%;
-  padding:0;
   border:0;
   outline:0;
-  resize:none;
-  overflow:hidden;
   background:transparent;
   color:inherit;
-  font:500 clamp(22px,4.5vw,55px)/1.08 var(--serif);
+  font-size:clamp(25px,4.5vw,55px);
+  line-height:1.08;
+  font-weight:600;
+  resize:vertical;
+  overflow:hidden;
 }
 
-.slide-body {
+.slide-body{
   width:100%;
   min-height:90px;
   margin-top:17px;
   padding:0;
   border:0;
   outline:0;
-  resize:vertical;
   background:transparent;
   color:inherit;
-  font:16px/1.65 var(--sans);
+  font-size:clamp(15px,1.8vw,20px);
+  line-height:1.65;
+  resize:vertical;
 }
 
-.slide-body::placeholder {color:currentColor;opacity:.6}
-.slide-hint {margin-top:14px;text-align:center;color:#87988b;font-size:10px}
+.slide-body::placeholder{color:currentColor;opacity:.6}
+.slide-hint{color:#91a294;font-size:12px;text-align:center;margin-top:14px}
 
-/* SPREADSHEETS */
-
-.formula-bar {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin-bottom:13px;
+.sheet-wrap{
+  overflow:auto;
+  border:1px solid #2b4030;
+  border-radius:10px;
 }
 
-.formula-bar label {min-width:30px;color:#a6c0ac}
-.formula-bar input {flex:1}
-
-.sheet-wrap {overflow:auto;border:1px solid #304333;border-radius:10px}
-
-.sheet {
-  width:100%;
-  min-width:750px;
-  table-layout:fixed;
+.sheet{
   border-collapse:collapse;
-  background:#0d1710;
-}
-
-.sheet th {
-  height:33px;
-  border:1px solid #2a3e2e;
-  background:#17281b;
-  color:#a5b7a8;
-  font-size:10px;
-  font-weight:500;
-}
-
-.sheet td {padding:0;border:1px solid #25372a}
-
-.sheet td input {
+  min-width:750px;
   width:100%;
+  table-layout:fixed;
+  background:#0d1510;
+}
+
+.sheet th{
   height:35px;
+  background:#15251a;
+  color:#a4b9a8;
+  font-size:13px;
+  font-weight:600;
+  border:1px solid #304333;
+}
+
+.sheet td{padding:0;border:1px solid #26382a}
+
+.sheet td input{
+  width:100%;
+  height:36px;
   padding:6px 8px;
   border:0;
   border-radius:0;
   outline:none;
   background:transparent;
-  color:#dce8de;
-  font-size:11px;
+  color:#e0e9e1;
+  font-size:14px;
 }
 
-.sheet td input:focus {
-  outline:1px solid #58c17b;
+.sheet td input:focus{
+  outline:1px solid #53b875;
   outline-offset:-1px;
-  background:#183020;
+  background:#16271b;
 }
 
-.sheet td input.formula {color:#a0e8b3}
-.sheet td input.header-cell {background:#122319;color:#a9d9b3;font-weight:600}
+.sheet td input.formula{color:#a0e5b4}
 
-/* SEARCH AND UTILITIES */
+.sheet td input.header-cell{
+  background:#101e14;
+  color:#a6d9b0;
+  font-weight:700;
+}
 
-.search-input {width:100%;max-width:570px;padding:14px}
-.notice {
-  padding:14px;
-  border:1px solid #34513a;
+.formula-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.formula-bar label{color:#a7b9aa;min-width:35px}
+.formula-bar input{flex:1;min-width:0}
+
+.search-input{
+  width:100%;
+  max-width:600px;
+  padding:13px;
+}
+
+.notice{
+  padding:13px;
+  border:1px solid #304633;
+  background:#112017;
   border-radius:10px;
-  background:#14231a;
-  color:#c0d0c3;
+  color:#c2d2c5;
 }
 
-.toast {
+.toast{
   position:fixed;
-  z-index:50;
-  bottom:24px;
+  z-index:30;
+  bottom:22px;
   left:50%;
   transform:translateX(-50%);
-  padding:12px 18px;
-  border:1px solid #477c55;
+  background:#183323;
+  border:1px solid #477b53;
+  color:#e5f8e9;
   border-radius:10px;
-  background:#193625;
-  color:#eaf8ed;
+  padding:12px 18px;
   box-shadow:0 12px 35px #0008;
-  animation:toastIn .2s ease-out;
+  font-size:15px;
 }
 
-@keyframes toastIn {
-  from {opacity:0;transform:translate(-50%,8px)}
-  to {opacity:1;transform:translate(-50%,0)}
-}
+.hidden{display:none!important}
 
-.hidden {display:none!important}
-
-/* RESPONSIVE */
-
-@media(max-width:950px) {
-  .app {grid-template-columns:1fr}
-  .sidebar {
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+  .sidebar{
     position:fixed;
     left:-260px;
     width:245px;
-    transition:left .22s ease;
-    box-shadow:15px 0 45px #0008;
+    transition:left .2s;
+    box-shadow:15px 0 45px #0007;
   }
-  .sidebar.open {left:0}
-  .editor {grid-template-columns:1fr}
-  .rail {border-right:0;border-bottom:1px solid var(--line)}
-  .rail-items {display:flex;gap:5px;overflow-x:auto}
-  .rail-item {width:auto;white-space:nowrap}
+  .sidebar.open{left:0}
+  .topbar{padding:0 16px}
+  .content{padding:22px 16px}
+  .editor{grid-template-columns:1fr}
+  .rail{
+    border-right:0;
+    border-bottom:1px solid #203126;
+  }
+  .rail-items{
+    display:flex;
+    overflow-x:auto;
+    gap:5px;
+  }
+  .rail-item{width:auto;white-space:nowrap}
 }
 
-@media(max-width:650px) {
-  .content {padding:22px 15px}
-  .topbar {height:61px;padding:0 13px}
-  .save-state {display:none}
-  .hero {min-height:220px;padding:24px}
-  .hero-mark {display:none}
-  .quick-grid {grid-template-columns:1fr}
-  .quick-card {min-height:110px}
-  .page-head {align-items:flex-start;flex-direction:column}
-  .file-row {grid-template-columns:36px minmax(0,1fr) auto}
-  .file-type {display:none}
-  .file-tools .btn:not(.open-file) {display:none}
-  .workspace {padding:13px}
-  .doc-paper {padding:25px 20px}
-  .toolbar {gap:5px}
-  .toolbar .btn {padding:8px}
-  .crumb {font-size:11px}
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {animation:none!important;transition:none!important}
+@media(max-width:600px){
+  .save-state{display:none}
+  .topbar{height:61px}
+  .hero{padding:23px}
+  .hero-mark{display:none}
+  .quick-grid{grid-template-columns:1fr}
+  .quick-card{min-height:115px}
+  .page-head{align-items:flex-start;flex-direction:column}
+  .file-row{grid-template-columns:38px minmax(0,1fr) auto}
+  .file-type{display:none}
+  .workspace{padding:14px}
+  .doc-paper{padding:25px 20px}
+  .toolbar{gap:5px}
+  .toolbar .btn{padding:8px}
+  .actions{gap:5px}
+  #topSearch{display:none}
 }
 </style>
 </head>
@@ -733,12 +856,11 @@ select,.input {
 <div class="app">
 
 <aside class="sidebar" id="sidebar">
-
   <div class="brand">
-    <div class="brand-mark">✦</div>
+    <div class="brand-star">✦</div>
     <div>
-      <div class="brand-name">Clamme</div>
-      <div class="brand-sub">STUDIO</div>
+      <div class="brand-name">Studio</div>
+      <div class="brand-sub">A SPACE TO CREATE</div>
     </div>
   </div>
 
@@ -757,6 +879,7 @@ select,.input {
   <button class="side-button" id="searchButton"><span class="nav-icon">⌕</span>Find anything</button>
   <button class="side-button" id="backupButton"><span class="nav-icon">↧</span>Export backup</button>
   <button class="side-button" id="importButton"><span class="nav-icon">↥</span>Import backup</button>
+
   <input id="backupInput" type="file" accept=".json,application/json" hidden>
 
   <div class="push"></div>
@@ -764,59 +887,47 @@ select,.input {
   <div class="side-note">
     <div class="star">✦</div>
     <h3>Make room for ideas.</h3>
-    <p>One thoughtful workspace for everything you create. Your ideas, your space.</p>
+    <p>A calm, focused workspace for writing, presenting and making sense of things.</p>
   </div>
 
-  <div class="status"><span>●</span> Local workspace · Autosave enabled</div>
-
+  <div class="status"><span>●</span> Saved on this device</div>
 </aside>
 
 <main>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="icon-btn" id="menuButton" aria-label="Open menu">☰</button>
+      <div class="crumb">Workspace <span style="color:#425647">/</span> <strong id="breadcrumb">Overview</strong></div>
+    </div>
 
-<header class="topbar">
-  <div class="top-left">
-    <button class="icon-btn" id="menuButton" aria-label="Open menu">☰</button>
-    <div class="crumb">Clamme <span style="color:#425647">/</span> <strong id="breadcrumb">Overview</strong></div>
-  </div>
+    <div class="actions">
+      <span class="save-state" id="saveState">Autosaved</span>
+      <button class="btn" id="topSearch">⌕ Search</button>
+      <button class="btn primary" id="newButton">＋ New</button>
+    </div>
+  </header>
 
-  <div class="actions">
-    <span class="save-state" id="saveState">All changes saved</span>
-    <button class="btn" id="topSearch">⌕ Search</button>
-    <button class="btn primary" id="newButton">＋ New</button>
-  </div>
-</header>
-
-<div class="content" id="content"></div>
-
+  <div class="content" id="content"></div>
 </main>
 </div>
 
 <div id="toastHost"></div>
 
 <script>
-(() => {
+(()=>{
 'use strict';
 
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
 
-const KEY = 'clamme-studio-v2';
+const KEY='clamme-studio-workspace-v2';
+const FONT_OPTIONS=['Alegreya'];
 
-const FONT_OPTIONS = [
-  'Alegreya','Inter','Georgia','Arial',
-  'Verdana','Times New Roman','Courier New'
-];
+const uid=()=>Math.random().toString(36).slice(2,10)+Date.now().toString(36);
+const blankGrid=()=>Array.from({length:15},()=>Array(10).fill(''));
 
-const uid = () =>
-  Math.random().toString(36).slice(2,10) +
-  Date.now().toString(36);
-
-const blankGrid = () =>
-  Array.from({length:15},()=>Array(10).fill(''));
-
-function initialState() {
-  return {
-    version:2,
+function initialState(){
+  return{
     documents:[],
     presentations:[],
     spreadsheets:[],
@@ -827,18 +938,13 @@ function initialState() {
   };
 }
 
-function validState(data) {
-  return data &&
-    Array.isArray(data.documents) &&
-    Array.isArray(data.presentations) &&
-    Array.isArray(data.spreadsheets);
-}
-
-function loadState() {
-  try {
-    const data=JSON.parse(localStorage.getItem(KEY));
-    if(validState(data)) return {...initialState(),...data};
-  } catch(e) {}
+function loadState(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(KEY));
+    if(saved&&Array.isArray(saved.documents)&&Array.isArray(saved.presentations)&&Array.isArray(saved.spreadsheets)){
+      return{...initialState(),...saved};
+    }
+  }catch(e){}
   return initialState();
 }
 
@@ -858,9 +964,7 @@ const pageNames={
   search:'Search'
 };
 
-/* HELPERS */
-
-function escapeHTML(value) {
+function escapeHTML(value){
   return String(value??'').replace(/[&<>"']/g,ch=>({
     '&':'&amp;',
     '<':'&lt;',
@@ -870,38 +974,36 @@ function escapeHTML(value) {
   }[ch]));
 }
 
-function safeName(value) {
-  return (String(value||'untitled')
-    .trim()
+function safeName(value){
+  return(String(value||'untitled').trim()
     .replace(/[^a-z0-9-_]+/gi,'-')
     .replace(/^-+|-+$/g,'')
     .slice(0,60))||'untitled';
 }
 
-function toast(message) {
+function toast(message){
   clearTimeout(toastTimer);
-  $('#toastHost').innerHTML=
-    `<div class="toast" role="status">${escapeHTML(message)}</div>`;
-  toastTimer=setTimeout(()=>$('#toastHost').innerHTML='',2500);
+  $('#toastHost').innerHTML=`<div class="toast" role="status">${escapeHTML(message)}</div>`;
+  toastTimer=setTimeout(()=>$('#toastHost').innerHTML='',2400);
 }
 
-function saveNow() {
-  try {
+function saveNow(){
+  try{
     localStorage.setItem(KEY,JSON.stringify(state));
-    $('#saveState').textContent='All changes saved';
-  } catch(e) {
+    $('#saveState').textContent='Autosaved';
+  }catch(e){
     $('#saveState').textContent='Storage full';
-    toast('Storage full. Export a backup or remove large images.');
+    toast('Storage is full. Export a backup or remove large images.');
   }
 }
 
-function saveSoon() {
+function saveSoon(){
   $('#saveState').textContent='Saving…';
   clearTimeout(saveTimer);
   saveTimer=setTimeout(saveNow,300);
 }
 
-function downloadFile(name,data,type) {
+function downloadFile(name,data,type){
   const blob=new Blob([data],{type});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
@@ -913,43 +1015,13 @@ function downloadFile(name,data,type) {
   setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 
-function dateLabel(timestamp) {
-  if(!timestamp) return 'Recently';
-  return new Date(timestamp).toLocaleDateString();
-}
-
-/* FILE ACCESS */
-
-function activeDocument() {
-  return state.documents.find(x=>x.id===state.activeDocument);
-}
-
-function activePresentation() {
-  return state.presentations.find(x=>x.id===state.activePresentation);
-}
-
-function activeSpreadsheet() {
-  return state.spreadsheets.find(x=>x.id===state.activeSpreadsheet);
-}
-
-function allFiles() {
-  return [
-    ...state.documents.map(x=>({...x,kind:'Document',icon:'▤',page:'documents'})),
-    ...state.presentations.map(x=>({...x,kind:'Presentation',icon:'▧',page:'slides'})),
-    ...state.spreadsheets.map(x=>({...x,kind:'Spreadsheet',icon:'▦',page:'sheets'}))
-  ].sort((a,b)=>(b.updated||0)-(a.updated||0));
-}
-
-/* CREATE */
-
-function addDocument() {
+function addDocument(){
   const item={
     id:uid(),
     title:'Untitled document',
     content:'',
     updated:Date.now()
   };
-
   state.documents.unshift(item);
   state.activeDocument=item.id;
   state.page='documents';
@@ -957,16 +1029,18 @@ function addDocument() {
   render();
 }
 
-function addPresentation() {
+function addPresentation(){
   const item={
     id:uid(),
     title:'Untitled presentation',
     updated:Date.now(),
-    slides:[
-      {title:'A new beginning',body:'Add your ideas here.',image:'',font:'Alegreya'}
-    ]
+    slides:[{
+      title:'A new beginning',
+      body:'Add your ideas here.',
+      image:'',
+      font:'Alegreya'
+    }]
   };
-
   state.presentations.unshift(item);
   state.activePresentation=item.id;
   selectedSlide=0;
@@ -975,124 +1049,49 @@ function addPresentation() {
   render();
 }
 
-function addSpreadsheet() {
+function addSpreadsheet(){
   const item={
     id:uid(),
     title:'Untitled spreadsheet',
     cells:blankGrid(),
     updated:Date.now()
   };
-
   state.spreadsheets.unshift(item);
   state.activeSpreadsheet=item.id;
-  selectedCell='A1';
   state.page='sheets';
   saveNow();
   render();
 }
 
-function createMenu() {
+function createMenu(){
   const choice=prompt(
-    'Create something in Clamme:\n\n1 — Document\n2 — Presentation\n3 — Spreadsheet'
+    'Create what?\n\n1 — Document\n2 — Presentation\n3 — Spreadsheet'
   );
-
-  if(choice==='1') addDocument();
-  if(choice==='2') addPresentation();
-  if(choice==='3') addSpreadsheet();
+  if(choice==='1')addDocument();
+  if(choice==='2')addPresentation();
+  if(choice==='3')addSpreadsheet();
 }
 
-/* FILE OPERATIONS */
-
-function findFile(id) {
-  for(const type of ['documents','presentations','spreadsheets']) {
-    const item=state[type].find(x=>x.id===id);
-    if(item) return {item,type};
-  }
+function activeDocument(){
+  return state.documents.find(x=>x.id===state.activeDocument);
 }
 
-function duplicateFile(id) {
-  const result=findFile(id);
-  if(!result) return;
+function activePresentation(){
+  return state.presentations.find(x=>x.id===state.activePresentation);
+}
 
-  const clone=JSON.parse(JSON.stringify(result.item));
-  clone.id=uid();
-  clone.title=(clone.title||'Untitled')+' copy';
-  clone.updated=Date.now();
+function activeSpreadsheet(){
+  return state.spreadsheets.find(x=>x.id===state.activeSpreadsheet);
+}
 
-  const list=state[result.type];
-  list.unshift(clone);
-
-  saveNow();
+function setPage(page){
+  state.page=page;
+  saveSoon();
   render();
-  toast('Duplicate created');
 }
 
-function deleteFile(id) {
-  const result=findFile(id);
-  if(!result) return;
-
-  if(!confirm(`Delete "${result.item.title}" permanently from this workspace?`)) return;
-
-  state[result.type]=state[result.type].filter(x=>x.id!==id);
-
-  if(state.activeDocument===id) state.activeDocument=null;
-  if(state.activePresentation===id) state.activePresentation=null;
-  if(state.activeSpreadsheet===id) state.activeSpreadsheet=null;
-
-  saveNow();
-  render();
-  toast('File deleted');
-}
-
-function renameFile(id) {
-  const result=findFile(id);
-  if(!result) return;
-
-  const name=prompt('Rename file:',result.item.title);
-  if(name===null||!name.trim()) return;
-
-  result.item.title=name.trim().slice(0,120);
-  result.item.updated=Date.now();
-
-  saveNow();
-  render();
-  toast('File renamed');
-}
-
-/* FILE UI */
-
-function fileRows(files) {
-  if(!files.length) {
-    return `<div class="empty">
-      <div style="font-size:27px;color:#8bd5a0">✦</div>
-      Nothing here yet.<br>Create something new to begin.
-    </div>`;
-  }
-
-  return `<div class="file-list">
-    ${files.map(f=>`
-      <div class="file-row">
-        <div class="file-icon">${f.icon}</div>
-        <div>
-          <div class="file-title">${escapeHTML(f.title)}</div>
-          <div class="file-info">Updated ${dateLabel(f.updated)}</div>
-        </div>
-        <span class="file-type">${f.kind}</span>
-        <div class="file-tools">
-          <button class="btn open-file" data-open="${f.page}" data-id="${f.id}">Open</button>
-          <button class="btn" data-rename="${f.id}" aria-label="Rename">✎</button>
-          <button class="btn" data-duplicate="${f.id}" aria-label="Duplicate">⧉</button>
-          <button class="btn danger" data-delete="${f.id}" aria-label="Delete">×</button>
-        </div>
-      </div>
-    `).join('')}
-  </div>`;
-}
-
-/* PAGE COMPONENTS */
-
-function pageHead(eyebrow,title,subtitle,actions='') {
-  return `
+function pageHead(eyebrow,title,subtitle,actions=''){
+  return`
     <div class="page-head">
       <div>
         <div class="eyebrow">${eyebrow}</div>
@@ -1100,28 +1099,55 @@ function pageHead(eyebrow,title,subtitle,actions='') {
         ${subtitle?`<p class="subtitle">${subtitle}</p>`:''}
       </div>
       <div class="head-actions">${actions}</div>
-    </div>
-  `;
+    </div>`;
 }
 
-function quickCard(icon,title,desc,page) {
-  return `
+function quickCard(icon,title,desc,page){
+  return`
     <button class="quick-card" data-create="${page}">
       <span class="quick-icon">${icon}</span>
       <strong>${title}</strong>
       <small>${desc}</small>
-    </button>
-  `;
+    </button>`;
 }
 
-function homeHTML() {
-  const recent=allFiles().slice(0,5);
+function allFiles(){
+  return[
+    ...state.documents.map(x=>({...x,kind:'Document',icon:'▤',page:'documents'})),
+    ...state.presentations.map(x=>({...x,kind:'Presentation',icon:'▧',page:'slides'})),
+    ...state.spreadsheets.map(x=>({...x,kind:'Spreadsheet',icon:'▦',page:'sheets'}))
+  ].sort((a,b)=>(b.updated||0)-(a.updated||0));
+}
 
-  return `
+function fileRows(files){
+  if(!files.length){
+    return`<div class="empty">✦<br><br>No files yet. Create something new to begin.</div>`;
+  }
+
+  return`
+    <div class="file-list">
+      ${files.map(f=>`
+        <div class="file-row">
+          <div class="file-icon">${f.icon}</div>
+          <div>
+            <div class="file-title">${escapeHTML(f.title)}</div>
+            <div class="file-info">Updated ${new Date(f.updated||Date.now()).toLocaleDateString()}</div>
+          </div>
+          <span class="file-type">${f.kind}</span>
+          <button class="btn" data-open="${f.page}" data-id="${f.id}">Open</button>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function homeHTML(){
+  const files=allFiles().slice(0,5);
+
+  return`
     ${pageHead(
       'YOUR WORKSPACE',
       'A quieter place to create.',
-      'Your documents, presentations and spreadsheets. All in one considered workspace.',
+      'Write, present and organise your ideas in one focused workspace.',
       '<button class="btn primary" data-create="documents">＋ New document</button>'
     )}
 
@@ -1129,10 +1155,10 @@ function homeHTML() {
       <div class="hero-copy">
         <div class="eyebrow">A LITTLE SPACE. BIG IDEAS.</div>
         <h2>Make something<br><em>remarkable.</em></h2>
-        <p>A thoughtful workspace for writing, presenting, calculating and creating. Your work stays in this browser.</p>
+        <p>A considered workspace for the things you want to write, build, calculate and share. Your work stays in this browser.</p>
         <div class="hero-actions">
           <button class="btn primary" data-create="documents">Start writing ↗</button>
-          <button class="btn" data-create="slides">Create presentation</button>
+          <button class="btn" data-create="slides">Create a presentation</button>
         </div>
       </div>
       <div class="hero-mark">✦</div>
@@ -1140,83 +1166,42 @@ function homeHTML() {
 
     <div class="section-head">
       <span class="section-title">Create something</span>
-      <span class="muted">Choose your workspace</span>
+      <span class="muted">Choose a workspace</span>
     </div>
 
     <div class="quick-grid">
-      ${quickCard('▤','Documents','Write and format your ideas.','documents')}
-      ${quickCard('▧','Presentations','Build visual stories.','slides')}
-      ${quickCard('▦','Spreadsheets','Organise and calculate data.','sheets')}
+      ${quickCard('▤','Documents','Write and format your thoughts.','documents')}
+      ${quickCard('▧','Presentations','Create slides with your own images.','slides')}
+      ${quickCard('▦','Spreadsheets','Organise data and use formulas.','sheets')}
     </div>
 
     <div class="section-head">
       <span class="section-title">Recently updated</span>
-      <button class="btn quiet" data-page="files">View library ↗</button>
+      <button class="btn quiet" data-page="files">View all ↗</button>
     </div>
 
-    ${fileRows(recent)}
-  `;
+    ${fileRows(files)}`;
 }
 
-/* SAFE DOCUMENT HTML */
-
-function cleanDocumentHTML(html) {
-  const parser=new DOMParser();
-  const doc=parser.parseFromString(String(html||''),'text/html');
-
-  const allowed=new Set([
-    'P','BR','DIV','H1','H2','H3','H4',
-    'B','STRONG','I','EM','U','S',
-    'UL','OL','LI','BLOCKQUOTE','HR','A'
-  ]);
-
-  function clean(node) {
-    [...node.childNodes].forEach(child=>{
-      if(child.nodeType===Node.ELEMENT_NODE) {
-        if(!allowed.has(child.tagName)) {
-          child.replaceWith(...child.childNodes);
-          return;
-        }
-
-        [...child.attributes].forEach(attr=>{
-          if(child.tagName!=='A'||attr.name!=='href') {
-            child.removeAttribute(attr.name);
-          }
-        });
-
-        if(child.tagName==='A') {
-          const href=child.getAttribute('href')||'';
-          if(!/^https?:\/\//i.test(href)) child.removeAttribute('href');
-          child.setAttribute('rel','noopener noreferrer');
-        }
-
-        clean(child);
-      } else if(child.nodeType!==Node.TEXT_NODE) {
-        child.remove();
-      }
-    });
-  }
-
-  clean(doc.body);
-  return doc.body.innerHTML;
-}
-
-function documentHTML() {
+function documentHTML(){
   const d=activeDocument();
 
-  if(!d) {
-    return `
-      ${pageHead('WRITING','Documents','A clean page for your next idea.',
-        '<button class="btn primary" data-create="documents">＋ New document</button>')}
-      ${fileRows(allFiles().filter(f=>f.kind==='Document'))}
-    `;
+  if(!d){
+    return`
+      ${pageHead(
+        'WRITING',
+        'Documents',
+        'A clean page for your next idea.',
+        '<button class="btn primary" data-create="documents">＋ New document</button>'
+      )}
+      ${fileRows(allFiles().filter(f=>f.kind==='Document'))}`;
   }
 
-  return `
+  return`
     ${pageHead(
       'WRITING',
       'Your words, your space.',
-      'A focused editor for your thoughts and ideas.',
+      'A simple editor with formatting, autosaving and export.',
       '<button class="btn" id="exportDoc">Export HTML</button><button class="btn primary" id="newDoc">＋ New</button>'
     )}
 
@@ -1239,64 +1224,60 @@ function documentHTML() {
           <button class="btn" data-format="bold"><b>B</b></button>
           <button class="btn" data-format="italic"><i>I</i></button>
           <button class="btn" data-format="underline"><u>U</u></button>
-          <button class="btn" data-format="strikeThrough"><s>S</s></button>
-          <span class="toolbar-spacer"></span>
+          <span style="width:1px;height:23px;background:#304333"></span>
           <button class="btn" data-format="formatBlock" data-value="h1">Heading</button>
           <button class="btn" data-format="formatBlock" data-value="h2">Subheading</button>
           <button class="btn" data-format="insertUnorderedList">• List</button>
-          <button class="btn" data-format="insertOrderedList">1. List</button>
           <button class="btn" data-format="formatBlock" data-value="blockquote">Quote</button>
-          <select id="docFont" aria-label="Font">
-            ${FONT_OPTIONS.map(f=>`<option ${f==='Georgia'?'selected':''}>${f}</option>`).join('')}
-          </select>
+          <span class="toolbar-spacer"></span>
+          <span class="muted">Alegreya</span>
         </div>
 
         <div class="workspace">
           <div class="doc-paper">
-            <input class="doc-title" id="docTitle"
-              value="${escapeHTML(d.title)}" aria-label="Document title">
-
-            <div class="doc-body" id="docBody"
-              contenteditable="true" spellcheck="true">${cleanDocumentHTML(d.content)}</div>
+            <input class="doc-title" id="docTitle" value="${escapeHTML(d.title)}" aria-label="Document title">
+            <div class="doc-body" id="docBody" contenteditable="true" spellcheck="true">${d.content||''}</div>
           </div>
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
-/* PRESENTATIONS */
-
-function presentationHTML() {
+function presentationHTML(){
   const d=activePresentation();
 
-  if(!d) {
-    return `
-      ${pageHead('DESIGN','Presentations','Turn your ideas into visual stories.',
-        '<button class="btn primary" data-create="slides">＋ New presentation</button>')}
-      ${fileRows(allFiles().filter(f=>f.kind==='Presentation'))}
-    `;
+  if(!d){
+    return`
+      ${pageHead(
+        'DESIGN',
+        'Presentations',
+        'Make a story out of your ideas.',
+        '<button class="btn primary" data-create="slides">＋ New presentation</button>'
+      )}
+      ${fileRows(allFiles().filter(f=>f.kind==='Presentation'))}`;
   }
 
-  if(!Array.isArray(d.slides)) d.slides=[];
-  if(!d.slides.length) {
+  if(!Array.isArray(d.slides))d.slides=[];
+  if(!d.slides.length){
     d.slides.push({title:'New slide',body:'',image:'',font:'Alegreya'});
   }
 
   selectedSlide=Math.min(selectedSlide,d.slides.length-1);
   const s=d.slides[selectedSlide];
 
-  return `
+  const image=s.image?`<img class="slide-bg" src="${s.image}" alt="">`:'';
+  const shade=s.image?'<div class="slide-shade"></div>':'';
+
+  return`
     ${pageHead(
       'PRESENTATION',
       'Tell your story.',
-      'Design slides, add images and present your ideas.',
-      '<button class="btn" id="exportDeck">Export HTML</button><button class="btn primary" id="presentDeck">▶ Present</button>'
+      'Edit the slide text directly. Add images and create your presentation.',
+      '<button class="btn" id="exportDeck">Export slides</button><button class="btn primary" id="presentDeck">▶ Present</button>'
     )}
 
-    <div style="display:flex;gap:10px;margin-bottom:14px">
-      <input class="input" id="deckTitle" value="${escapeHTML(d.title)}"
-        aria-label="Presentation title" style="flex:1;font:21px var(--serif)">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+      <input class="input" id="deckTitle" value="${escapeHTML(d.title)}" aria-label="Presentation title" style="flex:1;font-size:22px">
       <button class="btn" id="newDeck">＋ New</button>
     </div>
 
@@ -1324,223 +1305,136 @@ function presentationHTML() {
 
       <div class="editor-main">
         <div class="toolbar">
-          <select id="slideFont" aria-label="Slide font">
-            ${FONT_OPTIONS.map(f=>`
-              <option ${f===(s.font||'Alegreya')?'selected':''}>${f}</option>
-            `).join('')}
-          </select>
-
+          <span class="muted">Typeface: Alegreya</span>
           <button class="btn" id="addImage">＋ Add image</button>
           <button class="btn" id="removeImage" ${s.image?'':'disabled'}>Remove image</button>
           <input type="file" id="slideImageInput" accept="image/*" hidden>
-
           <span class="toolbar-spacer"></span>
-          <span class="muted">16:9 canvas</span>
+          <span class="muted">16:9 slide</span>
         </div>
 
         <div class="workspace">
-          <div class="slide-stage ${s.image?'has-image':''}" id="slideStage"
-            style="font-family:${escapeHTML(s.font||'Alegreya')}">
-
-            ${s.image?`<img class="slide-bg" src="${s.image}" alt="">`:''}
-            ${s.image?'<div class="slide-shade"></div>':''}
-
+          <div class="slide-stage ${s.image?'has-image':''}" id="slideStage">
+            ${image}${shade}
             <div class="slide-copy">
-              <textarea id="slideHeading" class="slide-heading" rows="2"
-                aria-label="Slide heading" placeholder="Your headline">${escapeHTML(s.title||'')}</textarea>
-
-              <textarea id="slideBody" class="slide-body"
-                aria-label="Slide body" placeholder="Add a supporting thought…">${escapeHTML(s.body||'')}</textarea>
+              <textarea id="slideHeading" class="slide-heading" rows="2" aria-label="Slide heading" placeholder="Your headline">${escapeHTML(s.title||'')}</textarea>
+              <textarea id="slideBody" class="slide-body" aria-label="Slide body" placeholder="Add a supporting thought…">${escapeHTML(s.body||'')}</textarea>
             </div>
           </div>
-
-          <div class="slide-hint">Images are stored locally in your browser.</div>
+          <div class="slide-hint">Tip: keep your headline concise. Images are stored locally in this browser.</div>
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
-/* SPREADSHEET ENGINE */
-
-function colName(n) {
+function colName(n){
   let s='';
-  while(n>=0) {
+  while(n>=0){
     s=String.fromCharCode(n%26+65)+s;
     n=Math.floor(n/26)-1;
   }
   return s;
 }
 
-function parseAddress(addr) {
+function parseAddress(addr){
   const m=/^([A-Z]+)(\d+)$/i.exec(addr);
-  if(!m) return {r:0,c:0};
-
+  if(!m)return{r:0,c:0};
   let c=0;
-  for(const ch of m[1].toUpperCase()) {
+  for(const ch of m[1].toUpperCase()){
     c=c*26+ch.charCodeAt(0)-64;
   }
-
-  return {
+  return{
     r:Math.max(0,Number(m[2])-1),
     c:Math.max(0,c-1)
   };
 }
 
-function cellRaw(sh,r,c) {
-  return sh.cells[r]?.[c]??'';
+function cellRaw(sheet,r,c){
+  return sheet.cells[r]?.[c]??'';
 }
 
-function parseMath(expression) {
-  const tokens=expression.match(/\d+(?:\.\d+)?|[()+\-*/%]/g)||[];
-  const original=expression.replace(/\s/g,'');
+/* Safe, limited spreadsheet formula evaluator.
+   Supports arithmetic, cell references and SUM ranges. */
 
-  if(tokens.join('')!==original) throw Error('Invalid formula');
+function numericCell(sheet,r,c,seen=new Set()){
+  const raw=String(cellRaw(sheet,r,c));
 
-  let pos=0;
-
-  function factor() {
-    const token=tokens[pos++];
-
-    if(token==='+') return factor();
-    if(token==='-') return -factor();
-
-    if(token==='(') {
-      const value=expressionPart();
-      if(tokens[pos++]!==')') throw Error('Missing bracket');
-      return value;
-    }
-
-    if(token===undefined||!Number.isFinite(Number(token))) {
-      throw Error('Invalid number');
-    }
-
-    return Number(token);
-  }
-
-  function term() {
-    let value=factor();
-
-    while(tokens[pos]==='*'||tokens[pos]==='/'||tokens[pos]==='%') {
-      const op=tokens[pos++];
-      const next=factor();
-
-      if(op==='*') value*=next;
-      if(op==='/') value/=next;
-      if(op==='%') value%=next;
-    }
-
-    return value;
-  }
-
-  function expressionPart() {
-    let value=term();
-
-    while(tokens[pos]==='+'||tokens[pos]==='-') {
-      const op=tokens[pos++];
-      const next=term();
-      value=op==='+'?value+next:value-next;
-    }
-
-    return value;
-  }
-
-  const result=expressionPart();
-
-  if(pos!==tokens.length||!Number.isFinite(result)) {
-    throw Error('Invalid calculation');
-  }
-
-  return result;
-}
-
-function numericCell(sh,r,c,seen=new Set()) {
-  const raw=String(cellRaw(sh,r,c));
-
-  if(!raw.startsWith('=')) {
+  if(!raw.startsWith('=')){
     const n=Number(raw);
     return raw.trim()!==''&&Number.isFinite(n)?n:0;
   }
 
   const key=`${r},${c}`;
-
-  if(seen.has(key)) return '#CYCLE!';
-
+  if(seen.has(key))return'#CYCLE!';
   seen.add(key);
 
-  try {
-    let formula=raw.slice(1).toUpperCase();
+  let formula=raw.slice(1).toUpperCase();
 
-    // Support SUM, AVERAGE, MIN, MAX and COUNT over cell ranges.
-    formula=formula.replace(
-      /\b(SUM|AVERAGE|MIN|MAX|COUNT)\(([A-Z]+\d+):([A-Z]+\d+)\)/g,
-      (match,fn,start,end)=>{
-        const a=parseAddress(start);
-        const b=parseAddress(end);
-        const values=[];
+  formula=formula.replace(/SUM\(([A-Z]+\d+):([A-Z]+\d+)\)/g,(match,start,end)=>{
+    const a=parseAddress(start);
+    const b=parseAddress(end);
+    let total=0;
 
-        for(let y=Math.min(a.r,b.r);y<=Math.max(a.r,b.r);y++) {
-          for(let x=Math.min(a.c,b.c);x<=Math.max(a.c,b.c);x++) {
-            const rawValue=String(cellRaw(sh,y,x));
-            if(rawValue.trim()!=='') {
-              const v=numericCell(sh,y,x,new Set(seen));
-              if(typeof v!=='number') throw Error('Invalid cell');
-              values.push(v);
-            }
-          }
-        }
-
-        if(fn==='SUM') return values.reduce((a,b)=>a+b,0);
-        if(fn==='COUNT') return values.length;
-        if(fn==='AVERAGE') return values.length?values.reduce((a,b)=>a+b,0)/values.length:0;
-        if(fn==='MIN') return values.length?Math.min(...values):0;
-        if(fn==='MAX') return values.length?Math.max(...values):0;
+    for(let y=Math.min(a.r,b.r);y<=Math.max(a.r,b.r);y++){
+      for(let x=Math.min(a.c,b.c);x<=Math.max(a.c,b.c);x++){
+        const value=numericCell(sheet,y,x,new Set(seen));
+        if(typeof value==='number')total+=value;
       }
-    );
+    }
+    return String(total);
+  });
 
-    formula=formula.replace(
-      /\b([A-Z]+\d+)\b/g,
-      ref=>{
-        const p=parseAddress(ref);
-        const value=numericCell(sh,p.r,p.c,new Set(seen));
-        if(typeof value!=='number') throw Error('Invalid cell');
-        return String(value);
-      }
-    );
+  formula=formula.replace(/\b([A-Z]+\d+)\b/g,ref=>{
+    const p=parseAddress(ref);
+    return String(numericCell(sheet,p.r,p.c,new Set(seen)));
+  });
 
-    return parseMath(formula);
-  } catch(e) {
-    return '#ERROR';
+  if(!/^[\d\s()+\-*/.,%]+$/.test(formula))return'#ERROR';
+
+  try{
+    const result=Function('"use strict";return ('+formula+')')();
+    return Number.isFinite(result)?result:'#ERROR';
+  }catch(e){
+    return'#ERROR';
   }
 }
 
-function cellValue(sh,r,c) {
-  const raw=String(cellRaw(sh,r,c));
-  return raw.startsWith('=')?numericCell(sh,r,c):raw;
+function cellValue(sheet,r,c){
+  const raw=String(cellRaw(sheet,r,c));
+  return raw.startsWith('=')?numericCell(sheet,r,c):raw;
 }
 
-function spreadsheetHTML() {
+function spreadsheetHTML(){
   const sh=activeSpreadsheet();
 
-  if(!sh) {
-    return `
-      ${pageHead('NUMBERS','Spreadsheets','Organise your information and calculate with formulas.',
-        '<button class="btn primary" data-create="sheets">＋ New spreadsheet</button>')}
-      ${fileRows(allFiles().filter(f=>f.kind==='Spreadsheet'))}
-    `;
+  if(!sh){
+    return`
+      ${pageHead(
+        'NUMBERS',
+        'Spreadsheets',
+        'A simple grid for your data and calculations.',
+        '<button class="btn primary" data-create="sheets">＋ New spreadsheet</button>'
+      )}
+      ${fileRows(allFiles().filter(f=>f.kind==='Spreadsheet'))}`;
   }
 
-  const columns=10;
-  const rows=15;
+  if(!Array.isArray(sh.cells))sh.cells=blankGrid();
+
+  while(sh.cells.length<15)sh.cells.push(Array(10).fill(''));
+  sh.cells=sh.cells.map(row=>Array.from({length:10},(_,i)=>row[i]??''));
+
+  const columns=10,rows=15;
 
   let html=`
-    ${pageHead('SPREADSHEET','Make the numbers make sense.',
+    ${pageHead(
+      'SPREADSHEET',
+      'Make the numbers make sense.',
       'Enter values or formulas such as =SUM(A1:A5).',
-      '<button class="btn" id="exportCSV">Export CSV</button><button class="btn primary" id="newSheet">＋ New</button>')}
+      '<button class="btn" id="exportCSV">Export CSV</button><button class="btn primary" id="newSheet">＋ New</button>'
+    )}
 
     <div style="display:flex;gap:10px;margin-bottom:13px">
-      <input class="input" id="sheetTitle" value="${escapeHTML(sh.title)}"
-        style="flex:1;font:21px var(--serif)" aria-label="Spreadsheet title">
+      <input class="input" id="sheetTitle" value="${escapeHTML(sh.title)}" style="flex:1;font-size:22px" aria-label="Spreadsheet title">
       <button class="btn" id="clearSheet">Clear cells</button>
     </div>
 
@@ -1552,17 +1446,16 @@ function spreadsheetHTML() {
 
     <div class="sheet-wrap">
       <table class="sheet">
-        <thead><tr><th style="width:40px">#</th>
-  `;
+        <thead><tr><th style="width:40px">#</th>`;
 
-  for(let c=0;c<columns;c++) html+=`<th>${colName(c)}</th>`;
+  for(let c=0;c<columns;c++)html+=`<th>${colName(c)}</th>`;
 
   html+='</tr></thead><tbody>';
 
-  for(let r=0;r<rows;r++) {
+  for(let r=0;r<rows;r++){
     html+=`<tr><th>${r+1}</th>`;
 
-    for(let c=0;c<columns;c++) {
+    for(let c=0;c<columns;c++){
       const addr=colName(c)+(r+1);
       const raw=cellRaw(sh,r,c);
       const value=String(raw).startsWith('=')?cellValue(sh,r,c):raw;
@@ -1576,10 +1469,8 @@ function spreadsheetHTML() {
             aria-label="${addr}"
             title="${escapeHTML(raw)}"
           >
-        </td>
-      `;
+        </td>`;
     }
-
     html+='</tr>';
   }
 
@@ -1587,83 +1478,64 @@ function spreadsheetHTML() {
       </tbody>
       </table>
     </div>
-    <p class="muted" style="margin-top:11px">
-      15 rows · 10 columns · Formula support · Local storage
-    </p>
-  `;
+    <p class="muted" style="margin-top:10px">15 rows · 10 columns · Formulas begin with =</p>`;
 
   return html;
 }
 
-/* FILE LIBRARY */
+function filesHTML(){
+  return`
+    ${pageHead(
+      'LIBRARY',
+      'Everything you make.',
+      'Search and reopen documents, presentations and spreadsheets.',
+      '<button class="btn" id="backupLibrary">Export backup</button>'
+    )}
 
-function filesHTML() {
-  return `
-    ${pageHead('LIBRARY','Everything you make.',
-      'Your documents, presentations and spreadsheets in one place.',
-      '<button class="btn" id="backupLibrary">Export backup</button>')}
-
-    <input class="input search-input" id="librarySearch"
-      placeholder="Search your files…" value="${escapeHTML(searchTerm)}"
-      style="margin-bottom:17px">
-
-    <div id="fileResults">${fileRows(allFiles())}</div>
-  `;
+    <input class="input search-input" id="librarySearch" placeholder="Search your files…" value="${escapeHTML(searchTerm)}" style="margin-bottom:17px">
+    <div id="fileResults">${fileRows(allFiles())}</div>`;
 }
 
-function searchHTML() {
-  return `
-    ${pageHead('QUICK FIND','Find your next idea.',
-      'Search across your entire Clamme workspace.')}
+function searchHTML(){
+  return`
+    ${pageHead(
+      'QUICK FIND',
+      'Find your next idea.',
+      'Search across all your local files.'
+    )}
 
-    <input class="input search-input" id="searchInput"
-      placeholder="Search file titles…" value="${escapeHTML(searchTerm)}"
-      style="margin-bottom:17px">
-
-    <div id="searchResults"></div>
-  `;
+    <input class="input search-input" id="searchInput" placeholder="Search file titles…" value="${escapeHTML(searchTerm)}" style="margin-bottom:17px">
+    <div id="searchResults"></div>`;
 }
 
-/* RENDER */
-
-function render() {
+function render(){
   const page=state.page;
-
   $('#breadcrumb').textContent=pageNames[page]||'Overview';
 
-  $$('.nav button').forEach(b=>
-    b.classList.toggle('active',b.dataset.page===page)
-  );
+  $$('.nav button').forEach(b=>{
+    b.classList.toggle('active',b.dataset.page===page);
+  });
 
   const content=$('#content');
 
-  if(page==='home') content.innerHTML=homeHTML();
-  else if(page==='documents') content.innerHTML=documentHTML();
-  else if(page==='slides') content.innerHTML=presentationHTML();
-  else if(page==='sheets') content.innerHTML=spreadsheetHTML();
-  else if(page==='files') content.innerHTML=filesHTML();
-  else if(page==='search') content.innerHTML=searchHTML();
+  if(page==='home')content.innerHTML=homeHTML();
+  else if(page==='documents')content.innerHTML=documentHTML();
+  else if(page==='slides')content.innerHTML=presentationHTML();
+  else if(page==='sheets')content.innerHTML=spreadsheetHTML();
+  else if(page==='files')content.innerHTML=filesHTML();
+  else if(page==='search')content.innerHTML=searchHTML();
   else content.innerHTML=homeHTML();
 
   bindCommon();
 
-  if(page==='documents') bindDocument();
-  if(page==='slides') bindPresentation();
-  if(page==='sheets') bindSpreadsheet();
-  if(page==='files') bindFileSearch('#librarySearch','#fileResults');
-  if(page==='search') bindFileSearch('#searchInput','#searchResults');
+  if(page==='documents')bindDocument();
+  if(page==='slides')bindPresentation();
+  if(page==='sheets')bindSpreadsheet();
+  if(page==='files')bindFileSearch('#librarySearch','#fileResults');
+  if(page==='search')bindFileSearch('#searchInput','#searchResults');
 }
 
-function setPage(page) {
-  state.page=page;
-  $('#sidebar').classList.remove('open');
-  saveSoon();
-  render();
-}
-
-/* COMMON EVENTS */
-
-function bindCommon() {
+function bindCommon(){
   $$('[data-page]').forEach(b=>{
     b.onclick=()=>setPage(b.dataset.page);
   });
@@ -1671,9 +1543,9 @@ function bindCommon() {
   $$('[data-create]').forEach(b=>{
     b.onclick=()=>{
       const type=b.dataset.create;
-      if(type==='documents') addDocument();
-      if(type==='slides') addPresentation();
-      if(type==='sheets') addSpreadsheet();
+      if(type==='documents')addDocument();
+      if(type==='slides')addPresentation();
+      if(type==='sheets')addSpreadsheet();
     };
   });
 
@@ -1684,31 +1556,16 @@ function bindCommon() {
 
       state.page=type;
 
-      if(type==='documents') state.activeDocument=id;
-      if(type==='slides') {
+      if(type==='documents')state.activeDocument=id;
+      if(type==='slides'){
         state.activePresentation=id;
         selectedSlide=0;
       }
-      if(type==='sheets') {
-        state.activeSpreadsheet=id;
-        selectedCell='A1';
-      }
+      if(type==='sheets')state.activeSpreadsheet=id;
 
       saveSoon();
       render();
     };
-  });
-
-  $$('[data-rename]').forEach(b=>{
-    b.onclick=()=>renameFile(b.dataset.rename);
-  });
-
-  $$('[data-duplicate]').forEach(b=>{
-    b.onclick=()=>duplicateFile(b.dataset.duplicate);
-  });
-
-  $$('[data-delete]').forEach(b=>{
-    b.onclick=()=>deleteFile(b.dataset.delete);
   });
 
   $('#newButton').onclick=createMenu;
@@ -1728,21 +1585,21 @@ function bindCommon() {
   };
 
   $('#backupButton').onclick=exportBackup;
-
   $('#importButton').onclick=()=>$('#backupInput').click();
 
   $('#backupInput').onchange=e=>{
     const file=e.target.files?.[0];
     e.target.value='';
-    if(file) importBackup(file);
+    if(file)importBackup(file);
   };
+
+  $('#backupLibrary')?.addEventListener('click',exportBackup);
 }
 
-/* DOCUMENT EDITOR */
-
-function bindDocument() {
+function bindDocument(){
   const d=activeDocument();
-  if(!d) return;
+
+  if(!d)return;
 
   $$('[data-doc]').forEach(b=>{
     b.onclick=()=>{
@@ -1754,24 +1611,18 @@ function bindDocument() {
 
   $('#newDoc').onclick=addDocument;
 
-  const title=$('#docTitle');
-  const body=$('#docBody');
-
-  title.oninput=e=>{
+  $('#docTitle').oninput=e=>{
     d.title=e.target.value;
     d.updated=Date.now();
     saveSoon();
   };
 
+  const body=$('#docBody');
+
   body.oninput=()=>{
-    d.content=cleanDocumentHTML(body.innerHTML);
+    d.content=body.innerHTML;
     d.updated=Date.now();
     saveSoon();
-  };
-
-  $('#docFont').onchange=e=>{
-    body.style.fontFamily=e.target.value;
-    body.focus();
   };
 
   $$('[data-format]').forEach(b=>{
@@ -1784,7 +1635,7 @@ function bindDocument() {
         b.dataset.value||null
       );
 
-      d.content=cleanDocumentHTML(body.innerHTML);
+      d.content=body.innerHTML;
       d.updated=Date.now();
       saveSoon();
     };
@@ -1795,35 +1646,38 @@ function bindDocument() {
       <!DOCTYPE html>
       <html>
       <head>
-      <meta charset="UTF-8">
-      <title>${escapeHTML(d.title)}</title>
-      <style>
-        body {
-          max-width:760px;
-          margin:60px auto;
-          padding:0 25px;
-          color:#263027;
-          font:17px/1.8 Georgia,serif;
-        }
-        h1 {font-size:2.3em}
-      </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>${escapeHTML(d.title)}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+          body{
+            max-width:760px;
+            margin:60px auto;
+            padding:0 24px;
+            color:#243027;
+            font-family:'Alegreya',serif;
+            font-size:19px;
+            line-height:1.8;
+          }
+          h1{font-size:2.3em}
+        </style>
       </head>
       <body>
         <h1>${escapeHTML(d.title)}</h1>
-        ${cleanDocumentHTML(d.content)}
+        ${d.content}
       </body>
-      </html>
-    `;
+      </html>`;
 
     downloadFile(safeName(d.title)+'.html',html,'text/html;charset=utf-8');
   };
 }
 
-/* PRESENTATION EDITOR */
-
-function bindPresentation() {
+function bindPresentation(){
   const d=activePresentation();
-  if(!d) return;
+  if(!d)return;
 
   $('#deckTitle').oninput=e=>{
     d.title=e.target.value;
@@ -1867,7 +1721,7 @@ function bindPresentation() {
   };
 
   $('#deleteSlide').onclick=()=>{
-    if(d.slides.length===1) {
+    if(d.slides.length===1){
       d.slides[0]={
         title:'New slide',
         body:'',
@@ -1875,7 +1729,7 @@ function bindPresentation() {
         font:'Alegreya'
       };
       selectedSlide=0;
-    } else {
+    }else{
       d.slides.splice(selectedSlide,1);
       selectedSlide=Math.max(0,selectedSlide-1);
     }
@@ -1899,14 +1753,6 @@ function bindPresentation() {
     saveSoon();
   };
 
-  $('#slideFont').onchange=e=>{
-    s.font=e.target.value;
-    $('#slideStage').style.fontFamily=s.font;
-    $('#slideHeading').style.fontFamily=s.font;
-    d.updated=Date.now();
-    saveSoon();
-  };
-
   $('#addImage').onclick=()=>$('#slideImageInput').click();
 
   $('#removeImage').onclick=()=>{
@@ -1920,14 +1766,14 @@ function bindPresentation() {
     const file=e.target.files?.[0];
     e.target.value='';
 
-    if(!file) return;
+    if(!file)return;
 
-    if(!file.type.startsWith('image/')) {
+    if(!file.type.startsWith('image/')){
       toast('Choose an image file.');
       return;
     }
 
-    if(file.size>2*1024*1024) {
+    if(file.size>2*1024*1024){
       toast('Choose an image smaller than 2 MB.');
       return;
     }
@@ -1950,22 +1796,21 @@ function bindPresentation() {
   $('#exportDeck').onclick=()=>exportPresentation(d);
 }
 
-function updateSlideRail(d) {
+function updateSlideRail(d){
   $$('[data-slide]').forEach((b,i)=>{
     const label=d.slides[i]?.title||'Untitled slide';
+
     b.innerHTML=`
       <span>${String(i+1).padStart(2,'0')}</span>
-      ${escapeHTML(label).slice(0,18)}
-    `;
+      ${escapeHTML(label).slice(0,18)}`;
   });
 }
 
-/* PRESENTATION OUTPUT */
-
-function buildDeckHTML(deck) {
+function presentationDocument(deck){
   const slides=deck.slides.map(s=>`
-    <section class="slide" style="font-family:${escapeHTML(s.font||'Georgia')}">
-      ${s.image?`<img src="${s.image}" alt=""><div class="shade"></div>`:''}
+    <section class="slide" style="font-family:'Alegreya',serif">
+      ${s.image?`<img src="${s.image}" alt="">`:''}
+      ${s.image?'<div class="shade"></div>':''}
       <div class="text">
         <h1>${escapeHTML(s.title||'')}</h1>
         <p>${escapeHTML(s.body||'')}</p>
@@ -1973,82 +1818,92 @@ function buildDeckHTML(deck) {
     </section>
   `).join('');
 
-  return `
+  return`
     <!doctype html>
     <html>
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>${escapeHTML(deck.title)}</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>${escapeHTML(deck.title)}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <style>
-      * {box-sizing:border-box}
-      body {
-        margin:0;
-        background:#07100b;
-        color:#eff6ef;
-        font-family:Arial,sans-serif;
-      }
-      .slide {
-        display:none;
-        position:absolute;
-        left:50%;
-        top:50%;
-        transform:translate(-50%,-50%);
-        width:min(92vw,1200px);
-        aspect-ratio:16/9;
-        overflow:hidden;
-        background:#edf2e9;
-        color:#182b1e;
-        padding:7%;
-        justify-content:center;
-        flex-direction:column;
-      }
-      .slide.active {display:flex}
-      .slide img {
-        position:absolute;
-        inset:0;
-        width:100%;
-        height:100%;
-        object-fit:cover;
-      }
-      .shade {
-        position:absolute;
-        inset:0;
-        background:linear-gradient(90deg,#07150bdd,#07150b66);
-      }
-      .text {position:relative;z-index:1;max-width:85%}
-      .slide h1 {
-        font-size:clamp(24px,5vw,64px);
-        line-height:1.05;
-        margin:0 0 20px;
-      }
-      .slide p {
-        font-size:clamp(12px,2vw,23px);
-        line-height:1.6;
-        white-space:pre-wrap;
-      }
-      .controls {
-        position:fixed;
-        bottom:18px;
-        left:0;
-        right:0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:16px;
-        color:#a8b6aa;
-      }
-      .controls button {
-        border:1px solid #304536;
-        border-radius:8px;
-        background:#132019;
-        color:#e0ece2;
-        padding:9px 13px;
-      }
-    </style>
+      <style>
+        *{box-sizing:border-box}
+        body{
+          margin:0;
+          background:#07100b;
+          color:#eff6ef;
+          font-family:'Alegreya',serif;
+        }
+        .slide{
+          display:none;
+          position:absolute;
+          left:50%;
+          top:50%;
+          transform:translate(-50%,-50%);
+          width:min(92vw,1200px);
+          aspect-ratio:16/9;
+          overflow:hidden;
+          background:#edf2e9;
+          color:#182b1e;
+          padding:7%;
+          justify-content:center;
+          flex-direction:column;
+        }
+        .slide.active{display:flex}
+        .slide img{
+          position:absolute;
+          inset:0;
+          width:100%;
+          height:100%;
+          object-fit:cover;
+        }
+        .shade{
+          position:absolute;
+          inset:0;
+          background:linear-gradient(90deg,#07150bdd,#07150b66);
+        }
+        .text{
+          position:relative;
+          z-index:1;
+          max-width:85%;
+        }
+        h1{
+          font-size:clamp(30px,5vw,68px);
+          line-height:1.05;
+          margin:0 0 20px;
+          font-weight:600;
+        }
+        p{
+          font-size:clamp(16px,2vw,25px);
+          line-height:1.6;
+          white-space:pre-wrap;
+        }
+        .controls{
+          position:fixed;
+          bottom:18px;
+          left:0;
+          right:0;
+          display:flex;
+          justify-content:center;
+          gap:16px;
+          align-items:center;
+          color:#a8b6aa;
+          font-size:17px;
+        }
+        .controls button{
+          border:1px solid #304536;
+          border-radius:8px;
+          background:#132019;
+          color:#e0ece2;
+          padding:9px 15px;
+          font-family:'Alegreya',serif;
+          font-size:16px;
+        }
+      </style>
     </head>
-
     <body>
       ${slides}
 
@@ -2062,7 +1917,7 @@ function buildDeckHTML(deck) {
         const slides=[...document.querySelectorAll('.slide')];
         let i=0;
 
-        function draw() {
+        function draw(){
           slides.forEach((s,n)=>s.classList.toggle('active',n===i));
           document.querySelector('#count').textContent=(i+1)+' / '+slides.length;
         }
@@ -2078,45 +1933,42 @@ function buildDeckHTML(deck) {
         };
 
         document.addEventListener('keydown',e=>{
-          if(e.key==='ArrowRight') i=Math.min(slides.length-1,i+1);
-          if(e.key==='ArrowLeft') i=Math.max(0,i-1);
+          if(e.key==='ArrowRight')i=Math.min(slides.length-1,i+1);
+          if(e.key==='ArrowLeft')i=Math.max(0,i-1);
           draw();
         });
 
         draw();
       <\/script>
     </body>
-    </html>
-  `;
+    </html>`;
 }
 
-function openPresentation(deck) {
+function openPresentation(deck){
   const w=window.open('','_blank');
 
-  if(!w) {
+  if(!w){
     toast('Allow pop-ups to present your slides.');
     return;
   }
 
   w.document.open();
-  w.document.write(buildDeckHTML(deck));
+  w.document.write(presentationDocument(deck));
   w.document.close();
   w.focus();
 }
 
-function exportPresentation(deck) {
+function exportPresentation(deck){
   downloadFile(
     safeName(deck.title)+'.html',
-    buildDeckHTML(deck),
+    presentationDocument(deck),
     'text/html;charset=utf-8'
   );
 }
 
-/* SPREADSHEET EVENTS */
-
-function bindSpreadsheet() {
+function bindSpreadsheet(){
   const sh=activeSpreadsheet();
-  if(!sh) return;
+  if(!sh)return;
 
   $('#sheetTitle').oninput=e=>{
     sh.title=e.target.value;
@@ -2124,9 +1976,8 @@ function bindSpreadsheet() {
     saveSoon();
   };
 
-  function selectCell(addr) {
+  function selectCell(addr){
     selectedCell=addr;
-
     $('#cellName').textContent=addr;
 
     const p=parseAddress(addr);
@@ -2152,36 +2003,19 @@ function bindSpreadsheet() {
     });
 
     input.addEventListener('keydown',e=>{
-      if(e.key==='Enter') {
+      if(e.key==='Enter'){
         e.preventDefault();
         input.blur();
 
         const p=parseAddress(addr);
         const nextRow=Math.min(15,p.r+2);
-        const next=$(`[data-cell="${colName(p.c)+nextRow}"]`);
-        next?.focus();
-      }
-
-      if(e.key==='Tab') {
-        e.preventDefault();
-        const p=parseAddress(addr);
-        const nextCol=Math.min(9,p.c+1);
-        $(`[data-cell="${colName(nextCol)+(p.r+1)}"]`)?.focus();
+        $(`[data-cell="${colName(p.c)+nextRow}"]`)?.focus();
       }
     });
   });
 
-  function applyFormula() {
-    const p=parseAddress(selectedCell);
-
-    sh.cells[p.r][p.c]=$('#formulaInput').value;
-    sh.updated=Date.now();
-    saveNow();
-    render();
-  }
-
   $('#formulaInput').onkeydown=e=>{
-    if(e.key==='Enter') {
+    if(e.key==='Enter'){
       e.preventDefault();
       applyFormula();
     }
@@ -2189,8 +2023,16 @@ function bindSpreadsheet() {
 
   $('#applyFormula').onclick=applyFormula;
 
+  function applyFormula(){
+    const p=parseAddress(selectedCell);
+    sh.cells[p.r][p.c]=$('#formulaInput').value;
+    sh.updated=Date.now();
+    saveNow();
+    render();
+  }
+
   $('#clearSheet').onclick=()=>{
-    if(confirm('Clear all cells in this spreadsheet?')) {
+    if(confirm('Clear all cells in this spreadsheet?')){
       sh.cells=blankGrid();
       selectedCell='A1';
       saveNow();
@@ -2204,7 +2046,7 @@ function bindSpreadsheet() {
     const csv=sh.cells.map((row,r)=>
       row.map((_,c)=>{
         const v=String(cellValue(sh,r,c)??'');
-        return '"'+v.replace(/"/g,'""')+'"';
+        return'"'+v.replace(/"/g,'""')+'"';
       }).join(',')
     ).join('\r\n');
 
@@ -2218,7 +2060,7 @@ function bindSpreadsheet() {
   selectCell(selectedCell);
 }
 
-function refreshSheet(sh) {
+function refreshSheet(sh){
   $$('[data-cell]').forEach(input=>{
     const p=parseAddress(input.dataset.cell);
     const raw=String(cellRaw(sh,p.r,p.c));
@@ -2233,13 +2075,11 @@ function refreshSheet(sh) {
   });
 }
 
-/* SEARCH */
-
-function bindFileSearch(inputSelector,resultsSelector) {
+function bindFileSearch(inputSelector,resultsSelector){
   const input=$(inputSelector);
   const results=$(resultsSelector);
 
-  if(!input||!results) return;
+  if(!input||!results)return;
 
   const update=()=>{
     searchTerm=input.value.toLowerCase().trim();
@@ -2249,7 +2089,6 @@ function bindFileSearch(inputSelector,resultsSelector) {
     );
 
     results.innerHTML=fileRows(files);
-
     bindCommon();
   };
 
@@ -2257,22 +2096,18 @@ function bindFileSearch(inputSelector,resultsSelector) {
   update();
 }
 
-/* BACKUP */
-
-function exportBackup() {
+function exportBackup(){
   saveNow();
 
   downloadFile(
-    'clamme-backup.json',
+    'clamme-studio-backup.json',
     JSON.stringify(state,null,2),
     'application/json;charset=utf-8'
   );
-
-  toast('Backup exported');
 }
 
-function importBackup(file) {
-  if(file.size>15*1024*1024) {
+function importBackup(file){
+  if(file.size>15*1024*1024){
     toast('Backup is too large to import.');
     return;
   }
@@ -2282,61 +2117,55 @@ function importBackup(file) {
   reader.onerror=()=>toast('Could not read that backup.');
 
   reader.onload=()=>{
-    try {
+    try{
       const next=JSON.parse(reader.result);
 
-      if(!validState(next)) throw Error('Invalid backup');
+      if(!next||
+        !Array.isArray(next.documents)||
+        !Array.isArray(next.presentations)||
+        !Array.isArray(next.spreadsheets)){
+        throw new Error('Invalid backup');
+      }
 
-      if(!confirm(
-        'Import this backup? It replaces the workspace currently saved in this browser.'
-      )) return;
+      if(!confirm('Import this backup? It replaces the workspace currently saved in this browser.')){
+        return;
+      }
 
-      state={
-        ...initialState(),
-        ...next
-      };
+      state={...initialState(),...next};
 
-      selectedSlide=0;
-      selectedCell='A1';
       saveNow();
       render();
-      toast('Backup successfully imported');
-    } catch(e) {
-      toast('That file is not a valid Clamme backup.');
+      toast('Backup imported');
+    }catch(e){
+      toast('That file is not a valid Studio backup.');
     }
   };
 
   reader.readAsText(file);
 }
 
-/* KEYBOARD SHORTCUTS */
-
 document.addEventListener('keydown',e=>{
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s') {
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){
     e.preventDefault();
     saveNow();
     toast('Everything saved');
   }
 
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k') {
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){
     e.preventDefault();
     searchTerm='';
     setPage('search');
-    setTimeout(()=>$('#searchInput')?.focus(),50);
   }
 
-  if(e.key==='Escape') {
+  if(e.key==='Escape'){
     $('#sidebar').classList.remove('open');
   }
 });
 
-/* LIBRARY BACKUP */
-
-document.addEventListener('click',e=>{
-  if(e.target.closest('#backupLibrary')) exportBackup();
+window.addEventListener('beforeunload',()=>{
+  clearTimeout(saveTimer);
+  saveNow();
 });
-
-/* INITIALISE */
 
 render();
 
