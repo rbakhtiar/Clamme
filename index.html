@@ -3,668 +3,496 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07110b">
-<title>Clamme Studio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clamme Studio — Presentations</title>
 
 <style>
 :root {
-  --font:"Alegreya",serif;
-  --bg:#07110b;
-  --sidebar:#09140d;
-  --panel:#0d1b12;
-  --panel2:#12251a;
-  --panel3:#193324;
-  --border:rgba(195,222,197,.12);
-  --text:#edf5ed;
-  --muted:#91a493;
-  --accent:#49a875;
-  --accent2:#83d3a0;
-  --gold:#d6bd82;
-  --danger:#d77979;
-  --radius:15px;
-  --font-size:16px;
-  --density:17px;
+  --bg: #f4f6f3;
+  --panel: #ffffff;
+  --text: #19231e;
+  --muted: #7b8980;
+  --accent: #087e59;
+  --border: #e4e9e5;
+  --slide-bg: #ffffff;
 }
 
 * {
-  box-sizing:border-box;
-  font-family:var(--font)!important;
-}
-
-html,body {
-  margin:0;
-  min-height:100%;
-  background:var(--bg);
-  color:var(--text);
-  font-size:var(--font-size);
+  box-sizing: border-box;
 }
 
 body {
-  background:
-    radial-gradient(ellipse at 15% 0%,rgba(36,100,60,.16),transparent 40%),
-    var(--bg);
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-button,input,textarea,select {
-  font:inherit;
-  color:inherit;
+button, input, select {
+  font: inherit;
 }
 
-button {cursor:pointer}
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-[contenteditable]:focus-visible {
-  outline:2px solid var(--accent2);
-  outline-offset:2px;
-}
-
-button:disabled {
-  opacity:.4;
-  cursor:not-allowed;
+button {
+  cursor: pointer;
 }
 
 .app {
-  display:flex;
-  min-height:100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar {
-  width:250px;
-  min-width:250px;
-  background:var(--sidebar);
-  border-right:1px solid var(--border);
-  padding:23px 15px;
-  display:flex;
-  flex-direction:column;
-  gap:25px;
-  transition:.25s;
-  overflow:hidden;
-}
+/* HEADER */
 
-.app.collapsed .sidebar {
-  width:0;
-  min-width:0;
-  padding:0;
-  opacity:0;
-  border:0;
+.header {
+  height: 66px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 12px;
 }
 
 .brand {
-  padding:4px 12px 20px;
-  border-bottom:1px solid var(--border);
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
-.brand-name {
-  font-size:31px;
-  font-weight:900;
-  letter-spacing:-1px;
+.brand span {
+  color: var(--accent);
 }
 
-.brand-name span {color:var(--accent2)}
-
-.brand-sub {
-  color:var(--muted);
-  font-size:13px;
-}
-
-.side-label {
-  color:var(--muted);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  padding:0 12px 9px;
-}
-
-.nav {
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.nav button {
-  border:1px solid transparent;
-  background:transparent;
-  color:var(--muted);
-  text-align:left;
-  padding:11px 13px;
-  border-radius:10px;
-  transition:.2s;
-  white-space:nowrap;
-}
-
-.nav button:hover {
-  background:var(--panel2);
-  color:var(--text);
-}
-
-.nav button.active {
-  color:var(--accent2);
-  background:linear-gradient(100deg,rgba(73,168,117,.2),transparent);
-  border-color:rgba(73,168,117,.22);
-}
-
-.nav-icon {
-  display:inline-block;
-  width:24px;
-  color:var(--gold);
-}
-
-.sidebar-bottom {
-  margin-top:auto;
-  padding:16px 12px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:13px;
-}
-
-.main {
-  flex:1;
-  min-width:0;
-  padding:25px clamp(14px,4vw,45px);
-}
-
-.topbar {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:36px;
-}
-
-.top-left,.top-actions {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  flex-wrap:wrap;
-}
-
-.breadcrumb {
-  color:var(--muted);
-  font-size:14px;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .btn {
-  background:var(--panel2);
-  border:1px solid var(--border);
-  padding:9px 14px;
-  border-radius:10px;
-  transition:.2s;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: white;
+  color: var(--text);
+  font-size: 13px;
 }
 
 .btn:hover {
-  background:var(--panel3);
-  border-color:var(--accent);
+  background: #f1f5f2;
 }
 
 .btn.primary {
-  background:linear-gradient(135deg,#267447,#398d5c);
-  border-color:#46996a;
-  color:white;
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
 }
 
-.btn.gold {
-  color:var(--gold);
-  border-color:rgba(214,189,130,.3);
+.btn.primary:hover {
+  opacity: .9;
 }
 
-.btn.danger {color:var(--danger)}
-
-#sidebarToggle {
-  font-size:20px;
-  min-width:43px;
-}
-
-h1 {
-  font-size:clamp(30px,4vw,43px);
-  line-height:1.1;
-  margin:0 0 9px;
-  font-weight:900;
-}
-
-h2 {
-  font-size:23px;
-  margin:0;
-}
-
-h3 {
-  font-size:18px;
-  margin:0;
-}
-
-.subtitle {
-  color:var(--muted);
-  margin:0 0 28px;
-}
-
-.section {display:none}
-.section.active {
-  display:block;
-  animation:appear .22s ease;
-}
-
-@keyframes appear {
-  from {opacity:0;transform:translateY(5px)}
-  to {opacity:1;transform:translateY(0)}
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:15px;
-}
-
-.card {
-  background:linear-gradient(145deg,var(--panel2),var(--panel));
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:20px;
-  min-width:0;
-}
-
-.stat {
-  color:var(--accent2);
-  font-size:34px;
-  font-weight:900;
-  margin:9px 0 2px;
-}
-
-.muted {color:var(--muted)}
-
-.heading-row {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:30px 0 15px;
-}
-
-.quick-card {
-  cursor:pointer;
-  transition:.2s;
-}
-
-.quick-card:hover {
-  transform:translateY(-3px);
-  border-color:var(--accent);
-}
-
-.quick-icon {
-  font-size:25px;
-  color:var(--gold);
-  margin-bottom:12px;
-}
-
-.quick-card p {
-  color:var(--muted);
-  font-size:14px;
-}
+/* WORKSPACE */
 
 .workspace {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
+  display: grid;
+  grid-template-columns: 215px minmax(0, 1fr) 235px;
+  flex: 1;
+  min-height: calc(100vh - 66px);
 }
 
-.toolbar {
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  padding:12px;
-  background:var(--panel2);
-  border-bottom:1px solid var(--border);
+/* SIDEBAR */
+
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 18px 13px;
+  overflow-y: auto;
 }
 
-.toolbar button,.toolbar select {
-  background:var(--panel3);
-  border:1px solid var(--border);
-  border-radius:7px;
-  padding:6px 10px;
-}
-
-.toolbar button:hover {border-color:var(--accent)}
-
-.editor-title {
-  width:100%;
-  padding:19px 23px;
-  border:0;
-  border-bottom:1px solid var(--border);
-  background:transparent;
-  font-size:27px;
-  font-weight:800;
-  outline:none;
-}
-
-.editor {
-  min-height:450px;
-  padding:26px;
-  outline:none;
-  font-size:19px;
-  line-height:1.8;
-  overflow-wrap:anywhere;
-}
-
-.editor:empty:before {
-  content:"Start writing something wonderful...";
-  color:var(--muted);
-  pointer-events:none;
-}
-
-.editor img {
-  max-width:100%;
-  border-radius:10px;
-}
-
-.editor table {
-  border-collapse:collapse;
-  width:100%;
-}
-
-.editor td,.editor th {
-  border:1px solid var(--border);
-  padding:9px;
-}
-
-.statusbar {
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 15px;
-  background:var(--panel2);
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:13px;
-}
-
-input,textarea,select {
-  background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:10px 12px;
-  outline:none;
-  max-width:100%;
-}
-
-input:focus,textarea:focus,select:focus {
-  border-color:var(--accent);
-}
-
-.field {
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  margin-bottom:15px;
-}
-
-.field label {
-  color:var(--muted);
-  font-size:14px;
-}
-
-.slide-stage {
-  min-height:420px;
-  background:var(--bg);
-  display:grid;
-  place-items:center;
-  padding:25px;
-}
-
-.slide {
-  width:min(100%,750px);
-  aspect-ratio:16/9;
-  background:linear-gradient(135deg,#193c29,#07110b);
-  border:1px solid rgba(214,189,130,.3);
-  border-radius:12px;
-  padding:45px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  overflow:hidden;
-  position:relative;
-}
-
-.slide h1 {
-  font-size:clamp(25px,5vw,49px);
-  color:#f1e7cb;
-}
-
-.slide p {
-  font-size:20px;
-  color:#c6d7c9;
-}
-
-.slide-controls {
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
+.section-label {
+  font-family: Arial, sans-serif;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin: 5px 0 15px;
 }
 
 .slide-list {
-  display:flex;
-  gap:9px;
-  overflow:auto;
-  padding:14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .slide-thumb {
-  min-width:110px;
-  padding:14px;
-  background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:9px;
-  cursor:pointer;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  overflow: hidden;
+  background: white;
+  cursor: pointer;
+  position: relative;
 }
 
 .slide-thumb.active {
-  border-color:var(--accent);
+  border-color: var(--accent);
 }
 
-.sheet-wrap {overflow:auto}
-
-.sheet {
-  border-collapse:collapse;
-  min-width:650px;
-  width:100%;
+.thumb-content {
+  aspect-ratio: 16 / 9;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  color: var(--text);
 }
 
-.sheet th,.sheet td {
-  border:1px solid var(--border);
-  min-width:105px;
-  height:39px;
-  padding:7px;
-  text-align:left;
+.thumb-content strong {
+  font-size: 11px;
+  overflow: hidden;
 }
 
-.sheet th {
-  background:var(--panel2);
-  color:var(--muted);
+.thumb-content small {
+  font-size: 8px;
+  margin-top: 5px;
 }
 
-.sheet td {background:rgba(255,255,255,.015)}
-
-.sheet td:focus {
-  outline:2px solid var(--accent);
-  outline-offset:-2px;
+.thumb-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.file-list {
-  display:flex;
-  flex-direction:column;
-  gap:9px;
+.thumb-number {
+  font-family: Arial, sans-serif;
+  padding: 5px 8px;
+  font-size: 10px;
+  color: var(--muted);
 }
 
-.file-row {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:14px;
-  background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:10px;
+/* EDITOR */
+
+.editor {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.file-row>div:first-child {min-width:0}
-.file-row strong {overflow-wrap:anywhere}
-
-.file-actions {
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.settings-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.color-options {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.slide-counter {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
 }
 
-.color-choice {
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  border:2px solid transparent;
-  cursor:pointer;
+.canvas-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 250px;
+  perspective: 1100px;
+  overflow: hidden;
 }
 
-.color-choice.active {
-  outline:2px solid var(--text);
-  outline-offset:3px;
+.canvas {
+  position: relative;
+  width: min(100%, 950px);
+  aspect-ratio: 16 / 9;
+  background: var(--slide-bg);
+  box-shadow: 0 8px 35px rgba(20, 40, 25, .10);
+  overflow: hidden;
+  transform-style: preserve-3d;
 }
 
-.toast {
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  background:var(--panel3);
-  border:1px solid var(--accent);
-  padding:12px 18px;
-  border-radius:10px;
-  box-shadow:0 10px 40px #0008;
-  opacity:0;
-  transform:translateY(10px);
-  pointer-events:none;
-  transition:.25s;
-  z-index:30;
+.slide-content {
+  width: 100%;
+  height: 100%;
+  padding: 9%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
-.toast.show {
-  opacity:1;
-  transform:translateY(0);
+.slide-title {
+  font-size: clamp(20px, 4vw, 48px);
+  font-weight: bold;
+  outline: none;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  word-break: break-word;
 }
 
-.modal-backdrop {
-  position:fixed;
-  inset:0;
-  background:#000a;
-  display:none;
-  place-items:center;
-  z-index:40;
-  padding:15px;
+.slide-body {
+  font-size: clamp(12px, 1.7vw, 20px);
+  line-height: 1.65;
+  outline: none;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
-.modal-backdrop.show {display:grid}
-
-.modal {
-  width:min(100%,430px);
-  padding:24px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  box-shadow:0 20px 70px #0009;
+.slide-image {
+  max-width: 100%;
+  max-height: 48%;
+  object-fit: contain;
+  margin: 0 auto 18px;
+  display: none;
 }
 
-.modal h2 {margin-bottom:18px}
-
-.modal input {
-  width:100%;
-  margin-bottom:12px;
+.slide-image.visible {
+  display: block;
 }
 
-.search-box {
-  width:min(250px,100%);
+.canvas.has-image .slide-content {
+  padding: 5%;
 }
 
-.empty {
-  color:var(--muted);
-  padding:20px;
-  text-align:center;
+.canvas.has-image .slide-title {
+  font-size: clamp(17px, 3vw, 34px);
+  margin-bottom: 8px;
 }
 
-@media(max-width:750px) {
-  .app {display:block}
+.canvas.has-image .slide-body {
+  font-size: clamp(11px, 1.3vw, 16px);
+}
 
+/* TRANSITIONS */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(.75); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes flipIn {
+  from { transform: rotateY(75deg); opacity: 0; }
+  to { transform: rotateY(0); opacity: 1; }
+}
+
+@keyframes cubeIn {
+  from {
+    transform: rotateY(-85deg) scale(.8);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.transition-fade { animation: fadeIn .45s ease; }
+.transition-slide { animation: slideIn .45s ease; }
+.transition-zoom { animation: zoomIn .45s ease; }
+.transition-flip { animation: flipIn .55s ease; }
+.transition-cube { animation: cubeIn .65s ease; }
+
+/* RIGHT PANEL */
+
+.inspector {
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  padding: 20px 15px;
+  overflow-y: auto;
+}
+
+.inspector-section {
+  margin-bottom: 28px;
+}
+
+.inspector h3 {
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.field-label {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+select, .text-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.theme-option {
+  border: 2px solid var(--border);
+  border-radius: 7px;
+  padding: 5px;
+  background: white;
+}
+
+.theme-option.active {
+  border-color: var(--accent);
+}
+
+.theme-preview {
+  height: 47px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.theme-option small {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+}
+
+.upload-box {
+  border: 1px dashed #b8c6bb;
+  padding: 15px 8px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.upload-box:hover {
+  border-color: var(--accent);
+}
+
+#imageInput {
+  display: none;
+}
+
+.status {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* PRESENTATION MODE */
+
+.presentation {
+  position: fixed;
+  inset: 0;
+  background: #101712;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+}
+
+.presentation.active {
+  display: flex;
+}
+
+.presentation .canvas {
+  width: min(100%, 1250px);
+  box-shadow: none;
+}
+
+.present-controls {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.present-controls button {
+  background: #24342b;
+  border: 1px solid #405548;
+  color: white;
+  padding: 9px 15px;
+  border-radius: 5px;
+}
+
+.present-controls span {
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.close-presentation {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+@media(max-width: 950px) {
+  .workspace {
+    grid-template-columns: 145px minmax(0, 1fr);
+  }
+  .inspector {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .theme-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .header {
+    padding: 0 12px;
+  }
+  .workspace {
+    grid-template-columns: 105px minmax(0, 1fr);
+  }
+  .editor {
+    padding: 12px;
+  }
   .sidebar {
-    width:100%;
-    min-width:0;
-    min-height:auto;
-    padding:12px;
-    gap:12px;
+    padding: 12px 7px;
   }
-
-  .app.collapsed .sidebar {
-    height:0;
-    min-height:0;
-    padding:0;
+  .btn {
+    padding: 8px;
+    font-size: 11px;
   }
-
-  .brand {
-    padding:5px 8px;
-    border:0;
+  .inspector {
+    padding: 15px;
   }
-
-  .brand-name {font-size:25px}
-
-  .nav {
-    flex-direction:row;
-    overflow-x:auto;
-  }
-
-  .nav button {
-    padding:9px 12px;
-    font-size:14px;
-  }
-
-  .side-label,.sidebar-bottom {display:none}
-
-  .main {padding:18px 13px}
-
-  .topbar {align-items:flex-start}
-
-  .editor {padding:17px}
-
-  .slide {padding:23px}
-
-  .file-row {
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .top-actions {justify-content:flex-start}
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important;
+  .theme-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>
@@ -672,1780 +500,718 @@ input:focus,textarea:focus,select:focus {
 
 <body>
 
-<div class="app" id="app">
+<div class="app">
 
-<aside class="sidebar">
+<header class="header">
+  <div class="brand">clamme<span>.</span></div>
 
-  <div class="brand">
-    <div class="brand-name">Clamme<span>.</span></div>
-    <div class="brand-sub">Studio workspace</div>
-  </div>
-
-  <div>
-    <div class="side-label">Workspace</div>
-    <nav class="nav">
-      <button class="active" data-page="home"><span class="nav-icon">⌂</span>Overview</button>
-      <button data-page="docs"><span class="nav-icon">▤</span>Documents</button>
-      <button data-page="slides"><span class="nav-icon">▣</span>Presentations</button>
-      <button data-page="sheets"><span class="nav-icon">▦</span>Spreadsheets</button>
-      <button data-page="files"><span class="nav-icon">▧</span>My files</button>
-    </nav>
-  </div>
-
-  <div>
-    <div class="side-label">Preferences</div>
-    <nav class="nav">
-      <button data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
-    </nav>
-  </div>
-
-  <div class="sidebar-bottom">
-    Clamme Studio<br>
-    <span style="color:var(--accent2)">A quieter way to create.</span>
-    <div style="margin-top:9px">Version 3.0</div>
-  </div>
-
-</aside>
-
-<main class="main">
-
-<header class="topbar">
-  <div class="top-left">
-    <button class="btn" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
-    <div class="breadcrumb" id="breadcrumb">Workspace / Overview</div>
-  </div>
-
-  <div class="top-actions">
-    <input class="search-box" id="globalSearch" placeholder="Search workspace..." aria-label="Search workspace">
-    <button class="btn" id="backupBtn">Backup</button>
-    <button class="btn primary" id="newBtn">+ Create</button>
+  <div class="header-actions">
+    <span class="status" id="saveStatus">All changes saved</span>
+    <button class="btn" onclick="exportPresentation()">Export HTML</button>
+    <button class="btn primary" onclick="startPresentation()">Present</button>
   </div>
 </header>
 
-<!-- DASHBOARD -->
+<div class="workspace">
 
-<section class="section active" id="home">
-
-  <h1>Good work begins here.</h1>
-  <p class="subtitle">Your ideas, documents and projects. All in one place.</p>
-
-  <div class="grid">
-
-    <div class="card">
-      <div class="muted">Documents</div>
-      <div class="stat" id="docCount">0</div>
-      <div class="muted">Written projects</div>
-    </div>
-
-    <div class="card">
-      <div class="muted">Presentations</div>
-      <div class="stat" id="slideCount">0</div>
-      <div class="muted">Visual projects</div>
-    </div>
-
-    <div class="card">
-      <div class="muted">Spreadsheets</div>
-      <div class="stat" id="sheetCount">0</div>
-      <div class="muted">Organised data</div>
-    </div>
-
-    <div class="card">
-      <div class="muted">Total projects</div>
-      <div class="stat" id="totalCount">0</div>
-      <div class="muted">Your workspace</div>
-    </div>
-
-  </div>
-
-  <div class="heading-row">
-    <h2>Create something</h2>
-  </div>
-
-  <div class="grid">
-
-    <div class="card quick-card" data-create="doc">
-      <div class="quick-icon">▤</div>
-      <h3>New document</h3>
-      <p>Write, edit and organise your ideas.</p>
-    </div>
-
-    <div class="card quick-card" data-create="slide">
-      <div class="quick-icon">▣</div>
-      <h3>New presentation</h3>
-      <p>Build visual stories and presentations.</p>
-    </div>
-
-    <div class="card quick-card" data-create="sheet">
-      <div class="quick-icon">▦</div>
-      <h3>New spreadsheet</h3>
-      <p>Manage information and calculations.</p>
-    </div>
-
-  </div>
-
-  <div class="heading-row">
-    <h2>Recently modified</h2>
-    <button class="btn" data-page="files">View all</button>
-  </div>
-
-  <div class="file-list" id="recentFiles"></div>
-
-</section>
-
-<!-- DOCUMENTS -->
-
-<section class="section" id="docs">
-
-  <h1>Documents</h1>
-  <p class="subtitle">A refined environment for your writing.</p>
-
-  <div class="workspace">
-
-    <div class="toolbar">
-
-      <button data-command="bold"><b>B</b></button>
-      <button data-command="italic"><i>I</i></button>
-      <button data-command="underline"><u>U</u></button>
-
-      <select id="formatSelect">
-        <option value="p">Normal text</option>
-        <option value="h1">Heading 1</option>
-        <option value="h2">Heading 2</option>
-        <option value="h3">Heading 3</option>
-        <option value="blockquote">Quote</option>
-      </select>
-
-      <select id="fontSize">
-        <option value="3">Normal size</option>
-        <option value="2">Small</option>
-        <option value="4">Large</option>
-        <option value="5">Extra large</option>
-        <option value="6">Huge</option>
-      </select>
-
-      <button data-command="justifyLeft">Left</button>
-      <button data-command="justifyCenter">Center</button>
-      <button data-command="justifyRight">Right</button>
-
-      <button data-command="insertUnorderedList">Bullet list</button>
-      <button data-command="insertOrderedList">Numbered list</button>
-
-      <button id="linkBtn">Insert link</button>
-      <button id="tableBtn">Insert table</button>
-      <button id="imageBtn">Insert image</button>
-
-      <button id="clearFormat">Clear formatting</button>
-      <button id="exportDoc" class="btn gold">Export HTML</button>
-
-    </div>
-
-    <input class="editor-title" id="docTitle" placeholder="Untitled document">
-
-    <div
-      class="editor"
-      id="docEditor"
-      contenteditable="true"
-      spellcheck="true"
-      lang="en"
-    ></div>
-
-    <div class="statusbar">
-      <span id="wordCount">0 words</span>
-      <span id="charCount">0 characters</span>
-      <span id="saveStatus">All changes saved</span>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- PRESENTATIONS -->
-
-<section class="section" id="slides">
-
-  <h1>Presentations</h1>
-  <p class="subtitle">Create and present your ideas.</p>
-
-  <div class="card">
-
-    <div class="field">
-      <label>Presentation name</label>
-      <input id="presentationTitle" value="Untitled presentation">
-    </div>
-
-    <div class="field">
-      <label>Presentation theme</label>
-      <select id="slideTheme">
-        <option value="emerald">Emerald</option>
-        <option value="midnight">Midnight</option>
-        <option value="gold">Champagne</option>
-        <option value="light">Minimal light</option>
-      </select>
-    </div>
-
-    <div class="slide-stage">
-
-      <div class="slide" id="slideCanvas">
-
-        <h1 id="slideHeading" contenteditable="true" spellcheck="true">Your next big idea.</h1>
-
-        <p id="slideText" contenteditable="true" spellcheck="true">A presentation made with Clamme Studio.</p>
-
-      </div>
-
-    </div>
-
-    <div class="slide-controls">
-
-      <div>
-        <button class="btn" id="prevSlide">Previous</button>
-        <button class="btn" id="nextSlide">Next</button>
-      </div>
-
-      <div>
-        <span class="muted" id="slideNumber">Slide 1 of 1</span>
-        <button class="btn primary" id="addSlide">+ Add slide</button>
-      </div>
-
-    </div>
+  <aside class="sidebar">
+    <div class="section-label">SLIDES</div>
 
     <div class="slide-list" id="slideList"></div>
 
-    <div class="slide-controls">
-      <button class="btn gold" id="exportSlides">Export presentation</button>
-      <button class="btn" id="presentBtn">Fullscreen presentation</button>
-      <button class="btn danger" id="deleteSlide">Delete slide</button>
-    </div>
+    <button class="btn primary" style="width:100%;margin-top:15px"
+      onclick="addSlide()">+ New slide</button>
+  </aside>
 
-  </div>
+  <main class="editor">
 
-</section>
-
-<!-- SPREADSHEETS -->
-
-<section class="section" id="sheets">
-
-  <h1>Spreadsheets</h1>
-  <p class="subtitle">Organise your information and calculate values.</p>
-
-  <div class="card">
-
-    <div class="top-actions" style="margin-bottom:15px">
-
-      <input id="sheetTitle" value="Untitled spreadsheet">
-
-      <button class="btn" id="addRow">+ Row</button>
-      <button class="btn" id="addColumn">+ Column</button>
-      <button class="btn" id="calculateSheet">Calculate</button>
-      <button class="btn gold" id="exportCSV">Export CSV</button>
-
-    </div>
-
-    <div class="sheet-wrap">
-      <table class="sheet" id="sheetTable"></table>
-    </div>
-
-    <p class="muted" style="font-size:13px">
-      Formulas: =A1+B1, =A1*2, =A1/B1, =(A1+B1)*2
-    </p>
-
-    <div id="formulaStatus" class="muted"></div>
-
-  </div>
-
-</section>
-
-<!-- FILE MANAGER -->
-
-<section class="section" id="files">
-
-  <h1>My files</h1>
-  <p class="subtitle">Your complete creative workspace.</p>
-
-  <div class="top-actions" style="margin-bottom:18px">
-
-    <input id="fileSearch" placeholder="Find a file...">
-
-    <select id="fileFilter">
-      <option value="all">All files</option>
-      <option value="doc">Documents</option>
-      <option value="slide">Presentations</option>
-      <option value="sheet">Spreadsheets</option>
-    </select>
-
-    <select id="fileSort">
-      <option value="newest">Newest first</option>
-      <option value="oldest">Oldest first</option>
-      <option value="name">Name</option>
-    </select>
-
-  </div>
-
-  <div class="file-list" id="allFiles"></div>
-
-</section>
-
-<!-- SETTINGS -->
-
-<section class="section" id="settings">
-
-  <h1>Settings</h1>
-  <p class="subtitle">Configure your Clamme experience.</p>
-
-  <div class="settings-grid">
-
-    <div class="card">
-
-      <h2>Appearance</h2>
-      <p class="muted">Choose your interface appearance.</p>
-
-      <div class="field">
-        <label>Theme</label>
-        <select id="themeSetting">
-          <option value="dark">Dark emerald</option>
-          <option value="light">Light</option>
-          <option value="black">Pure black</option>
-        </select>
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="btn" onclick="addSlide()">+ Slide</button>
+        <button class="btn" onclick="duplicateSlide()">Duplicate</button>
+        <button class="btn" onclick="deleteSlide()">Delete</button>
       </div>
 
-      <div class="field">
-        <label>Accent colour</label>
-        <div class="color-options" id="colorOptions">
+      <div class="toolbar-right">
+        <span class="slide-counter" id="slideCounter">1 / 1</span>
+        <button class="btn" onclick="previousSlide()">Previous</button>
+        <button class="btn" onclick="nextSlide()">Next</button>
+      </div>
+    </div>
 
-          <button class="color-choice" data-color="#49a875" style="background:#49a875" aria-label="Emerald"></button>
-          <button class="color-choice" data-color="#3d9cba" style="background:#3d9cba" aria-label="Ocean"></button>
-          <button class="color-choice" data-color="#9274ce" style="background:#9274ce" aria-label="Violet"></button>
-          <button class="color-choice" data-color="#c49b53" style="background:#c49b53" aria-label="Gold"></button>
-          <button class="color-choice" data-color="#bd718e" style="background:#bd718e" aria-label="Rose"></button>
-          <button class="color-choice" data-color="#9caa69" style="background:#9caa69" aria-label="Olive"></button>
+    <div class="canvas-wrap">
+      <div class="canvas" id="canvas">
+
+        <div class="slide-content">
+
+          <img id="slideImage" class="slide-image" alt="Slide image">
+
+          <div class="slide-title"
+            id="slideTitle"
+            contenteditable="true"
+            spellcheck="false"
+            oninput="updateSlideText()">
+            Welcome to Clamme
+          </div>
+
+          <div class="slide-body"
+            id="slideBody"
+            contenteditable="true"
+            spellcheck="false"
+            oninput="updateSlideText()">A quieter way to create.
+
+Build your ideas into something meaningful.</div>
 
         </div>
       </div>
-
-      <div class="field">
-        <label>Interface font size</label>
-        <select id="fontSetting">
-          <option value="14px">Small</option>
-          <option value="16px">Normal</option>
-          <option value="18px">Large</option>
-          <option value="20px">Extra large</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Corner radius</label>
-        <input type="range" min="0" max="25" value="15" id="radiusSetting">
-      </div>
-
     </div>
 
-    <div class="card">
+  </main>
 
-      <h2>Editor preferences</h2>
-      <p class="muted">Configure your writing experience.</p>
+  <aside class="inspector">
 
-      <div class="field">
-        <label>Spelling correction</label>
-        <select id="spellSetting">
-          <option value="true">Enabled</option>
-          <option value="false">Disabled</option>
-        </select>
-      </div>
+    <section class="inspector-section">
+      <h3>Slide settings</h3>
 
-      <div class="field">
-        <label>Editor language</label>
-        <select id="languageSetting">
-          <option value="en">English</option>
-          <option value="en-GB">English (UK)</option>
-          <option value="en-US">English (US)</option>
-        </select>
-      </div>
+      <label class="field-label">Transition</label>
 
-      <div class="field">
-        <label>Editor minimum height</label>
-        <select id="editorHeight">
-          <option value="350px">Compact</option>
-          <option value="450px">Normal</option>
-          <option value="600px">Large</option>
-          <option value="800px">Extra large</option>
-        </select>
-      </div>
+      <select id="transitionSelect" onchange="changeTransition()">
+        <option value="fade">Fade</option>
+        <option value="cube">Cube</option>
+        <option value="slide">Slide</option>
+        <option value="zoom">Zoom</option>
+        <option value="flip">Flip</option>
+        <option value="none">None</option>
+      </select>
 
-      <button class="btn primary" id="saveSettings">Apply preferences</button>
+      <label class="field-label">Image</label>
 
-    </div>
+      <label class="upload-box" for="imageInput">
+        Add image to this slide
+      </label>
 
-    <div class="card">
+      <input type="file" id="imageInput" accept="image/*"
+        onchange="uploadImage(event)">
 
-      <h2>Data management</h2>
-      <p class="muted">Keep control over your workspace.</p>
+      <button class="btn" style="width:100%;margin-top:9px"
+        onclick="removeImage()">Remove image</button>
+    </section>
 
-      <button class="btn" id="settingsBackup">Export backup</button>
-      <button class="btn" id="importBackup">Restore backup</button>
+    <section class="inspector-section">
+      <h3>Presentation themes</h3>
 
-      <input type="file" id="backupFile" accept=".json,application/json" hidden>
+      <div class="theme-grid" id="themeGrid"></div>
+    </section>
 
-      <hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
+    <section class="inspector-section">
+      <h3>Slide actions</h3>
 
-      <h3>Storage</h3>
-      <p class="muted" id="storageInfo">Calculating storage...</p>
+      <button class="btn" style="width:100%;margin-bottom:8px"
+        onclick="moveSlide(-1)">Move slide up</button>
 
-      <button class="btn danger" id="clearWorkspace">Delete all workspace data</button>
+      <button class="btn" style="width:100%"
+        onclick="moveSlide(1)">Move slide down</button>
+    </section>
 
-    </div>
+  </aside>
 
-    <div class="card">
-
-      <h2>Keyboard shortcuts</h2>
-
-      <div class="file-list" style="margin-top:15px">
-
-        <div class="file-row"><span>Save document</span><strong>Ctrl + S</strong></div>
-        <div class="file-row"><span>New document</span><strong>Ctrl + Alt + N</strong></div>
-        <div class="file-row"><span>Search workspace</span><strong>Ctrl + K</strong></div>
-        <div class="file-row"><span>Bold text</span><strong>Ctrl + B</strong></div>
-        <div class="file-row"><span>Italic text</span><strong>Ctrl + I</strong></div>
-        <div class="file-row"><span>Underline text</span><strong>Ctrl + U</strong></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
+</div>
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- PRESENTATION -->
 
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <h2 id="modalTitle">Create something</h2>
-    <div id="modalContent"></div>
-    <div class="top-actions">
-      <button class="btn" id="modalCancel">Cancel</button>
-      <button class="btn primary" id="modalConfirm">Continue</button>
+<div class="presentation" id="presentation">
+
+  <button class="present-controls close-presentation"
+    onclick="stopPresentation()">Exit presentation</button>
+
+  <div class="canvas" id="presentationCanvas">
+    <div class="slide-content">
+      <img id="presentationImage" class="slide-image" alt="">
+      <div class="slide-title" id="presentationTitle"></div>
+      <div class="slide-body" id="presentationBody"></div>
     </div>
   </div>
+
+  <div class="present-controls">
+    <button onclick="previousSlide()">Previous</button>
+    <span id="presentationCounter">1 / 1</span>
+    <button onclick="nextSlide()">Next</button>
+  </div>
+
 </div>
 
 <script>
-"use strict";
 
-/* CORE */
+/* DATA */
 
-const $ = s => document.querySelector(s);
-
-const STORAGE_KEY = "clamme_studio_v3";
-const SETTINGS_KEY = "clamme_studio_preferences_v3";
-
-const defaults = {
-  docs:[],
-  slides:[],
-  sheets:[]
+const defaultSlide = {
+  title: "Welcome to Clamme",
+  body: "A quieter way to create.\n\nBuild your ideas into something meaningful.",
+  image: null,
+  transition: "fade",
+  theme: "classic"
 };
 
-function safeParse(value,fallback) {
-  try {
-    const result = JSON.parse(value);
-    return result ?? fallback;
-  } catch {
-    return fallback;
-  }
-}
+let slides = [
+  structuredClone(defaultSlide)
+];
 
-let data = safeParse(localStorage.getItem(STORAGE_KEY),defaults);
-
-if (
-  !data ||
-  !Array.isArray(data.docs) ||
-  !Array.isArray(data.slides) ||
-  !Array.isArray(data.sheets)
-) data = structuredClone(defaults);
-
-let settings = {
-  theme:"dark",
-  accent:"#49a875",
-  fontSize:"16px",
-  radius:15,
-  spellcheck:true,
-  language:"en",
-  editorHeight:"450px",
-  ...safeParse(localStorage.getItem(SETTINGS_KEY),{})
-};
-
-let activeDocId = null;
-let activePresentationId = null;
-let activeSheetId = null;
 let currentSlide = 0;
 
-function uid() {
-  return Date.now().toString(36)+Math.random().toString(36).slice(2,9);
-}
+let themes = {
+  classic: {
+    name: "Classic",
+    bg: "#ffffff",
+    color: "#19231e",
+    accent: "#087e59"
+  },
+
+  emerald: {
+    name: "Emerald",
+    bg: "#102d23",
+    color: "#f1f5ee",
+    accent: "#63b994"
+  },
+
+  midnight: {
+    name: "Midnight",
+    bg: "#151a28",
+    color: "#f2f3f7",
+    accent: "#a7b8e8"
+  },
+
+  paper: {
+    name: "Paper",
+    bg: "#f2eadb",
+    color: "#392f26",
+    accent: "#936d42"
+  },
+
+  forest: {
+    name: "Forest",
+    bg: "#20372b",
+    color: "#f0f2e8",
+    accent: "#b4c8a7"
+  },
+
+  minimal: {
+    name: "Minimal",
+    bg: "#f6f6f6",
+    color: "#242424",
+    accent: "#555555"
+  },
+
+  ocean: {
+    name: "Ocean",
+    bg: "#e6f0f2",
+    color: "#183b47",
+    accent: "#347d91"
+  },
+
+  charcoal: {
+    name: "Charcoal",
+    bg: "#252525",
+    color: "#f5f5f5",
+    accent: "#c7a76b"
+  }
+};
+
+let activeTheme = "classic";
+
+const STORAGE_KEY = "clamme-presentation-v1";
+
+/* STORAGE */
 
 function saveData() {
   try {
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-    $("#saveStatus").textContent="All changes saved";
-    updateDashboard();
-    updateStorage();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      slides,
+      currentSlide,
+      activeTheme
+    }));
+
+    document.getElementById("saveStatus").textContent =
+      "All changes saved";
   } catch(error) {
-    $("#saveStatus").textContent="Storage limit reached";
-    notify("Storage is full. Export a backup.");
+    document.getElementById("saveStatus").textContent =
+      "Storage full — export your presentation";
   }
 }
 
-function saveSettings() {
-  localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));
-}
-
-function notify(message) {
-  const toast=$("#toast");
-  toast.textContent=message;
-  toast.classList.add("show");
-  clearTimeout(notify.timer);
-  notify.timer=setTimeout(()=>toast.classList.remove("show"),2600);
-}
-
-function downloadFile(name,content,type) {
-  const blob=new Blob([content],{type});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download=name;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-
-function filename(name) {
-  return String(name||"clamme-file")
-    .replace(/[^\w-]+/g,"-")
-    .slice(0,60)||"clamme-file";
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  })[c]);
-}
-
-/* NAVIGATION */
-
-function navigate(page) {
-  document.querySelectorAll(".section").forEach(section=>{
-    section.classList.toggle("active",section.id===page);
-  });
-
-  document.querySelectorAll(".nav button").forEach(button=>{
-    button.classList.toggle("active",button.dataset.page===page);
-  });
-
-  const names={
-    home:"Overview",
-    docs:"Documents",
-    slides:"Presentations",
-    sheets:"Spreadsheets",
-    files:"My files",
-    settings:"Settings"
-  };
-
-  $("#breadcrumb").textContent="Workspace / "+(names[page]||page);
-
-  if(page==="files") renderFiles();
-}
-
-document.querySelectorAll("[data-page]").forEach(button=>{
-  button.addEventListener("click",()=>navigate(button.dataset.page));
-});
-
-$("#sidebarToggle").addEventListener("click",()=>{
-  $("#app").classList.toggle("collapsed");
-});
-
-/* DOCUMENTS */
-
-function createDocument() {
-  const doc={
-    id:uid(),
-    title:"Untitled document",
-    content:"",
-    updated:Date.now()
-  };
-
-  data.docs.unshift(doc);
-  activeDocId=doc.id;
-
-  saveData();
-  openDocument(doc.id);
-  navigate("docs");
-  notify("Document created");
-}
-
-function openDocument(id) {
-  const doc=data.docs.find(x=>x.id===id);
-  if(!doc)return;
-
-  activeDocId=id;
-  $("#docTitle").value=doc.title;
-
-  // Content is sanitized before entering the editable document.
-  $("#docEditor").innerHTML=sanitizeContent(doc.content);
-
-  updateWordCount();
-  applyEditorSettings();
-}
-
-function sanitizeContent(html) {
-  const template=document.createElement("template");
-  template.innerHTML=String(html||"");
-
-  const allowed=new Set([
-    "P","DIV","BR","H1","H2","H3","H4",
-    "B","STRONG","I","EM","U","S",
-    "UL","OL","LI","BLOCKQUOTE",
-    "A","IMG","TABLE","TBODY","TR","TD","TH",
-    "SUB","SUP","SPAN","HR"
-  ]);
-
-  template.content.querySelectorAll("*").forEach(element=>{
-    if(!allowed.has(element.tagName)) {
-      element.replaceWith(...element.childNodes);
-      return;
-    }
-
-    [...element.attributes].forEach(attribute=>{
-      const name=attribute.name.toLowerCase();
-
-      if(name.startsWith("on")||name==="contenteditable") {
-        element.removeAttribute(attribute.name);
-      }
-
-      if(name==="href"||name==="src") {
-        try {
-          const url=new URL(attribute.value,location.href);
-          if(!["http:","https:","blob:"].includes(url.protocol)) {
-            element.removeAttribute(attribute.name);
-          }
-        } catch {
-          element.removeAttribute(attribute.name);
-        }
-      }
-
-      if(name==="style") {
-        element.removeAttribute("style");
-      }
-    });
-  });
-
-  template.content.querySelectorAll("a").forEach(a=>{
-    a.setAttribute("rel","noopener noreferrer");
-  });
-
-  return template.innerHTML;
-}
-
-function saveDocument() {
-  if(!activeDocId)return;
-
-  const doc=data.docs.find(x=>x.id===activeDocId);
-  if(!doc)return;
-
-  doc.title=$("#docTitle").value.trim()||"Untitled document";
-  doc.content=sanitizeContent($("#docEditor").innerHTML);
-  doc.updated=Date.now();
-
-  saveData();
-  updateWordCount();
-}
-
-function updateWordCount() {
-  const text=$("#docEditor").innerText.trim();
-  const words=text?text.split(/\s+/).length:0;
-
-  $("#wordCount").textContent=words+" words";
-  $("#charCount").textContent=text.length+" characters";
-}
-
-$("#docTitle").addEventListener("input",saveDocument);
-$("#docEditor").addEventListener("input",saveDocument);
-
-document.querySelectorAll("[data-command]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    $("#docEditor").focus();
-    document.execCommand(button.dataset.command,false,null);
-    saveDocument();
-  });
-});
-
-$("#formatSelect").addEventListener("change",event=>{
-  $("#docEditor").focus();
-  document.execCommand("formatBlock",false,event.target.value);
-  saveDocument();
-});
-
-$("#fontSize").addEventListener("change",event=>{
-  $("#docEditor").focus();
-  document.execCommand("fontSize",false,event.target.value);
-  saveDocument();
-});
-
-$("#linkBtn").addEventListener("click",()=>{
-  const value=prompt("Enter a website address:");
-  if(!value)return;
-
+function loadData() {
   try {
-    const url=new URL(value);
-    if(!["http:","https:"].includes(url.protocol))throw Error();
-    $("#docEditor").focus();
-    document.execCommand("createLink",false,url.href);
-    saveDocument();
-  } catch {
-    notify("Enter a valid HTTP or HTTPS address.");
-  }
-});
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-$("#clearFormat").addEventListener("click",()=>{
-  $("#docEditor").focus();
-  document.execCommand("removeFormat",false,null);
-  saveDocument();
-});
+    if(saved && Array.isArray(saved.slides) && saved.slides.length) {
+      slides = saved.slides;
+      currentSlide = Math.min(
+        saved.currentSlide || 0,
+        slides.length - 1
+      );
 
-$("#tableBtn").addEventListener("click",()=>{
-  const rows=Math.min(20,Math.max(1,Number(prompt("Number of rows:",3))||0));
-  const cols=Math.min(10,Math.max(1,Number(prompt("Number of columns:",3))||0));
-
-  if(!rows||!cols)return;
-
-  const table=document.createElement("table");
-  const body=document.createElement("tbody");
-
-  for(let r=0;r<rows;r++){
-    const tr=document.createElement("tr");
-    for(let c=0;c<cols;c++){
-      const td=document.createElement("td");
-      td.innerHTML="&nbsp;";
-      tr.appendChild(td);
+      activeTheme = themes[saved.activeTheme]
+        ? saved.activeTheme : "classic";
     }
-    body.appendChild(tr);
+  } catch(error) {
+    console.warn("Could not load saved presentation.");
+  }
+}
+
+/* SLIDE RENDERING */
+
+function renderSlide(animate = false) {
+  const slide = slides[currentSlide];
+
+  const canvas = document.getElementById("canvas");
+  const title = document.getElementById("slideTitle");
+  const body = document.getElementById("slideBody");
+  const image = document.getElementById("slideImage");
+
+  title.textContent = slide.title;
+  body.textContent = slide.body;
+
+  if(slide.image) {
+    image.src = slide.image;
+    image.classList.add("visible");
+    canvas.classList.add("has-image");
+  } else {
+    image.removeAttribute("src");
+    image.classList.remove("visible");
+    canvas.classList.remove("has-image");
   }
 
-  table.appendChild(body);
-  $("#docEditor").focus();
-  $("#docEditor").appendChild(table);
-  saveDocument();
-});
+  document.getElementById("transitionSelect").value =
+    slide.transition || "fade";
 
-$("#imageBtn").addEventListener("click",()=>{
-  const input=document.createElement("input");
-  input.type="file";
-  input.accept="image/png,image/jpeg,image/webp,image/gif";
+  applyTheme(slide.theme || activeTheme, false);
 
-  input.onchange=()=>{
-    const file=input.files[0];
-    if(!file)return;
+  if(animate) {
+    canvas.classList.remove(
+      "transition-fade",
+      "transition-slide",
+      "transition-zoom",
+      "transition-flip",
+      "transition-cube"
+    );
 
-    if(file.size>2*1024*1024) {
-      notify("Choose an image smaller than 2 MB.");
-      return;
+    void canvas.offsetWidth;
+
+    const transition = slide.transition || "fade";
+
+    if(transition !== "none") {
+      canvas.classList.add("transition-" + transition);
+    }
+  }
+
+  renderThumbnails();
+  updateCounters();
+  saveData();
+}
+
+/* THUMBNAILS */
+
+function renderThumbnails() {
+  const list = document.getElementById("slideList");
+  list.innerHTML = "";
+
+  slides.forEach((slide, index) => {
+    const item = document.createElement("div");
+
+    item.className = "slide-thumb" +
+      (index === currentSlide ? " active" : "");
+
+    const content = document.createElement("div");
+    content.className = "thumb-content";
+
+    const theme = themes[slide.theme || activeTheme];
+
+    content.style.background = theme.bg;
+    content.style.color = theme.color;
+
+    if(slide.image) {
+      const img = document.createElement("img");
+      img.src = slide.image;
+      img.alt = "";
+      content.appendChild(img);
+    } else {
+      const strong = document.createElement("strong");
+      strong.textContent = slide.title;
+      content.appendChild(strong);
+
+      const small = document.createElement("small");
+      small.textContent = slide.body.slice(0, 65);
+      content.appendChild(small);
     }
 
-    const reader=new FileReader();
+    const number = document.createElement("div");
+    number.className = "thumb-number";
+    number.textContent = "Slide " + (index + 1);
 
-    reader.onload=()=>{
-      const image=document.createElement("img");
-      image.src=reader.result;
-      image.alt="Inserted document image";
-      $("#docEditor").appendChild(image);
-      saveDocument();
+    item.append(content, number);
+
+    item.onclick = () => {
+      currentSlide = index;
+      renderSlide(true);
     };
 
-    reader.readAsDataURL(file);
-  };
-
-  input.click();
-});
-
-$("#exportDoc").addEventListener("click",()=>{
-  if(!activeDocId)return notify("Create a document first.");
-
-  saveDocument();
-
-  const doc=data.docs.find(x=>x.id===activeDocId);
-
-  const html=`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escapeHTML(doc.title)}</title>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{font-family:Alegreya,serif}
-body{max-width:850px;margin:50px auto;padding:20px;line-height:1.8;font-size:19px}
-img{max-width:100%}
-table{border-collapse:collapse;width:100%}
-td,th{border:1px solid #aaa;padding:9px}
-</style>
-</head>
-<body>
-<h1>${escapeHTML(doc.title)}</h1>
-${sanitizeContent(doc.content)}
-</body>
-</html>`;
-
-  downloadFile(filename(doc.title)+".html",html,"text/html");
-});
-
-/* PRESENTATIONS */
-
-function createPresentation() {
-  const presentation={
-    id:uid(),
-    title:"Untitled presentation",
-    theme:"emerald",
-    slides:[{
-      title:"Your next big idea.",
-      text:"A presentation made with Clamme Studio."
-    }],
-    updated:Date.now()
-  };
-
-  data.slides.unshift(presentation);
-  activePresentationId=presentation.id;
-  currentSlide=0;
-
-  saveData();
-  openPresentation(presentation.id);
-  navigate("slides");
-  notify("Presentation created");
-}
-
-function getPresentation() {
-  return data.slides.find(x=>x.id===activePresentationId);
-}
-
-function openPresentation(id) {
-  const presentation=data.slides.find(x=>x.id===id);
-  if(!presentation)return;
-
-  activePresentationId=id;
-  currentSlide=0;
-
-  $("#presentationTitle").value=presentation.title;
-  $("#slideTheme").value=presentation.theme||"emerald";
-
-  renderSlide();
-}
-
-function savePresentation() {
-  const p=getPresentation();
-  if(!p)return;
-
-  const slide=p.slides[currentSlide];
-  if(!slide)return;
-
-  p.title=$("#presentationTitle").value.trim()||"Untitled presentation";
-  p.theme=$("#slideTheme").value;
-  slide.title=$("#slideHeading").innerText;
-  slide.text=$("#slideText").innerText;
-  p.updated=Date.now();
-
-  saveData();
-  renderSlideList();
-}
-
-function renderSlide() {
-  const p=getPresentation();
-  if(!p)return;
-
-  const slide=p.slides[currentSlide];
-  if(!slide)return;
-
-  $("#slideHeading").textContent=slide.title;
-  $("#slideText").textContent=slide.text;
-  $("#slideNumber").textContent=`Slide ${currentSlide+1} of ${p.slides.length}`;
-
-  const themes={
-    emerald:["#193c29","#07110b","#f1e7cb","#c6d7c9"],
-    midnight:["#19243e","#070b17","#e0e7ff","#b9c6e4"],
-    gold:["#51422b","#17120b","#f8e9c5","#e4d3a6"],
-    light:["#f0f2ed","#ffffff","#1a3323","#405647"]
-  };
-
-  const colors=themes[p.theme]||themes.emerald;
-  const canvas=$("#slideCanvas");
-
-  canvas.style.background=`linear-gradient(135deg,${colors[0]},${colors[1]})`;
-  $("#slideHeading").style.color=colors[2];
-  $("#slideText").style.color=colors[3];
-
-  renderSlideList();
-}
-
-function renderSlideList() {
-  const p=getPresentation();
-  if(!p)return;
-
-  const list=$("#slideList");
-  list.replaceChildren();
-
-  p.slides.forEach((slide,index)=>{
-    const item=document.createElement("button");
-    item.className="slide-thumb"+(index===currentSlide?" active":"");
-    item.textContent=`${index+1}. ${slide.title||"Untitled"}`;
-    item.addEventListener("click",()=>{
-      savePresentation();
-      currentSlide=index;
-      renderSlide();
-    });
     list.appendChild(item);
   });
 }
 
-$("#presentationTitle").addEventListener("input",savePresentation);
-$("#slideTheme").addEventListener("change",()=>{
-  savePresentation();
-  renderSlide();
-});
+/* COUNTERS */
 
-$("#slideHeading").addEventListener("input",savePresentation);
-$("#slideText").addEventListener("input",savePresentation);
+function updateCounters() {
+  document.getElementById("slideCounter").textContent =
+    `${currentSlide + 1} / ${slides.length}`;
 
-$("#prevSlide").addEventListener("click",()=>{
-  const p=getPresentation();
-  if(!p)return;
-  savePresentation();
-  currentSlide=Math.max(0,currentSlide-1);
-  renderSlide();
-});
+  document.getElementById("presentationCounter").textContent =
+    `${currentSlide + 1} / ${slides.length}`;
+}
 
-$("#nextSlide").addEventListener("click",()=>{
-  const p=getPresentation();
-  if(!p)return;
-  savePresentation();
-  currentSlide=Math.min(p.slides.length-1,currentSlide+1);
-  renderSlide();
-});
+/* SLIDE MANAGEMENT */
 
-$("#addSlide").addEventListener("click",()=>{
-  const p=getPresentation();
-  if(!p)return notify("Create a presentation first.");
-
-  savePresentation();
-
-  p.slides.push({
-    title:"New slide",
-    text:"Add your ideas here."
+function addSlide() {
+  slides.splice(currentSlide + 1, 0, {
+    title: "New slide",
+    body: "Start writing your ideas here.",
+    image: null,
+    transition: "fade",
+    theme: activeTheme
   });
 
-  currentSlide=p.slides.length-1;
-  saveData();
+  currentSlide++;
   renderSlide();
-});
+}
 
-$("#deleteSlide").addEventListener("click",()=>{
-  const p=getPresentation();
-  if(!p)return;
+function deleteSlide() {
+  if(slides.length === 1) {
+    alert("A presentation must have at least one slide.");
+    return;
+  }
 
-  if(p.slides.length<=1)return notify("At least one slide is required.");
-  if(!confirm("Delete this slide?"))return;
+  slides.splice(currentSlide, 1);
+  currentSlide = Math.min(currentSlide, slides.length - 1);
 
-  p.slides.splice(currentSlide,1);
-  currentSlide=Math.min(currentSlide,p.slides.length-1);
+  renderSlide();
+}
+
+function duplicateSlide() {
+  const copy = JSON.parse(JSON.stringify(slides[currentSlide]));
+
+  slides.splice(currentSlide + 1, 0, copy);
+  currentSlide++;
+
+  renderSlide();
+}
+
+function moveSlide(direction) {
+  const target = currentSlide + direction;
+
+  if(target < 0 || target >= slides.length) return;
+
+  [slides[currentSlide], slides[target]] =
+    [slides[target], slides[currentSlide]];
+
+  currentSlide = target;
+
+  renderSlide();
+}
+
+/* NAVIGATION */
+
+function nextSlide() {
+  if(currentSlide < slides.length - 1) {
+    currentSlide++;
+    renderSlide(true);
+  } else if(
+    document.getElementById("presentation").classList.contains("active")
+  ) {
+    stopPresentation();
+  }
+}
+
+function previousSlide() {
+  if(currentSlide > 0) {
+    currentSlide--;
+    renderSlide(true);
+  }
+}
+
+/* TEXT EDITING */
+
+function updateSlideText() {
+  slides[currentSlide].title =
+    document.getElementById("slideTitle").textContent;
+
+  slides[currentSlide].body =
+    document.getElementById("slideBody").textContent;
+
+  renderThumbnails();
+  saveData();
+}
+
+/* IMAGE MANAGEMENT */
+
+function uploadImage(event) {
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  if(!file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    return;
+  }
+
+  if(file.size > 10 * 1024 * 1024) {
+    alert("Image must be smaller than 10 MB.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    slides[currentSlide].image = e.target.result;
+    renderSlide();
+  };
+
+  reader.readAsDataURL(file);
+
+  event.target.value = "";
+}
+
+function removeImage() {
+  slides[currentSlide].image = null;
+  renderSlide();
+}
+
+/* TRANSITIONS */
+
+function changeTransition() {
+  slides[currentSlide].transition =
+    document.getElementById("transitionSelect").value;
 
   saveData();
+}
+
+/* THEMES */
+
+function buildThemes() {
+  const grid = document.getElementById("themeGrid");
+  grid.innerHTML = "";
+
+  Object.entries(themes).forEach(([key, theme]) => {
+    const button = document.createElement("button");
+
+    button.className = "theme-option" +
+      (activeTheme === key ? " active" : "");
+
+    const preview = document.createElement("div");
+    preview.className = "theme-preview";
+    preview.style.background = theme.bg;
+
+    const label = document.createElement("small");
+    label.textContent = theme.name;
+    label.style.color = theme.color;
+
+    button.append(preview, label);
+
+    button.onclick = () => {
+      activeTheme = key;
+      slides[currentSlide].theme = key;
+      applyTheme(key);
+      buildThemes();
+      renderThumbnails();
+      saveData();
+    };
+
+    grid.appendChild(button);
+  });
+}
+
+function applyTheme(key, updateGrid = true) {
+  const theme = themes[key] || themes.classic;
+
+  activeTheme = key;
+
+  const canvas = document.getElementById("canvas");
+
+  canvas.style.background = theme.bg;
+  canvas.style.color = theme.color;
+
+  document.documentElement.style.setProperty(
+    "--accent", theme.accent
+  );
+
+  if(updateGrid) buildThemes();
+}
+
+/* PRESENTATION MODE */
+
+function startPresentation() {
+  const presentation =
+    document.getElementById("presentation");
+
+  presentation.classList.add("active");
+  renderPresentation();
+}
+
+function stopPresentation() {
+  document.getElementById("presentation")
+    .classList.remove("active");
+
   renderSlide();
-});
+}
 
-$("#exportSlides").addEventListener("click",()=>{
-  const p=getPresentation();
-  if(!p)return notify("Create a presentation first.");
+function renderPresentation() {
+  const slide = slides[currentSlide];
+  const canvas = document.getElementById("presentationCanvas");
 
-  savePresentation();
+  const theme = themes[slide.theme || activeTheme];
 
-  const sections=p.slides.map((slide,index)=>`
-  <section class="slide">
-    <small>${index+1} / ${p.slides.length}</small>
-    <h1>${escapeHTML(slide.title)}</h1>
-    <p>${escapeHTML(slide.text)}</p>
-  </section>`).join("");
+  canvas.style.background = theme.bg;
+  canvas.style.color = theme.color;
 
-  const html=`<!DOCTYPE html>
+  document.getElementById("presentationTitle").textContent =
+    slide.title;
+
+  document.getElementById("presentationBody").textContent =
+    slide.body;
+
+  const image = document.getElementById("presentationImage");
+
+  if(slide.image) {
+    image.src = slide.image;
+    image.classList.add("visible");
+    canvas.classList.add("has-image");
+  } else {
+    image.removeAttribute("src");
+    image.classList.remove("visible");
+    canvas.classList.remove("has-image");
+  }
+
+  canvas.classList.remove(
+    "transition-fade",
+    "transition-slide",
+    "transition-zoom",
+    "transition-flip",
+    "transition-cube"
+  );
+
+  void canvas.offsetWidth;
+
+  if(slide.transition !== "none") {
+    canvas.classList.add(
+      "transition-" + (slide.transition || "fade")
+    );
+  }
+
+  updateCounters();
+}
+
+/* EXPORT */
+
+function exportPresentation() {
+  const data = JSON.stringify({
+    slides,
+    themes
+  }).replace(/</g, "\\u003c");
+
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escapeHTML(p.title)}</title>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Clamme Presentation</title>
 <style>
-*{box-sizing:border-box;font-family:Alegreya,serif}
-body{margin:0;background:#07110b;color:white}
-.slide{min-height:100vh;padding:10vw;display:flex;flex-direction:column;justify-content:center;page-break-after:always;background:linear-gradient(135deg,#193c29,#07110b)}
-h1{font-size:clamp(35px,6vw,70px);color:#f1e7cb}
-p{font-size:clamp(20px,3vw,32px);color:#c6d7c9}
-@media print{.slide{height:100vh}}
+*{box-sizing:border-box}
+body{margin:0;background:#101712;font-family:Georgia,serif}
+#stage{height:100vh;display:flex;align-items:center;justify-content:center;padding:35px}
+#slide{width:min(100%,1200px);aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;padding:9%;overflow:hidden}
+h1{font-size:clamp(24px,5vw,65px);margin:0 0 20px}
+p{font-size:clamp(14px,2vw,25px);line-height:1.65;white-space:pre-wrap}
+img{max-width:100%;max-height:45%;object-fit:contain;margin:auto auto 15px}
+#controls{position:fixed;bottom:18px;left:0;right:0;display:flex;justify-content:center;gap:15px;align-items:center;color:white;font-family:Arial}
+button{padding:10px 18px;background:#24342b;color:white;border:1px solid #405548;border-radius:5px}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes slide{from{transform:translateX(60px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes zoom{from{transform:scale(.75);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes flip{from{transform:rotateY(75deg);opacity:0}to{transform:rotateY(0);opacity:1}}
+@keyframes cube{from{transform:rotateY(-85deg) scale(.8);opacity:0}to{transform:rotateY(0) scale(1);opacity:1}}
 </style>
 </head>
-<body>${sections}</body>
+<body>
+<div id="stage"><article id="slide">
+<img id="image" hidden>
+<h1 id="title"></h1><p id="body"></p>
+</article></div>
+<div id="controls">
+<button onclick="prev()">Previous</button>
+<span id="counter"></span>
+<button onclick="next()">Next</button>
+</div>
+<script>
+const data=${data};
+let index=0;
+const slide=document.getElementById('slide');
+function render(){
+const s=data.slides[index];
+const t=data.themes[s.theme]||data.themes.classic;
+slide.style.background=t.bg;
+slide.style.color=t.color;
+document.getElementById('title').textContent=s.title;
+document.getElementById('body').textContent=s.body;
+const img=document.getElementById('image');
+img.hidden=!s.image;
+if(s.image)img.src=s.image;
+slide.style.animation='none';
+void slide.offsetWidth;
+const transitions={fade:'fade',slide:'slide',zoom:'zoom',flip:'flip',cube:'cube'};
+if(transitions[s.transition])slide.style.animation=transitions[s.transition]+' .55s ease';
+document.getElementById('counter').textContent=(index+1)+' / '+data.slides.length;
+}
+function next(){if(index<data.slides.length-1){index++;render()}}
+function prev(){if(index>0){index--;render()}}
+document.addEventListener('keydown',e=>{
+if(e.key==='ArrowRight')next();
+if(e.key==='ArrowLeft')prev();
+});
+render();
+<\/script>
+</body>
 </html>`;
 
-  downloadFile(filename(p.title)+".html",html,"text/html");
+  const blob = new Blob([html], {type:"text/html"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Clamme-Presentation.html";
+  a.click();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/* KEYBOARD */
+
+document.addEventListener("keydown", event => {
+  const presentation =
+    document.getElementById("presentation");
+
+  if(!presentation.classList.contains("active")) return;
+
+  if(event.key === "ArrowRight") nextSlide();
+  if(event.key === "ArrowLeft") previousSlide();
+  if(event.key === "Escape") stopPresentation();
 });
 
-$("#presentBtn").addEventListener("click",async()=>{
-  savePresentation();
-  try {
-    await $("#slideCanvas").requestFullscreen();
-  } catch {
-    notify("Fullscreen is unavailable.");
-  }
-});
-
-/* SPREADSHEETS */
-
-function createSpreadsheet() {
-  const sheet={
-    id:uid(),
-    title:"Untitled spreadsheet",
-    rows:Array.from({length:10},()=>Array(6).fill("")),
-    updated:Date.now()
-  };
-
-  data.sheets.unshift(sheet);
-  activeSheetId=sheet.id;
-
-  saveData();
-  openSpreadsheet(sheet.id);
-  navigate("sheets");
-  notify("Spreadsheet created");
-}
-
-function getSheet() {
-  return data.sheets.find(x=>x.id===activeSheetId);
-}
-
-function openSpreadsheet(id) {
-  const sheet=data.sheets.find(x=>x.id===id);
-  if(!sheet)return;
-
-  activeSheetId=id;
-  $("#sheetTitle").value=sheet.title;
-  renderSheet();
-}
-
-function columnName(index) {
-  let name="";
-  while(index>=0) {
-    name=String.fromCharCode(index%26+65)+name;
-    index=Math.floor(index/26)-1;
-  }
-  return name;
-}
-
-/* Safe arithmetic formula parser */
-
-function calculate(expression) {
-  const tokens=expression.match(/\d+(?:\.\d+)?|[()+\-*/]/g);
-
-  if(!tokens||tokens.join("")!==expression.replace(/\s/g,"")) {
-    throw Error("Invalid formula");
-  }
-
-  let position=0;
-
-  function factor() {
-    const token=tokens[position++];
-
-    if(token==="(") {
-      const value=sum();
-      if(tokens[position++]!==")")throw Error("Missing closing bracket");
-      return value;
-    }
-
-    if(token==="-")return -factor();
-    if(token==="+")return factor();
-
-    if(token===undefined)throw Error("Incomplete formula");
-
-    const number=Number(token);
-    if(!Number.isFinite(number))throw Error("Invalid number");
-    return number;
-  }
-
-  function product() {
-    let value=factor();
-
-    while(tokens[position]==="*"||tokens[position]==="/") {
-      const operator=tokens[position++];
-      const next=factor();
-
-      value=operator==="*"?value*next:value/next;
-
-      if(!Number.isFinite(value))throw Error("Invalid calculation");
-    }
-
-    return value;
-  }
-
-  function sum() {
-    let value=product();
-
-    while(tokens[position]==="+"||tokens[position]==="-") {
-      const operator=tokens[position++];
-      const next=product();
-      value=operator==="+"?value+next:value-next;
-    }
-
-    return value;
-  }
-
-  const result=sum();
-
-  if(position!==tokens.length||!Number.isFinite(result)) {
-    throw Error("Invalid formula");
-  }
-
-  return result;
-}
-
-function evaluateCell(row,column,visited=new Set()) {
-  const sheet=getSheet();
-
-  if(!sheet||!sheet.rows[row]||
-     sheet.rows[row][column]===undefined)return 0;
-
-  const key=row+":"+column;
-
-  if(visited.has(key))throw Error("Circular reference");
-
-  const raw=String(sheet.rows[row][column]).trim();
-
-  if(!raw.startsWith("=")) {
-    const number=Number(raw);
-    return raw!==""&&Number.isFinite(number)?number:0;
-  }
-
-  visited.add(key);
-
-  try {
-    const expression=raw.slice(1).replace(
-      /\b([A-Z]+)(\d+)\b/g,
-      (_,letters,rowNumber)=>{
-        let col=0;
-
-        for(const char of letters) {
-          col=col*26+char.charCodeAt(0)-64;
-        }
-
-        return String(evaluateCell(Number(rowNumber)-1,col-1,visited));
-      }
-    );
-
-    return calculate(expression);
-  } finally {
-    visited.delete(key);
-  }
-}
-
-function renderSheet() {
-  const sheet=getSheet();
-  if(!sheet)return;
-
-  const table=$("#sheetTable");
-  table.replaceChildren();
-
-  const header=document.createElement("tr");
-  const empty=document.createElement("th");
-  header.appendChild(empty);
-
-  for(let c=0;c<sheet.rows[0].length;c++) {
-    const th=document.createElement("th");
-    th.textContent=columnName(c);
-    header.appendChild(th);
-  }
-
-  table.appendChild(header);
-
-  sheet.rows.forEach((row,r)=>{
-    const tr=document.createElement("tr");
-
-    const heading=document.createElement("th");
-    heading.textContent=r+1;
-    tr.appendChild(heading);
-
-    row.forEach((value,c)=>{
-      const td=document.createElement("td");
-
-      td.contentEditable="true";
-      td.spellcheck=settings.spellcheck;
-      td.textContent=value;
-      td.dataset.row=r;
-      td.dataset.col=c;
-
-      td.addEventListener("input",()=>{
-        sheet.rows[r][c]=td.textContent;
-        sheet.updated=Date.now();
-        saveData();
-      });
-
-      td.addEventListener("blur",()=>{
-        try {
-          if(String(sheet.rows[r][c]).startsWith("=")) {
-            td.title="Calculated value: "+evaluateCell(r,c);
-          } else {
-            td.title="";
-          }
-        } catch(error) {
-          td.title=error.message;
-        }
-      });
-
-      tr.appendChild(td);
-    });
-
-    table.appendChild(tr);
-  });
-}
-
-$("#sheetTitle").addEventListener("input",()=>{
-  const sheet=getSheet();
-  if(!sheet)return;
-  sheet.title=$("#sheetTitle").value;
-  saveData();
-});
-
-$("#addRow").addEventListener("click",()=>{
-  const sheet=getSheet();
-  if(!sheet)return;
-
-  sheet.rows.push(Array(sheet.rows[0].length).fill(""));
-  renderSheet();
-  saveData();
-});
-
-$("#addColumn").addEventListener("click",()=>{
-  const sheet=getSheet();
-  if(!sheet)return;
-
-  sheet.rows.forEach(row=>row.push(""));
-  renderSheet();
-  saveData();
-});
-
-$("#calculateSheet").addEventListener("click",()=>{
-  const sheet=getSheet();
-  if(!sheet)return;
-
-  renderSheet();
-
-  let count=0;
-  let errors=0;
-
-  sheet.rows.forEach((row,r)=>{
-    row.forEach((value,c)=>{
-      if(String(value).startsWith("=")) {
-        count++;
-        try {
-          const cell=$(`#sheetTable td[data-row="${r}"][data-col="${c}"]`);
-          cell.textContent=String(evaluateCell(r,c));
-          cell.title="Calculated result";
-        } catch {
-          errors++;
-        }
-      }
-    });
-  });
-
-  $("#formulaStatus").textContent=
-    `${count} formulas evaluated. ${errors} errors.`;
-
-  notify("Calculation completed");
-});
-
-$("#exportCSV").addEventListener("click",()=>{
-  const sheet=getSheet();
-  if(!sheet)return notify("Create a spreadsheet first.");
-
-  const csv=sheet.rows.map((row,r)=>
-    row.map((value,c)=>{
-      let output=value;
-      if(String(value).startsWith("=")) {
-        try {output=evaluateCell(r,c)} catch {output=value}
-      }
-      return '"'+String(output).replace(/"/g,'""')+'"';
-    }).join(",")
-  ).join("\n");
-
-  downloadFile(filename(sheet.title)+".csv",csv,"text/csv;charset=utf-8");
-});
-
-/* FILE MANAGER */
-
-function getAllFiles() {
-  return [
-    ...data.docs.map(x=>({...x,type:"Document",kind:"doc"})),
-    ...data.slides.map(x=>({...x,type:"Presentation",kind:"slide"})),
-    ...data.sheets.map(x=>({...x,type:"Spreadsheet",kind:"sheet"}))
-  ].sort((a,b)=>b.updated-a.updated);
-}
-
-function openFile(file) {
-  if(file.kind==="doc") {
-    openDocument(file.id);
-    navigate("docs");
-  }
-
-  if(file.kind==="slide") {
-    openPresentation(file.id);
-    navigate("slides");
-  }
-
-  if(file.kind==="sheet") {
-    openSpreadsheet(file.id);
-    navigate("sheets");
-  }
-}
-
-function deleteFile(file) {
-  if(!confirm("Delete "+file.title+"?"))return;
-
-  const collection=file.kind==="doc"?data.docs:
-    file.kind==="slide"?data.slides:data.sheets;
-
-  const index=collection.findIndex(x=>x.id===file.id);
-  if(index>=0)collection.splice(index,1);
-
-  if(file.id===activeDocId)activeDocId=null;
-  if(file.id===activePresentationId)activePresentationId=null;
-  if(file.id===activeSheetId)activeSheetId=null;
-
-  saveData();
-  renderFiles();
-  notify("File deleted");
-}
-
-function renameFile(file) {
-  const name=prompt("New file name:",file.title);
-  if(name===null)return;
-
-  const collection=file.kind==="doc"?data.docs:
-    file.kind==="slide"?data.slides:data.sheets;
-
-  const item=collection.find(x=>x.id===file.id);
-  if(!item)return;
-
-  item.title=name.trim()||"Untitled";
-  item.updated=Date.now();
-
-  saveData();
-  renderFiles();
-}
-
-function duplicateFile(file) {
-  const collection=file.kind==="doc"?data.docs:
-    file.kind==="slide"?data.slides:data.sheets;
-
-  const item=collection.find(x=>x.id===file.id);
-  if(!item)return;
-
-  const copy=JSON.parse(JSON.stringify(item));
-  copy.id=uid();
-  copy.title=item.title+" (Copy)";
-  copy.updated=Date.now();
-
-  collection.unshift(copy);
-  saveData();
-  renderFiles();
-  notify("File duplicated");
-}
-
-function makeFileRow(file) {
-  const row=document.createElement("div");
-  row.className="file-row";
-
-  const info=document.createElement("div");
-
-  const title=document.createElement("strong");
-  title.textContent=file.title||"Untitled";
-
-  const subtitle=document.createElement("div");
-  subtitle.className="muted";
-  subtitle.style.fontSize="13px";
-  subtitle.textContent=file.type+" · "+new Date(file.updated).toLocaleDateString();
-
-  info.append(title,subtitle);
-
-  const actions=document.createElement("div");
-  actions.className="file-actions";
-
-  const createButton=(label,handler,extra="")=>{
-    const button=document.createElement("button");
-    button.className="btn "+extra;
-    button.textContent=label;
-    button.addEventListener("click",handler);
-    return button;
-  };
-
-  actions.append(
-    createButton("Open",()=>openFile(file),"primary"),
-    createButton("Rename",()=>renameFile(file)),
-    createButton("Duplicate",()=>duplicateFile(file)),
-    createButton("Delete",()=>deleteFile(file),"danger")
-  );
-
-  row.append(info,actions);
-  return row;
-}
-
-function renderFiles() {
-  const files=getAllFiles();
-  const all=$("#allFiles");
-  const recent=$("#recentFiles");
-
-  if(all) {
-    all.replaceChildren();
-
-    const query=($("#fileSearch")?.value||"").toLowerCase();
-    const filter=$("#fileFilter")?.value||"all";
-    const sort=$("#fileSort")?.value||"newest";
-
-    let visible=files.filter(file=>
-      file.title.toLowerCase().includes(query)&&
-      (filter==="all"||file.kind===filter)
-    );
-
-    if(sort==="oldest")visible.sort((a,b)=>a.updated-b.updated);
-    if(sort==="name")visible.sort((a,b)=>a.title.localeCompare(b.title));
-
-    if(!visible.length) {
-      all.textContent="No matching files found.";
-      all.className="empty";
-    } else {
-      all.className="file-list";
-      visible.forEach(file=>all.appendChild(makeFileRow(file)));
-    }
-  }
-
-  if(recent) {
-    recent.replaceChildren();
-
-    if(!files.length) {
-      recent.textContent="Your recent projects will appear here.";
-      recent.className="empty";
-    } else {
-      recent.className="file-list";
-      files.slice(0,5).forEach(file=>recent.appendChild(makeFileRow(file)));
-    }
-  }
-
-  updateDashboard();
-}
-
-["fileSearch","fileFilter","fileSort"].forEach(id=>{
-  $("#"+id).addEventListener("input",renderFiles);
-  $("#"+id).addEventListener("change",renderFiles);
-});
-
-/* DASHBOARD */
-
-function updateDashboard() {
-  $("#docCount").textContent=data.docs.length;
-  $("#slideCount").textContent=data.slides.length;
-  $("#sheetCount").textContent=data.sheets.length;
-
-  $("#totalCount").textContent=
-    data.docs.length+data.slides.length+data.sheets.length;
-}
-
-/* CREATION */
-
-function createByType(type) {
-  if(type==="doc")createDocument();
-  if(type==="slide")createPresentation();
-  if(type==="sheet")createSpreadsheet();
-}
-
-document.querySelectorAll("[data-create]").forEach(card=>{
-  card.addEventListener("click",()=>createByType(card.dataset.create));
-});
-
-$("#newBtn").addEventListener("click",()=>{
-  const choice=prompt(
-    "Create a new project:\n\n1. Document\n2. Presentation\n3. Spreadsheet"
-  );
-
-  if(choice==="1")createDocument();
-  if(choice==="2")createPresentation();
-  if(choice==="3")createSpreadsheet();
-});
-
-/* BACKUP AND RESTORE */
-
-function exportBackup() {
-  const backup={
-    application:"Clamme Studio",
-    version:3,
-    exported:new Date().toISOString(),
-    data
-  };
-
-  downloadFile(
-    "clamme-studio-backup.json",
-    JSON.stringify(backup,null,2),
-    "application/json"
-  );
-
-  notify("Backup exported");
-}
-
-$("#backupBtn").addEventListener("click",exportBackup);
-$("#settingsBackup").addEventListener("click",exportBackup);
-
-$("#importBackup").addEventListener("click",()=>{
-  $("#backupFile").click();
-});
-
-$("#backupFile").addEventListener("change",async event=>{
-  const file=event.target.files[0];
-  if(!file)return;
-
-  try {
-    if(file.size>10*1024*1024)throw Error();
-
-    const backup=JSON.parse(await file.text());
-    const incoming=backup.data||backup;
-
-    if(!Array.isArray(incoming.docs)||
-       !Array.isArray(incoming.slides)||
-       !Array.isArray(incoming.sheets))throw Error();
-
-    if(!confirm("Replace your current workspace with this backup?"))return;
-
-    data=incoming;
-
-    activeDocId=null;
-    activePresentationId=null;
-    activeSheetId=null;
-
-    saveData();
-    renderFiles();
-    navigate("home");
-    notify("Backup restored");
-  } catch {
-    notify("Unable to restore this backup.");
-  } finally {
-    event.target.value="";
-  }
-});
-
-/* CUSTOMIZATION */
-
-function applySettings() {
-  const root=document.documentElement;
-
-  root.style.setProperty("--font-size",settings.fontSize);
-  root.style.setProperty("--radius",settings.radius+"px");
-  root.style.setProperty("--accent",settings.accent);
-  root.style.setProperty("--accent2",settings.accent);
-
-  const themes={
-    dark:{
-      bg:"#07110b",
-      sidebar:"#09140d",
-      panel:"#0d1b12",
-      panel2:"#12251a",
-      panel3:"#193324",
-      text:"#edf5ed",
-      muted:"#91a493",
-      border:"rgba(195,222,197,.12)"
-    },
-    black:{
-      bg:"#050505",
-      sidebar:"#080808",
-      panel:"#101010",
-      panel2:"#191919",
-      panel3:"#242424",
-      text:"#f2f2f2",
-      muted:"#999999",
-      border:"rgba(255,255,255,.12)"
-    },
-    light:{
-      bg:"#f1f4f0",
-      sidebar:"#ffffff",
-      panel:"#ffffff",
-      panel2:"#e8eee8",
-      panel3:"#dce7dd",
-      text:"#17251b",
-      muted:"#637467",
-      border:"rgba(20,50,30,.14)"
-    }
-  };
-
-  const theme=themes[settings.theme]||themes.dark;
-
-  Object.entries(theme).forEach(([key,value])=>{
-    root.style.setProperty("--"+key,value);
-  });
-
-  $("#docEditor").style.minHeight=settings.editorHeight;
-
-  document.querySelectorAll(".editor,[contenteditable=true]").forEach(element=>{
-    element.spellcheck=settings.spellcheck;
-    element.lang=settings.language;
-  });
-
-  $("#themeSetting").value=settings.theme;
-  $("#fontSetting").value=settings.fontSize;
-  $("#radiusSetting").value=settings.radius;
-  $("#spellSetting").value=String(settings.spellcheck);
-  $("#languageSetting").value=settings.language;
-  $("#editorHeight").value=settings.editorHeight;
-
-  document.querySelectorAll(".color-choice").forEach(button=>{
-    button.classList.toggle(
-      "active",
-      button.dataset.color===settings.accent
-    );
-  });
-
-  saveSettings();
-}
-
-$("#colorOptions").addEventListener("click",event=>{
-  const button=event.target.closest("[data-color]");
-  if(!button)return;
-
-  settings.accent=button.dataset.color;
-  applySettings();
-});
-
-$("#saveSettings").addEventListener("click",()=>{
-  settings.theme=$("#themeSetting").value;
-  settings.fontSize=$("#fontSetting").value;
-  settings.radius=Number($("#radiusSetting").value);
-  settings.spellcheck=$("#spellSetting").value==="true";
-  settings.language=$("#languageSetting").value;
-  settings.editorHeight=$("#editorHeight").value;
-
-  applySettings();
-  notify("Preferences applied");
-});
-
-function applyEditorSettings() {
-  $("#docEditor").spellcheck=settings.spellcheck;
-  $("#docEditor").lang=settings.language;
-}
-
-function updateStorage() {
-  const size=new Blob([JSON.stringify(data)]).size;
-  $("#storageInfo").textContent=
-    size<1024*1024
-      ?(size/1024).toFixed(1)+" KB of workspace data"
-      :(size/1024/1024).toFixed(2)+" MB of workspace data";
-}
-
-$("#radiusSetting").addEventListener("input",()=>{
-  settings.radius=Number($("#radiusSetting").value);
-  document.documentElement.style.setProperty("--radius",settings.radius+"px");
-});
-
-/* GLOBAL SEARCH */
-
-$("#globalSearch").addEventListener("keydown",event=>{
-  if(event.key!=="Enter")return;
-
-  const query=event.target.value.trim();
-  if(!query)return;
-
-  $("#fileSearch").value=query;
-  navigate("files");
-  renderFiles();
-});
-
-$("#globalSearch").addEventListener("input",event=>{
-  if(!event.target.value.trim()&&$("#files").classList.contains("active")) {
-    $("#fileSearch").value="";
-    renderFiles();
-  }
-});
-
-/* KEYBOARD SHORTCUTS */
-
-document.addEventListener("keydown",event=>{
-  const modifier=event.ctrlKey||event.metaKey;
-
-  if(modifier&&event.key.toLowerCase()==="s") {
-    event.preventDefault();
-    saveDocument();
-    savePresentation();
-    saveData();
-    notify("Workspace saved");
-  }
-
-  if(modifier&&event.altKey&&event.key.toLowerCase()==="n") {
-    event.preventDefault();
-    createDocument();
-  }
-
-  if(modifier&&event.key.toLowerCase()==="k") {
-    event.preventDefault();
-    $("#globalSearch").focus();
-  }
-});
-
-/* DELETE WORKSPACE */
-
-$("#clearWorkspace").addEventListener("click",()=>{
-  if(!confirm("Permanently delete ALL Clamme workspace files?"))return;
-  if(!confirm("This cannot be undone. Continue?"))return;
-
-  data={docs:[],slides:[],sheets:[]};
-
-  activeDocId=null;
-  activePresentationId=null;
-  activeSheetId=null;
-
-  saveData();
-  renderFiles();
-  navigate("home");
-  notify("Workspace cleared");
-});
-
-/* STARTUP */
-
-function initialise() {
-  applySettings();
-
-  if(data.docs.length) {
-    activeDocId=data.docs[0].id;
-    openDocument(activeDocId);
-  }
-
-  if(data.slides.length) {
-    activePresentationId=data.slides[0].id;
-    openPresentation(activePresentationId);
-  }
-
-  if(data.sheets.length) {
-    activeSheetId=data.sheets[0].id;
-    openSpreadsheet(activeSheetId);
-  }
-
-  renderFiles();
-  updateDashboard();
-  updateStorage();
-}
-
-initialise();
+/* INITIALIZATION */
+
+loadData();
+renderSlide();
+buildThemes();
 
 </script>
+
 </body>
 </html>
